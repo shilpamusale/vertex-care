@@ -1,0 +1,24 @@
+# Data Handling & Core
+pandas
+numpy
+
+# Machine Learning
+scikit-learn
+xgboost
+lightgbm
+
+# Configuration
+pyyaml
+
+# Notebook Environment
+jupyter
+ipykernel
+
+# API Framework
+fastapi
+uvicorn
+
+# Code Quality
+black
+flake8
+pre-commit

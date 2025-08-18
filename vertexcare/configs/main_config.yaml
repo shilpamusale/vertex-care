@@ -1,0 +1,19 @@
+# ------------------
+# File Path Settings
+# ------------------
+# This section defines the paths to our data folders.
+# Our Python scripts will read from this file to know where to
+# load raw data from and where to save processed data.
+
+data_paths:
+  raw_data_dir: 'data/01_raw/'
+  intermediate_data_dir: 'data/02_intermediate/'
+  primary_data_dir: 'data/03_primary/'
+
+# ------------------
+# Model Settings
+# ------------------
+# We will add model-specific configurations here later.
+
+model_params:
+  target_column: 'readmitted_30_days' # Example target column name
