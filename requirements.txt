@@ -1,6 +1,7 @@
 # Data Handling & Core
 pandas
 numpy
+pyarrow
 
 # Machine Learning
 scikit-learn

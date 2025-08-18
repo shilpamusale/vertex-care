@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-wheel-metadata/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Data files
+data/
+logs/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+
+# Secrets
+*.env
