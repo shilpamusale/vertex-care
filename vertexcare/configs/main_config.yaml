@@ -16,4 +16,4 @@ data_paths:
 # We will add model-specific configurations here later.
 
 model_params:
-  target_column: 'readmitted_30_days' # Example target column name
+  target_column: 'readmitted'
