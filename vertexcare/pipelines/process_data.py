@@ -9,6 +9,7 @@ from vertexcare.data_processing.ingestion import (
     load_config,
 )
 from vertexcare.data_processing.validation import run_validation
+from vertexcare.features.build_features import run_feature_engineering
 
 
 def main():
@@ -33,6 +34,10 @@ def main():
         logging.info("--- Step 2: Running Data Validation ---")
         run_validation(config, module_root_path)
         logging.info("--- Data Validation complete. ---")
+
+        logging.info("--- Step 3: Running Feature Engineering ---")
+        run_feature_engineering(config, module_root_path)
+        logging.info("--- Feature Engineering complete. ---")
 
         logging.info("=======================================")
         logging.info("  VERTEXCARE DATA PIPELINE SUCCEEDED   ")

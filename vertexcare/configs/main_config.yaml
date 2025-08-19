@@ -17,3 +17,5 @@ data_paths:
 
 model_params:
   target_column: 'readmitted'
+  test_size: 0.2
+  random_state: 42
