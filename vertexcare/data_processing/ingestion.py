@@ -1,4 +1,4 @@
-# In vertexcare/src/data_processing/ingestion.py
+# vertexcare/data_processing/ingestion.py
 
 import argparse
 import logging
@@ -10,50 +10,53 @@ import pandas as pd
 import yaml
 
 
-def setup_logging(project_root: Path) -> None:
-    """Sets up logging to both console and a file."""
-    log_dir = project_root / "logs"
+def setup_logging(module_root: Path, log_name: str) -> None:
+    """Sets up a robust logger inside the module."""
+    log_dir = module_root / "logs"
     log_dir.mkdir(exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    log_filename = f"{timestamp}_ingestion.log"
+    log_filename = f"{timestamp}_{log_name}.log"
     log_filepath = log_dir / log_filename
 
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        handlers=[
-            logging.FileHandler(log_filepath),
-            logging.StreamHandler(),
-        ],
-    )
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+
+    if logger.hasHandlers():
+        logger.handlers.clear()
+
+    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    file_handler = logging.FileHandler(log_filepath)
+    file_handler.setFormatter(formatter)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(formatter)
+
+    logger.addHandler(file_handler)
+    logger.addHandler(stream_handler)
     logging.info(f"Logging initialized. Log file at: {log_filepath}")
 
 
 def load_config(config_path: Path) -> Dict[str, Any]:
-    """Loads the main configuration file."""
+    """Loads a configuration file."""
     try:
         with open(config_path, "r") as f:
             config = yaml.safe_load(f)
-        logging.info("Configuration file loaded successfully.")
+        logging.info(f"Config file loaded successfully from {config_path}.")
         return config
     except FileNotFoundError:
-        logging.error(f"Configuration file not found at: {config_path}")
-        raise
-    except Exception as e:
-        logging.error(f"Error loading configuration file: {e}")
+        logging.error(f"Config file not found at: {config_path}")
         raise
 
 
-def run_ingestion(config: Dict[str, Any], project_root: Path) -> None:
-    """Runs the data ingestion process."""
+def run_ingestion(config: Dict[str, Any], module_root: Path) -> None:
+    """Runs the data ingestion process using
+    paths relative to the module root.
+    """
     logging.info("Starting data ingestion process...")
 
-    raw_file_config = config["data_paths"]["raw_data_dir"]
-    raw_data_dir = project_root / raw_file_config
-    intermediate_config = config["data_paths"]["intermediate_data_dir"]
-    intermediate_dir = project_root / intermediate_config
-
+    raw_data_dir = module_root / config["data_paths"]["raw_data_dir"]
+    intermediate_path = config["data_paths"]["intermediate_data_dir"]
+    intermediate_dir = module_root / intermediate_path
     intermediate_dir.mkdir(parents=True, exist_ok=True)
 
     raw_data_file = raw_data_dir / "mock_data_with_notes.csv"
@@ -66,8 +69,7 @@ def run_ingestion(config: Dict[str, Any], project_root: Path) -> None:
 
     logging.info(f"Reading raw data from {raw_data_file}...")
     df = pd.read_csv(raw_data_file)
-
-    df.columns = [col.lower().strip() for col in df.columns]
+    df.columns = [col.lower().strip().replace(".", "_") for col in df.columns]
     logging.info("Standardized column names.")
 
     if "chw_notes" in df.columns:
@@ -76,7 +78,6 @@ def run_ingestion(config: Dict[str, Any], project_root: Path) -> None:
 
     logging.info(f"Saving ingested data to {output_file}...")
     df.to_parquet(output_file, index=False)
-
     logging.info("Data ingestion process completed successfully.")
 
 
@@ -92,11 +93,11 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    # This assumes the script is run from the top-level project directory
     project_root_path = Path.cwd()
+    module_root_path = project_root_path / "vertexcare"
 
-    setup_logging(project_root_path)
+    setup_logging(module_root_path, "ingestion")
 
-    config_path = project_root_path / args.config
+    config_path = module_root_path / args.config
     config_data = load_config(config_path)
-    run_ingestion(config_data, project_root_path)
+    run_ingestion(config_data, module_root_path)

@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+tests/test_data_processing.py
+tests/test_ingestion.py
+vertexcare.egg-info/PKG-INFO
+vertexcare.egg-info/SOURCES.txt
+vertexcare.egg-info/dependency_links.txt
+vertexcare.egg-info/requires.txt
+vertexcare.egg-info/top_level.txt

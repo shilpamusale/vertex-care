@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vertexcare"
+version = "0.1.0"
+description = "A pipeline to predict patient readmission and route interventions."
+readme = "README.md"
+requires-python = ">=3.8"
+
+# This section tells pip what extra packages are needed for testing.
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pyarrow",
+]
+
+[tool.setuptools]
+packages = ["vertexcare"]
+
+[tool.pytest.ini_options]
+pythonpath = "."

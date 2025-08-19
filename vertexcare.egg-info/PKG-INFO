@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: vertexcare
+Version: 0.1.0
+Summary: A pipeline to predict patient readmission and route interventions.
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: pyarrow; extra == "test"
+Dynamic: license-file
+
+# vertex-care
+vertex-care

@@ -1,0 +1,36 @@
+# data_schema.yaml
+# This file defines the "contract" for our data after the initial ingestion
+# and cleaning step.
+
+# Defines the expected columns and their pandas data types.
+columns:
+  # --- Identifiers & Demographics ---
+  age: "int64"
+  sex: "int64"
+
+  # --- Target Variable ---
+  readmitted: "int64"
+
+  # --- Key Clinical & Interaction Features ---
+  sumcomorbidities: "int64"
+  time_spent_total: "int64"
+  hypertension: "int64"
+  diabetes: "int64"
+  asthma: "int64"
+  engaged: "int64"
+
+  # --- One-Hot Encoded Categorical Features (Sample) ---
+  race_black: "int64"
+  referral_type_ed: "int64"
+  insurance_public: "int64"
+  # CORRECTED: Use the cleaned column name with an underscore
+  sdoh_pcp_1_0: "int64"
+
+  # --- Unstructured Text ---
+  chw_notes: "object" # Pandas uses 'object' for strings
+
+# Defines which columns are not allowed to have any null/missing values.
+not_null_columns:
+  - "age"
+  - "readmitted"
+  - "sex"
