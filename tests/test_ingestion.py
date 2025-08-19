@@ -8,12 +8,6 @@ from pathlib import Path
 from vertexcare.data_processing.ingestion import run_ingestion
 
 
-# Pytest fixtures are a powerful way to provide
-# #data and resources to your tests.
-# This fixture creates a temporary
-# directory structure for our test to run in,
-# so we don't have to use our actual
-# project's data folders.
 @pytest.fixture
 def mock_project_dirs(tmp_path: Path) -> Path:
     """Creates a temporary directory structure mimicking our project."""
@@ -34,12 +28,10 @@ def test_run_ingestion_success(mock_project_dirs: Path):
     3. Handling of null values in the notes column.
     """
     # --- 1. Arrange ---
-    # Setup the necessary inputs for our function.
     project_root = mock_project_dirs
     module_root = project_root / "vertexcare"
     raw_data_dir = module_root / "data" / "01_raw"
 
-    # Create a dummy config dictionary
     mock_config = {
         "data_paths": {
             "raw_data_dir": "data/01_raw/",
@@ -47,7 +39,6 @@ def test_run_ingestion_success(mock_project_dirs: Path):
         }
     }
 
-    # Create a dummy raw CSV file with messy column names and a missing note
     mock_raw_data = pd.DataFrame(
         {
             "Patient.ID": [1, 2, 3],
@@ -59,25 +50,20 @@ def test_run_ingestion_success(mock_project_dirs: Path):
     mock_raw_data.to_csv(mock_raw_csv_path, index=False)
 
     # --- 2. Act ---
-    # Run the function we are testing.
     run_ingestion(mock_config, module_root)
 
     # --- 3. Assert ---
-    # Check that the outcomes are what we expect.
-    ingested_path = "data" / "02_intermediate" / "ingested_data.parquet"
-    output_file = module_root / ingested_path
 
-    # Assert that the output file was actually created.
+    intermediate_dir = module_root / "data" / "02_intermediate"
+    output_file = intermediate_dir / "ingested_data.parquet"
+
     assert output_file.exists(), "Output parquet file was not created."
 
-    # Assert that the data inside the file is correct.
     result_df = pd.read_parquet(output_file)
 
-    # Check that column names were standardized (lowercase, no spaces/dots).
     expected_columns = ["patient_id", "age", "chw_notes"]
     assert (
         list(result_df.columns) == expected_columns
     ), "Column names not standardized correctly."
 
-    # Check that the NaN in the notes column was filled with an empty string.
     assert result_df["chw_notes"].iloc[1] == "", "Null value in notes."
