@@ -8,12 +8,22 @@ version = "0.1.0"
 description = "A pipeline to predict patient readmission and route interventions."
 readme = "README.md"
 requires-python = ">=3.8"
+# ADDED: Explicitly list the core dependencies for the project.
+dependencies = [
+    "pandas",
+    "pyyaml",
+    "pyarrow",
+    "scikit-learn",
+    "xgboost",
+    "lightgbm",
+    "fastapi",
+    "uvicorn",
+]
 
 # This section tells pip what extra packages are needed for testing.
 [project.optional-dependencies]
 test = [
     "pytest",
-    "pyarrow",
 ]
 
 [tool.setuptools]
