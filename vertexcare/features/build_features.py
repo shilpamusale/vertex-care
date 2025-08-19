@@ -44,13 +44,6 @@ def split_data(
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
     """
     Splits the data into training and testing sets.
-
-    Args:
-        df: The full DataFrame with features.
-        config: The project configuration dictionary.
-
-    Returns:
-        A tuple containing X_train, X_test, y_train, y_test.
     """
     logging.info("Splitting data into training and testing sets...")
 
@@ -58,7 +51,14 @@ def split_data(
     test_size = config["model_params"]["test_size"]
     random_state = config["model_params"]["random_state"]
 
-    X = df.drop(columns=[target_column, "chw_notes"])  # Drop notes for now
+    # Identify columns to drop before training
+    # We drop the target, the raw notes, and any raw date columns.
+    cols_to_drop = [target_column, "chw_notes", "visit_date"]
+
+    # Ensure we only try to drop columns that actually exist
+    cols_to_drop = [col for col in cols_to_drop if col in df.columns]
+
+    X = df.drop(columns=cols_to_drop)
     y = df[target_column]
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -66,8 +66,8 @@ def split_data(
     )
 
     logging.info(
-        f"Data split complete. Train set size: {len(X_train)}"
-        f", Test set size: {len(X_test)}"
+        f"Data split complete. Train set size: {len(X_train)},"
+        f" Test set size: {len(X_test)}"
     )
     return X_train, X_test, y_train, y_test
 

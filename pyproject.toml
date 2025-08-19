@@ -18,6 +18,7 @@ dependencies = [
     "lightgbm",
     "fastapi",
     "uvicorn",
+    "joblib",
 ]
 
 # This section tells pip what extra packages are needed for testing.

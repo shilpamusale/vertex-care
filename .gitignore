@@ -21,3 +21,6 @@ logs/
 
 # Secrets
 *.env
+
+# Ignore trained model artifacts
+vertexcare/models/

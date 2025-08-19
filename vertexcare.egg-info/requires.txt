@@ -1,4 +1,12 @@
+pandas
+pyyaml
+pyarrow
+scikit-learn
+xgboost
+lightgbm
+fastapi
+uvicorn
+joblib
 
 [test]
 pytest
-pyarrow
