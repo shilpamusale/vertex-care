@@ -85,21 +85,24 @@ def impute_missing_values(
 
 def run_feature_engineering(config: Dict[str, Any], module_root: Path) -> None:
     """Main function to run the feature engineering process."""
-    logging.info("Starting feature engineering pipeline...")
-    intermediate_path = config["data_paths"]["intermediate_data_dir"]
-    intermediate_dir = module_root / intermediate_path
+
+    logging.info("Starting featuer engineering pipeline...")
+
     primary_dir = module_root / config["data_paths"]["primary_data_dir"]
     primary_dir.mkdir(parents=True, exist_ok=True)
 
-    input_file = intermediate_dir / "ingested_data.parquet"
-    df = pd.read_parquet(input_file)
-    df_featured = create_features(df)
-    X_train, X_test, y_train, y_test = split_data(df_featured, config)
+    # point to the new input file with LLM features.
+    input_file = primary_dir / "data_with_llm_features.parquet"
 
-    # Add the imputation step
+    logging.info(f" Loading data from {input_file} ...")
+    df = pd.read_parquet(input_file)
+
+    X_train, X_test, y_train, y_test = split_data(df, config)
+
     X_train, X_test = impute_missing_values(X_train, X_test, module_root)
 
     logging.info("Saving processed data sets...")
+
     X_train.to_parquet(primary_dir / "X_train.parquet", index=False)
     X_test.to_parquet(primary_dir / "X_test.parquet", index=False)
     y_train.to_frame().to_parquet(primary_dir / "y_train.parquet", index=False)
