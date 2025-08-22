@@ -1,3 +1,21 @@
+# /vertexcare/configs/model_params.yaml
+
+# Note: class_weight='balanced' is the scikit-learn equivalent of scale_pos_weight
+logistic_regression_params:
+  penalty: "l2"
+  C: 1.0
+  solver: "liblinear"
+  class_weight: "balanced"
+  random_state: 42
+
+random_forest_params:
+  n_estimators: 100
+  max_depth: 10
+  min_samples_split: 2
+  min_samples_leaf: 1
+  class_weight: "balanced"
+  random_state: 42
+
 xgboost_params:
   objective: "binary:logistic"
   n_estimators: 100
@@ -6,4 +24,5 @@ xgboost_params:
   subsample: 0.8
   colsample_bytree: 0.8
   gamma: 0.1
+  scale_pos_weight: 2.5
   random_state: 42

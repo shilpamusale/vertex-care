@@ -19,13 +19,3 @@ model_params:
   target_column: 'readmitted'
   test_size: 0.2
   random_state: 42
-
-xgboost_params:
-  objective: "binary:logistic"
-  n_estimators: 100
-  learning_rate: 0.1
-  max_depth: 3
-  subsample: 0.8
-  colsample_bytree: 0.8
-  gamma: 0.1
-  random_state: 42

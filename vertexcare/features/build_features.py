@@ -6,34 +6,22 @@ from typing import Dict, Any, Tuple
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.impute import SimpleImputer
+import joblib
 
 
 def create_features(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Engineers new features from the raw data.
-
-    Args:
-        df: The input DataFrame after initial processing.
-
-    Returns:
-        DataFrame with new, engineered features.
-    """
+    """Engineers new features from the raw data."""
     logging.info("Starting feature engineering...")
 
-    # --- Datetime Feature Engineering ---
-    # Convert timestamp to a more useful binary feature.
     if "chw_interaction_end_time" in df.columns:
         df["chw_interaction_end_time"] = pd.to_datetime(
             df["chw_interaction_end_time"], errors="coerce"
         )
         is_ended = df["chw_interaction_end_time"].notna()
         df["has_interaction_ended"] = is_ended.astype(int)
-        # Drop the original column as it's no longer needed
         df = df.drop(columns=["chw_interaction_end_time"])
         logging.info("Created 'has_interaction_ended' feature.")
-
-    # In the future, more complex feature engineering can be added here.
-    # For example, scaling numerical features or creating interaction terms.
 
     logging.info("Feature engineering complete.")
     return df
@@ -42,20 +30,14 @@ def create_features(df: pd.DataFrame) -> pd.DataFrame:
 def split_data(
     df: pd.DataFrame, config: Dict[str, Any]
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
-    """
-    Splits the data into training and testing sets.
-    """
+    """Splits the data into training and testing sets."""
     logging.info("Splitting data into training and testing sets...")
 
     target_column = config["model_params"]["target_column"]
     test_size = config["model_params"]["test_size"]
     random_state = config["model_params"]["random_state"]
 
-    # Identify columns to drop before training
-    # We drop the target, the raw notes, and any raw date columns.
     cols_to_drop = [target_column, "chw_notes", "visit_date"]
-
-    # Ensure we only try to drop columns that actually exist
     cols_to_drop = [col for col in cols_to_drop if col in df.columns]
 
     X = df.drop(columns=cols_to_drop)
@@ -64,12 +46,41 @@ def split_data(
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=test_size, random_state=random_state, stratify=y
     )
-
     logging.info(
-        f"Data split complete. Train set size: {len(X_train)},"
-        f" Test set size: {len(X_test)}"
+        f"Data split complete. Train set size: {len(X_train)}"
+        f", Test set size: {len(X_test)}"
     )
     return X_train, X_test, y_train, y_test
+
+
+def impute_missing_values(
+    X_train: pd.DataFrame, X_test: pd.DataFrame, module_root: Path
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """Imputes missing values using the median strategy."""
+    logging.info("Imputing missing values with median...")
+
+    imputer = SimpleImputer(strategy="median")
+
+    # Fit on the training data and transform it
+    X_train_imputed_np = imputer.fit_transform(X_train)
+
+    # Only transform the test data
+    X_test_imputed_np = imputer.transform(X_test)
+
+    # Get the correct column names from the imputer itself
+    # This handles cases where the imputer might drop a column
+    imputed_columns = imputer.get_feature_names_out()
+
+    # Recreate the DataFrames with the correct columns
+    X_train_imputed = pd.DataFrame(X_train_imputed_np, columns=imputed_columns)
+    X_test_imputed = pd.DataFrame(X_test_imputed_np, columns=imputed_columns)
+
+    # Save the imputer so we can use it on new data later
+    imputer_path = module_root / "models" / "imputer.joblib"
+    joblib.dump(imputer, imputer_path)
+    logging.info(f"Imputer saved to {imputer_path}")
+
+    return X_train_imputed, X_test_imputed
 
 
 def run_feature_engineering(config: Dict[str, Any], module_root: Path) -> None:
@@ -81,17 +92,13 @@ def run_feature_engineering(config: Dict[str, Any], module_root: Path) -> None:
     primary_dir.mkdir(parents=True, exist_ok=True)
 
     input_file = intermediate_dir / "ingested_data.parquet"
-
-    logging.info(f"Loading data from {input_file}...")
     df = pd.read_parquet(input_file)
-
-    # Create features
     df_featured = create_features(df)
-
-    # Split data
     X_train, X_test, y_train, y_test = split_data(df_featured, config)
 
-    # Save the processed data sets
+    # Add the imputation step
+    X_train, X_test = impute_missing_values(X_train, X_test, module_root)
+
     logging.info("Saving processed data sets...")
     X_train.to_parquet(primary_dir / "X_train.parquet", index=False)
     X_test.to_parquet(primary_dir / "X_test.parquet", index=False)
