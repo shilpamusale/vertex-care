@@ -12,9 +12,9 @@ from vertexcare.data_processing.ingestion import (
     load_config,
 )
 from vertexcare.data_processing.validation import run_validation
-from vertexcare.features.llm_feature_extractor import (
-    run_llm_feature_extraction,
-)
+
+# Add the new import for the LLM script
+from vertexcare.features.llm_feature_extractor import run_llm_feature_extraction
 from vertexcare.features.build_features import run_feature_engineering
 from vertexcare.models.train_model import run_training
 
@@ -51,6 +51,7 @@ def main():
         run_validation(config, module_root_path)
         logging.info("--- Data Processing complete. ---")
 
+        # --- ADD THIS NEW STEP ---
         logging.info("--- Running LLM Feature Extraction ---")
         asyncio.run(run_llm_feature_extraction(module_root_path, config))
         logging.info("--- LLM Feature Extraction complete. ---")
