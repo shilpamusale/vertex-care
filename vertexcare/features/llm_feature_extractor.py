@@ -17,14 +17,14 @@ async def call_gemini_api(note: str, schema: Dict[str, Any]) -> Dict[str, Any]:
     """
     logging.info(f"Calling Gemini API for note: '{note[:50]}...'")
 
-    # --- 1. Engineer the Prompt ---
+    #     # --- 1. Engineer the Prompt ---
     #     prompt = f"""
     # You are a highly trained healthcare analyst.
     # Your task is to extract specific, structured information
     # from the following Community Health Worker (CHW) note.
 
-    # Analyze the note and return a JSON
-    # object that strictly adheres to the provided schema.
+    # Analyze the note and return a JSON object
+    # that strictly adheres to the provided schema.
     # Only return the JSON object, with no other text or explanations.
 
     # CHW Note:
@@ -42,37 +42,11 @@ async def call_gemini_api(note: str, schema: Dict[str, Any]) -> Dict[str, Any]:
 
     # --- 3. Make the API Call ---
     try:
-        # The apiKey is an empty string because the execution environment
-        # will securely provide it.
         # apiKey = ""
-        # apiUrl = f"https://generativelanguage.googleapis.com/v1beta/"
-        # f"models/gemini-2.5-flash-preview-05-20:generateContent?key={apiKey}"
-
-        # This is a conceptual representation of the fetch call.
-        # In a real environment, you would use a library like aiohttp or httpx
-        # to make this asynchronous call. For simplicity in this context,
-        # we'll represent it conceptually.
-
-        # This is where the actual fetch call to the Gemini API would go.
-        # Since we cannot make live web requests from this environment,
-        # we will log the intent and continue to use a mock for demonstration.
-        # If you were running this on your own machine, you would uncomment
-        # and use a library like 'aiohttp'.
-
-        # --- Start of Real API Logic (conceptual) ---
-        # import aiohttp
-        # async with aiohttp.ClientSession() as session:
-        #     async with session.post(apiUrl, json=payload) as response:
-        #         response.raise_for_status()
-        #         result = await response.json()
-        #         text_response = result.get("candidates",
-        # [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "{}")
-        #         return json.loads(text_response)
-        # --- End of Real API Logic ---
+        # apiUrl = f"https://generativelanguage.googleapis.com/v1beta/models/"
+        # f"gemini-2.5-flash-preview-05-20:generateContent?key={apiKey}"
 
         # --- MOCK RESPONSE (for demonstration) ---
-        # We are keeping the mock here so the code can run successfully.
-        # The logic above shows how you would implement the live call.
         mock_responses = [
             {
                 "transportation_issue": True,
@@ -93,13 +67,12 @@ async def call_gemini_api(note: str, schema: Dict[str, Any]) -> Dict[str, Any]:
                 "patient_sentiment": "positive",
             },
         ]
-        await asyncio.sleep(0.1)  # Simulate network latency
+        await asyncio.sleep(0.01)  # Simulate tiny network latency
         return mock_responses[hash(note) % len(mock_responses)]
         # --- END MOCK RESPONSE ---
 
     except Exception as e:
         logging.error(f"Error calling Gemini API for note '{note[:50]}...': {e}")
-        # Return a default schema-compliant object on failure
         return {
             "transportation_issue": False,
             "financial_concern": False,
@@ -136,10 +109,10 @@ async def run_llm_feature_extraction(module_root: Path, config: Dict[str, Any]):
     """
     logging.info("Starting LLM feature extraction...")
     intermediate_dir = module_root / config["data_paths"]["intermediate_data_dir"]
-    primary_dir = module_root / config["data_paths"]["primary_data_dir"]
 
     input_file = intermediate_dir / "ingested_data.parquet"
-    output_file = primary_dir / "data_with_llm_features.parquet"
+    # CORRECTED: Save output to the intermediate directory
+    output_file = intermediate_dir / "data_with_llm_features.parquet"
 
     df = pd.read_parquet(input_file)
     schema = define_extraction_schema()

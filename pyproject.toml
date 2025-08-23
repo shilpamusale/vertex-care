@@ -19,6 +19,7 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "joblib",
+    "shap",
 ]
 
 # This section tells pip what extra packages are needed for testing.
