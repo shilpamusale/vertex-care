@@ -1,0 +1,20 @@
+# vertexcare/configs/routing_policy.yaml
+# This file defines the policy for routing patients based on their
+# assigned cluster profile.
+
+routing_policy:
+  "High Financial & Emotional Distress":
+    action: "Refer to social work for financial aid."
+    priority: "High"
+  "Patients with Transportation Barriers":
+    action: "Arrange medical transport for next appointment."
+    priority: "High"
+  "Complex Diabetic Patients":
+    action: "Schedule follow-up with diabetes educator."
+    priority: "High"
+  "Medically Stable / Low SDoH Need":
+    action: "Standard 30-day follow-up protocol."
+    priority: "Low"
+  "default": # A fallback for any other cluster
+    action: "Standard 14-day follow-up protocol."
+    priority: "Medium"

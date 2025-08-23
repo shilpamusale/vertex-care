@@ -26,3 +26,18 @@ xgboost_params:
   gamma: 0.1
   scale_pos_weight: 2.5
   random_state: 42
+
+clustering_params:
+  n_clusters: 5
+  random_state: 42
+  features:
+    - "age"
+    - "sumcomorbidities"
+    - "sex"
+    - "hypertension"
+    - "diabetes"
+    - "llm_transportation_issue"
+    - "llm_financial_concern"
+    - "llm_sentiment_positive"
+    - "llm_sentiment_negative"
+    - "llm_sentiment_neutral"
