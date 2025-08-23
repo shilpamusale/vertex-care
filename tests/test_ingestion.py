@@ -39,9 +39,10 @@ def test_run_ingestion_success(mock_project_dirs: Path):
         }
     }
 
+    # CORRECTED: Renamed 'Patient.ID' to 'record_id' to avoid conflict
     mock_raw_data = pd.DataFrame(
         {
-            "Patient.ID": [1, 2, 3],
+            "record_id": [1, 2, 3],
             "Age ": [65, 72, 55],
             "CHW_Notes": ["Test note 1", None, "Test note 3"],
         }
@@ -53,7 +54,6 @@ def test_run_ingestion_success(mock_project_dirs: Path):
     run_ingestion(mock_config, module_root)
 
     # --- 3. Assert ---
-
     intermediate_dir = module_root / "data" / "02_intermediate"
     output_file = intermediate_dir / "ingested_data.parquet"
 
@@ -61,9 +61,10 @@ def test_run_ingestion_success(mock_project_dirs: Path):
 
     result_df = pd.read_parquet(output_file)
 
-    expected_columns = ["patient_id", "age", "chw_notes"]
+    # Check that the new 'patient_id' was created and others were standardized
+    expected_columns = ["patient_id", "record_id", "age", "chw_notes"]
     assert (
         list(result_df.columns) == expected_columns
     ), "Column names not standardized correctly."
 
-    assert result_df["chw_notes"].iloc[1] == "", "Null value in notes."
+    assert result_df["chw_notes"].iloc[1] == "", "Null value in notes was not filled."
