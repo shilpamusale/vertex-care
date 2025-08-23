@@ -69,6 +69,13 @@ def run_ingestion(config: Dict[str, Any], module_root: Path) -> None:
 
     logging.info(f"Reading raw data from {raw_data_file}...")
     df = pd.read_csv(raw_data_file)
+
+    # Create Patient_id column
+    df = df.reset_index().rename(columns={"index": "patient_id"})
+    # Start patient IDs from 101 for realism
+    df["patient_id"] = df["patient_id"] + 101
+    logging.info("Created 'patient_id' column.")
+
     df.columns = [col.lower().strip().replace(".", "_") for col in df.columns]
     logging.info("Standardized column names.")
 

@@ -37,7 +37,7 @@ def split_data(
     test_size = config["model_params"]["test_size"]
     random_state = config["model_params"]["random_state"]
 
-    cols_to_drop = [target_column, "chw_notes", "visit_date"]
+    cols_to_drop = [target_column, "chw_notes", "visit_date", "patient_id"]
     cols_to_drop = [col for col in cols_to_drop if col in df.columns]
 
     X = df.drop(columns=cols_to_drop)
@@ -59,23 +59,21 @@ def impute_missing_values(
     """Imputes missing values using the median strategy."""
     logging.info("Imputing missing values with median...")
 
+    if "is_high_risk" in X_train.columns:
+        X_train = X_train.drop(columns=["is_high_risk"])
+        X_test = X_test.drop(columns=["is_high_risk"])
+        logging.warning("Dropped stale 'is_high_risk' column before imputation.")
+
     imputer = SimpleImputer(strategy="median")
 
-    # Fit on the training data and transform it
     X_train_imputed_np = imputer.fit_transform(X_train)
-
-    # Only transform the test data
     X_test_imputed_np = imputer.transform(X_test)
 
-    # Get the correct column names from the imputer itself
-    # This handles cases where the imputer might drop a column
     imputed_columns = imputer.get_feature_names_out()
 
-    # Recreate the DataFrames with the correct columns
     X_train_imputed = pd.DataFrame(X_train_imputed_np, columns=imputed_columns)
     X_test_imputed = pd.DataFrame(X_test_imputed_np, columns=imputed_columns)
 
-    # Save the imputer so we can use it on new data later
     imputer_path = module_root / "models" / "imputer.joblib"
     joblib.dump(imputer, imputer_path)
     logging.info(f"Imputer saved to {imputer_path}")
@@ -87,18 +85,15 @@ def run_feature_engineering(config: Dict[str, Any], module_root: Path) -> None:
     """Main function to run the feature engineering process."""
     logging.info("Starting feature engineering pipeline...")
 
+    intermediate_dir = module_root / config["data_paths"]["intermediate_data_dir"]
     primary_dir = module_root / config["data_paths"]["primary_data_dir"]
     primary_dir.mkdir(parents=True, exist_ok=True)
 
-    input_file = primary_dir / "data_with_llm_features.parquet"
-
-    logging.info(f"Loading data from {input_file}...")
+    # CORRECTED: Read input from the intermediate directory
+    input_file = intermediate_dir / "data_with_llm_features.parquet"
     df = pd.read_parquet(input_file)
-
-    # We no longer need to call create_features here, as the LLM script handles it
-    # and we are keeping the other features for now.
-
-    X_train, X_test, y_train, y_test = split_data(df, config)
+    df_featured = create_features(df)
+    X_train, X_test, y_train, y_test = split_data(df_featured, config)
 
     X_train, X_test = impute_missing_values(X_train, X_test, module_root)
 
