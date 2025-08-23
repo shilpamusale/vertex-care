@@ -1,0 +1,10 @@
+# vertexcare/configs/cluster_config.yaml
+# This file maps the numeric cluster labels to their descriptive,
+# human-readable names based on our analysis.
+
+cluster_names:
+  0: "Medically Stable / Low SDoH Need"
+  1: "High Financial & Emotional Distress"
+  2: "Patients with Transportation Barriers"
+  3: "Complex Diabetic Patients"
+  4: "General Medical Management"
