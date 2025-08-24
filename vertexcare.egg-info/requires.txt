@@ -8,6 +8,7 @@ fastapi
 uvicorn
 joblib
 shap
+aiohttp
 
 [test]
 pytest
