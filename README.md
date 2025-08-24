@@ -20,7 +20,7 @@ graph TD
         E --> F[Train/Test Split Data];
     end
 
-    subgraph "2. Model Training & Profiling"
+    subgraph "2. Model Training"
         F --> G[Model Training];
         G --> H((Trained Model));
         D --> I[Patient Clustering];
