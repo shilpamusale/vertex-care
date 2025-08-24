@@ -9,28 +9,27 @@ import joblib
 import shap
 
 # --- Configuration ---
-
-LATEST_MODEL_DIR = "2025-08-23_22-49-59_logistic_regression"
+# IMPORTANT: Update this to the timestamped folder of your best model
+LATEST_MODEL_DIR = "2025-08-24_01-59-09_logistic_regression"  # UPDATE THIS
 # --- End Configuration ---
 
 
 # --- Pre-load all necessary artifacts ---
-
-MODULE_ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = (
-    MODULE_ROOT / "models" / LATEST_MODEL_DIR / "logistic_regression_model.joblib"
-)
-IMPUTER_PATH = MODULE_ROOT / "models" / "imputer.joblib"
-DATA_PATH = MODULE_ROOT / "data" / "03_primary" / "data_with_llm_features.parquet"
-
+# This is a more robust way to find the paths from this file's location.
 try:
+    MODULE_ROOT = Path(__file__).resolve().parent.parent
+    MODEL_PATH = (
+        MODULE_ROOT / "models" / LATEST_MODEL_DIR / "logistic_regression_model.joblib"
+    )
+    IMPUTER_PATH = MODULE_ROOT / "models" / "imputer.joblib"
+    DATA_PATH = MODULE_ROOT / "data" / "03_primary" / "data_with_llm_features.parquet"
+
     MODEL = joblib.load(MODEL_PATH)
     IMPUTER = joblib.load(IMPUTER_PATH)
     PATIENT_DATA_DF = pd.read_parquet(DATA_PATH)
     logging.info("Successfully pre-loaded model, imputer, and patient data.")
 except Exception as e:
     logging.error(f"Failed to pre-load artifacts: {e}")
-
     MODEL, IMPUTER, PATIENT_DATA_DF = None, None, pd.DataFrame()
 
 
@@ -70,7 +69,7 @@ def prediction_tool(patient_id: int) -> Dict[str, Any]:
 
         return {
             "patient_id": patient_id,
-            "readmission_risk_score": round(prediction_proba, 3),
+            "readmission_risk_score": float(round(prediction_proba, 3)),
             "status": "Success",
         }
     except Exception as e:

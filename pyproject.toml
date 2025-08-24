@@ -21,6 +21,7 @@ dependencies = [
     "joblib",
     "shap",
     "aiohttp",
+    "streamlit",
 ]
 
 # This section tells pip what extra packages are needed for testing.

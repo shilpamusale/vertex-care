@@ -9,6 +9,7 @@ uvicorn
 joblib
 shap
 aiohttp
+streamlit
 
 [test]
 pytest

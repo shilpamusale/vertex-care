@@ -21,6 +21,7 @@ ipykernel
 fastapi
 uvicorn
 aiohttp
+streamlit
 
 # Code Quality
 black
