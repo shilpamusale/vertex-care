@@ -39,7 +39,6 @@ if st.button("Generate Plan", type="primary"):
             col1, col2 = st.columns(2)
             col1.metric("Patient ID", plan.get("patient_id"))
 
-            # CORRECTED: Add a check to handle non-numeric risk scores
             risk_score = plan.get("risk_score", "N/A")
             if isinstance(risk_score, (int, float)):
                 col2.metric("Readmission Risk Score", f"{risk_score:.1%}")
