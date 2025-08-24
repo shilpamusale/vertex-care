@@ -1,78 +1,70 @@
 # vertexcare/features/llm_feature_extractor.py
 
 import logging
-
-# import json
+import json
 import asyncio
 from pathlib import Path
 from typing import Dict, Any
 
 import pandas as pd
+import aiohttp
 
 
-# This is the real implementation that calls the Gemini API.
+# Implement Gemini API.
 async def call_gemini_api(note: str, schema: Dict[str, Any]) -> Dict[str, Any]:
     """
     Calls the Gemini API to extract features from a note using a defined schema.
     """
     logging.info(f"Calling Gemini API for note: '{note[:50]}...'")
 
-    #     # --- 1. Engineer the Prompt ---
-    #     prompt = f"""
-    # You are a highly trained healthcare analyst.
-    # Your task is to extract specific, structured information
-    # from the following Community Health Worker (CHW) note.
+    # --- 1. Engineer the Prompt ---
+    prompt = f"""
+You are a highly trained healthcare analyst.
+Your task is to extract specific, structured information
+from the following Community Health Worker (CHW) note.
 
-    # Analyze the note and return a JSON object
-    # that strictly adheres to the provided schema.
-    # Only return the JSON object, with no other text or explanations.
+Analyze the note and return a JSON object
+that strictly adheres to the provided schema.
+Only return the JSON object, with no other text or explanations.
 
-    # CHW Note:
-    # "{note}"
-    # """
+CHW Note:
+"{note}"
+"""
 
-    # # --- 2. Construct the API Payload ---
-    # payload = {
-    #     "contents": [{"parts": [{"text": prompt}]}],
-    #     "generationConfig": {
-    #         "responseMimeType": "application/json",
-    #         "responseSchema": schema,
-    #     },
-    # }
+    # --- 2. Construct the API Payload ---
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "responseMimeType": "application/json",
+            "responseSchema": schema,
+        },
+    }
 
     # --- 3. Make the API Call ---
     try:
-        # apiKey = ""
-        # apiUrl = f"https://generativelanguage.googleapis.com/v1beta/models/"
-        # f"gemini-2.5-flash-preview-05-20:generateContent?key={apiKey}"
+        apiKey = ""  # This will be handled by secret manager.
+        base_url = "https://generativelanguage.googleapis.com/v1beta/models"
+        model_name = "gemini-2.5-flash-preview-05-20:generateContent"
+        apiUrl = f"{base_url}/{model_name}?key={apiKey}"
 
-        # --- MOCK RESPONSE (for demonstration) ---
-        mock_responses = [
-            {
-                "transportation_issue": True,
-                "financial_concern": False,
-                "medication_adherence_mentioned": True,
-                "patient_sentiment": "neutral",
-            },
-            {
-                "transportation_issue": False,
-                "financial_concern": True,
-                "medication_adherence_mentioned": False,
-                "patient_sentiment": "negative",
-            },
-            {
-                "transportation_issue": False,
-                "financial_concern": False,
-                "medication_adherence_mentioned": True,
-                "patient_sentiment": "positive",
-            },
-        ]
-        await asyncio.sleep(0.01)  # Simulate tiny network latency
-        return mock_responses[hash(note) % len(mock_responses)]
-        # --- END MOCK RESPONSE ---
+        # --- REAL API CALL LOGIC ---
+        async with aiohttp.ClientSession() as session:
+            async with session.post(apiUrl, json=payload) as response:
+                response.raise_for_status()
+                result = await response.json()
+
+                text_response = (
+                    result.get("candidates", [{}])[0]
+                    .get("content", {})
+                    .get("parts", [{}])[0]
+                    .get("text", "{}")
+                )
+                return json.loads(text_response)
+        # --- END REAL API LOGIC ---
 
     except Exception as e:
         logging.error(f"Error calling Gemini API for note '{note[:50]}...': {e}")
+        # Return a default schema-compliant object on failure
         return {
             "transportation_issue": False,
             "financial_concern": False,
@@ -111,7 +103,6 @@ async def run_llm_feature_extraction(module_root: Path, config: Dict[str, Any]):
     intermediate_dir = module_root / config["data_paths"]["intermediate_data_dir"]
 
     input_file = intermediate_dir / "ingested_data.parquet"
-    # CORRECTED: Save output to the intermediate directory
     output_file = intermediate_dir / "data_with_llm_features.parquet"
 
     df = pd.read_parquet(input_file)

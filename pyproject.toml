@@ -20,6 +20,7 @@ dependencies = [
     "uvicorn",
     "joblib",
     "shap",
+    "aiohttp",
 ]
 
 # This section tells pip what extra packages are needed for testing.
