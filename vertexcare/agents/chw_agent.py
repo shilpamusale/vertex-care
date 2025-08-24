@@ -2,7 +2,8 @@
 
 import logging
 import json
-import asyncio
+
+# import asyncio
 import re
 
 # from pathlib import Path
@@ -20,19 +21,16 @@ MAX_ITERATIONS = 5
 
 # --- System Prompt ---
 SYSTEM_PROMPT = """
-You are an expert Community Health Worker
-(CHW) coordinator named "Maanav".
+You are an expert Community Health Worker (CHW) coordinator named "Maanav".
 Your mission is to analyze patient cases,
 determine their risk of hospital readmission,
-and create a clear, prioritized,
-and actionable intervention plan.
+and create a clear, prioritized, and actionable intervention plan.
 
 You must operate in a strict Reason-Act-Observe loop.
 At each step, you will use
 the following format:
 
-Thought: Your internal monologue
-and reasoning for what to do next.
+Thought: Your internal monologue and reasoning for what to do next.
 Action: The tool you will use to gather information.
 You can only use one of the
 following tools:
@@ -47,58 +45,101 @@ you must provide the final answer as a JSON object.
 
 async def call_agent_llm(prompt: str) -> Union[str, Dict[str, Any]]:
     """
-    Simulates calling the LLM.
-    Returns a string for intermediate steps
-    and a dictionary for the final answer
-    to avoid parsing errors.
+    Simulates calling the LLM. Returns a string for intermediate steps
+    and a dictionary for the final answer to avoid parsing errors.
     """
     logging.info("AGENT: Calling LLM to decide next action...")
 
     patient_id_match = re.search(r"patient_id: (\d+)", prompt)
     patient_id = int(patient_id_match.group(1)) if patient_id_match else "unknown"
 
-    # --- MOCK LLM RESPONSE ---
-    if "prediction_tool" not in prompt:
+    # --- MOCK LLM RESPONSE (Smarter Logic) ---
+    if 'Observation: {"readmission_risk_score"' not in prompt:
         return f"""
 Thought: I need to start by understanding the patient's baseline risk.
 I should use the prediction_tool.
 Action: prediction_tool(patient_id={patient_id})
 """
-    elif "explanation_tool" not in prompt:
+    elif 'Observation: {"top_risk_factors"' not in prompt:
         risk_score_match = re.search(r'"readmission_risk_score": ([\d.]+)', prompt)
         risk_score = float(risk_score_match.group(1)) if risk_score_match else "unknown"
         return f"""
-Thought: The risk score is {risk_score}.
-I need to understand the reasons for this risk to create a targeted plan.
-I should use the explanation_tool.
+Thought: The risk score is {risk_score}. I need to understand the reasons for this risk
+to create a targeted plan. I should use the explanation_tool.
 Action: explanation_tool(patient_id={patient_id})
 """
-    elif "notes_tool" not in prompt:
+    elif 'Observation: {"notes"' not in prompt:
         return f"""
-Thought: The top risk factors are clinical.
-I should check the CHW notes to see if there are any social or
-logistical barriers that might be contributing to this risk.
+Thought: I have the clinical risk factors. Now I must check the CHW notes for
+any social or logistical barriers that might be contributing to this risk.
 I should use the notes_tool.
 Action: notes_tool(patient_id={patient_id})
 """
     else:
-        # CORRECTED: Instead of parsing, get the real risk score directly.
-        # This makes the mock much more robust and realistic.
+        # This is the "brain" of our mock. It now looks at the prompt history
+        # to make a tailored decision for each patient case.
         risk_score_result = prediction_tool(patient_id)
         risk_score = risk_score_result.get("readmission_risk_score", 0.0)
 
-        return {
-            "patient_id": patient_id,
-            "risk_score": risk_score,
-            "risk_summary": "Patient is at risk due to clinical factors, "
-            + "requiring proactive follow-up.",
-            "recommended_actions": [
-                {
-                    "action": "Schedule a home visit to review medication adherence.",
-                    "priority": "High",
-                }
-            ],
-        }
+        # Case 2 & 5: Transportation Issue
+        if "llm_transportation_issue" in prompt:
+            return {
+                "patient_id": patient_id,
+                "risk_score": risk_score,
+                "risk_summary": "Patient is at risk due "
+                "to a critical transportation barrier "
+                "for an upcoming appointment.",
+                "recommended_actions": [
+                    {
+                        "action": "Arrange medical transport immediately.",
+                        "priority": "High",
+                    }
+                ],
+            }
+        # Case 4: Financial Concern
+        elif "llm_financial_concern" in prompt:
+            return {
+                "patient_id": patient_id,
+                "risk_score": risk_score,
+                "risk_summary": "Patient is at risk due to a financial concern "
+                "regarding medication co-pays.",
+                "recommended_actions": [
+                    {
+                        "action": "Refer patient to social work for financial "
+                        "assistance programs.",
+                        "priority": "High",
+                    }
+                ],
+            }
+        # Case 3: Low Risk
+        elif risk_score < 0.2:
+            return {
+                "patient_id": patient_id,
+                "risk_score": risk_score,
+                "risk_summary": "Patient is at low risk "
+                "and appears to be managing well.",
+                "recommended_actions": [
+                    {
+                        "action": "Schedule a standard 30-day follow-up call.",
+                        "priority": "Low",
+                    }
+                ],
+            }
+        # Default Case (High Clinical Risk)
+        else:
+            return {
+                "patient_id": patient_id,
+                "risk_score": risk_score,
+                "risk_summary": "Patient is at high risk due to advanced "
+                "age and multiple comorbidities.",
+                "recommended_actions": [
+                    {
+                        "action": "Schedule a home visit to "
+                        "review medication adherence.",
+                        "priority": "High",
+                    }
+                ],
+            }
     # --- END MOCK LLM RESPONSE ---
 
 
@@ -143,6 +184,8 @@ async def run_agent(patient_id: int):
         if isinstance(llm_response, dict):
             logging.info("AGENT: Final plan generated.")
             final_plan = llm_response
+            print("\n--- FINAL INTERVENTION PLAN ---")
+            print(json.dumps(final_plan, indent=2))
             return final_plan
 
         thought, action = parse_llm_output(llm_response)
@@ -160,15 +203,3 @@ async def run_agent(patient_id: int):
 
     logging.warning("Agent reached max iterations without a final plan.")
     return {"error": "Agent failed to complete."}
-
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format="%(message)s")
-    test_patient_id = 101
-
-    # We need to run the agent to get the final plan
-    final_plan = asyncio.run(run_agent(test_patient_id))
-
-    # Then we print the final plan in the desired format
-    print("\n--- FINAL INTERVENTION PLAN ---")
-    print(json.dumps(final_plan, indent=2))

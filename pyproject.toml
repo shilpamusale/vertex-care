@@ -35,6 +35,8 @@ packages = ["vertexcare"]
 
 [tool.pytest.ini_options]
 pythonpath = "."
+log_cli = true
+log_cli_level = "INFO"
 
 [tool.black]
 line-length = 88
