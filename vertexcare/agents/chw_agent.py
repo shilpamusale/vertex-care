@@ -20,15 +20,21 @@ MAX_ITERATIONS = 5
 
 # --- System Prompt ---
 SYSTEM_PROMPT = """
-You are an expert Community Health Worker (CHW) coordinator named "Maanav".
-Your mission is to analyze patient cases, determine their risk of hospital readmission,
-and create a clear, prioritized, and actionable intervention plan.
+You are an expert Community Health Worker
+(CHW) coordinator named "Maanav".
+Your mission is to analyze patient cases,
+determine their risk of hospital readmission,
+and create a clear, prioritized,
+and actionable intervention plan.
 
-You must operate in a strict Reason-Act-Observe loop. At each step, you will use
+You must operate in a strict Reason-Act-Observe loop.
+At each step, you will use
 the following format:
 
-Thought: Your internal monologue and reasoning for what to do next.
-Action: The tool you will use to gather information. You can only use one of the
+Thought: Your internal monologue
+and reasoning for what to do next.
+Action: The tool you will use to gather information.
+You can only use one of the
 following tools:
 - prediction_tool(patient_id: int)
 - explanation_tool(patient_id: int)
@@ -41,53 +47,56 @@ you must provide the final answer as a JSON object.
 
 async def call_agent_llm(prompt: str) -> Union[str, Dict[str, Any]]:
     """
-    Simulates calling the LLM. Returns a string for intermediate steps
-    and a dictionary for the final answer to avoid parsing errors.
+    Simulates calling the LLM.
+    Returns a string for intermediate steps
+    and a dictionary for the final answer
+    to avoid parsing errors.
     """
     logging.info("AGENT: Calling LLM to decide next action...")
 
+    patient_id_match = re.search(r"patient_id: (\d+)", prompt)
+    patient_id = int(patient_id_match.group(1)) if patient_id_match else "unknown"
+
     # --- MOCK LLM RESPONSE ---
     if "prediction_tool" not in prompt:
-        return """
+        return f"""
 Thought: I need to start by understanding the patient's baseline risk.
 I should use the prediction_tool.
-Action: prediction_tool(patient_id=101)
+Action: prediction_tool(patient_id={patient_id})
 """
     elif "explanation_tool" not in prompt:
-        return """
-Thought: The risk score is high (0.61).
+        risk_score_match = re.search(r'"readmission_risk_score": ([\d.]+)', prompt)
+        risk_score = float(risk_score_match.group(1)) if risk_score_match else "unknown"
+        return f"""
+Thought: The risk score is {risk_score}.
 I need to understand the reasons for this risk to create a targeted plan.
 I should use the explanation_tool.
-Action: explanation_tool(patient_id=101)
+Action: explanation_tool(patient_id={patient_id})
 """
     elif "notes_tool" not in prompt:
-        return """
-Thought: The top risk factors are age and comorbidities.
-This is a clinical risk.
+        return f"""
+Thought: The top risk factors are clinical.
 I should check the CHW notes to see if there are any social or
 logistical barriers that might be contributing to this risk.
 I should use the notes_tool.
-Action: notes_tool(patient_id=101)
+Action: notes_tool(patient_id={patient_id})
 """
     else:
-        # Return a direct dictionary for the final answer
+        # CORRECTED: Instead of parsing, get the real risk score directly.
+        # This makes the mock much more robust and realistic.
+        risk_score_result = prediction_tool(patient_id)
+        risk_score = risk_score_result.get("readmission_risk_score", 0.0)
+
         return {
-            "patient_id": 101,
-            "risk_score": 0.61,
-            "risk_summary": "Patient is at high risk due to advanced age and multiple "
-            + "comorbidities, requiring proactive clinical follow-up.",
+            "patient_id": patient_id,
+            "risk_score": risk_score,
+            "risk_summary": "Patient is at risk due to clinical factors, "
+            + "requiring proactive follow-up.",
             "recommended_actions": [
                 {
-                    "action": "Schedule a home visit to review medication adherence "
-                    + "and confirm follow-up appointments.",
+                    "action": "Schedule a home visit to review medication adherence.",
                     "priority": "High",
-                },
-                {
-                    "action": "Provide patient with information on "
-                    + "managing their specific "
-                    + "chronic conditions.",
-                    "priority": "Medium",
-                },
+                }
             ],
         }
     # --- END MOCK LLM RESPONSE ---
@@ -110,9 +119,8 @@ def execute_tool(action: str) -> Dict[str, Any]:
             "notes_tool": notes_tool,
             "explanation_tool": explanation_tool,
         }
-        # A safer way to execute functions from a string
         func_name, arg_str = action.split("(", 1)
-        arg_str = arg_str[:-1]  # Remove closing parenthesis
+        arg_str = arg_str[:-1]
         args = eval(f"dict({arg_str})")
 
         result = tool_functions[func_name](**args)
@@ -132,12 +140,9 @@ async def run_agent(patient_id: int):
 
         llm_response = await call_agent_llm(prompt_history)
 
-        # Check if the response is the final dictionary or an intermediate string
         if isinstance(llm_response, dict):
             logging.info("AGENT: Final plan generated.")
             final_plan = llm_response
-            print("\n--- FINAL INTERVENTION PLAN ---")
-            print(json.dumps(final_plan, indent=2))
             return final_plan
 
         thought, action = parse_llm_output(llm_response)
@@ -158,7 +163,12 @@ async def run_agent(patient_id: int):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format="%(message=)s")
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
     test_patient_id = 101
 
-    asyncio.run(run_agent(test_patient_id))
+    # We need to run the agent to get the final plan
+    final_plan = asyncio.run(run_agent(test_patient_id))
+
+    # Then we print the final plan in the desired format
+    print("\n--- FINAL INTERVENTION PLAN ---")
+    print(json.dumps(final_plan, indent=2))
