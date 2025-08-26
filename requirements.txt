@@ -30,5 +30,5 @@ flake8
 pre-commit
 
 # Google Cloud
-google-cloud-secret-manager
 google-generativeai
+google-cloud-secret-manager
