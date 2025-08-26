@@ -22,6 +22,7 @@ fastapi
 uvicorn
 aiohttp
 streamlit
+gunicorn
 
 # Code Quality
 black

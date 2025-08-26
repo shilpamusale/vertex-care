@@ -2,8 +2,9 @@
 
 import streamlit as st
 import requests
-
-# import json
+from requests.exceptions import (
+    JSONDecodeError,
+)  # Import this to handle the specific error
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -15,8 +16,8 @@ st.set_page_config(
 st.title("VertexCare Intervention Planner")
 st.markdown(
     "Enter a patient ID below to generate a "
-    "prioritized intervention plan "
-    "using the AI-powered CHW Agent."
+    "prioritized intervention plan using the "
+    "AI-powered CHW Agent."
 )
 
 patient_id = st.number_input("Enter Patient ID:", min_value=101, step=1, value=101)
@@ -25,7 +26,10 @@ if st.button("Generate Plan", type="primary"):
     with st.spinner("The AI agent is analyzing the case..."):
         try:
             # --- API Call ---
-            api_url = "http://127.0.0.1:8000/generate_plan"
+
+            api_url = (
+                "https://vertexcare-api-678532812483.us-central1.run.app/generate_plan"
+            )
             response = requests.post(api_url, json={"patient_id": patient_id})
 
             response.raise_for_status()
@@ -52,15 +56,33 @@ if st.button("Generate Plan", type="primary"):
             actions = plan.get("recommended_actions", [])
             if actions:
                 for action in actions:
-                    action_text = action.get("action", "N/A")
-                    priority = action.get("priority", "N/A")
-                    st.markdown(f"- **{action_text}** (Priority: `{priority}`)")
+                    st.markdown(
+                        f"- **{action.get('action')}** "
+                        f"(Priority: `{action.get('priority')}`)"
+                    )
             else:
                 st.write("No specific actions recommended at this time.")
 
         except requests.exceptions.HTTPError as e:
+            error_message = "An unknown error occurred on the server."
+            try:
+                # Attempt to get a detailed error message from the API's JSON response
+                error_message = e.response.json().get(
+                    "detail", "No detail key in JSON response."
+                )
+            except JSONDecodeError:
+                # If parsing fails, it means the response was not JSON.
+                # We fall back to displaying the raw text of the response.
+                # This prevents the app from crashing.
+                error_message = (
+                    e.response.text
+                    if e.response.text
+                    else "The API returned an empty error response."
+                )
+
             st.error(
-                f"Error from API: {e.response.json().get('detail', 'Unknown error')}"
+                f"API Error (Status Code: {e.response.status_code}): {error_message}"
             )
+
         except Exception as e:
             st.error(f"An unexpected error occurred: {e}")
