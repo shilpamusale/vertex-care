@@ -28,3 +28,7 @@ gunicorn
 black
 flake8
 pre-commit
+
+# Google Cloud
+google-generativeai
+google-cloud-secret-manager

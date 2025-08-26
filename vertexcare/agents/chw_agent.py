@@ -10,7 +10,8 @@ from typing import Dict, Any, Union
 # Add these two imports
 import pandas as pd
 
-# from typing import Any
+import google.generativeai as genai
+from vertexcare.utils.gcp_utils import get_gemini_api_key
 
 # Import the tools we built
 from vertexcare.agents.agent_tools import (
@@ -19,85 +20,81 @@ from vertexcare.agents.agent_tools import (
     explanation_tool,
 )
 
+# --- Configure Live Gemini Model ---
+API_KEY = get_gemini_api_key()
+if API_KEY:
+    genai.configure(api_key=API_KEY)
+
+# Set safety settings to be less restrictive for this use case
+safety_settings = [
+    {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+    {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+    {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+    {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+]
+
+
 # --- Agent Configuration ---
 MAX_ITERATIONS = 5
 
 # --- System Prompt ---
-SYSTEM_PROMPT = """
-You are an expert Community Health Worker (CHW) coordinator named "Maanav".
-Your mission is to analyze patient cases, determine their risk of hospital readmission,
-and create a clear, prioritized, and actionable intervention plan.
-
-You must operate in a strict Reason-Act-Observe loop.
-At each step, you will use
-the following format:
-
-Thought: Your internal monologue and reasoning for what to do next.
-Action: The tool you will use to gather information.
-You can only use one of the
-following tools:
-- prediction_tool(patient_id: int)
-- explanation_tool(patient_id: int)
-- notes_tool(patient_id: int)
-
-If you have gathered enough information,
-you must provide the final answer as a JSON object.
-"""
+SYSTEM_PROMPT = (
+    'You are an expert Community Health Worker (CHW) coordinator named "Maanav".\n'
+    "Your mission is to analyze patient cases, "
+    "determine their risk of hospital readmission,\n"
+    "and create a clear, prioritized, and actionable intervention plan.\n\n"
+    "You must operate in a strict Reason-Act-Observe loop.\n"
+    "At each step, you will use the following format:\n"
+    "You MUST stop after each 'Action:' and wait for a new 'Observation:'.\n\n"
+    "Thought: Your internal monologue and reasoning for what to do next.\n"
+    "Action: The tool you will use to gather information.\n"
+    "You can only use one of the following tools:\n"
+    "- prediction_tool(patient_id: int)\n"
+    "- explanation_tool(patient_id: int)\n"
+    "- notes_tool(patient_id: int)\n\n"
+    "If you have gathered enough information, you MUST provide the final answer\n"
+    "formatted as:\n"
+    "Final Answer: <JSON object containing the plan>\n\n"
+    "The JSON object MUST have the following exact structure:\n"
+    "{\n"
+    '  "patient_id": integer,\n'
+    '  "readmission_risk_score": float (between 0.0 and 1.0, from the\n'
+    "    prediction_tool),\n"
+    '  "risk_summary": "A concise, one-sentence summary of the patient\'s main\n'
+    '    risk factors based on the tools.",\n'
+    '  "recommended_actions": [\n'
+    "    {\n"
+    '      "priority": "High" | "Medium" | "Low",\n'
+    '      "action": "A specific, actionable intervention step."\n'
+    "    }\n"
+    "  ]\n"
+    "}\n"
+)
 
 
 async def call_agent_llm(
     prompt: str, patient_id: int, model: Any, imputer: Any, patient_data_df: Any
 ) -> Union[str, Dict[str, Any]]:
-    """Simulates calling the LLM. This is the "brain" of our mock agent."""
-    logging.info("AGENT: Calling LLM to decide next action...")
+    """Calls the live Gemini model to get the next thought and action."""
+    logging.info("AGENT: Calling live Gemini model to decide next action...")
 
-    # This logic now correctly checks the observations to decide the next step.
-    if "Observation:" not in prompt:
-        return (
-            f"Thought: I need to start by understanding the patient's baseline risk.\n"
-            f"Action: prediction_tool(patient_id={patient_id})"
-        )
+    if not API_KEY:
+        return {"error": "Gemini API key is not configured."}
 
-    # Extract the last observation
-    last_observation_match = re.findall(r"Observation: (\{.*\})", prompt)
-    last_observation = (
-        json.loads(last_observation_match[-1]) if last_observation_match else {}
-    )
+    try:
+        # All the complex if/else logic is replaced by the LLM's reasoning
+        live_model = genai.GenerativeModel("gemini-1.5-flash")
+        response = live_model.generate_content(prompt, safety_settings=safety_settings)
 
-    if (
-        "readmission_risk_score" in last_observation
-        and "top_risk_factors" not in last_observation
-    ):
-        risk_score = last_observation["readmission_risk_score"]
-        return (
-            f"Thought: The risk score is {risk_score}. "
-            f"I need to understand the reasons for this risk.\n"
-            f"Action: explanation_tool(patient_id={patient_id})"
-        )
+        # Check for a blocked response
+        if not response.candidates:
+            return {"error": "Response was blocked by safety settings."}
 
-    elif "top_risk_factors" in last_observation and "notes" not in last_observation:
-        return (
-            f"Thought: I have the clinical risk factors. "
-            f"Now I must check the CHW notes for social barriers.\n"
-            f"Action: notes_tool(patient_id={patient_id})"
-        )
+        return response.text
 
-    else:
-        # We have all the info, generate the final plan
-        risk_score_result = prediction_tool(patient_id, model, imputer, patient_data_df)
-        risk_score = risk_score_result.get("readmission_risk_score", 0.0)
-        return {
-            "patient_id": patient_id,
-            "risk_score": risk_score,
-            "risk_summary": "Patient is at risk due to clinical factors, "
-            "requiring proactive follow-up.",
-            "recommended_actions": [
-                {
-                    "action": "Schedule a home visit to review medication adherence.",
-                    "priority": "High",
-                }
-            ],
-        }
+    except Exception as e:
+        logging.error(f"Error calling Gemini for agent action: {e}")
+        return {"error": str(e)}
 
 
 def parse_llm_output(response: str) -> (str, str):
@@ -113,6 +110,7 @@ def execute_tool(
     action: str, model: Any, imputer: Any, patient_data_df: pd.DataFrame
 ) -> Dict[str, Any]:
     """Executes a tool call, passing the necessary dependencies."""
+    logging.info(f"Executing tool with action: {action}")
     try:
         tool_functions = {
             "prediction_tool": lambda **kwargs: prediction_tool(
@@ -125,13 +123,28 @@ def execute_tool(
                 **kwargs, model=model, imputer=imputer, patient_data_df=patient_data_df
             ),
         }
-        func_name, arg_str = action.split("(", 1)
-        arg_str = arg_str[:-1]
-        args = eval(f"dict({arg_str})")
+
+        # --- NEW, ROBUST PARSING LOGIC ---
+        func_name = action.split("(", 1)[0].strip()
+
+        # Use a regular expression to find any integer within the parentheses
+        match = re.search(r"\(.*?(\d+).*?\)", action)
+        if not match:
+            raise ValueError(
+                f"Could not find a valid integer patient ID in action: {action}"
+            )
+
+        patient_id = int(match.group(1))
+        args = {"patient_id": patient_id}
+        # --- END NEW PARSING LOGIC ---
+
+        if func_name not in tool_functions:
+            raise ValueError(f"Unknown tool specified: {func_name}")
 
         result = tool_functions[func_name](**args)
         return result
     except Exception as e:
+        logging.error(f"Failed to execute tool '{action}'. Error: {e}", exc_info=True)
         return {"error": f"Failed to execute tool: {e}"}
 
 
@@ -143,10 +156,32 @@ async def run_agent(
     prompt_history = f"{SYSTEM_PROMPT}\n\nBegin analysis for patient_id: {patient_id}"
 
     for i in range(MAX_ITERATIONS):
+        print(f"\n--- DEBUG: ITERATION {i + 1} ---")
         logging.info(f"--- Iteration {i + 1} ---")
         llm_response = await call_agent_llm(
             prompt_history, patient_id, model, imputer, patient_data_df
         )
+        print(
+            f"--- DEBUG: RAW LLM RESPONSE ---\n{llm_response}\n--------------------"
+        )  # ADD THIS
+        if "Final Answer:" in llm_response:
+            logging.info("AGENT: Final plan detected.")
+            try:
+                # Extract the JSON part of the string after the label
+                json_str = llm_response.split("Final Answer:")[1].strip()
+                if json_str.startswith("```json"):
+                    json_str = json_str[7:]
+                if json_str.endswith("```"):
+                    json_str = json_str[:-3]
+                json_str = json_str.strip()
+                final_plan = json.loads(json_str)
+                return final_plan
+            except Exception as e:
+                logging.error(
+                    f"Failed to parse final plan from LLM response: '{llm_response}'."
+                    f" Error: {e}"
+                )
+                return {"error": "Failed to parse the final plan from the LLM."}
 
         if isinstance(llm_response, dict):
             logging.info("AGENT: Final plan generated.")
