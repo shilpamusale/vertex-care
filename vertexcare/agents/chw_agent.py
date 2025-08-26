@@ -5,9 +5,12 @@ import json
 
 # import asyncio
 import re
-
-# from pathlib import Path
 from typing import Dict, Any, Union
+
+# Add these two imports
+import pandas as pd
+
+# from typing import Any
 
 # Import the tools we built
 from vertexcare.agents.agent_tools import (
@@ -22,8 +25,7 @@ MAX_ITERATIONS = 5
 # --- System Prompt ---
 SYSTEM_PROMPT = """
 You are an expert Community Health Worker (CHW) coordinator named "Maanav".
-Your mission is to analyze patient cases,
-determine their risk of hospital readmission,
+Your mission is to analyze patient cases, determine their risk of hospital readmission,
 and create a clear, prioritized, and actionable intervention plan.
 
 You must operate in a strict Reason-Act-Observe loop.
@@ -43,104 +45,59 @@ you must provide the final answer as a JSON object.
 """
 
 
-async def call_agent_llm(prompt: str) -> Union[str, Dict[str, Any]]:
-    """
-    Simulates calling the LLM. Returns a string for intermediate steps
-    and a dictionary for the final answer to avoid parsing errors.
-    """
+async def call_agent_llm(
+    prompt: str, patient_id: int, model: Any, imputer: Any, patient_data_df: Any
+) -> Union[str, Dict[str, Any]]:
+    """Simulates calling the LLM. This is the "brain" of our mock agent."""
     logging.info("AGENT: Calling LLM to decide next action...")
 
-    patient_id_match = re.search(r"patient_id: (\d+)", prompt)
-    patient_id = int(patient_id_match.group(1)) if patient_id_match else "unknown"
+    # This logic now correctly checks the observations to decide the next step.
+    if "Observation:" not in prompt:
+        return (
+            f"Thought: I need to start by understanding the patient's baseline risk.\n"
+            f"Action: prediction_tool(patient_id={patient_id})"
+        )
 
-    # --- MOCK LLM RESPONSE (Smarter Logic) ---
-    if 'Observation: {"readmission_risk_score"' not in prompt:
-        return f"""
-Thought: I need to start by understanding the patient's baseline risk.
-I should use the prediction_tool.
-Action: prediction_tool(patient_id={patient_id})
-"""
-    elif 'Observation: {"top_risk_factors"' not in prompt:
-        risk_score_match = re.search(r'"readmission_risk_score": ([\d.]+)', prompt)
-        risk_score = float(risk_score_match.group(1)) if risk_score_match else "unknown"
-        return f"""
-Thought: The risk score is {risk_score}. I need to understand the reasons for this risk
-to create a targeted plan. I should use the explanation_tool.
-Action: explanation_tool(patient_id={patient_id})
-"""
-    elif 'Observation: {"notes"' not in prompt:
-        return f"""
-Thought: I have the clinical risk factors. Now I must check the CHW notes for
-any social or logistical barriers that might be contributing to this risk.
-I should use the notes_tool.
-Action: notes_tool(patient_id={patient_id})
-"""
+    # Extract the last observation
+    last_observation_match = re.findall(r"Observation: (\{.*\})", prompt)
+    last_observation = (
+        json.loads(last_observation_match[-1]) if last_observation_match else {}
+    )
+
+    if (
+        "readmission_risk_score" in last_observation
+        and "top_risk_factors" not in last_observation
+    ):
+        risk_score = last_observation["readmission_risk_score"]
+        return (
+            f"Thought: The risk score is {risk_score}. "
+            f"I need to understand the reasons for this risk.\n"
+            f"Action: explanation_tool(patient_id={patient_id})"
+        )
+
+    elif "top_risk_factors" in last_observation and "notes" not in last_observation:
+        return (
+            f"Thought: I have the clinical risk factors. "
+            f"Now I must check the CHW notes for social barriers.\n"
+            f"Action: notes_tool(patient_id={patient_id})"
+        )
+
     else:
-        # This is the "brain" of our mock. It now looks at the prompt history
-        # to make a tailored decision for each patient case.
-        risk_score_result = prediction_tool(patient_id)
+        # We have all the info, generate the final plan
+        risk_score_result = prediction_tool(patient_id, model, imputer, patient_data_df)
         risk_score = risk_score_result.get("readmission_risk_score", 0.0)
-
-        # Case 2 & 5: Transportation Issue
-        if "llm_transportation_issue" in prompt:
-            return {
-                "patient_id": patient_id,
-                "risk_score": risk_score,
-                "risk_summary": "Patient is at risk due "
-                "to a critical transportation barrier "
-                "for an upcoming appointment.",
-                "recommended_actions": [
-                    {
-                        "action": "Arrange medical transport immediately.",
-                        "priority": "High",
-                    }
-                ],
-            }
-        # Case 4: Financial Concern
-        elif "llm_financial_concern" in prompt:
-            return {
-                "patient_id": patient_id,
-                "risk_score": risk_score,
-                "risk_summary": "Patient is at risk due to a financial concern "
-                "regarding medication co-pays.",
-                "recommended_actions": [
-                    {
-                        "action": "Refer patient to social work for financial "
-                        "assistance programs.",
-                        "priority": "High",
-                    }
-                ],
-            }
-        # Case 3: Low Risk
-        elif risk_score < 0.2:
-            return {
-                "patient_id": patient_id,
-                "risk_score": risk_score,
-                "risk_summary": "Patient is at low risk "
-                "and appears to be managing well.",
-                "recommended_actions": [
-                    {
-                        "action": "Schedule a standard 30-day follow-up call.",
-                        "priority": "Low",
-                    }
-                ],
-            }
-        # Default Case (High Clinical Risk)
-        else:
-            return {
-                "patient_id": patient_id,
-                "risk_score": risk_score,
-                "risk_summary": "Patient is at high risk due to advanced "
-                "age and multiple comorbidities.",
-                "recommended_actions": [
-                    {
-                        "action": "Schedule a home visit to "
-                        "review medication adherence.",
-                        "priority": "High",
-                    }
-                ],
-            }
-    # --- END MOCK LLM RESPONSE ---
+        return {
+            "patient_id": patient_id,
+            "risk_score": risk_score,
+            "risk_summary": "Patient is at risk due to clinical factors, "
+            "requiring proactive follow-up.",
+            "recommended_actions": [
+                {
+                    "action": "Schedule a home visit to review medication adherence.",
+                    "priority": "High",
+                }
+            ],
+        }
 
 
 def parse_llm_output(response: str) -> (str, str):
@@ -152,13 +109,21 @@ def parse_llm_output(response: str) -> (str, str):
     return thought, action
 
 
-def execute_tool(action: str) -> Dict[str, Any]:
-    """Executes a tool call based on the parsed action string."""
+def execute_tool(
+    action: str, model: Any, imputer: Any, patient_data_df: pd.DataFrame
+) -> Dict[str, Any]:
+    """Executes a tool call, passing the necessary dependencies."""
     try:
         tool_functions = {
-            "prediction_tool": prediction_tool,
-            "notes_tool": notes_tool,
-            "explanation_tool": explanation_tool,
+            "prediction_tool": lambda **kwargs: prediction_tool(
+                **kwargs, model=model, imputer=imputer, patient_data_df=patient_data_df
+            ),
+            "notes_tool": lambda **kwargs: notes_tool(
+                **kwargs, patient_data_df=patient_data_df
+            ),
+            "explanation_tool": lambda **kwargs: explanation_tool(
+                **kwargs, model=model, imputer=imputer, patient_data_df=patient_data_df
+            ),
         }
         func_name, arg_str = action.split("(", 1)
         arg_str = arg_str[:-1]
@@ -170,31 +135,29 @@ def execute_tool(action: str) -> Dict[str, Any]:
         return {"error": f"Failed to execute tool: {e}"}
 
 
-async def run_agent(patient_id: int):
+async def run_agent(
+    patient_id: int, model: Any, imputer: Any, patient_data_df: pd.DataFrame
+):
     """Runs the main ReAct loop for the CHW Intervention Agent."""
     logging.info(f"--- Starting Agent for Patient ID: {patient_id} ---")
-
     prompt_history = f"{SYSTEM_PROMPT}\n\nBegin analysis for patient_id: {patient_id}"
 
     for i in range(MAX_ITERATIONS):
         logging.info(f"--- Iteration {i + 1} ---")
-
-        llm_response = await call_agent_llm(prompt_history)
+        llm_response = await call_agent_llm(
+            prompt_history, patient_id, model, imputer, patient_data_df
+        )
 
         if isinstance(llm_response, dict):
             logging.info("AGENT: Final plan generated.")
-            final_plan = llm_response
-            print("\n--- FINAL INTERVENTION PLAN ---")
-            print(json.dumps(final_plan, indent=2))
-            return final_plan
+            return llm_response
 
         thought, action = parse_llm_output(llm_response)
-
         if thought:
             logging.info(f"AGENT THOUGHT: {thought}")
 
         logging.info(f"AGENT ACTION: {action}")
-        tool_result = execute_tool(action)
+        tool_result = execute_tool(action, model, imputer, patient_data_df)
 
         observation = f"Observation: {json.dumps(tool_result)}"
         logging.info(f"AGENT OBSERVATION: {observation}")
