@@ -9,6 +9,8 @@ from typing import Dict, Any
 import pandas as pd
 import aiohttp
 
+from vertexcare.utils.gcp_utils import get_gemini_api_key
+
 
 # Implement Gemini API.
 async def call_gemini_api(note: str, schema: Dict[str, Any]) -> Dict[str, Any]:
@@ -42,7 +44,16 @@ CHW Note:
 
     # --- 3. Make the API Call ---
     try:
-        apiKey = ""  # This will be handled by secret manager.
+        apiKey = get_gemini_api_key()
+        if not apiKey:
+            logging.error("API Key not found. Cannot call Gemini API.")
+            # Return a default schema-compliant object on failure
+            return {
+                "transportation_issue": False,
+                "financial_concern": False,
+                "medication_adherence_mentioned": False,
+                "patient_sentiment": "unknown",
+            }
         base_url = "https://generativelanguage.googleapis.com/v1beta/models"
         model_name = "gemini-2.5-flash-preview-05-20:generateContent"
         apiUrl = f"{base_url}/{model_name}?key={apiKey}"
