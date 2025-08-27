@@ -98,12 +98,11 @@ Create and activate a Python virtual environment.
     ```Bash
     pip install -e ".[test]"
     ```
-- **4. Run the Full ML Pipeline**
-    To process the data and train the champion model (Logistic Regression), run the main pipeline script:
-
-    ```Bash
-    python run_pipeline.py --model logistic_regression
-    ```
+- **4. Set Up Credentials**
+    This application requires Google Cloud credentials to access the Gemini API and Secret Manager.
+        ```Bash
+        gcloud auth application-default login
+        ```
 
 - **5. Run the Application**
     To interact with the agent, you need to run the backend API and the frontend dashboard in two separate terminals.
@@ -111,12 +110,13 @@ Create and activate a Python virtual environment.
     In Terminal 1 (Backend):
 
         ```Bash
-        python vertexcare/api/main.py
-        In Terminal 2 (Frontend):
+        uvicorn vertexcare.api.main:app --host 0.0.0.0 --port 8000
         ```
+    In Terminal 2 (Frontend):
+
         ```Bash
         streamlit run dashboard.py
-        Now, you can open the Streamlit URL provided in your browser to use the VertexCare Intervention Planner.
+        You can now open the Streamlit URL provided in Terminal 2 to use the planner.
         ```
 - **6. Run Tests**
     To run the automated unit tests, use the following command:
@@ -140,4 +140,4 @@ Push to the branch (git push origin feat/your-amazing-feature).
 Open a new Pull Request. -->
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [LICENSE file](#LICENSE) for more details.
