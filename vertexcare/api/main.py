@@ -13,13 +13,31 @@ import pandas as pd
 from vertexcare.agents.chw_agent import run_agent
 
 # --- Configure Logging ---
-# MENTOR NOTE: This is the critical fix. By placing this here,
 # logging is configured as soon as the file is imported.
 logging.basicConfig(level=logging.INFO)
 
 
+def find_latest_model_dir(models_base_path: Path) -> Path:
+    """
+    Scans a directory for folders matching the model pattern and returns the latest one.
+    """
+    # Find all directories that match the naming pattern
+    search_pattern = "*_logistic_regression"
+    matching_dirs = [p for p in models_base_path.glob(search_pattern) if p.is_dir()]
+
+    # Raise an error if no model directories are found
+    if not matching_dirs:
+        raise FileNotFoundError(f"No model directories found in {models_base_path}")
+
+    # Sort the directories by name (YYYY-MM-DD format ensures this works)
+    # and return the last one, which is the most recent.
+    latest_dir = sorted(matching_dirs)[-1]
+    logging.info(f"Found latest model directory: {latest_dir.name}")
+    return latest_dir
+
+
 # --- Configuration ---
-LATEST_MODEL_DIR = "2025-08-26_00-29-56_logistic_regression"
+# LATEST_MODEL_DIR = "2025-08-26_00-29-56_logistic_regression"
 ml_assets = {}
 
 
@@ -29,24 +47,25 @@ async def lifespan(app: FastAPI):
     """Load all ML artifacts when the API server starts."""
     logging.info("--- Loading ML artifacts... ---")
     try:
-        base_path = Path("/app/vertexcare")
+        base_path = Path("/app")
         if not base_path.exists():
-            base_path = Path(__file__).resolve().parent.parent
+            base_path = Path(__file__).resolve().parent.parent.parent
 
-        model_path = (
-            base_path / "models" / LATEST_MODEL_DIR / "logistic_regression_model.joblib"
-        )
+        # 1. Dynamically find the latest model directory
+        models_dir = base_path / "models"
+        latest_model_dir_path = find_latest_model_dir(models_dir)
+
+        # 2. Construct the full path to the model file
+        model_path = latest_model_dir_path / "logistic_regression_model.joblib"
+        # intermediate_dir = Path(config["data_paths"]["intermediate_data_dir"])
         imputer_path = base_path / "models" / "imputer.joblib"
-        data_path = base_path / "data" / "03_primary" / "data_with_llm_features.parquet"
+        data_path = base_path / "data" / "02_intermediate" / "data_with_llm_features.parquet"
 
         ml_assets["model"] = joblib.load(model_path)
         ml_assets["imputer"] = joblib.load(imputer_path)
 
         patient_data = pd.read_parquet(data_path)
-        if (
-            "patient_id" not in patient_data.columns
-            and patient_data.index.name == "patient_id"
-        ):
+        if "patient_id" not in patient_data.columns and patient_data.index.name == "patient_id":
             patient_data.reset_index(inplace=True)
         ml_assets["patient_data"] = patient_data
 
@@ -105,9 +124,7 @@ async def generate_plan(request: PatientRequest):
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
         logging.error(f"API: An unexpected error occurred: {e}", exc_info=True)
-        raise HTTPException(
-            status_code=500, detail="An internal server error occurred."
-        )
+        raise HTTPException(status_code=500, detail="An internal server error occurred.")
 
 
 if __name__ == "__main__":

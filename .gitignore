@@ -22,6 +22,10 @@ logs/
 # Secrets
 *.env
 
+
 # Ignore trained model artifacts
 vertexcare/models/
 docker-key.json
+
+# Ignore setuptools/ Poetry egg-info metadata folders
+*.egg-info/

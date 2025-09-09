@@ -15,9 +15,7 @@ def create_features(df: pd.DataFrame) -> pd.DataFrame:
     logging.info("Starting feature engineering...")
 
     if "chw_interaction_end_time" in df.columns:
-        df["chw_interaction_end_time"] = pd.to_datetime(
-            df["chw_interaction_end_time"], errors="coerce"
-        )
+        df["chw_interaction_end_time"] = pd.to_datetime(df["chw_interaction_end_time"], errors="coerce")
         is_ended = df["chw_interaction_end_time"].notna()
         df["has_interaction_ended"] = is_ended.astype(int)
         df = df.drop(columns=["chw_interaction_end_time"])
@@ -27,9 +25,7 @@ def create_features(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def split_data(
-    df: pd.DataFrame, config: Dict[str, Any]
-) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
+def split_data(df: pd.DataFrame, config: Dict[str, Any]) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
     """Splits the data into training and testing sets."""
     logging.info("Splitting data into training and testing sets...")
 
@@ -46,15 +42,13 @@ def split_data(
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=test_size, random_state=random_state, stratify=y
     )
-    logging.info(
-        f"Data split complete. Train set size: {len(X_train)}"
-        f", Test set size: {len(X_test)}"
-    )
+    logging.info(f"Data split complete. Train set size: {len(X_train)}" f", Test set size: {len(X_test)}")
     return X_train, X_test, y_train, y_test
 
 
 def impute_missing_values(
-    X_train: pd.DataFrame, X_test: pd.DataFrame, module_root: Path
+    X_train: pd.DataFrame,
+    X_test: pd.DataFrame,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """Imputes missing values using the median strategy."""
     logging.info("Imputing missing values with median...")
@@ -74,19 +68,19 @@ def impute_missing_values(
     X_train_imputed = pd.DataFrame(X_train_imputed_np, columns=imputed_columns)
     X_test_imputed = pd.DataFrame(X_test_imputed_np, columns=imputed_columns)
 
-    imputer_path = module_root / "models" / "imputer.joblib"
+    imputer_path = Path("models") / "imputer.joblib"
     joblib.dump(imputer, imputer_path)
     logging.info(f"Imputer saved to {imputer_path}")
 
     return X_train_imputed, X_test_imputed
 
 
-def run_feature_engineering(config: Dict[str, Any], module_root: Path) -> None:
+def run_feature_engineering(config: Dict[str, Any]) -> None:
     """Main function to run the feature engineering process."""
     logging.info("Starting feature engineering pipeline...")
 
-    intermediate_dir = module_root / config["data_paths"]["intermediate_data_dir"]
-    primary_dir = module_root / config["data_paths"]["primary_data_dir"]
+    intermediate_dir = Path(config["data_paths"]["intermediate_data_dir"])
+    primary_dir = Path(config["data_paths"]["primary_data_dir"])
     primary_dir.mkdir(parents=True, exist_ok=True)
 
     # CORRECTED: Read input from the intermediate directory
@@ -95,7 +89,7 @@ def run_feature_engineering(config: Dict[str, Any], module_root: Path) -> None:
     df_featured = create_features(df)
     X_train, X_test, y_train, y_test = split_data(df_featured, config)
 
-    X_train, X_test = impute_missing_values(X_train, X_test, module_root)
+    X_train, X_test = impute_missing_values(X_train, X_test)
 
     logging.info("Saving processed data sets...")
     X_train.to_parquet(primary_dir / "X_train.parquet", index=False)

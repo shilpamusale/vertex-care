@@ -2,10 +2,11 @@
 
 import logging
 import json
-
-# import asyncio
 import re
+import time
 from typing import Dict, Any, Union
+
+from google.api_core import exceptions
 
 # Add these two imports
 import pandas as pd
@@ -18,7 +19,7 @@ from vertexcare.agents.agent_tools import (
     prediction_tool,
     notes_tool,
     explanation_tool,
-)
+)  # noqa: F401
 
 # --- Configure Live Gemini Model ---
 API_KEY = get_gemini_api_key()
@@ -73,28 +74,43 @@ SYSTEM_PROMPT = (
 
 
 async def call_agent_llm(
-    prompt: str, patient_id: int, model: Any, imputer: Any, patient_data_df: Any
+    prompt: str, patient_id: int, model: Any, imputer: Any, patient_data_df: Any, retries: int = 3, delay: int = 5
 ) -> Union[str, Dict[str, Any]]:
-    """Calls the live Gemini model to get the next thought and action."""
+    """
+    Calls the live Gemini model with retry logic and exponential backoff.
+    """
     logging.info("AGENT: Calling live Gemini model to decide next action...")
 
     if not API_KEY:
         return {"error": "Gemini API key is not configured."}
 
-    try:
-        # All the complex if/else logic is replaced by the LLM's reasoning
-        live_model = genai.GenerativeModel("gemini-1.5-flash")
-        response = live_model.generate_content(prompt, safety_settings=safety_settings)
+    for i in range(retries):
+        try:
+            live_model = genai.GenerativeModel("gemini-1.5-flash")
+            response = live_model.generate_content(prompt, safety_settings=safety_settings)
 
-        # Check for a blocked response
-        if not response.candidates:
-            return {"error": "Response was blocked by safety settings."}
+            if not response.candidates:
+                return {"error": "Response was blocked by safety settings."}
 
-        return response.text
+            return response.text  # Success
 
-    except Exception as e:
-        logging.error(f"Error calling Gemini for agent action: {e}")
-        return {"error": str(e)}
+        except exceptions.ResourceExhausted as e:
+            logging.warning(
+                f"An exception occurred: {e}" + f"Rate limit hit. Retrying in {delay}s... (Attempt {i + 1}/{retries})"
+            )
+            time.sleep(delay)
+            delay *= 2  # Double the delay for the next potential retry
+
+        except Exception as e:
+            logging.error(f"Error calling Gemini for agent action: {e}")
+            if i < retries - 1:
+                logging.info(f"Retrying in {delay}s...")
+                time.sleep(delay)
+                delay *= 2
+            else:
+                return {"error": str(e)}
+
+    return {"error": f"Failed to call Gemini API after {retries} attempts."}
 
 
 def parse_llm_output(response: str) -> (str, str):
@@ -106,9 +122,7 @@ def parse_llm_output(response: str) -> (str, str):
     return thought, action
 
 
-def execute_tool(
-    action: str, model: Any, imputer: Any, patient_data_df: pd.DataFrame
-) -> Dict[str, Any]:
+def execute_tool(action: str, model: Any, imputer: Any, patient_data_df: pd.DataFrame) -> Dict[str, Any]:
     """Executes a tool call, passing the necessary dependencies."""
     logging.info(f"Executing tool with action: {action}")
     try:
@@ -116,9 +130,7 @@ def execute_tool(
             "prediction_tool": lambda **kwargs: prediction_tool(
                 **kwargs, model=model, imputer=imputer, patient_data_df=patient_data_df
             ),
-            "notes_tool": lambda **kwargs: notes_tool(
-                **kwargs, patient_data_df=patient_data_df
-            ),
+            "notes_tool": lambda **kwargs: notes_tool(**kwargs, patient_data_df=patient_data_df),
             "explanation_tool": lambda **kwargs: explanation_tool(
                 **kwargs, model=model, imputer=imputer, patient_data_df=patient_data_df
             ),
@@ -130,9 +142,7 @@ def execute_tool(
         # Use a regular expression to find any integer within the parentheses
         match = re.search(r"\(.*?(\d+).*?\)", action)
         if not match:
-            raise ValueError(
-                f"Could not find a valid integer patient ID in action: {action}"
-            )
+            raise ValueError(f"Could not find a valid integer patient ID in action: {action}")
 
         patient_id = int(match.group(1))
         args = {"patient_id": patient_id}
@@ -148,9 +158,7 @@ def execute_tool(
         return {"error": f"Failed to execute tool: {e}"}
 
 
-async def run_agent(
-    patient_id: int, model: Any, imputer: Any, patient_data_df: pd.DataFrame
-):
+async def run_agent(patient_id: int, model: Any, imputer: Any, patient_data_df: pd.DataFrame):
     """Runs the main ReAct loop for the CHW Intervention Agent."""
     logging.info(f"--- Starting Agent for Patient ID: {patient_id} ---")
     prompt_history = f"{SYSTEM_PROMPT}\n\nBegin analysis for patient_id: {patient_id}"
@@ -158,12 +166,8 @@ async def run_agent(
     for i in range(MAX_ITERATIONS):
         print(f"\n--- DEBUG: ITERATION {i + 1} ---")
         logging.info(f"--- Iteration {i + 1} ---")
-        llm_response = await call_agent_llm(
-            prompt_history, patient_id, model, imputer, patient_data_df
-        )
-        print(
-            f"--- DEBUG: RAW LLM RESPONSE ---\n{llm_response}\n--------------------"
-        )  # ADD THIS
+        llm_response = await call_agent_llm(prompt_history, patient_id, model, imputer, patient_data_df)
+        print(f"--- DEBUG: RAW LLM RESPONSE ---\n{llm_response}\n--------------------")  # ADD THIS
         if "Final Answer:" in llm_response:
             logging.info("AGENT: Final plan detected.")
             try:
@@ -177,10 +181,7 @@ async def run_agent(
                 final_plan = json.loads(json_str)
                 return final_plan
             except Exception as e:
-                logging.error(
-                    f"Failed to parse final plan from LLM response: '{llm_response}'."
-                    f" Error: {e}"
-                )
+                logging.error(f"Failed to parse final plan from LLM response: '{llm_response}'." f" Error: {e}")
                 return {"error": "Failed to parse the final plan from the LLM."}
 
         if isinstance(llm_response, dict):

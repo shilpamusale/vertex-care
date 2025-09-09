@@ -65,10 +65,7 @@ CHW Note:
                 result = await response.json()
 
                 text_response = (
-                    result.get("candidates", [{}])[0]
-                    .get("content", {})
-                    .get("parts", [{}])[0]
-                    .get("text", "{}")
+                    result.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "{}")
                 )
                 return json.loads(text_response)
         # --- END REAL API LOGIC ---
@@ -106,12 +103,12 @@ def define_extraction_schema() -> Dict[str, Any]:
     }
 
 
-async def run_llm_feature_extraction(module_root: Path, config: Dict[str, Any]):
+async def run_llm_feature_extraction(config: Dict[str, Any]):
     """
     Runs the LLM-based feature extraction process.
     """
     logging.info("Starting LLM feature extraction...")
-    intermediate_dir = module_root / config["data_paths"]["intermediate_data_dir"]
+    intermediate_dir = Path(config["data_paths"]["intermediate_data_dir"])
 
     input_file = intermediate_dir / "ingested_data.parquet"
     output_file = intermediate_dir / "data_with_llm_features.parquet"
@@ -153,10 +150,9 @@ if __name__ == "__main__":
     )
 
     project_root_path = Path.cwd()
-    module_root_path = project_root_path / "vertexcare"
-    setup_logging(module_root_path, "llm_feature_extraction")
+    setup_logging(project_root_path, "llm_feature_extraction")
 
-    config_path = module_root_path / "configs" / "main_config.yaml"
+    config_path = Path("configs") / "main_config.yaml"
     config_data = load_config(config_path)
 
-    asyncio.run(run_llm_feature_extraction(module_root_path, config_data))
+    asyncio.run(run_llm_feature_extraction(config_data))

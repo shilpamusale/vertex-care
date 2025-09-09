@@ -14,9 +14,9 @@ from vertexcare.data_processing.ingestion import (
 from vertexcare.data_processing.validation import run_validation
 
 # Add the new import for the LLM script
-from vertexcare.features.llm_feature_extractor import run_llm_feature_extraction
-from vertexcare.features.build_features import run_feature_engineering
-from vertexcare.models.train_model import run_training
+from vertexcare.feature_engineering.llm_feature_extractor import run_llm_feature_extraction
+from vertexcare.feature_engineering.build_features import run_feature_engineering
+from vertexcare.model_training.train_model import run_training
 
 
 def main():
@@ -32,39 +32,36 @@ def main():
     args = parser.parse_args()
     model_name = args.model
 
-    project_root_path = Path.cwd()
-    module_root_path = project_root_path / "vertexcare"
-    setup_logging(module_root_path, f"full_pipeline_{model_name}")
+    setup_logging(f"full_pipeline_{model_name}")
 
     logging.info("=======================================")
     logging.info(f"   STARTING VERTEXCARE ML PIPELINE: {model_name.upper()}   ")
     logging.info("=======================================")
 
     try:
-        config_path = module_root_path / "configs" / "main_config.yaml"
-        model_params_path = module_root_path / "configs" / "model_params.yaml"
+        config_path = Path("configs") / "main_config.yaml"
+        model_params_path = Path("configs") / "model_params.yaml"
         config = load_config(config_path)
         model_params_config = load_config(model_params_path)
 
         logging.info("--- Running Data Processing ---")
-        run_ingestion(config, module_root_path)
-        run_validation(config, module_root_path)
+        run_ingestion(config)
+        run_validation(config)
         logging.info("--- Data Processing complete. ---")
 
         # --- ADD THIS NEW STEP ---
         logging.info("--- Running LLM Feature Extraction ---")
-        asyncio.run(run_llm_feature_extraction(module_root_path, config))
+        asyncio.run(run_llm_feature_extraction(config))
         logging.info("--- LLM Feature Extraction complete. ---")
 
         logging.info("--- Running Feature Engineering ---")
-        run_feature_engineering(config, module_root_path)
+        run_feature_engineering(config)
         logging.info("--- Feature Engineering complete. ---")
 
         logging.info(f"--- Running Model Training for {model_name} ---")
         run_training(
             config,
             model_params_config,
-            module_root_path,
             config_path,
             model_params_path,
             model_name,

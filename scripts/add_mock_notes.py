@@ -4,9 +4,7 @@ import logging
 from pathlib import Path
 
 # Configure basic logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def create_mock_notes():
@@ -47,7 +45,8 @@ def create_mock_notes():
         + "citing privacy concerns. "
         + "New plan is to reschedule the appointment for next "
         + "week when daughter can drive.",
-        +"Initially reported taking all medications correctly. "
+        # FIX: Removed the '+' from the beginning of this line
+        "Initially reported taking all medications correctly. "
         + "Upon review of pillbox, "
         + "it was clear the morning dose of lisinopril "
         + "was missed for the past two days. "
@@ -57,23 +56,21 @@ def create_mock_notes():
         "Patient seems down today. Complained of feeling 'off'. "
         + "Mentioned not eating much. Might need "
         + "someone to check in on them soon.",
-        +"Subject was quiet during the visit. "
+        "Subject was quiet during the visit. "
         + "Didn't say much about their health, "
         + "just that 'things are the same'.",
         # --- Type 5: Jargon-Heavy / Abbreviated Note ---
         "Pt c/o SOB. BP 140/90. Rx for lisinopril needs refill. "
         + "F/u w/ PCP scheduled 8/25. "
         + "Referred to SNAP for food insecurity.",
-        +"NPO after midnight for procedure tomorrow. "
+        "NPO after midnight for procedure tomorrow. "
         + "Pt verbalized understanding of instructions."
         + "All pre-op questions answered.",
     ]
     return notes
 
 
-def add_notes_to_dataset(
-    input_path: Path, output_path: Path, fill_fraction: float = 0.3
-):
+def add_notes_to_dataset(input_path: Path, output_path: Path, fill_fraction: float = 0.3):
     """
     Reads a CSV, adds a 'chw_notes' column, and populates a fraction of
     the rows with mock notes.
@@ -115,8 +112,10 @@ def add_notes_to_dataset(
 
 
 if __name__ == "__main__":
-    # Assuming the script is run from the root of the vertexcare project
-    project_root = Path(__file__).resolve().parent
+    # Assuming the script is run from the root of the vertex-care project
+    project_root = Path(__file__).resolve().parent.parent
+
+    print(project_root)
 
     # If you place this script in /notebooks, the root is one level up
     if project_root.name == "notebooks":

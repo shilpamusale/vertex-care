@@ -22,29 +22,19 @@ SYNTHETIC_PATIENTS = {
     # Case 2: Moderate clinical risk, but a clear transportation barrier
     2: {
         "prediction": {"readmission_risk_score": 0.45},
-        "explanation": {
-            "top_risk_factors": ["hypertension", "llm_transportation_issue", "age"]
-        },
-        "notes": {
-            "notes": "Patient is worried about getting a ride "
-            "to their cardiology appointment next week."
-        },
+        "explanation": {"top_risk_factors": ["hypertension", "llm_transportation_issue", "age"]},
+        "notes": {"notes": "Patient is worried about getting a ride " "to their cardiology appointment next week."},
     },
     # Case 3: Low clinical risk, positive outlook
     3: {
         "prediction": {"readmission_risk_score": 0.15},
         "explanation": {"top_risk_factors": ["race_black", "sdoh_pcp_1_0", "age"]},
-        "notes": {
-            "notes": "Patient in good spirits. "
-            "Reports taking all medications as prescribed."
-        },
+        "notes": {"notes": "Patient in good spirits. " "Reports taking all medications as prescribed."},
     },
     # Case 4: Conflicting Information
     4: {
         "prediction": {"readmission_risk_score": 0.65},
-        "explanation": {
-            "top_risk_factors": ["age", "llm_financial_concern", "hypertension"]
-        },
+        "explanation": {"top_risk_factors": ["age", "llm_financial_concern", "hypertension"]},
         "notes": {
             "notes": "Patient initially denied any financial issues, "
             "but later mentioned they may have trouble affording "

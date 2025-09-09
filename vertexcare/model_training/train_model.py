@@ -42,9 +42,7 @@ def get_model(model_name: str, model_params: Dict[str, Any]) -> Any:
     if model_name == "logistic_regression":
         return LogisticRegression(**model_params)
     elif model_name == "xgboost":
-        return xgb.XGBClassifier(
-            **model_params, use_label_encoder=False, eval_metric="logloss"
-        )
+        return xgb.XGBClassifier(**model_params, use_label_encoder=False, eval_metric="logloss")
     elif model_name == "random_forest":
         return RandomForestClassifier(**model_params)
     else:
@@ -61,9 +59,7 @@ def train_model(model: Any, X_train: pd.DataFrame, y_train: pd.Series) -> Any:
     return model
 
 
-def evaluate_model(
-    model: Any, X_test: pd.DataFrame, y_test: pd.Series
-) -> Dict[str, float]:
+def evaluate_model(model: Any, X_test: pd.DataFrame, y_test: pd.Series) -> Dict[str, float]:
     """
     Evaluates the model on the test set and returns the metrics.
     """
@@ -95,7 +91,7 @@ def save_experiment(
     Saves all experiment artifacts to a timestamped folder.
     """
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    experiment_dir = output_dir / f"{timestamp}_{model_name}"
+    experiment_dir = Path(output_dir) / f"{timestamp}_{model_name}"
     experiment_dir.mkdir(exist_ok=True, parents=True)
 
     model_path = experiment_dir / f"{model_name}_model.joblib"
@@ -115,7 +111,6 @@ def save_experiment(
 def run_training(
     config: Dict[str, Any],
     model_params_config: Dict[str, Any],
-    module_root: Path,
     config_path: Path,
     model_params_path: Path,
     model_name: str,
@@ -123,8 +118,8 @@ def run_training(
     """
     Main function to run the model training pipeline.
     """
-    primary_data_dir = module_root / config["data_paths"]["primary_data_dir"]
-    model_output_dir = module_root / "models"
+    primary_data_dir = Path(config["data_paths"]["primary_data_dir"])
+    model_output_dir = "models"
 
     X_train, X_test, y_train, y_test = load_processed_data(primary_data_dir)
     model_params = model_params_config[f"{model_name}_params"]
@@ -144,9 +139,7 @@ def run_training(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Model training script for VertexCare."
-    )
+    parser = argparse.ArgumentParser(description="Model training script for VertexCare.")
     parser.add_argument(
         "--model",
         type=str,
@@ -156,11 +149,10 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    module_root_path = Path.cwd() / "vertexcare"
-    setup_logging(module_root_path, f"training_{args.model}")
+    setup_logging(f"training_{args.model}")
 
-    config_path = module_root_path / "configs" / "main_config.yaml"
-    model_params_path = module_root_path / "configs" / "model_params.yaml"
+    config_path = Path.cwd() / "configs" / "main_config.yaml"
+    model_params_path = Path.cwd() / "configs" / "model_params.yaml"
 
     config_data = load_config(config_path)
     model_params_data = load_config(model_params_path)
@@ -169,12 +161,10 @@ if __name__ == "__main__":
         run_training(
             config_data,
             model_params_data,
-            module_root_path,
+            # Path.cwd(),
             config_path,
             model_params_path,
             args.model,
         )
     except Exception as e:
-        logging.critical(
-            f"A critical error occurred during training: {e}", exc_info=True
-        )
+        logging.critical(f"A critical error occurred during training: {e}", exc_info=True)
