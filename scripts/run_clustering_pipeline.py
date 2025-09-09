@@ -7,15 +7,13 @@ from vertexcare.data_processing.ingestion import (
     setup_logging,
     load_config,
 )
-from vertexcare.models.cluster_patients import run_clustering
+from vertexcare.model_training.cluster_patients import run_clustering
 
 
 def main():
     """Main script to run the patient clustering pipeline."""
 
-    project_root_path = Path.cwd()
-    module_root_path = project_root_path / "vertexcare"
-    setup_logging(module_root_path, "clustering_pipeline")
+    setup_logging("clustering_pipeline")
 
     logging.info("=======================================")
     logging.info("   STARTING VERTEXCARE CLUSTERING PIPELINE   ")
@@ -23,8 +21,8 @@ def main():
 
     try:
         # Load both configuration files
-        config_path = module_root_path / "configs" / "main_config.yaml"
-        model_params_path = module_root_path / "configs" / "model_params.yaml"
+        config_path = Path("configs") / "main_config.yaml"
+        model_params_path = Path("configs") / "model_params.yaml"
         config = load_config(config_path)
         model_params_config = load_config(model_params_path)
 
@@ -32,7 +30,7 @@ def main():
         # This makes it easy to pass all parameters down
         full_config = {**config, **model_params_config}
 
-        run_clustering(full_config, module_root_path)
+        run_clustering(full_config)
 
         logging.info("=======================================")
         logging.info("   VERTEXCARE CLUSTERING PIPELINE SUCCEEDED   ")

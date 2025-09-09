@@ -10,9 +10,9 @@ import pandas as pd
 import yaml
 
 
-def setup_logging(module_root: Path, log_name: str) -> None:
+def setup_logging(log_name: str) -> None:
     """Sets up a robust logger inside the module."""
-    log_dir = module_root / "logs"
+    log_dir = Path("logs")
     log_dir.mkdir(exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -48,18 +48,18 @@ def load_config(config_path: Path) -> Dict[str, Any]:
         raise
 
 
-def run_ingestion(config: Dict[str, Any], module_root: Path) -> None:
+def run_ingestion(config: Dict[str, Any]) -> None:
     """Runs the data ingestion process using
     paths relative to the module root.
     """
     logging.info("Starting data ingestion process...")
 
-    raw_data_dir = module_root / config["data_paths"]["raw_data_dir"]
-    intermediate_path = config["data_paths"]["intermediate_data_dir"]
-    intermediate_dir = module_root / intermediate_path
+    raw_data_dir = config["data_paths"]["raw_data_dir"]
+    # Remove module_root: just use Path(intermediate_path)
+    intermediate_dir = Path(config["data_paths"]["intermediate_data_dir"])
     intermediate_dir.mkdir(parents=True, exist_ok=True)
 
-    raw_data_file = raw_data_dir / "mock_data_with_notes.csv"
+    raw_data_file = Path(raw_data_dir) / "mock_data_with_notes.csv"
     output_file = intermediate_dir / "ingested_data.parquet"
 
     if not raw_data_file.exists():
@@ -89,9 +89,7 @@ def run_ingestion(config: Dict[str, Any], module_root: Path) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Data ingestion script for VertexCare."
-    )
+    parser = argparse.ArgumentParser(description="Data ingestion script for VertexCare.")
     parser.add_argument(
         "--config",
         type=str,
@@ -101,10 +99,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     project_root_path = Path.cwd()
-    module_root_path = project_root_path / "vertexcare"
+    setup_logging("ingestion")
 
-    setup_logging(module_root_path, "ingestion")
-
-    config_path = module_root_path / args.config
+    config_path = project_root_path / args.config
     config_data = load_config(config_path)
-    run_ingestion(config_data, module_root_path)
+    run_ingestion(config_data)

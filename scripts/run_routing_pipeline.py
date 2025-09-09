@@ -13,9 +13,7 @@ from vertexcare.api.routing_engine import run_routing
 def main():
     """Main script to run the patient routing pipeline."""
 
-    project_root_path = Path.cwd()
-    module_root_path = project_root_path / "vertexcare"
-    setup_logging(module_root_path, "routing_pipeline")
+    setup_logging("routing_pipeline")
 
     logging.info("=======================================")
     logging.info("   STARTING VERTEXCARE ROUTING PIPELINE    ")
@@ -23,14 +21,15 @@ def main():
 
     try:
         # Load all necessary configuration files
-        config_path = module_root_path / "configs" / "main_config.yaml"
-        cluster_config_path = module_root_path / "configs" / "cluster_config.yaml"
-        policy_config_path = module_root_path / "configs" / "routing_policy.yaml"
+        config_path = Path("configs") / "main_config.yaml"
+        cluster_config_path = Path("configs") / "cluster_config.yaml"
+        policy_config_path = Path("configs") / "routing_policy.yaml"
+
         config = load_config(config_path)
         cluster_config = load_config(cluster_config_path)
-        policy_config = load_config(policy_config_path)
+        policy_config = load_config(policy_config_path)["routing_policy"]
 
-        run_routing(config, cluster_config, policy_config, module_root_path)
+        run_routing(config, cluster_config, policy_config)
 
         logging.info("=======================================")
         logging.info("   VERTEXCARE ROUTING PIPELINE SUCCEEDED   ")

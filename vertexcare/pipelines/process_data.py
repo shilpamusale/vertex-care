@@ -9,34 +9,33 @@ from vertexcare.data_processing.ingestion import (
     load_config,
 )
 from vertexcare.data_processing.validation import run_validation
-from vertexcare.features.build_features import run_feature_engineering
+from vertexcare.feature_engineering.build_features import run_feature_engineering
 
 
 def main():
     """Main pipeline script to process data."""
 
     project_root_path = Path.cwd()
-    module_root_path = project_root_path / "vertexcare"
-    setup_logging(module_root_path, "pipeline")
+    setup_logging(project_root_path, "pipeline")
 
     logging.info("=======================================")
     logging.info("  STARTING VERTEXCARE DATA PIPELINE    ")
     logging.info("=======================================")
 
     try:
-        config_path = module_root_path / "configs" / "main_config.yaml"
+        config_path = Path("configs") / "main_config.yaml"
         config = load_config(config_path)
 
         logging.info("--- Step 1: Running Data Ingestion ---")
-        run_ingestion(config, module_root_path)
+        run_ingestion(config)
         logging.info("--- Data Ingestion complete. ---")
 
         logging.info("--- Step 2: Running Data Validation ---")
-        run_validation(config, module_root_path)
+        run_validation(config)
         logging.info("--- Data Validation complete. ---")
 
         logging.info("--- Step 3: Running Feature Engineering ---")
-        run_feature_engineering(config, module_root_path)
+        run_feature_engineering(config)
         logging.info("--- Feature Engineering complete. ---")
 
         logging.info("=======================================")

@@ -19,19 +19,13 @@ def get_patient_data(patient_id: int, patient_data_df: pd.DataFrame) -> pd.DataF
     return patient_df
 
 
-def prediction_tool(
-    patient_id: int, model: Any, imputer: Any, patient_data_df: pd.DataFrame
-) -> Dict[str, Any]:
+def prediction_tool(patient_id: int, model: Any, imputer: Any, patient_data_df: pd.DataFrame) -> Dict[str, Any]:
     """Tool to get the readmission risk prediction for a single patient."""
     logging.info(f"PREDICTION TOOL: Getting risk score for patient {patient_id}.")
     try:
         patient_data = get_patient_data(patient_id, patient_data_df)
 
-        features = [
-            col
-            for col in imputer.get_feature_names_out()
-            if col in patient_data.columns
-        ]
+        features = [col for col in imputer.get_feature_names_out() if col in patient_data.columns]
         patient_features = patient_data[features]
 
         imputed_features = imputer.transform(patient_features)
@@ -65,30 +59,22 @@ def notes_tool(patient_id: int, patient_data_df: pd.DataFrame) -> Dict[str, Any]
         return {"patient_id": patient_id, "error": str(e), "status": "Error"}
 
 
-def explanation_tool(
-    patient_id: int, model: Any, imputer: Any, patient_data_df: pd.DataFrame
-) -> Dict[str, Any]:
+def explanation_tool(patient_id: int, model: Any, imputer: Any, patient_data_df: pd.DataFrame) -> Dict[str, Any]:
     """Tool to get the top risk factors for a patient's prediction."""
     logging.info(f"EXPLANATION TOOL: Getting risk factors for patient {patient_id}.")
     try:
         patient_data = get_patient_data(patient_id, patient_data_df)
 
-        features = [
-            col
-            for col in imputer.get_feature_names_out()
-            if col in patient_data.columns
-        ]
+        features = [col for col in imputer.get_feature_names_out() if col in patient_data.columns]
         patient_features = patient_data[features]
-        imputed_features_df = pd.DataFrame(
-            imputer.transform(patient_features), columns=features
-        )
+        imputed_features_df = pd.DataFrame(imputer.transform(patient_features), columns=features)
 
         explainer = shap.Explainer(model, imputed_features_df)
         shap_values = explainer(imputed_features_df)
 
-        feature_importances = pd.DataFrame(
-            {"feature": features, "importance": shap_values.values[0]}
-        ).sort_values(by="importance", ascending=False)
+        feature_importances = pd.DataFrame({"feature": features, "importance": shap_values.values[0]}).sort_values(
+            by="importance", ascending=False
+        )
 
         top_risk_factors = feature_importances.head(3)["feature"].tolist()
 

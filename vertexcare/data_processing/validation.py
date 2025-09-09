@@ -7,7 +7,7 @@ from typing import Dict, Any
 import pandas as pd
 import yaml
 
-from .ingestion import setup_logging, load_config
+from vertexcare.data_processing.ingestion import setup_logging, load_config
 
 
 def load_data(file_path: Path) -> pd.DataFrame:
@@ -49,10 +49,7 @@ def validate_data(df: pd.DataFrame, schema: Dict[str, Any]) -> bool:
 
     for col, expected_type in schema["columns"].items():
         if col in df.columns and str(df[col].dtype) != expected_type:
-            logging.error(
-                f"Validation failed: Column '{col}' has type "
-                f"{df[col].dtype}, expected {expected_type}"
-            )
+            logging.error(f"Validation failed: Column '{col}' has type " f"{df[col].dtype}, expected {expected_type}")
             is_valid = False
     if is_valid:
         logging.info("Data type check passed.")
@@ -72,13 +69,13 @@ def validate_data(df: pd.DataFrame, schema: Dict[str, Any]) -> bool:
     return is_valid
 
 
-def run_validation(config: Dict[str, Any], module_root: Path) -> None:
+def run_validation(config: Dict[str, Any]) -> None:
     """Main function to run the entire validation process."""
-    directory = config["data_paths"]["intermediate_data_dir"]
-    intermediate_dir = module_root / directory
+    # directory = config["data_paths"]["intermediate_data_dir"]
+    intermediate_dir = Path(config["data_paths"]["intermediate_data_dir"])
     input_file = intermediate_dir / "ingested_data.parquet"
 
-    schema_path = module_root / "configs" / "data_schema.yaml"
+    schema_path = Path("configs") / "data_schema.yaml"
     schema = load_schema(schema_path)
 
     df = load_data(input_file)
@@ -88,13 +85,12 @@ def run_validation(config: Dict[str, Any], module_root: Path) -> None:
 
 if __name__ == "__main__":
     project_root_path = Path.cwd()
-    module_root_path = project_root_path / "vertexcare"
-    setup_logging(module_root_path, "validation")
+    setup_logging("validation")
 
-    config_path = module_root_path / "configs" / "main_config.yaml"
+    config_path = project_root_path / "configs" / "main_config.yaml"
     config_data = load_config(config_path)
 
     try:
-        run_validation(config_data, module_root_path)
+        run_validation(config_data)
     except (FileNotFoundError, ValueError) as e:
         logging.critical(f"A critical error occurred: {e}")

@@ -11,7 +11,7 @@ from typing import Dict, Any
 # from vertexcare.data_processing.ingestion import setup_logging, load_config
 
 
-def load_clustered_data(primary_dir: Path) -> pd.DataFame:
+def load_clustered_data(primary_dir: Path) -> pd.DataFrame:
     """
     Loads the with patient clsuter labels.
     """
@@ -24,9 +24,7 @@ def load_clustered_data(primary_dir: Path) -> pd.DataFame:
     return pd.read_parquet(input_file)
 
 
-def assign_cluster_names(
-    df: pd.DataFrame, cluster_config: Dict[str, Any]
-) -> pd.DataFrame:
+def assign_cluster_names(df: pd.DataFrame, cluster_config: Dict[str, Any]) -> pd.DataFrame:
     """
     Assigns descriptive names to the numeric cluster labels from a config.
     """
@@ -38,9 +36,7 @@ def assign_cluster_names(
     return df
 
 
-def apply_routing_policy(
-    patient_row: pd.Series, policy: Dict[str, Any]
-) -> Dict[str, str]:
+def apply_routing_policy(patient_row: pd.Series, policy: Dict[str, Any]) -> Dict[str, str]:
     """
     Applies a set of rules to a patient's data to recommend an action.
     """
@@ -50,16 +46,20 @@ def apply_routing_policy(
 
 
 def run_routing(
-    config: Dict[str, Any], cluster_config: Dict[str, Any], module_root: Path
+    config: Dict[str, Any],
+    cluster_config: Dict[str, Any],
+    policy_config: Dict[str, Any],
 ) -> None:
-    """Main function to run the patient routing pipeline."""
-    primary_data_dir = module_root / config["data_paths"]["primary_data_dir"]
+    """
+    Main function to run the patient routing pipeline.
+    """
+    primary_data_dir = Path(config["data_paths"]["primary_data_dir"])
 
     df = load_clustered_data(primary_data_dir)
     df = assign_cluster_names(df, cluster_config)
 
     logging.info("Applying routing policy to all patients...")
-    routing_decisions = df.apply(apply_routing_policy, axis=1)
+    routing_decisions = df.apply(apply_routing_policy, axis=1, policy=policy_config)
 
     routing_df = pd.json_normalize(routing_decisions)
 

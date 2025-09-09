@@ -11,10 +11,9 @@ from vertexcare.data_processing.ingestion import run_ingestion
 @pytest.fixture
 def mock_project_dirs(tmp_path: Path) -> Path:
     """Creates a temporary directory structure mimicking our project."""
-    module_root = tmp_path / "vertexcare"
-    (module_root / "data" / "01_raw").mkdir(parents=True)
-    (module_root / "data" / "02_intermediate").mkdir(parents=True)
-    (module_root / "configs").mkdir(parents=True)
+    (Path("data") / "01_raw").mkdir(parents=True, exist_ok=True)
+    (Path("data") / "02_intermediate").mkdir(parents=True, exist_ok=True)
+    Path("configs").mkdir(parents=True, exist_ok=True)
     return tmp_path
 
 
@@ -28,9 +27,9 @@ def test_run_ingestion_success(mock_project_dirs: Path):
     3. Handling of null values in the notes column.
     """
     # --- 1. Arrange ---
-    project_root = mock_project_dirs
-    module_root = project_root / "vertexcare"
-    raw_data_dir = module_root / "data" / "01_raw"
+    # project_root = mock_project_dirs
+    raw_data_dir = Path("data") / "01_raw"
+    raw_data_dir.mkdir(parents=True, exist_ok=True)
 
     mock_config = {
         "data_paths": {
@@ -51,10 +50,10 @@ def test_run_ingestion_success(mock_project_dirs: Path):
     mock_raw_data.to_csv(mock_raw_csv_path, index=False)
 
     # --- 2. Act ---
-    run_ingestion(mock_config, module_root)
+    run_ingestion(mock_config)
 
     # --- 3. Assert ---
-    intermediate_dir = module_root / "data" / "02_intermediate"
+    intermediate_dir = Path("data") / "02_intermediate"
     output_file = intermediate_dir / "ingested_data.parquet"
 
     assert output_file.exists(), "Output parquet file was not created."
@@ -63,8 +62,6 @@ def test_run_ingestion_success(mock_project_dirs: Path):
 
     # Check that the new 'patient_id' was created and others were standardized
     expected_columns = ["patient_id", "record_id", "age", "chw_notes"]
-    assert (
-        list(result_df.columns) == expected_columns
-    ), "Column names not standardized correctly."
+    assert list(result_df.columns) == expected_columns, "Column names not standardized correctly."
 
     assert result_df["chw_notes"].iloc[1] == "", "Null value in notes was not filled."
