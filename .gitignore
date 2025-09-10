@@ -29,3 +29,5 @@ docker-key.json
 
 # Ignore setuptools/ Poetry egg-info metadata folders
 *.egg-info/
+key.json
+key.json

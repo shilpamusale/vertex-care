@@ -22,6 +22,14 @@ patient_id = st.number_input("Enter Patient ID:", min_value=101, step=1, value=1
 if st.button("Generate Plan", type="primary"):
     with st.spinner("The AI agent is analyzing the case..."):
         try:
+            # --- API Call ---
+
+            # To test the deployed version, uncomment the other URL.
+            # api_url = "http://127.0.0.1:8000/generate_plan"
+            # # api_url = (
+            # #     "https://vertexcare-api-678532812483.us-central1.run.app/generate_plan"
+            # # )
+
             # --- Dynamic API Call ---
             # Get the base URL from an environment variable, defaulting to localhost.
             API_BASE_URL = os.environ.get("API_BASE_URL", "http://127.0.0.1:8000")
