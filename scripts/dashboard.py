@@ -24,7 +24,7 @@ if st.button("Generate Plan", type="primary"):
         try:
             # --- API Call ---
 
-            # # To test the deployed version, uncomment the other URL.
+            # To test the deployed version, uncomment the other URL.
             # api_url = "http://127.0.0.1:8000/generate_plan"
             # # api_url = (
             # #     "https://vertexcare-api-678532812483.us-central1.run.app/generate_plan"

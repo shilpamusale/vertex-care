@@ -1,5 +1,3 @@
-# Dockerfile for VertexCare Production Deployment
-
 # --- Stage 1: Build Stage ---
 FROM python:3.11-slim as builder
 
