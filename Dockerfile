@@ -1,7 +1,6 @@
 # Dockerfile for VertexCare Streamlit UI
 
 # --- Stage 1: Build Stage ---
-# We use the same builder stage to keep things consistent and efficient.
 FROM python:3.11-slim as builder
 
 WORKDIR /app
@@ -20,7 +19,6 @@ COPY --from=builder /app/wheels /wheels
 RUN pip install --no-cache /wheels/*
 
 # Copy only the code needed for the dashboard to run.
-# This includes the dashboard script and any shared modules it might import from 'vertexcare'.
 COPY dashboard.py ./
 COPY vertexcare/ ./vertexcare
 COPY scripts/ ./scripts
@@ -29,10 +27,6 @@ COPY configs/ ./configs
 # Set the PORT environment variable that Cloud Run provides. Default to 8080.
 ENV PORT=8080
 
-# Expose the port.
 EXPOSE 8080
 
-# --- IMPORTANT ---
-# This is the new command to run the Streamlit application.
-# It uses the PORT variable required by Cloud Run.
 CMD ["streamlit", "run", "dashboard.py", "--server.port=${PORT}", "--server.address=0.0.0.0", "--server.headless=true"]
