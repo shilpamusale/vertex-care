@@ -25,3 +25,4 @@ logs/
 # Ignore trained model artifacts
 vertexcare/models/
 docker-key.json
+key.json

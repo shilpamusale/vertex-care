@@ -5,6 +5,16 @@
 This project demonstrates a full-cycle, research-to-impact workflow, incorporating modern AI engineering principles, including a modular architecture, automated CI/CD, and state-of-the-art LLM-based feature extraction.
 
 ---
+## Demos
+
+- **Live API Endpoint**
+  Try it on Google Cloud Run:
+  [Generate Plan API](https://vertexcare-api-678532812483.us-central1.run.app/generate_plan)
+
+- **Demo Animation**
+  ![VertexCare Demo](assets/demo.gif)
+
+---
 
 ## Architecture Overview
 
@@ -73,71 +83,114 @@ Creates the final, model-ready datasets by imputing missing values and splitting
 
 - **Streamlit UI**: A simple, user-friendly web dashboard that allows a user to enter a patient ID and receive the agent's generated plan.
 
-# Getting Started
-Follow these instructions to set up and run the VertexCare project locally.
+# Getting Started (with Makefile v6)
 
-- **Prerequisites**
-    - Python 3.8+
-    - pip and venv
+Follow these instructions to set up and run the VertexCare project locally using the provided Makefile.
 
-- **1. Clone the Repository**
-    ```Bash
-    git clone <your-repository-url>
-    cd vertex-care
-    ```
-- **2. Set Up the Virtual Environment**
-Create and activate a Python virtual environment.
+---
 
-    ```Bash
-    python -m venv venv
-    source venv/bin/activate
-    ```
-- **3. Install Dependencies**
-    Install the project and all its dependencies, including the optional testing libraries.
+## **Prerequisites**
+- Python 3.8+
+- pip and venv
+- (Optional, for API/dashboard) Poetry
 
-    ```Bash
-    pip install -e ".[test]"
-    ```
-- **4. Set Up Credentials**
-    This application requires Google Cloud credentials to access the Gemini API and Secret Manager.
-        ```Bash
-        gcloud auth application-default login
-        ```
+---
 
-- **5. Run the Application**
-    To interact with the agent, you need to run the backend API and the frontend dashboard in two separate terminals.
+## **1. Clone the Repository**
+```bash
+git clone <your-repository-url>
+cd vertex-care
+```
 
-    In Terminal 1 (Backend):
+---
 
-        ```Bash
-        uvicorn vertexcare.api.main:app --host 0.0.0.0 --port 8000
-        ```
-    In Terminal 2 (Frontend):
+## **2. Set Up the Virtual Environment**
+Create and activate a Python virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
-        ```Bash
-        streamlit run dashboard.py
-        You can now open the Streamlit URL provided in Terminal 2 to use the planner.
-        ```
-- **6. Run Tests**
-    To run the automated unit tests, use the following command:
+---
 
-    ```Bash
-    python -m pytest
-    ```
-<!-- ## Contributing
-Contributions are welcome! If you have a suggestion or find a bug, please open an issue to discuss it.
+## **3. Install Dependencies**
+Use Make to install dependencies (uses pip by default):
+```bash
+make setup
+```
+*(If using Poetry, uncomment the relevant lines in the Makefile.)*
 
-If you would like to contribute code, please follow these steps:
+---
 
-Fork the repository.
+## **4. Run the Pipeline (Full Workflow)**
+To run the entire data pipeline, training, clustering, and routing (excluding notebooks), just run:
+```bash
+make all
+```
+This will:
+- Lint the code
+- Run unit tests
+- Add mock notes
+- Run the main pipeline
+- Run clustering
+- Run routing
 
-Create a new feature branch (git checkout -b feat/your-amazing-feature).
+---
 
-Make your changes and commit them (git commit -m 'Feat: Add some amazing feature').
+## **5. Run Individual Steps**
+If you want to run individual steps:
+```bash
+make add-mock-notes    # Add mock notes to data
+make train             # Run main pipeline script
+make clustering        # Run clustering pipeline
+make routing           # Run routing pipeline
+```
 
-Push to the branch (git push origin feat/your-amazing-feature).
+---
 
-Open a new Pull Request. -->
+## **6. Serve the Application**
+To serve the backend API (FastAPI):
+```bash
+make serve-api
+```
+To serve the frontend dashboard (Streamlit):
+```bash
+make serve-ui
+```
+
+---
+
+## **7. Set Up Credentials**
+This application requires Google Cloud credentials to access the Gemini API and Secret Manager.
+```bash
+gcloud auth application-default login
+```
+
+---
+
+## **8. Run Tests**
+To run automated unit tests:
+```bash
+make test
+```
+
+---
+
+## **9. Clean Up Artifacts**
+To remove generated files, models, and caches:
+```bash
+make clean
+```
+
+---
+
+## **10. Get Help**
+To list all available Makefile targets:
+```bash
+make help
+```
+
+---
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE file](#LICENSE) for more details.

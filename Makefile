@@ -1,68 +1,66 @@
 # Makefile for VertexCare Project
 
-# ==============================================================================
-# VARIABLES
-# ==============================================================================
+.PHONY: all setup lint test add-mock-notes train clustering routing serve-api serve-ui clean help
 
-# Get the Python interpreter from the virtual environment.
-# This makes sure we are using the correct python version.
-PYTHON = python3
+# 1. Install dependencies
+setup: ## Install dependencies (pip or poetry)
+	@echo "Installing dependencies..."
+	pip install --upgrade pip
+	pip install -r requirements.txt
+	# Uncomment below if you use poetry instead of pip:
+	# poetry install
 
-# ==============================================================================
-# INSTALLATION & SETUP
-# ==============================================================================
+# 2. Lint the source code
+lint: ## Run flake8 lint checks
+	@echo "Running flake8 lint checks..."
+	flake8 vertexcare scripts tests
 
-## install: Install all project dependencies from requirements.txt
-install:
-	@echo "Installing project dependencies..."
-	$(PYTHON) -m pip install --upgrade pip
-	$(PYTHON) -m pip install -r requirements.txt
+# 3. Run unit tests
+test: ## Run pytest unit tests
+	@echo "Running tests with pytest..."
+	pytest tests
 
-# ==============================================================================
-# CODE QUALITY & LINTING
-# ==============================================================================
+# 4. Run main scripts (customize as needed)
+add-mock-notes: ## Run add_mock_notes script
+	@echo "Running add_mock_notes script..."
+	python scripts/add_mock_notes.py
 
-## lint: Run flake8 to check for style issues and errors
-lint:
-	@echo "Running flake8 linter..."
-	$(PYTHON) -m flake8 src tests
+train: ## Run main pipeline script
+	@echo "Running main pipeline script..."
+	python scripts/run_pipeline.py
 
-## format: Automatically format code using black
-format:
-	@echo "Formatting code with black..."
-	$(PYTHON) -m black src tests
+clustering: ## Run clustering pipeline script
+	@echo "Running clustering pipeline script..."
+	python scripts/run_clustering_pipeline.py
 
-## quality: Run all code quality checks
-quality: lint format
-	@echo "Code quality checks complete."
+routing: ## Run routing pipeline script
+	@echo "Running routing pipeline script..."
+	python scripts/run_routing_pipeline.py
 
-# ==============================================================================
-# DATA PIPELINE (Example)
-# ==============================================================================
+# 5. Serve applications
+serve-api: ## Serve the backend FastAPI application
+	@echo ">>> Starting FastAPI backend on http://localhost:8000 ..."
+	poetry run uvicorn vertexcare.api.main:app --host 0.0.0.0 --port 8000
 
-## data: Run the full data processing pipeline (placeholder)
-data:
-	@echo "Running data processing pipeline..."
-	# We will add the command to run our Python pipeline script here later
+serve-ui: ## Serve the frontend Streamlit dashboard
+	@echo ">>> Starting Streamlit frontend..."
+	poetry run streamlit run scripts/dashboard.py
 
-# ==============================================================================
-# HELP
-# ==============================================================================
+# 6. Utility
+clean: ## Remove generated files (pycache, data, models)
+	@echo ">>> Cleaning up generated files..."
+	find . -type f -name "*.pyc" -delete
+	find . -type d -name "__pycache__" -delete
+	rm -rf vertexcare/data/02_intermediate/*
+	rm -rf vertexcare/data/03_primary/*
+	rm -rf vertexcare/models/*
+	rm -rf logs/*
 
-## precommit: Run pre-commit hooks on all files
-precommit:
-	@echo "Running pre-commit hooks on all files..."
-	pre-commit run --all-files
-
-## quality: Run all code quality checks
-quality: precommit lint format
-	@echo "Code quality checks complete."
-
-## help: Show this help message
-help:
+help: ## Show this help message
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: install lint format quality data help
+# 7. Run everything in order (excluding notebooks)
+all: lint test add-mock-notes train clustering routing
