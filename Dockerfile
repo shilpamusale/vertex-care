@@ -1,14 +1,12 @@
-# Dockerfile for VertexCare Production Deployment
+# Dockerfile for VertexCare Streamlit UI
 
 # --- Stage 1: Build Stage ---
+# We use the same builder stage to keep things consistent and efficient.
 FROM python:3.11-slim as builder
 
 WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-
-# If you need system packages for building (only if wheels fail without them)
-# RUN apt-get update && apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip
 COPY requirements.txt pyproject.toml ./
@@ -21,20 +19,20 @@ WORKDIR /app
 COPY --from=builder /app/wheels /wheels
 RUN pip install --no-cache /wheels/*
 
-# Copy app code and necessary folders
-COPY vertexcare/ ./vertexcare
-COPY run_pipeline.py ./
+# Copy only the code needed for the dashboard to run.
+# This includes the dashboard script and any shared modules it might import from 'vertexcare'.
 COPY dashboard.py ./
-COPY configs/ ./configs     # if needed
-COPY scripts/ ./scripts     # if needed
-# COPY data/ ./data           # if needed
-# COPY models/ ./models       # if needed
+COPY vertexcare/ ./vertexcare
+COPY scripts/ ./scripts
+COPY configs/ ./configs
 
-RUN pip install gunicorn
+# Set the PORT environment variable that Cloud Run provides. Default to 8080.
+ENV PORT=8080
 
-# Set default port if not overridden by environment
-ENV PORT=8000
+# Expose the port.
+EXPOSE 8080
 
-EXPOSE 8000
-
-CMD gunicorn -w 4 -k uvicorn.workers.UvicornWorker --bind "0.0.0.0:${PORT}" vertexcare.api.main:app
+# --- IMPORTANT ---
+# This is the new command to run the Streamlit application.
+# It uses the PORT variable required by Cloud Run.
+CMD ["streamlit", "run", "dashboard.py", "--server.port=${PORT}", "--server.address=0.0.0.0", "--server.headless=true"]

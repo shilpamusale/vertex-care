@@ -1,0 +1,75 @@
+# .github/workflows/deploy-ui.yml
+
+name: Deploy VertexCare UI to Cloud Run
+
+on:
+  push:
+    branches:
+      - "main" # Or your primary branch
+    paths:
+      # Only run this workflow if files related to the UI have changed
+      - "dashboard.py"
+      - "Dockerfile.ui"
+      - ".github/workflows/deploy-ui.yml"
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+# Environment variables available to all jobs
+env:
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+  GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+  GCP_REGION: "us-central1"
+  GAR_REPOSITORY: "vertexcare-repo"
+  UI_SERVICE_NAME: "vertexcare-ui"
+  API_SERVICE_URL: "https://vertexcare-api-678532812483.us-central1.run.app" # Your deployed API URL
+
+jobs:
+  deploy-ui:
+    name: Build and Deploy UI
+    runs-on: ubuntu-latest
+
+    # Required for Workload Identity Federation
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: "google-github-actions/auth@v2"
+        with:
+          workload_identity_provider: ${{ env.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: "google-github-actions/setup-gcloud@v2"
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+
+      - name: Build and Push Docker Image
+        run: |
+          # Define the full image tag
+          IMAGE_TAG="${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.UI_SERVICE_NAME }}:latest"
+
+          # Build the image using our UI-specific Dockerfile
+          docker build . -f Dockerfile.ui -t $IMAGE_TAG
+
+          # Push the image to Google Artifact Registry
+          docker push $IMAGE_TAG
+
+      - name: Deploy to Cloud Run
+        run: |
+          # Define the full image tag again
+          IMAGE_TAG="${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.UI_SERVICE_NAME }}:latest"
+
+          gcloud run deploy ${{ env.UI_SERVICE_NAME }} \
+            --image=$IMAGE_TAG \
+            --region=${{ env.GCP_REGION }} \
+            --platform=managed \
+            --allow-unauthenticated \
+            --set-env-vars="API_BASE_URL=${{ env.API_SERVICE_URL }}" \
+            --quiet
