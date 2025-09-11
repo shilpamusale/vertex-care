@@ -13,7 +13,9 @@ This project demonstrates a full-cycle, research-to-impact workflow, incorporati
 
 ## Live Demo 🚀
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://vertexcare-ui-678532812483.us-central1.run.app)
+<a href="https://vertexcare-ui-678532812483.us-central1.run.app" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/Live-Demo-brightgreen" alt="Live Demo Badge">
+</a>
 
 ![VertexCare Application Demo](assets/images/demo.jpg)
 
