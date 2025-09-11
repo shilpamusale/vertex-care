@@ -47,7 +47,8 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           IMAGE_TAG="${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.UI_SERVICE_NAME }}:latest"
-          docker build . -f Dockerfile -t $IMAGE_TAG
+          # Docker automatically uses the 'Dockerfile' in the root directory by default.
+          docker build . -t $IMAGE_TAG
           docker push $IMAGE_TAG
 
       - name: Deploy to Cloud Run
@@ -57,6 +58,13 @@ jobs:
             --image=$IMAGE_TAG \
             --region=${{ env.GCP_REGION }} \
             --platform=managed \
-            --allow-unauthenticated \
             --set-env-vars="API_BASE_URL=${{ env.API_SERVICE_URL }}" \
+            --quiet
+
+      - name: Allow unauthenticated access
+        run: |
+          gcloud run services add-iam-policy-binding ${{ env.UI_SERVICE_NAME }} \
+            --member="allUsers" \
+            --role="roles/run.invoker" \
+            --region=${{ env.GCP_REGION }} \
             --quiet

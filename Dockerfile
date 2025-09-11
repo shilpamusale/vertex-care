@@ -27,4 +27,4 @@ COPY configs/ ./configs
 ENV PORT=8080
 EXPOSE 8080
 
-CMD ["streamlit", "run", "dashboard.py", "--server.port=${PORT}", "--server.address=0.0.0.0", "--server.headless=true"]
+CMD streamlit run dashboard.py --server.port=${PORT} --server.address=0.0.0.0 --server.headless=true
