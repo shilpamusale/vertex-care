@@ -1,8 +1,31 @@
 # VertexCare: An AI-Powered Intervention Platform
 
+[![CI/CD Pipeline](https://github.com/shilpamusale/vertex-care/actions/workflows/ci.yml/badge.svg)](https://github.com/shilpamusale/vertex-care/actions/workflows/ci.yml) 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
+
 **VertexCare** is a production-grade MLOps project that translates published academic research into a real-world system for improving patient outcomes. It moves beyond simple prediction to create an intelligent, agentic platform that analyzes patient data, identifies high-risk individuals, and generates prioritized, actionable intervention plans for healthcare providers.
 
 This project demonstrates a full-cycle, research-to-impact workflow, incorporating modern AI engineering principles, including a modular architecture, automated CI/CD, and state-of-the-art LLM-based feature extraction.
+
+---
+
+## Live Demo 🚀
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://vertexcare-ui-678532812483.us-central1.run.app)
+
+![VertexCare Application Demo](assets/images/demo.jpg)
+
+---
+
+## Key Features ✨
+
+* **End-to-End MLOps**: A complete, automated pipeline from data ingestion and validation to model training, deployment, and monitoring.
+* **LLM-Powered Feature Engineering**: Leverages Gemini to extract structured insights from unstructured clinical notes, enriching the dataset.
+* **Agentic System**: Implements a "ReAct" (Reasoning and Acting) agent that can autonomously use tools to analyze cases and generate comprehensive plans.
+* **Microservice Architecture**: Decoupled FastAPI (backend) and Streamlit (frontend) services running on Cloud Run for independent scaling and deployment.
+* **CI/CD Automation**: GitHub Actions workflow for automated testing, containerization, and deployment to Google Cloud.
 
 ---
 
@@ -41,103 +64,133 @@ graph TD
     style M fill:#ffb,stroke:#333,stroke-width:2px
 ```
 
-## 1. Data Processing Pipeline (/vertexcare/data_processing):
+## 1. Data Processing Pipeline (`/vertexcare/data_processing`):
 
 A multi-stage pipeline that ingests raw data, validates it against a defined schema, and prepares it for feature engineering.
 
-## 2. AI Feature Engineering (/vertexcare/features):
+## 2. AI Feature Engineering (`/vertexcare/features`):
 
 This component includes two key stages:
 
-- **LLM Feature Extractor**:
-Uses the Gemini API to analyze unstructured CHW notes and extract structured features (e.g., transportation issues, financial concerns, patient sentiment).
+-   **LLM Feature Extractor**:
+    Uses the Gemini API to analyze unstructured CHW notes and extract structured features (e.g., transportation issues, financial concerns, patient sentiment).
 
-- **Feature Builder**:
-Creates the final, model-ready datasets by imputing missing values and splitting the data into training and testing sets.
+-   **Feature Builder**:
+    Creates the final, model-ready datasets by imputing missing values and splitting the data into training and testing sets.
 
-## 3. ML Modeling (/vertexcare/models):
+## 3. ML Modeling (`/vertexcare/models`):
 
-- **Training**: A flexible, configuration-driven pipeline that can train multiple models (Logistic Regression, Random Forest, XGBoost) and tracks each experiment.
+-   **Training**: A flexible, configuration-driven pipeline that can train multiple models (Logistic Regression, Random Forest, XGBoost) and tracks each experiment.
 
-- **Clustering**: A K-Means pipeline that groups patients into actionable profiles based on their clinical and social data.
+-   **Clustering**: A K-Means pipeline that groups patients into actionable profiles based on their clinical and social data.
 
-## 4. Agentic System (/vertexcare/agents): The core of the system.
+## 4. Agentic System (`/vertexcare/agents`): The core of the system.
 
-- **Tools**: A suite of tools that allow the agent to get predictions, explanations (via SHAP), and patient notes.
+-   **Tools**: A suite of tools that allow the agent to get predictions, explanations (via SHAP), and patient notes.
 
-- **Agent**: A "ReAct" (Reasoning and Acting) agent that uses these tools to autonomously analyze a patient case and generate a final intervention plan.
+-   **Agent**: A "ReAct" (Reasoning and Acting) agent that uses these tools to autonomously analyze a patient case and generate a final intervention plan.
 
-## 5. API & Dashboard (/vertexcare/api & dashboard.py):
+## 5. API & Dashboard (`/vertexcare/api` & `dashboard.py`):
 
-- **FastAPI Server**: Exposes the agent's logic via a secure, scalable API endpoint.
+-   **FastAPI Server**: Exposes the agent's logic via a secure, scalable API endpoint.
 
-- **Streamlit UI**: A simple, user-friendly web dashboard that allows a user to enter a patient ID and receive the agent's generated plan.
+-   **Streamlit UI**: A simple, user-friendly web dashboard that allows a user to enter a patient ID and receive the agent's generated plan.
 
-# Getting Started
-Follow these instructions to set up and run the VertexCare project locally.
+## Local Setup and Development
 
-- **Prerequisites**
-    - Python 3.8+
-    - pip and venv
+Follow these instructions to set up and run the VertexCare project locally using the provided `Makefile`.
 
-- **1. Clone the Repository**
-    ```Bash
-    git clone <your-repository-url>
-    cd vertex-care
+-   **Prerequisites**
+    -   Python 3.8+
+    -   `make` command-line tool
+    -   A Python virtual environment tool (like `venv`)
+
+### 1. Clone the Repository
+```bash
+git clone <your-repository-url>
+cd vertex-care
+```
+
+### 2. Install Dependencies
+It's recommended to create and activate a Python virtual environment first. Then, you can install all required packages with a single command.
+
+```bash
+# Recommended: Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate
+
+# Install all dependencies
+make setup
+```
+
+### 3. Set Up Credentials
+This application requires Google Cloud credentials to access Vertex AI services.
+
+```bash
+gcloud auth application-default login
+```
+
+### 4. Run the Application
+The backend API and the frontend UI are run as separate services. You'll need two separate terminals.
+
+**In Terminal 1 (Backend API):**
+This command starts the FastAPI server.
+```bash
+make serve-api
+```
+
+**In Terminal 2 (Frontend UI):**
+This command starts the Streamlit dashboard.
+```bash
+make serve-ui
+```
+You can now open the Streamlit URL shown in Terminal 2 to use the planner.
+
+## Running the MLOps Pipelines
+
+These commands execute the offline data processing and model training jobs. The resulting models and data artifacts are used by the live application.
+
+### Running All Pipelines at Once
+The `all` target provides an end-to-end run that checks code quality, runs tests, and executes all data and modeling pipelines in the correct order.
+
+```bash
+make all
+```
+
+### Running Individual Pipelines
+You can also run each pipeline step individually.
+
+- **Process data and train the primary model:**
+    ```bash
+    make run-pipeline
     ```
-- **2. Set Up the Virtual Environment**
-Create and activate a Python virtual environment.
-
-    ```Bash
-    python -m venv venv
-    source venv/bin/activate
+- **Run the patient clustering model:**
+    ```bash
+    make run-clustering
     ```
-- **3. Install Dependencies**
-    Install the project and all its dependencies, including the optional testing libraries.
-
-    ```Bash
-    pip install -e ".[test]"
+- **(If needed) Add mock notes to the raw data:**
+    ```bash
+    make run-add-mock-notes
     ```
-- **4. Set Up Credentials**
-    This application requires Google Cloud credentials to access the Gemini API and Secret Manager.
-        ```Bash
-        gcloud auth application-default login
-        ```
 
-- **5. Run the Application**
-    To interact with the agent, you need to run the backend API and the frontend dashboard in two separate terminals.
+## Testing and Linting
 
-    In Terminal 1 (Backend):
+You can validate your code at any time by running the automated tests and lint checks.
 
-        ```Bash
-        uvicorn vertexcare.api.main:app --host 0.0.0.0 --port 8000
-        ```
-    In Terminal 2 (Frontend):
-
-        ```Bash
-        streamlit run dashboard.py
-        You can now open the Streamlit URL provided in Terminal 2 to use the planner.
-        ```
-- **6. Run Tests**
-    To run the automated unit tests, use the following command:
-
-    ```Bash
-    python -m pytest
+-   **To run the test suite:**
+    ```bash
+    make test
     ```
-<!-- ## Contributing
-Contributions are welcome! If you have a suggestion or find a bug, please open an issue to discuss it.
+-   **To check code formatting and style:**
+    ```bash
+    make lint
+    ```
 
-If you would like to contribute code, please follow these steps:
-
-Fork the repository.
-
-Create a new feature branch (git checkout -b feat/your-amazing-feature).
-
-Make your changes and commit them (git commit -m 'Feat: Add some amazing feature').
-
-Push to the branch (git push origin feat/your-amazing-feature).
-
-Open a new Pull Request. -->
+### Discovering Other Commands
+The `Makefile` includes other helpful commands. To see a full list of available targets and their descriptions, run:
+```bash
+make help
+```
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE file](#LICENSE) for more details.
