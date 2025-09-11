@@ -32,3 +32,4 @@ pre-commit
 # Google Cloud
 google-generativeai
 google-cloud-secret-manager
+google-cloud-aiplatform>=1.55.0

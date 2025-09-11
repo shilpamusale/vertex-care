@@ -7,32 +7,28 @@ import time
 from typing import Dict, Any, Union
 
 from google.api_core import exceptions
-
-# Add these two imports
 import pandas as pd
 
-import google.generativeai as genai
-from vertexcare.utils.gcp_utils import get_gemini_api_key
+import vertexai
+from vertexai.generative_models import GenerativeModel, HarmCategory, HarmBlockThreshold
 
 # Import the tools we built
 from vertexcare.agents.agent_tools import (
     prediction_tool,
     notes_tool,
     explanation_tool,
-)  # noqa: F401
+)
 
-# --- Configure Live Gemini Model ---
-API_KEY = get_gemini_api_key()
-if API_KEY:
-    genai.configure(api_key=API_KEY)
+# Initialize Vertex AI right after imports
+# This correctly configures the SDK for the rest of the file.
+vertexai.init(project="vertexcare", location="us-central1")
 
-# Set safety settings to be less restrictive for this use case
-safety_settings = [
-    {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
-    {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
-    {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
-    {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
-]
+safety_settings = {
+    HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+    HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+    HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+}
 
 
 # --- Agent Configuration ---
@@ -81,12 +77,12 @@ async def call_agent_llm(
     """
     logging.info("AGENT: Calling live Gemini model to decide next action...")
 
-    if not API_KEY:
-        return {"error": "Gemini API key is not configured."}
+    # --- CHANGE 1: Update to the correct, modern model name ---
+    live_model = GenerativeModel("gemini-2.5-flash")
 
     for i in range(retries):
         try:
-            live_model = genai.GenerativeModel("gemini-1.5-flash")
+            # --- CHANGE 2: Model is now initialized outside the loop ---
             response = live_model.generate_content(prompt, safety_settings=safety_settings)
 
             if not response.candidates:
@@ -102,7 +98,8 @@ async def call_agent_llm(
             delay *= 2  # Double the delay for the next potential retry
 
         except Exception as e:
-            logging.error(f"Error calling Gemini for agent action: {e}")
+            # Add exc_info=True to get the full stack trace in the logs
+            logging.error(f"Error calling Gemini for agent action: {e}", exc_info=True)
             if i < retries - 1:
                 logging.info(f"Retrying in {delay}s...")
                 time.sleep(delay)
@@ -136,17 +133,13 @@ def execute_tool(action: str, model: Any, imputer: Any, patient_data_df: pd.Data
             ),
         }
 
-        # --- NEW, ROBUST PARSING LOGIC ---
         func_name = action.split("(", 1)[0].strip()
-
-        # Use a regular expression to find any integer within the parentheses
         match = re.search(r"\(.*?(\d+).*?\)", action)
         if not match:
             raise ValueError(f"Could not find a valid integer patient ID in action: {action}")
 
         patient_id = int(match.group(1))
         args = {"patient_id": patient_id}
-        # --- END NEW PARSING LOGIC ---
 
         if func_name not in tool_functions:
             raise ValueError(f"Unknown tool specified: {func_name}")
@@ -164,14 +157,16 @@ async def run_agent(patient_id: int, model: Any, imputer: Any, patient_data_df: 
     prompt_history = f"{SYSTEM_PROMPT}\n\nBegin analysis for patient_id: {patient_id}"
 
     for i in range(MAX_ITERATIONS):
-        print(f"\n--- DEBUG: ITERATION {i + 1} ---")
         logging.info(f"--- Iteration {i + 1} ---")
         llm_response = await call_agent_llm(prompt_history, patient_id, model, imputer, patient_data_df)
-        print(f"--- DEBUG: RAW LLM RESPONSE ---\n{llm_response}\n--------------------")  # ADD THIS
+
+        if isinstance(llm_response, dict) and "error" in llm_response:
+            logging.error(f"Error from LLM call: {llm_response['error']}")
+            return llm_response  # Propagate the error
+
         if "Final Answer:" in llm_response:
             logging.info("AGENT: Final plan detected.")
             try:
-                # Extract the JSON part of the string after the label
                 json_str = llm_response.split("Final Answer:")[1].strip()
                 if json_str.startswith("```json"):
                     json_str = json_str[7:]
@@ -183,10 +178,6 @@ async def run_agent(patient_id: int, model: Any, imputer: Any, patient_data_df: 
             except Exception as e:
                 logging.error(f"Failed to parse final plan from LLM response: '{llm_response}'." f" Error: {e}")
                 return {"error": "Failed to parse the final plan from the LLM."}
-
-        if isinstance(llm_response, dict):
-            logging.info("AGENT: Final plan generated.")
-            return llm_response
 
         thought, action = parse_llm_output(llm_response)
         if thought:

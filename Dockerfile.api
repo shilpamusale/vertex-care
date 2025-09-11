@@ -1,0 +1,24 @@
+# Dockerfile for the VertexCare API
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PORT=8080
+
+# Install dependencies
+COPY requirements.txt pyproject.toml ./
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY vertexcare/ ./vertexcare
+
+# --- ADD THESE TWO LINES ---
+COPY models/ ./models
+COPY data/ ./data
+# -------------------------
+
+# Run the API server with Gunicorn
+CMD exec gunicorn --bind "0.0.0.0:${PORT}" --workers 1 --threads 8 --timeout 0 "vertexcare.api.main:app" -k uvicorn.workers.UvicornWorker
