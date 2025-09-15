@@ -11,7 +11,7 @@ This project demonstrates a full-cycle, research-to-impact workflow, incorporati
 
 ---
 
-## Live Demo 🚀
+## Live Demo 
 
 <a href="https://vertexcare-ui-678532812483.us-central1.run.app" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/Live-Demo-brightgreen" alt="Live Demo Badge">
@@ -21,7 +21,7 @@ This project demonstrates a full-cycle, research-to-impact workflow, incorporati
 
 ---
 
-## Key Features ✨
+## Key Features 
 
 * **End-to-End MLOps**: A complete, automated pipeline from data ingestion and validation to model training, deployment, and monitoring.
 * **LLM-Powered Feature Engineering**: Leverages Gemini to extract structured insights from unstructured clinical notes, enriching the dataset.
