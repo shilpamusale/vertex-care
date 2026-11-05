@@ -22,6 +22,7 @@ barrier_vocab:
   food: [food, meal, snap, pantry, nutrition, groceries]
   clinical_follow_up: [follow-up, follow up, appointment, primary care, pcp, clinic, diabetes educator, care team]
   outreach: [contact, call, outreach, assess, screen, check in, check-in, home visit, reach out]
+  social_support: [social support, support network, isolation, isolated, lonely, loneliness, support group]
 
 cases:
   - case_id: high_clinical_no_sdoh_01
@@ -37,7 +38,11 @@ cases:
       top_priority_in: [High]
       must_address:
         - {barrier: clinical_follow_up, min_priority: High}
-      must_not_address: [transportation, financial, food]
+      must_not_address: [transportation, financial, food, social_support]
+      forbidden_patterns:
+        # Notes say "managing well"; no tool reports adherence problems.
+        - label: fabricated_nonadherence
+          regex: '\bnon-?adheren|\bpoor adherence|\bnot (taking|adherent)'
 
   - case_id: transport_barrier_01
     patient_id: 2
@@ -69,8 +74,11 @@ cases:
       top_priority_in: [Low, Medium]
       must_address:
         - {barrier: clinical_follow_up, min_priority: Low}
-      must_not_address: [transportation, financial, food]
-
+      must_not_address: [transportation, financial, food, social_support]
+      forbidden_patterns:
+        # sdoh_pcp=1 means the patient HAS a regular PCP (data dictionary, item 161).
+        - label: inverted_pcp_status
+          regex: '\b(lacks?|lacking|without|no)\s+(a\s+)?(regular\s+)?(primary care|pcp)|\bestablish\w*\s+(a\s+)?(regular\s+)?(primary care|pcp)'
   - case_id: conflicting_financial_01
     patient_id: 4
     description: >-
