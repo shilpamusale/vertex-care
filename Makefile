@@ -62,6 +62,16 @@ serve-ui: ## Serve the frontend Streamlit dashboard
 	poetry run streamlit run scripts/dashboard.py
 
 # ==============================================================================
+# AGENT EVALUATION
+# ==============================================================================
+
+eval-record: ## Run the agent live on the gold set (Gemini calls) and record traces
+	python -m evals.run_eval record
+
+eval: ## Score recorded traces against the gold set (no API calls)
+	python -m evals.run_eval score
+
+# ==============================================================================
 # UTILITY
 # ==============================================================================
 
