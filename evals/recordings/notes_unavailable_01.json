@@ -1,0 +1,59 @@
+{
+  "case_id": "notes_unavailable_01",
+  "patient_id": 6,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 6,
+      "output": {
+        "patient_id": 6,
+        "status": "Success",
+        "readmission_risk_score": 0.2
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 6,
+      "output": {
+        "patient_id": 6,
+        "status": "Success",
+        "top_risk_factors": [
+          "age",
+          "sumcomorbidities",
+          "hypertension"
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 6,
+      "output": {
+        "patient_id": 6,
+        "status": "Error",
+        "error": "Notes service timeout."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 6,
+    "readmission_risk_score": 0.2,
+    "risk_summary": "The patient has a low risk of readmission, primarily due to factors like age, multiple comorbidities, and hypertension.",
+    "recommended_actions": [
+      {
+        "priority": "Medium",
+        "action": "Educate the patient on hypertension management, including medication adherence, dietary modifications (e.g., low sodium), and regular blood pressure monitoring."
+      },
+      {
+        "priority": "Medium",
+        "action": "Review all current medications with the patient to ensure understanding of purpose, dosage, and potential side effects, especially given multiple comorbidities."
+      },
+      {
+        "priority": "Low",
+        "action": "Provide resources for general healthy aging practices and chronic disease self-management support."
+      }
+    ]
+  },
+  "latency_s": 6.31,
+  "recorded_at": "2026-11-05T22:54:23+00:00",
+  "git_sha": "2407b1c"
+}
