@@ -34,3 +34,56 @@ def test_empty_response_raises():
 
 def test_model_stops_before_writing_its_own_observation():
     assert chw_agent.STOP_SEQUENCES == ["Observation:"]
+
+
+# --- ReAct loop guards (scripted LLM, real loop, stubbed tools) -------------------------------
+
+
+def run_scripted(monkeypatch, responses):
+    """Run the real agent loop for gold case transport_barrier_01 with scripted LLM replies."""
+    import asyncio
+
+    from evals.run_eval import GOLD_PATH, record_case
+    from evals.schema import load_gold_set
+
+    case = next(c for c in load_gold_set(GOLD_PATH).cases if c.case_id == "transport_barrier_01")
+    prompts = []
+    queue = list(responses)
+
+    async def fake_llm(prompt, *_args, **_kwargs):
+        prompts.append(prompt)
+        return queue.pop(0)
+
+    monkeypatch.setattr(chw_agent, "call_agent_llm", fake_llm)
+    return asyncio.run(record_case(case)), prompts
+
+
+PLAN = (
+    'Final Answer: {"patient_id": 2, "readmission_risk_score": %s, "risk_summary": "s", '
+    '"recommended_actions": [{"priority": "High", "action": "Arrange a ride to cardiology."}]}'
+)
+
+
+def test_final_answer_before_required_tools_is_rejected(monkeypatch):
+    """Regression: the agent answered without calling any tool and reported an invented score (0.72)."""
+    trace, prompts = run_scripted(
+        monkeypatch,
+        [PLAN % 0.72, "Action: prediction_tool(patient_id=2)", "Action: notes_tool(patient_id=2)", PLAN % 0.45],
+    )
+    assert "Final Answer rejected. Call prediction_tool, notes_tool first." in prompts[1]
+    assert [c.tool for c in trace.tool_calls] == ["prediction_tool", "notes_tool"]
+    assert trace.final_output["readmission_risk_score"] == 0.45
+
+
+def test_response_without_action_gets_a_nudge_not_an_empty_tool_call(monkeypatch):
+    trace, prompts = run_scripted(
+        monkeypatch,
+        [
+            "Thought: thinking.",
+            "Action: prediction_tool(patient_id=2)",
+            "Action: notes_tool(patient_id=2)",
+            PLAN % 0.45,
+        ],
+    )
+    assert chw_agent.NO_ACTION_NUDGE in prompts[1]
+    assert [c.tool for c in trace.tool_calls] == ["prediction_tool", "notes_tool"]

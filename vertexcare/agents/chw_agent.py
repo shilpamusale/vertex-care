@@ -32,7 +32,12 @@ safety_settings = {
 
 
 # --- Agent Configuration ---
-MAX_ITERATIONS = 5
+MAX_ITERATIONS = 8  # 3 tool calls + final answer, with room for rejected answers and nudges
+# A Final Answer is refused until these have been called: the plan's risk score comes from
+# prediction_tool and its barriers from notes_tool. Gemini sometimes answers without calling them
+# and invents both (observed in eval runs).
+REQUIRED_TOOLS = ("prediction_tool", "notes_tool")
+NO_ACTION_NUDGE = "Observation: No Action found. Reply with exactly one Action line or a Final Answer."
 # The model must stop after each Action and wait for the real tool result. Without this, Gemini
 # sometimes writes its own "Observation:" (invented patient notes) and a Final Answer in one response.
 STOP_SEQUENCES = ["Observation:"]
@@ -205,6 +210,7 @@ async def run_agent(patient_id: int, model: Any, imputer: Any, patient_data_df: 
     """Runs the main ReAct loop for the CHW Intervention Agent."""
     logging.info(f"--- Starting Agent for Patient ID: {patient_id} ---")
     prompt_history = f"{SYSTEM_PROMPT}\n\nBegin analysis for patient_id: {patient_id}"
+    called_tools: set = set()
 
     for i in range(MAX_ITERATIONS):
         logging.info(f"--- Iteration {i + 1} ---")
@@ -222,6 +228,12 @@ async def run_agent(patient_id: int, model: Any, imputer: Any, patient_data_df: 
             llm_response = llm_response.split("Observation:")[0]
 
         if "Final Answer:" in llm_response:
+            missing = [t for t in REQUIRED_TOOLS if t not in called_tools]
+            if missing:
+                logging.warning(f"AGENT: rejected a Final Answer given before calling {missing}.")
+                rejection = f"Observation: Final Answer rejected. Call {', '.join(missing)} first."
+                prompt_history += f"\n{llm_response.split('Final Answer:')[0]}\n{rejection}"
+                continue
             logging.info("AGENT: Final plan detected.")
             try:
                 json_str = llm_response.split("Final Answer:")[1].strip()
@@ -241,7 +253,12 @@ async def run_agent(patient_id: int, model: Any, imputer: Any, patient_data_df: 
             logging.info(f"AGENT THOUGHT: {thought}")
 
         logging.info(f"AGENT ACTION: {action}")
+        if not action:
+            logging.warning("AGENT: response had no Action; nudging the model.")
+            prompt_history += f"\n{llm_response}\n{NO_ACTION_NUDGE}"
+            continue
         tool_result = execute_tool(action, model, imputer, patient_data_df)
+        called_tools.add(action.split("(", 1)[0].strip())
 
         observation = f"Observation: {json.dumps(tool_result)}"
         logging.info(f"AGENT OBSERVATION: {observation}")
