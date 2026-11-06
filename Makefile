@@ -61,6 +61,9 @@ serve-ui: ## Serve the frontend Streamlit dashboard
 	@echo ">>> Starting Streamlit frontend..."
 	poetry run streamlit run scripts/dashboard.py
 
+synthetic-data: ## Generate the synthetic cohort (data/01_raw/mock_data_with_notes.csv)
+	python -m vertexcare.data_processing.synthetic_data
+
 # ==============================================================================
 # AGENT EVALUATION
 # ==============================================================================
