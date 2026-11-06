@@ -1,0 +1,35 @@
+{
+  "case_id": "conflicting_transport_resolved_01",
+  "patient_id": 12,
+  "tool_calls": [],
+  "final_output": {
+    "patient_id": 12,
+    "readmission_risk_score": 0.72,
+    "risk_summary": "Patient 12 has a high risk of readmission primarily due to recent heart failure exacerbation, multiple chronic conditions, medication non-adherence driven by cost, and lack of consistent primary care follow-up.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Contact the patient's prescriber or pharmacist immediately regarding difficulty affording prescribed medications (Metoprolol, Furosemide, Lisinopril) and reported skipped doses; explore patient assistance programs or alternative low-cost options."
+      },
+      {
+        "priority": "High",
+        "action": "Facilitate scheduling of follow-up appointments with Cardiology and the Primary Care Provider as soon as possible to ensure clinical evaluation of current symptoms and management of CHF."
+      },
+      {
+        "priority": "Medium",
+        "action": "Provide education and support for managing multiple appointments and understanding discharge instructions, potentially using visual aids or simplifying complex medical terms."
+      },
+      {
+        "priority": "Medium",
+        "action": "Connect the patient with a dietitian or provide resources for a heart-healthy, low-sodium diet, considering their expressed interest and CHF diagnosis."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+      }
+    ]
+  },
+  "latency_s": 7.56,
+  "recorded_at": "2026-11-06T22:24:52+00:00",
+  "git_sha": "1b121f2"
+}

@@ -1,0 +1,83 @@
+{
+  "case_id": "post_discharge_chf_01",
+  "patient_id": 7,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "readmission_risk_score": 0.82
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "referral_type_ed",
+            "description": "Referred from the emergency department",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 4,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 69,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "notes": "Discharged yesterday after an ED visit for heart failure. Lives with daughter, who helps with medications and drives to appointments."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 7,
+    "readmission_risk_score": 0.82,
+    "risk_summary": "Patient 7 has a high readmission risk (0.82) due to a recent emergency department visit for heart failure, multiple chronic conditions (4), and age (69), despite having support from her daughter for medications and appointments.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Confirm the patient has a follow-up appointment with their cardiologist or managing physician for heart failure, ideally within 7 days of discharge."
+      },
+      {
+        "priority": "High",
+        "action": "Provide education to the patient and daughter on heart failure warning signs and symptoms (e.g., weight gain, increased swelling, shortness of breath) and when to seek medical attention."
+      },
+      {
+        "priority": "High",
+        "action": "Contact the patient and daughter to review the current medication list, dosage, and schedule, ensuring understanding of all new or changed medications post-discharge."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+      }
+    ]
+  },
+  "latency_s": 18.0,
+  "recorded_at": "2026-11-06T22:19:16+00:00",
+  "git_sha": "1b121f2"
+}

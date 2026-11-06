@@ -1,0 +1,83 @@
+{
+  "case_id": "post_discharge_chf_01",
+  "patient_id": 7,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "readmission_risk_score": 0.82
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "referral_type_ed",
+            "description": "Referred from the emergency department",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 4,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 69,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "notes": "Discharged yesterday after an ED visit for heart failure. Lives with daughter, who helps with medications and drives to appointments."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 7,
+    "readmission_risk_score": 0.82,
+    "risk_summary": "Patient is at high risk of readmission due to a recent emergency department visit for heart failure, multiple chronic conditions, and advanced age.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Conduct a follow-up call with the patient within 24-48 hours to assess current health status, address any immediate concerns related to heart failure management, and review discharge instructions."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm that a follow-up appointment with the patient's primary care provider or cardiology team is scheduled and attended, especially given the recent heart failure exacerbation and multiple comorbidities."
+      },
+      {
+        "priority": "Medium",
+        "action": "Discuss with the patient and daughter any potential challenges or questions they may have regarding medication adherence and appointment logistics, offering resources if needed."
+      },
+      {
+        "priority": "Medium",
+        "action": "Provide educational materials on heart failure self-management, symptom recognition, and guidance on when to seek medical attention, tailored for both the patient and their daughter."
+      }
+    ]
+  },
+  "latency_s": 9.59,
+  "recorded_at": "2026-11-06T22:18:43+00:00",
+  "git_sha": "1b121f2"
+}

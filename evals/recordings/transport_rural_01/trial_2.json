@@ -1,0 +1,75 @@
+{
+  "case_id": "transport_rural_01",
+  "patient_id": 8,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 8,
+      "output": {
+        "patient_id": 8,
+        "status": "Success",
+        "readmission_risk_score": 0.55
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 8,
+      "output": {
+        "patient_id": 8,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "llm_transportation_issue",
+            "description": "Transportation issue mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 80,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 8,
+      "output": {
+        "patient_id": 8,
+        "status": "Success",
+        "notes": "Lives 40 miles from the clinic, no longer drives, and missed the last two follow-up appointments."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 8,
+    "readmission_risk_score": 0.55,
+    "risk_summary": "The patient has a moderate risk of readmission, primarily due to transportation barriers preventing attendance at follow-up appointments, with advanced age and hypertension as contributing factors.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Immediately contact patient to discuss and arrange reliable transportation solutions for all upcoming medical appointments, given they live 40 miles from the clinic and no longer drive."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm patient has a scheduled follow-up appointment with their primary care provider or care team and re-schedule any missed appointments or schedule new ones as needed, coordinating transportation simultaneously."
+      }
+    ]
+  },
+  "latency_s": 11.77,
+  "recorded_at": "2026-11-06T22:20:41+00:00",
+  "git_sha": "1b121f2"
+}

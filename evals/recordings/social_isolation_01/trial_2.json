@@ -1,0 +1,79 @@
+{
+  "case_id": "social_isolation_01",
+  "patient_id": 15,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 15,
+      "output": {
+        "patient_id": 15,
+        "status": "Success",
+        "readmission_risk_score": 0.6
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 15,
+      "output": {
+        "patient_id": 15,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 84,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 3,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 15,
+      "output": {
+        "patient_id": 15,
+        "status": "Success",
+        "notes": "Lives alone since spouse died in March. Says nobody checks on them and they feel lonely."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 15,
+    "readmission_risk_score": 0.6,
+    "risk_summary": "Patient is at high risk for readmission due to advanced age, multiple chronic conditions, hypertension, and self-reported social isolation and loneliness since their spouse's death.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Coordinate a comprehensive clinical follow-up for the patient given the high readmission risk score."
+      },
+      {
+        "priority": "Medium",
+        "action": "Connect the patient with local social services or community programs to address feelings of loneliness and lack of social support."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team."
+      }
+    ]
+  },
+  "latency_s": 8.35,
+  "recorded_at": "2026-11-06T22:28:57+00:00",
+  "git_sha": "1b121f2"
+}

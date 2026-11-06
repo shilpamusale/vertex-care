@@ -1,0 +1,79 @@
+{
+  "case_id": "high_clinical_no_sdoh_01",
+  "patient_id": 1,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 1,
+      "output": {
+        "patient_id": 1,
+        "status": "Success",
+        "readmission_risk_score": 0.75
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 1,
+      "output": {
+        "patient_id": 1,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 78,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 5,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "diabetes",
+            "description": "Has diabetes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 1,
+      "output": {
+        "patient_id": 1,
+        "status": "Success",
+        "notes": "Patient seems to be managing well at home."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 1,
+    "readmission_risk_score": 0.75,
+    "risk_summary": "The patient has a high readmission risk (0.75) driven by advanced age, multiple chronic conditions, and diabetes, though current notes indicate they are managing well at home.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Initiate a comprehensive CHW check-in to further assess current management strategies, potential unstated needs, and confirm patient well-being, given the high readmission risk."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team."
+      },
+      {
+        "priority": "Medium",
+        "action": "Offer resources and education related to managing multiple chronic conditions, especially diabetes, to ensure optimal self-management and prevent complications."
+      }
+    ]
+  },
+  "latency_s": 11.72,
+  "recorded_at": "2026-11-06T22:13:43+00:00",
+  "git_sha": "1b121f2"
+}

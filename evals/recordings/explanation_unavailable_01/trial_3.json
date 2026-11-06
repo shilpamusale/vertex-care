@@ -1,0 +1,55 @@
+{
+  "case_id": "explanation_unavailable_01",
+  "patient_id": 11,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 11,
+      "output": {
+        "patient_id": 11,
+        "status": "Success",
+        "readmission_risk_score": 0.5
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 11,
+      "output": {
+        "patient_id": 11,
+        "status": "Error",
+        "error": "SHAP service timeout."
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 11,
+      "output": {
+        "patient_id": 11,
+        "status": "Success",
+        "notes": "Worried about paying the hospital bill and has stopped opening mail from the billing office."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 11,
+    "readmission_risk_score": 0.5,
+    "risk_summary": "Patient has a moderate readmission risk score of 0.5; model explanation factors are unavailable, but notes indicate significant financial worry regarding hospital bills leading to avoidance of communication.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Contact patient's primary care team to discuss potential clinical risk factors for readmission, as the model explanation was unavailable."
+      },
+      {
+        "priority": "Medium",
+        "action": "Connect patient with hospital financial counseling services or relevant community resources to address concerns about hospital bills and payment options and encourage opening important mail."
+      },
+      {
+        "priority": "Low",
+        "action": "Confirm the patient has a follow-up appointment scheduled with their primary care provider or care team."
+      }
+    ]
+  },
+  "latency_s": 18.47,
+  "recorded_at": "2026-11-06T22:24:45+00:00",
+  "git_sha": "1b121f2"
+}
