@@ -57,23 +57,23 @@
   "final_output": {
     "patient_id": 4,
     "readmission_risk_score": 0.65,
-    "risk_summary": "Patient 4 is a 71-year-old with hypertension and a significant risk of readmission, primarily due to expressed concerns about affording new medication co-pays, as confirmed by CHW notes.",
+    "risk_summary": "Patient is at moderate risk for readmission due to advanced age, confirmed financial concerns regarding medication co-pays, and a history of hypertension.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Connect patient with social work or financial assistance programs to explore options for medication co-pay relief and ensure consistent access to necessary prescriptions."
+        "action": "Connect patient with hospital financial assistance or community resources for medication co-pay support; explore generic alternatives or patient assistance programs for current medications."
       },
       {
         "priority": "Medium",
-        "action": "Provide educational materials and discuss hypertension management strategies, including the importance of medication adherence and recognizing potential side effects."
+        "action": "Provide education on hypertension management, including medication adherence, diet, and lifestyle modifications; assess patient's understanding and ability to manage their condition."
       },
       {
-        "priority": "Low",
-        "action": "Schedule a follow-up call within 7-10 days to assess medication adherence, address any new concerns, and check on overall well-being."
+        "priority": "Medium",
+        "action": "Follow up on medication adherence, specifically for hypertension medications, and ensure patient understands their medication regimen."
       }
     ]
   },
-  "latency_s": 8.79,
-  "recorded_at": "2026-11-06T00:07:32+00:00",
-  "git_sha": "61d167c"
+  "latency_s": 7.7,
+  "recorded_at": "2026-11-06T00:44:23+00:00",
+  "git_sha": "d814a89"
 }

@@ -59,15 +59,23 @@
   "final_output": {
     "patient_id": 3,
     "readmission_risk_score": 0.15,
-    "risk_summary": "Patient has a very low risk of readmission, reporting good spirits and medication adherence, despite the model identifying age and having a PCP as minor statistical risk factors.",
+    "risk_summary": "Patient 3 exhibits a very low readmission risk, is in good spirits, and reports excellent medication adherence, despite statistical factors like having a PCP and age influencing the prediction model.",
     "recommended_actions": [
       {
+        "priority": "Medium",
+        "action": "Commend the patient for their positive outlook and consistent medication adherence, reinforcing these healthy behaviors."
+      },
+      {
         "priority": "Low",
-        "action": "Schedule a routine follow-up call in 2-4 weeks to check on general well-being and medication adherence, reinforcing positive self-management."
+        "action": "Encourage continued, active engagement with their primary care physician for ongoing preventative care and health management."
+      },
+      {
+        "priority": "Low",
+        "action": "Schedule a routine follow-up within 3-6 months to re-evaluate overall well-being and adherence, given the current low risk status."
       }
     ]
   },
-  "latency_s": 10.1,
-  "recorded_at": "2026-11-06T00:07:23+00:00",
-  "git_sha": "61d167c"
+  "latency_s": 19.34,
+  "recorded_at": "2026-11-06T00:44:15+00:00",
+  "git_sha": "d814a89"
 }

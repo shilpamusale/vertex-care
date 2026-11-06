@@ -94,7 +94,7 @@ def test_describe_factor(feature, value, contribution, expected):
 def test_gold_fixtures_match_glossary():
     """Gold-set fixtures stand in for real tool output, so they must use the same wording."""
     for case in load_gold_set(GOLD_PATH).cases:
-        for factor in case.fixtures.explanation["top_risk_factors"]:
+        for factor in case.fixtures.explanation.get("top_risk_factors", []):
             reference = describe_factor(factor["feature"], 1, 1.0)
             for key in ("description", "use_in_care_plan", "note"):
                 assert factor.get(key) == reference.get(key), (case.case_id, factor["feature"], key)

@@ -1,0 +1,79 @@
+{
+  "case_id": "low_risk_no_barriers_02",
+  "patient_id": 9,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 9,
+      "output": {
+        "patient_id": 9,
+        "status": "Success",
+        "readmission_risk_score": 0.08
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 9,
+      "output": {
+        "patient_id": 9,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "asthma",
+            "description": "Has asthma",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "insurance_public",
+            "description": "Has public insurance",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 34,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 9,
+      "output": {
+        "patient_id": 9,
+        "status": "Success",
+        "notes": "Asthma well controlled. Works full time, has reliable transportation and a regular doctor."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 9,
+    "readmission_risk_score": 0.08,
+    "risk_summary": "Patient 9 has a very low readmission risk, supported by strong social support, high medication adherence, a scheduled follow-up, and well-controlled asthma, despite statistical model flags for asthma, public insurance, and age.",
+    "recommended_actions": [
+      {
+        "priority": "Low",
+        "action": "Verify the patient attended their scheduled follow-up appointment within 7 days post-discharge."
+      },
+      {
+        "priority": "Low",
+        "action": "Reinforce the importance of continued adherence to their asthma management plan to maintain well-controlled status."
+      },
+      {
+        "priority": "Low",
+        "action": "Encourage the patient to utilize their strong social support system and regular physician for any new health concerns or questions."
+      }
+    ]
+  },
+  "latency_s": 11.35,
+  "recorded_at": "2026-11-06T00:46:24+00:00",
+  "git_sha": "d814a89"
+}
