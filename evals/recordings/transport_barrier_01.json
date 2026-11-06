@@ -17,10 +17,30 @@
       "output": {
         "patient_id": 2,
         "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
         "top_risk_factors": [
-          "hypertension",
-          "llm_transportation_issue",
-          "age"
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "llm_transportation_issue",
+            "description": "Transportation issue mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 67,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          }
         ]
       }
     },
@@ -37,27 +57,19 @@
   "final_output": {
     "patient_id": 2,
     "readmission_risk_score": 0.45,
-    "risk_summary": "The patient has a moderate risk of readmission primarily due to hypertension, age, and an immediate transportation barrier for an upcoming cardiology appointment.",
+    "risk_summary": "The patient has a moderate risk of readmission due to hypertension, age, and a stated concern about transportation to an upcoming cardiology appointment.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Coordinate immediate transportation assistance for the patient's cardiology appointment next week."
+        "action": "Coordinate transportation for the patient to their cardiology appointment next week."
       },
       {
         "priority": "Medium",
-        "action": "Connect the patient with local transportation assistance programs for ongoing support with medical appointments."
-      },
-      {
-        "priority": "Medium",
-        "action": "Assess the patient's understanding and adherence to their hypertension management plan, providing education and support as needed."
-      },
-      {
-        "priority": "Low",
-        "action": "Ensure the patient has established care with a primary care provider and is scheduled for regular follow-up visits."
+        "action": "Assess the patient's understanding and adherence to their hypertension management plan, and provide education or resources as needed."
       }
     ]
   },
-  "latency_s": 6.28,
-  "recorded_at": "2026-11-05T22:53:55+00:00",
-  "git_sha": "2407b1c"
+  "latency_s": 6.72,
+  "recorded_at": "2026-11-06T00:07:13+00:00",
+  "git_sha": "61d167c"
 }

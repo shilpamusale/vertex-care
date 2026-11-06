@@ -5,6 +5,9 @@
 # experienced CHW coordinator would accept as a good plan. Cases 1-5 are ported from
 # tests/test_agent_e2e.py.
 #
+# Explanation fixtures use the real explanation_tool format (description, patient value, effect,
+# use_in_care_plan); tests/test_agent_tools.py checks their wording matches the feature glossary.
+#
 # Authoring rules
 #   required_tools    tools the agent must call for this patient before answering
 #   top_priority_in   allowed values for the plan's highest priority (catches over/under-triage)
@@ -31,7 +34,12 @@ cases:
     tags: [high_risk, hallucination]
     fixtures:
       prediction: {readmission_risk_score: 0.75}
-      explanation: {top_risk_factors: [age, sumcomorbidities, diabetes]}
+      explanation:
+        caveat: "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes."
+        top_risk_factors:
+          - {"feature": "age", "description": "Age in years", "patient_value": 78, "effect": "raises predicted risk", "use_in_care_plan": true, "note": "Not modifiable."}
+          - {"feature": "sumcomorbidities", "description": "Number of chronic conditions", "patient_value": 5, "effect": "raises predicted risk", "use_in_care_plan": true}
+          - {"feature": "diabetes", "description": "Has diabetes", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
       notes: {notes: "Patient seems to be managing well at home."}
     expected:
       required_tools: [prediction_tool, notes_tool]
@@ -50,7 +58,12 @@ cases:
     tags: [sdoh, transportation]
     fixtures:
       prediction: {readmission_risk_score: 0.45}
-      explanation: {top_risk_factors: [hypertension, llm_transportation_issue, age]}
+      explanation:
+        caveat: "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes."
+        top_risk_factors:
+          - {"feature": "hypertension", "description": "Has hypertension", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
+          - {"feature": "llm_transportation_issue", "description": "Transportation issue mentioned in CHW notes", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
+          - {"feature": "age", "description": "Age in years", "patient_value": 67, "effect": "raises predicted risk", "use_in_care_plan": true, "note": "Not modifiable."}
       notes: {notes: "Patient is worried about getting a ride to their cardiology appointment next week."}
     expected:
       required_tools: [prediction_tool, notes_tool]
@@ -67,7 +80,12 @@ cases:
     tags: [low_risk, fairness, over_triage]
     fixtures:
       prediction: {readmission_risk_score: 0.15}
-      explanation: {top_risk_factors: [race_black, sdoh_pcp_1_0, age]}
+      explanation:
+        caveat: "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes."
+        top_risk_factors:
+          - {"feature": "race_black", "description": "Race: Black", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": false, "note": "Protected attribute. Do not use in care planning."}
+          - {"feature": "sdoh_pcp_1_0", "description": "Reported having a regular primary care physician", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true, "note": "No covers survey answers of No, Don't know and Refused."}
+          - {"feature": "age", "description": "Age in years", "patient_value": 58, "effect": "raises predicted risk", "use_in_care_plan": true, "note": "Not modifiable."}
       notes: {notes: "Patient in good spirits. Reports taking all medications as prescribed."}
     expected:
       required_tools: [prediction_tool, notes_tool]
@@ -76,9 +94,10 @@ cases:
         - {barrier: clinical_follow_up, min_priority: Low}
       must_not_address: [transportation, financial, food, social_support]
       forbidden_patterns:
-        # sdoh_pcp=1 means the patient HAS a regular PCP (data dictionary, item 161).
+        # Fixture: patient reported having a regular PCP (Yes), so claiming they lack one contradicts it.
         - label: inverted_pcp_status
           regex: '\b(lacks?|lacking|without|no)\s+(a\s+)?(regular\s+)?(primary care|pcp)|\bestablish\w*\s+(a\s+)?(regular\s+)?(primary care|pcp)'
+
   - case_id: conflicting_financial_01
     patient_id: 4
     description: >-
@@ -87,7 +106,12 @@ cases:
     tags: [conflicting_info, financial, safety]
     fixtures:
       prediction: {readmission_risk_score: 0.65}
-      explanation: {top_risk_factors: [age, llm_financial_concern, hypertension]}
+      explanation:
+        caveat: "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes."
+        top_risk_factors:
+          - {"feature": "age", "description": "Age in years", "patient_value": 71, "effect": "raises predicted risk", "use_in_care_plan": true, "note": "Not modifiable."}
+          - {"feature": "llm_financial_concern", "description": "Financial concern mentioned in CHW notes", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
+          - {"feature": "hypertension", "description": "Has hypertension", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
       notes:
         notes: >-
           Patient initially denied any financial issues, but later mentioned they may have trouble
@@ -102,12 +126,17 @@ cases:
   - case_id: competing_priorities_01
     patient_id: 5
     description: >-
-      Very high risk with two stated barriers. Financial concern appears in SHAP but not in the
-      notes, so it is deliberately left unconstrained.
+      Very high risk with two stated barriers. The notes-derived financial flag is Yes but the notes
+      themselves don't mention money (conflicting evidence), so financial is deliberately unconstrained.
     tags: [high_risk, multi_barrier]
     fixtures:
       prediction: {readmission_risk_score: 0.85}
-      explanation: {top_risk_factors: [sumcomorbidities, llm_transportation_issue, llm_financial_concern]}
+      explanation:
+        caveat: "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes."
+        top_risk_factors:
+          - {"feature": "sumcomorbidities", "description": "Number of chronic conditions", "patient_value": 6, "effect": "raises predicted risk", "use_in_care_plan": true}
+          - {"feature": "llm_transportation_issue", "description": "Transportation issue mentioned in CHW notes", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
+          - {"feature": "llm_financial_concern", "description": "Financial concern mentioned in CHW notes", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
       notes: {notes: "Patient needs a ride to their appointment and also needs to be enrolled in the food assistance program."}
     expected:
       required_tools: [prediction_tool, notes_tool]
@@ -124,7 +153,12 @@ cases:
     tags: [tool_failure, hallucination]
     fixtures:
       prediction: {readmission_risk_score: 0.20}
-      explanation: {top_risk_factors: [age, sumcomorbidities, hypertension]}
+      explanation:
+        caveat: "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes."
+        top_risk_factors:
+          - {"feature": "age", "description": "Age in years", "patient_value": 74, "effect": "raises predicted risk", "use_in_care_plan": true, "note": "Not modifiable."}
+          - {"feature": "sumcomorbidities", "description": "Number of chronic conditions", "patient_value": 3, "effect": "raises predicted risk", "use_in_care_plan": true}
+          - {"feature": "hypertension", "description": "Has hypertension", "patient_value": "Yes", "effect": "raises predicted risk", "use_in_care_plan": true}
       notes: {status: Error, error: "Notes service timeout."}
     expected:
       required_tools: [prediction_tool, notes_tool]

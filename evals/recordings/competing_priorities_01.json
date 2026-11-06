@@ -17,10 +17,29 @@
       "output": {
         "patient_id": 5,
         "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
         "top_risk_factors": [
-          "sumcomorbidities",
-          "llm_transportation_issue",
-          "llm_financial_concern"
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 6,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "llm_transportation_issue",
+            "description": "Transportation issue mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "llm_financial_concern",
+            "description": "Financial concern mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
         ]
       }
     },
@@ -37,23 +56,19 @@
   "final_output": {
     "patient_id": 5,
     "readmission_risk_score": 0.85,
-    "risk_summary": "Patient has a high risk of readmission primarily due to multiple comorbidities, significant transportation barriers, and financial concerns impacting access to food and appointments.",
+    "risk_summary": "Patient has a high readmission risk primarily due to multiple chronic conditions, identified transportation barriers for appointments, and financial concerns requiring food assistance.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Coordinate immediate transportation solutions for the patient's upcoming medical appointments."
+        "action": "Arrange immediate transportation for the patient's upcoming medical appointments."
       },
       {
         "priority": "High",
-        "action": "Assist the patient with the application and enrollment process for food assistance programs."
-      },
-      {
-        "priority": "Medium",
-        "action": "Follow up with the patient to ensure understanding of their chronic conditions and medication regimen, and address any barriers to adherence."
+        "action": "Assist the patient with the application and enrollment process for a suitable food assistance program (e.g., SNAP)."
       }
     ]
   },
-  "latency_s": 6.52,
-  "recorded_at": "2026-11-05T22:54:17+00:00",
-  "git_sha": "2407b1c"
+  "latency_s": 8.17,
+  "recorded_at": "2026-11-06T00:07:40+00:00",
+  "git_sha": "61d167c"
 }
