@@ -33,6 +33,16 @@ def load_schema(schema_path: Path) -> Dict[str, Any]:
         raise FileNotFoundError(msg)
 
 
+# pandas >= 3 stores text as the "str" dtype rather than "object"; treat text dtypes as equivalent.
+_TEXT_DTYPES = {"object", "str", "string"}
+
+
+def _dtype_matches(actual: str, expected: str) -> bool:
+    if expected in _TEXT_DTYPES:
+        return actual in _TEXT_DTYPES
+    return actual == expected
+
+
 def validate_data(df: pd.DataFrame, schema: Dict[str, Any]) -> bool:
     """Validates the dataframe against a defined schema."""
     is_valid = True
@@ -48,7 +58,7 @@ def validate_data(df: pd.DataFrame, schema: Dict[str, Any]) -> bool:
         logging.info("Column presence check passed.")
 
     for col, expected_type in schema["columns"].items():
-        if col in df.columns and str(df[col].dtype) != expected_type:
+        if col in df.columns and not _dtype_matches(str(df[col].dtype), expected_type):
             logging.error(f"Validation failed: Column '{col}' has type " f"{df[col].dtype}, expected {expected_type}")
             is_valid = False
     if is_valid:

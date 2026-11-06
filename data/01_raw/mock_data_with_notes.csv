@@ -1,0 +1,1382 @@
+age,sex,readmitted,sumcomorbidities,time_spent_total,hypertension,diabetes,asthma,engaged,race_black,referral_type_ed,insurance_public,sdoh_pcp_1_0,chw_notes
+63,0,1,2,0,0,1,1,0,1,0,0,0,
+43,0,0,1,0,0,0,1,0,1,0,1,0,
+70,0,1,0,0,0,0,0,0,1,0,1,0,
+72,0,0,0,0,0,0,0,0,1,1,0,0,
+29,1,1,1,0,1,0,0,0,1,1,0,0,
+39,0,0,1,133,0,1,0,1,1,1,0,0,Missed the last clinic visit because the bus route changed. Completed routine check-in call.
+60,1,1,1,0,1,0,0,0,1,0,1,0,
+54,1,0,1,52,1,0,0,1,1,0,1,0,Says they feel isolated and rarely leave the house. Says there is often not enough food at home by the end of the month.
+58,0,1,0,55,0,0,0,1,1,1,0,1,Missed the last clinic visit because the bus route changed. Daughter helps with medications and appointments.
+46,1,0,0,72,0,0,0,1,1,0,1,1,Seemed down and said things are not getting better. Asked about food pantries near their apartment.
+72,0,1,2,0,0,1,1,0,1,0,1,0,
+70,1,1,2,0,1,0,1,0,1,0,1,0,
+59,0,0,1,109,0,1,0,1,1,0,1,1,Lost hours at work and is behind on utility bills. Daughter helps with medications and appointments.
+75,0,0,1,0,1,0,0,0,0,0,0,0,
+65,1,0,2,0,1,1,0,0,1,0,0,0,
+45,0,1,2,0,1,0,1,0,0,0,0,0,
+64,0,0,0,0,0,0,0,0,1,0,1,0,
+44,0,0,0,0,0,0,0,0,1,0,1,0,
+72,0,1,0,0,0,0,0,0,0,0,1,0,
+58,1,0,0,62,0,0,0,1,1,0,1,1,Daughter helps with medications and appointments.
+56,1,0,0,0,0,0,0,0,1,1,1,0,
+48,1,0,1,74,1,0,0,1,1,0,0,0,Says they feel isolated and rarely leave the house. Worried about affording the new medication co-pay. Admits missing evening doses on busy days.
+77,0,0,0,79,0,0,0,1,1,1,1,1,Seemed down and said things are not getting better. Lost hours at work and is behind on utility bills.
+56,1,1,0,48,0,0,0,1,1,1,1,1,Confirmed contact information and next steps. Worried about affording the new medication co-pay.
+52,0,1,0,0,0,0,0,0,0,0,1,0,
+53,0,1,1,0,1,0,0,0,1,1,1,0,
+66,1,1,0,0,0,0,0,0,1,1,1,0,
+64,0,0,1,0,0,1,0,0,1,0,1,0,
+65,0,0,2,0,1,0,1,0,0,0,1,0,
+65,0,0,0,46,0,0,0,1,1,0,1,0,Patient has no ride to the follow-up appointment next week. Confirmed contact information and next steps.
+90,0,1,0,52,0,0,0,1,1,1,0,1,"Unsure which pills to take since discharge; reviewed the medication list together. Completed routine check-in call. Relies on a neighbor for rides, who is no longer available."
+52,0,0,0,0,0,0,0,0,1,1,0,0,
+51,1,0,0,291,0,0,0,1,0,1,0,1,Reports feeling stronger since discharge. Asked about food pantries near their apartment. Says the inhaler refill is too expensive this month.
+46,0,0,0,214,0,0,0,1,1,1,1,1,Seemed down and said things are not getting better. Asked about food pantries near their apartment. Says the inhaler refill is too expensive this month.
+68,1,1,1,0,0,1,0,0,1,0,1,0,
+75,1,1,2,0,1,1,0,0,0,1,1,0,
+57,0,0,0,0,0,0,0,0,1,0,0,0,
+46,0,1,2,0,0,1,1,0,1,1,1,0,
+46,1,1,0,62,0,0,0,1,1,0,1,1,Pillbox showed the morning dose was skipped twice this week. Says they feel isolated and rarely leave the house.
+68,1,0,1,0,0,1,0,0,1,0,0,0,
+69,0,0,0,0,0,0,0,0,1,1,0,0,
+66,1,0,0,0,0,0,0,0,1,1,1,0,
+48,0,0,0,0,0,0,0,0,1,1,0,0,
+62,0,1,2,0,1,1,0,0,0,0,1,0,
+60,0,1,0,0,0,0,0,0,1,0,1,0,
+62,0,1,1,0,0,1,0,0,1,1,1,0,
+71,1,1,0,0,0,0,0,0,1,0,0,0,
+62,0,0,1,0,0,0,1,0,1,0,1,0,
+69,1,0,0,0,0,0,0,0,0,0,0,0,
+59,1,0,1,0,0,1,0,0,1,0,1,0,
+63,0,1,1,55,0,1,0,1,1,0,1,1,Patient in good spirits and engaged with the care plan. Patient has no ride to the follow-up appointment next week.
+68,0,0,0,0,0,0,0,0,1,0,1,0,
+36,1,1,0,0,0,0,0,0,1,1,0,0,
+54,1,0,0,132,0,0,0,1,0,1,0,1,Patient in good spirits and engaged with the care plan.
+51,0,0,0,204,0,0,0,1,1,1,0,0,Confirmed contact information and next steps.
+49,1,0,0,73,0,0,0,1,0,0,0,0,Admits missing evening doses on busy days. Says they feel isolated and rarely leave the house. Skipping meals to make groceries last.
+54,0,1,0,0,0,0,0,0,0,0,1,0,
+81,0,1,1,0,1,0,0,0,0,1,0,0,
+45,0,0,0,0,0,0,0,0,0,1,1,0,
+73,1,0,0,73,0,0,0,1,1,0,1,1,Reports feeling stronger since discharge.
+33,0,0,0,0,0,0,0,0,0,1,1,0,
+53,0,1,0,0,0,0,0,0,1,1,1,0,
+61,0,0,0,86,0,0,0,1,1,1,1,0,Reports feeling stronger since discharge.
+67,1,0,0,0,0,0,0,0,0,1,1,0,
+69,1,0,0,0,0,0,0,0,1,0,1,0,
+70,0,0,0,140,0,0,0,1,0,0,0,0,Asked about food pantries near their apartment. Confirmed contact information and next steps. Pillbox showed the morning dose was skipped twice this week.
+53,0,0,1,0,0,1,0,0,0,0,0,0,
+51,0,0,1,88,0,0,1,1,1,0,1,0,Seemed down and said things are not getting better. Worried about affording the new medication co-pay. Pillbox showed the morning dose was skipped twice this week.
+71,0,1,0,264,0,0,0,1,0,1,0,1,Missed the last clinic visit because the bus route changed. Admits missing evening doses on busy days. Says the inhaler refill is too expensive this month. Seemed down and said things are not getting better.
+55,0,0,0,126,0,0,0,1,1,1,1,1,Reviewed discharge instructions with the patient.
+39,0,0,1,93,1,0,0,1,1,0,1,1,Completed routine check-in call.
+41,1,0,3,0,1,1,1,0,1,1,0,0,
+45,0,1,1,0,1,0,0,0,1,1,1,0,
+66,1,1,0,146,0,0,0,1,0,1,0,1,Patient in good spirits and engaged with the care plan.
+60,1,0,0,50,0,0,0,1,0,0,1,0,Patient sounded frustrated and overwhelmed during the call. Pillbox showed the morning dose was skipped twice this week. Says there is often not enough food at home by the end of the month.
+69,0,0,2,113,1,1,0,1,0,1,1,0,Says they feel isolated and rarely leave the house. Asked about food pantries near their apartment.
+52,1,0,0,86,0,0,0,1,1,0,1,0,Confirmed contact information and next steps.
+61,0,1,2,0,0,1,1,0,1,0,0,0,
+68,0,0,0,0,0,0,0,0,0,0,1,0,
+54,0,1,0,122,0,0,0,1,0,1,1,1,"Asked about food pantries near their apartment. Relies on a neighbor for rides, who is no longer available. Worried about affording the new medication co-pay. Daughter helps with medications and appointments."
+65,1,1,2,0,1,1,0,0,1,1,1,0,
+48,0,0,2,82,1,1,0,1,1,0,1,0,Reports feeling stronger since discharge.
+53,0,0,2,0,1,1,0,0,1,0,1,0,
+53,0,1,0,0,0,0,0,0,1,1,0,0,
+40,1,0,0,112,0,0,0,1,1,1,1,1,Completed routine check-in call.
+66,0,0,1,0,0,0,1,0,0,0,1,0,
+51,1,0,2,0,1,1,0,0,1,1,1,0,
+59,0,1,2,0,1,1,0,0,0,1,1,0,
+66,0,0,2,0,0,1,1,0,1,1,0,0,
+65,0,1,0,65,0,0,0,1,0,1,0,0,Reviewed discharge instructions with the patient. Admits missing evening doses on busy days. Missed the last clinic visit because the bus route changed. Worried about affording the new medication co-pay.
+68,1,0,2,0,1,1,0,0,0,1,1,0,
+57,0,1,2,0,1,0,1,0,1,1,1,0,
+52,1,0,0,0,0,0,0,0,0,1,1,0,
+57,1,1,2,0,1,1,0,0,1,0,0,0,
+33,0,0,0,0,0,0,0,0,1,0,0,0,
+37,1,1,1,0,1,0,0,0,1,1,0,0,
+38,1,1,2,0,1,1,0,0,1,0,1,0,
+43,1,1,2,0,0,1,1,0,1,1,1,0,
+64,0,0,1,73,1,0,0,1,1,0,0,1,Reviewed discharge instructions with the patient. Says the inhaler refill is too expensive this month. Patient has no ride to the follow-up appointment next week.
+45,1,1,0,61,0,0,0,1,0,0,1,0,
+53,1,0,0,226,0,0,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan.
+78,0,0,0,0,0,0,0,0,1,0,0,0,
+53,1,1,1,0,1,0,0,0,0,0,0,0,
+69,1,1,1,0,1,0,0,0,0,0,1,0,
+44,0,1,0,0,0,0,0,0,1,1,1,0,
+55,1,0,0,191,0,0,0,1,1,0,0,1,Reviewed discharge instructions with the patient.
+44,1,0,0,34,0,0,0,1,0,0,1,0,Reports feeling stronger since discharge.
+53,1,0,1,0,0,0,1,0,1,0,0,0,
+71,1,0,1,0,1,0,0,0,1,0,1,0,
+32,1,1,2,0,0,1,1,0,1,0,0,0,
+65,1,1,0,192,0,0,0,1,1,1,0,1,Says the inhaler refill is too expensive this month. Says they feel isolated and rarely leave the house. Patient has no ride to the follow-up appointment next week.
+62,0,1,1,0,1,0,0,0,0,1,1,0,
+49,0,1,2,0,0,1,1,0,0,0,1,0,
+37,1,0,0,107,0,0,0,1,1,0,1,1,Says there is often not enough food at home by the end of the month. Patient in good spirits and engaged with the care plan.
+59,0,0,0,95,0,0,0,1,0,0,0,1,Worried about affording the new medication co-pay. Says they feel isolated and rarely leave the house.
+50,1,0,0,170,0,0,0,1,1,0,1,0,Reports feeling stronger since discharge.
+62,0,0,0,100,0,0,0,1,0,1,1,1,Patient sounded frustrated and overwhelmed during the call. Asked about food pantries near their apartment.
+59,0,0,0,105,0,0,0,1,0,0,0,0,Daughter helps with medications and appointments.
+82,0,1,0,0,0,0,0,0,1,1,0,0,
+55,1,1,0,0,0,0,0,0,1,0,0,0,
+43,0,0,1,0,1,0,0,0,1,0,1,0,
+61,1,0,0,0,0,0,0,0,0,0,0,0,
+62,0,0,3,0,1,1,1,0,1,0,0,0,
+79,1,0,0,0,0,0,0,0,0,1,1,0,
+71,1,1,1,0,0,1,0,0,0,0,0,0,
+64,0,1,2,0,1,0,1,0,1,1,1,0,
+80,0,1,1,0,1,0,0,0,1,1,0,0,
+41,0,1,1,57,1,0,0,1,0,0,0,1,Daughter helps with medications and appointments.
+49,1,0,0,0,0,0,0,0,1,0,1,0,
+44,0,0,0,0,0,0,0,0,1,0,1,0,
+52,0,0,0,0,0,0,0,0,0,0,1,0,
+38,1,1,1,0,0,1,0,0,1,1,1,0,
+68,0,0,2,27,1,0,1,1,0,0,1,0,Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call. Asked about food pantries near their apartment.
+55,0,1,1,0,1,0,0,0,0,1,0,0,
+36,1,0,2,0,1,0,1,0,0,1,1,0,
+43,1,0,1,32,0,1,0,1,1,0,1,0,Daughter helps with medications and appointments.
+63,1,1,0,52,0,0,0,1,1,1,1,0,Reports feeling stronger since discharge.
+71,0,1,2,112,1,1,0,1,1,0,1,1,Says they feel isolated and rarely leave the house. Missed the last clinic visit because the bus route changed. Worried about affording the new medication co-pay.
+88,0,1,0,0,0,0,0,0,0,1,1,0,
+95,1,0,0,0,0,0,0,0,1,0,1,0,
+65,1,1,0,0,0,0,0,0,1,1,1,0,
+43,1,1,1,0,1,0,0,0,0,1,1,0,
+26,1,1,0,95,0,0,0,1,1,1,0,0,Says the inhaler refill is too expensive this month. Reports feeling stronger since discharge. Patient has no ride to the follow-up appointment next week.
+62,0,1,0,0,0,0,0,0,1,0,1,0,
+46,0,0,1,0,1,0,0,0,1,1,1,0,
+52,0,0,0,0,0,0,0,0,1,0,0,0,
+49,1,0,0,0,0,0,0,0,0,1,0,0,
+56,1,0,0,0,0,0,0,0,1,0,1,0,
+74,0,0,0,70,0,0,0,1,1,0,0,0,Reports feeling stronger since discharge.
+61,1,0,0,0,0,0,0,0,1,0,0,0,
+56,1,0,0,109,0,0,0,1,1,0,0,1,Reviewed discharge instructions with the patient.
+43,1,0,2,0,1,0,1,0,1,0,1,0,
+33,1,0,1,0,1,0,0,0,1,1,1,0,
+51,0,1,0,0,0,0,0,0,1,0,1,0,
+58,0,0,2,0,1,1,0,0,1,1,0,0,
+85,0,0,1,75,1,0,0,1,1,0,0,1,"Relies on a neighbor for rides, who is no longer available. Says they feel isolated and rarely leave the house. Skipping meals to make groceries last."
+60,1,1,0,0,0,0,0,0,0,1,1,0,
+73,0,0,0,160,0,0,0,1,0,1,1,1,Reports feeling stronger since discharge.
+51,0,0,2,73,1,1,0,1,0,0,1,0,
+41,0,0,0,68,0,0,0,1,1,1,1,1,Confirmed contact information and next steps. Worried about affording the new medication co-pay.
+44,0,1,0,0,0,0,0,0,1,1,0,0,
+47,1,0,0,0,0,0,0,0,1,1,1,0,
+90,0,1,2,0,0,1,1,0,0,0,1,0,
+46,0,1,0,0,0,0,0,0,1,0,1,0,
+71,0,0,0,0,0,0,0,0,1,1,0,0,
+45,1,0,1,0,1,0,0,0,1,0,0,0,
+72,0,1,0,0,0,0,0,0,1,1,1,0,
+64,1,1,0,0,0,0,0,0,0,0,1,0,
+56,0,0,0,27,0,0,0,1,0,1,0,0,Reports feeling stronger since discharge.
+58,0,0,0,115,0,0,0,1,0,0,0,0,Daughter helps with medications and appointments.
+49,0,0,2,63,0,1,1,1,1,0,1,1,Skipping meals to make groceries last. Confirmed contact information and next steps.
+65,0,0,0,129,0,0,0,1,1,1,1,0,Reports feeling stronger since discharge.
+52,0,1,1,0,0,1,0,0,0,1,1,0,
+40,1,1,1,0,0,1,0,0,0,1,1,0,
+39,1,0,0,0,0,0,0,0,1,1,1,0,
+61,1,0,0,0,0,0,0,0,1,0,0,0,
+82,0,1,2,0,1,1,0,0,1,0,1,0,
+61,1,0,1,78,0,0,1,1,1,0,0,1,
+57,0,1,0,0,0,0,0,0,0,0,1,0,
+63,0,1,2,126,1,1,0,1,0,0,1,1,Says the inhaler refill is too expensive this month. Seemed down and said things are not getting better. Admits missing evening doses on busy days.
+78,0,0,1,0,1,0,0,0,0,1,1,0,
+62,0,1,1,0,0,1,0,0,1,0,1,0,
+52,0,0,0,218,0,0,0,1,1,0,0,0,Says the inhaler refill is too expensive this month. Seemed down and said things are not getting better.
+75,1,0,0,90,0,0,0,1,0,0,1,0,Patient sounded frustrated and overwhelmed during the call. Worried about affording the new medication co-pay.
+65,1,0,2,141,1,1,0,1,1,0,1,0,Completed routine check-in call. Lost hours at work and is behind on utility bills.
+81,0,0,0,58,0,0,0,1,1,0,0,0,Says there is often not enough food at home by the end of the month. Says they feel isolated and rarely leave the house.
+61,1,0,0,114,0,0,0,1,1,1,1,0,Daughter helps with medications and appointments.
+40,1,1,0,0,0,0,0,0,1,0,1,0,
+38,1,0,0,71,0,0,0,1,0,1,0,1,Unsure which pills to take since discharge; reviewed the medication list together. Says they feel isolated and rarely leave the house.
+83,1,1,1,0,1,0,0,0,0,1,1,0,
+84,0,0,0,46,0,0,0,1,1,1,1,0,Says there is often not enough food at home by the end of the month. Patient in good spirits and engaged with the care plan.
+56,1,1,0,270,0,0,0,1,0,1,1,1,"Relies on a neighbor for rides, who is no longer available. Reports feeling stronger since discharge. Skipping meals to make groceries last."
+53,0,0,1,0,1,0,0,0,1,0,1,0,
+80,0,0,1,91,0,1,0,1,1,0,1,1,Asked about food pantries near their apartment. Patient sounded frustrated and overwhelmed during the call.
+42,1,0,1,0,1,0,0,0,1,0,0,0,
+45,0,1,1,0,0,0,1,0,1,1,1,0,
+68,0,0,2,71,1,1,0,1,0,1,0,1,Patient sounded frustrated and overwhelmed during the call. Skipping meals to make groceries last. Lost hours at work and is behind on utility bills.
+52,1,0,0,0,0,0,0,0,1,0,1,0,
+58,0,1,2,44,1,1,0,1,1,0,1,0,Confirmed contact information and next steps. Says the inhaler refill is too expensive this month.
+56,0,0,1,0,0,1,0,0,1,1,1,0,
+63,1,1,2,0,1,0,1,0,1,1,1,0,
+79,1,1,0,0,0,0,0,0,1,0,1,0,
+60,1,1,2,0,1,1,0,0,1,1,0,0,
+68,1,0,2,124,1,1,0,1,1,1,0,1,Says they feel isolated and rarely leave the house. Worried about affording the new medication co-pay.
+28,0,1,0,0,0,0,0,0,1,1,0,0,
+58,1,0,0,0,0,0,0,0,1,0,1,0,
+46,1,0,1,225,0,1,0,1,1,0,0,1,"Says they feel isolated and rarely leave the house. Relies on a neighbor for rides, who is no longer available. Pillbox showed the morning dose was skipped twice this week."
+40,0,0,0,59,0,0,0,1,1,1,1,1,Says they feel isolated and rarely leave the house. Unsure which pills to take since discharge; reviewed the medication list together. Skipping meals to make groceries last.
+45,1,0,0,77,0,0,0,1,0,0,0,0,Confirmed contact information and next steps. Skipping meals to make groceries last.
+53,0,0,0,0,0,0,0,0,0,0,0,0,
+72,0,0,1,92,0,1,0,1,0,0,1,1,Seemed down and said things are not getting better. Unsure which pills to take since discharge; reviewed the medication list together.
+38,1,0,1,148,0,1,0,1,1,0,1,0,Reports feeling stronger since discharge.
+59,0,1,1,115,0,1,0,1,1,1,0,0,Says they feel isolated and rarely leave the house. Says the inhaler refill is too expensive this month.
+51,0,0,0,0,0,0,0,0,0,0,1,0,
+53,0,0,2,57,1,1,0,1,1,1,0,1,Confirmed contact information and next steps. Missed the last clinic visit because the bus route changed.
+73,1,0,0,55,0,0,0,1,1,0,0,0,Daughter helps with medications and appointments.
+66,0,0,0,136,0,0,0,1,0,0,1,1,Reports feeling stronger since discharge.
+78,0,0,1,0,1,0,0,0,1,0,1,0,
+56,1,0,0,0,0,0,0,0,1,1,1,0,
+48,0,1,2,0,1,1,0,0,0,0,0,0,
+55,1,1,2,0,1,0,1,0,1,0,1,0,
+62,0,0,0,83,0,0,0,1,1,1,1,0,"Worried about affording the new medication co-pay. Skipping meals to make groceries last. Completed routine check-in call. Relies on a neighbor for rides, who is no longer available."
+61,1,1,1,0,0,1,0,0,1,0,1,0,
+42,0,0,2,203,0,1,1,1,1,0,0,1,Daughter helps with medications and appointments. Admits missing evening doses on busy days.
+60,1,0,1,0,0,1,0,0,1,0,0,0,
+62,1,1,1,192,0,1,0,1,1,1,1,1,Says they feel isolated and rarely leave the house. Admits missing evening doses on busy days.
+95,1,0,1,67,0,1,0,1,1,0,0,1,Patient in good spirits and engaged with the care plan.
+86,0,0,0,51,0,0,0,1,0,0,1,1,Completed routine check-in call. Says the inhaler refill is too expensive this month.
+46,1,1,0,67,0,0,0,1,1,0,0,0,Confirmed contact information and next steps. Says there is often not enough food at home by the end of the month. Says the inhaler refill is too expensive this month.
+54,0,1,1,0,0,0,1,0,1,0,1,0,
+36,1,0,0,72,0,0,0,1,1,0,1,0,Admits missing evening doses on busy days. Patient sounded frustrated and overwhelmed during the call.
+49,1,1,1,58,1,0,0,1,1,0,0,0,Missed the last clinic visit because the bus route changed. Patient sounded frustrated and overwhelmed during the call. Says there is often not enough food at home by the end of the month.
+63,1,0,1,0,0,0,1,0,1,0,1,0,
+76,1,1,2,70,1,0,1,1,0,0,1,1,"Patient sounded frustrated and overwhelmed during the call. Lost hours at work and is behind on utility bills. Relies on a neighbor for rides, who is no longer available."
+47,0,1,1,0,1,0,0,0,0,1,0,0,
+49,0,0,3,117,1,1,1,1,1,0,1,1,Reports feeling stronger since discharge. Patient has no ride to the follow-up appointment next week.
+26,1,0,0,26,0,0,0,1,1,0,1,1,Patient sounded frustrated and overwhelmed during the call. Says there is often not enough food at home by the end of the month.
+56,1,0,0,210,0,0,0,1,1,1,1,1,Daughter helps with medications and appointments.
+42,1,0,0,41,0,0,0,1,0,1,1,0,Reports feeling stronger since discharge.
+50,0,1,1,33,1,0,0,1,1,1,1,0,"Worried about affording the new medication co-pay. Says they feel isolated and rarely leave the house. Relies on a neighbor for rides, who is no longer available."
+45,0,1,0,65,0,0,0,1,0,0,1,1,Admits missing evening doses on busy days. Says they feel isolated and rarely leave the house.
+57,0,0,1,0,0,1,0,0,0,0,1,0,
+32,1,0,1,0,0,0,1,0,1,0,0,0,
+36,0,0,0,0,0,0,0,0,1,0,1,0,
+90,1,1,0,0,0,0,0,0,1,0,1,0,
+39,0,0,1,33,0,1,0,1,0,0,1,0,Reports feeling stronger since discharge.
+42,1,1,0,0,0,0,0,0,0,0,1,0,
+86,1,0,0,75,0,0,0,1,0,1,1,1,Patient in good spirits and engaged with the care plan.
+95,0,0,0,124,0,0,0,1,1,0,1,0,Seemed down and said things are not getting better. Lost hours at work and is behind on utility bills. Asked about food pantries near their apartment.
+41,0,0,1,107,1,0,0,1,1,0,1,0,Worried about affording the new medication co-pay. Seemed down and said things are not getting better.
+53,1,0,0,52,0,0,0,1,0,1,1,0,Daughter helps with medications and appointments. Worried about affording the new medication co-pay.
+63,1,0,1,135,1,0,0,1,1,1,1,1,Asked about food pantries near their apartment. Patient sounded frustrated and overwhelmed during the call.
+84,0,1,1,38,0,0,1,1,0,0,1,0,"Says the inhaler refill is too expensive this month. Pillbox showed the morning dose was skipped twice this week. Completed routine check-in call. Relies on a neighbor for rides, who is no longer available."
+44,0,0,1,73,1,0,0,1,0,0,0,1,Confirmed contact information and next steps. Patient has no ride to the follow-up appointment next week.
+55,1,0,0,0,0,0,0,0,1,0,0,0,
+70,1,1,2,0,1,0,1,0,1,0,0,0,
+65,0,0,1,37,0,0,1,1,1,1,1,1,Patient in good spirits and engaged with the care plan.
+53,0,0,1,0,1,0,0,0,1,0,1,0,
+56,0,0,1,0,0,1,0,0,1,0,1,0,
+38,0,0,2,29,1,1,0,1,0,0,1,1,Admits missing evening doses on busy days. Confirmed contact information and next steps.
+55,1,0,0,109,0,0,0,1,0,0,1,0,Seemed down and said things are not getting better. Lost hours at work and is behind on utility bills.
+54,0,0,0,0,0,0,0,0,0,0,1,0,
+62,1,1,2,0,1,0,1,0,1,0,1,0,
+50,0,1,1,0,1,0,0,0,1,1,0,0,
+65,1,1,2,0,1,1,0,0,1,1,1,0,
+74,0,1,1,0,0,0,1,0,0,0,1,0,
+61,1,0,0,0,0,0,0,0,1,0,1,0,
+64,0,0,0,228,0,0,0,1,1,1,1,0,Confirmed contact information and next steps. Missed the last clinic visit because the bus route changed.
+59,1,1,0,0,0,0,0,0,0,0,1,0,
+58,1,1,0,379,0,0,0,1,0,0,1,0,Worried about affording the new medication co-pay. Patient sounded frustrated and overwhelmed during the call.
+48,1,0,0,139,0,0,0,1,1,1,1,0,Missed the last clinic visit because the bus route changed. Daughter helps with medications and appointments.
+63,1,0,0,64,0,0,0,1,0,0,1,1,Seemed down and said things are not getting better. Patient has no ride to the follow-up appointment next week.
+57,0,0,0,152,0,0,0,1,1,0,0,0,Completed routine check-in call.
+90,0,0,0,56,0,0,0,1,1,0,1,1,Says there is often not enough food at home by the end of the month. Pillbox showed the morning dose was skipped twice this week. Reviewed discharge instructions with the patient.
+82,1,1,0,0,0,0,0,0,0,0,1,0,
+64,0,0,0,0,0,0,0,0,1,0,1,0,
+47,0,0,0,0,0,0,0,0,1,1,1,0,
+42,0,1,3,0,1,1,1,0,0,0,1,0,
+76,0,1,0,0,0,0,0,0,1,0,0,0,
+62,1,0,2,175,1,1,0,1,0,1,1,1,Reviewed discharge instructions with the patient.
+66,1,1,1,210,0,0,1,1,1,0,1,1,"Relies on a neighbor for rides, who is no longer available. Daughter helps with medications and appointments."
+32,0,0,0,65,0,0,0,1,1,0,0,0,"Says they feel isolated and rarely leave the house. Relies on a neighbor for rides, who is no longer available. Admits missing evening doses on busy days."
+72,0,0,0,0,0,0,0,0,0,0,1,0,
+65,1,0,2,218,0,1,1,1,0,1,1,1,Seemed down and said things are not getting better.
+42,1,0,0,0,0,0,0,0,0,0,1,0,
+51,0,0,2,0,1,0,1,0,1,1,1,0,
+62,1,0,0,85,0,0,0,1,1,1,0,1,Confirmed contact information and next steps.
+59,0,1,2,0,0,1,1,0,0,1,1,0,
+54,0,1,0,178,0,0,0,1,1,1,0,0,"Seemed down and said things are not getting better. Relies on a neighbor for rides, who is no longer available. Unsure which pills to take since discharge; reviewed the medication list together."
+57,0,1,0,0,0,0,0,0,1,1,1,0,
+55,0,0,0,0,0,0,0,0,1,1,0,0,
+61,1,1,0,0,0,0,0,0,1,1,0,0,
+80,1,1,0,0,0,0,0,0,1,1,0,0,
+20,1,1,0,126,0,0,0,1,1,1,0,1,Lost hours at work and is behind on utility bills. Admits missing evening doses on busy days. Says they feel isolated and rarely leave the house.
+55,1,1,1,42,1,0,0,1,1,1,0,0,Daughter helps with medications and appointments.
+61,1,0,0,291,0,0,0,1,0,0,1,0,Patient has no ride to the follow-up appointment next week. Patient sounded frustrated and overwhelmed during the call. Admits missing evening doses on busy days.
+63,0,0,0,51,0,0,0,1,1,1,1,0,Confirmed contact information and next steps.
+53,0,0,0,25,0,0,0,1,0,0,1,0,Patient has no ride to the follow-up appointment next week. Worried about affording the new medication co-pay. Confirmed contact information and next steps.
+32,1,0,0,0,0,0,0,0,0,1,1,0,
+63,0,0,1,107,0,1,0,1,0,0,1,0,Reviewed discharge instructions with the patient. Pillbox showed the morning dose was skipped twice this week. Patient has no ride to the follow-up appointment next week.
+84,0,1,1,84,1,0,0,1,1,1,0,1,Confirmed contact information and next steps.
+35,1,0,0,0,0,0,0,0,0,1,0,0,
+71,0,0,0,82,0,0,0,1,1,1,0,0,Patient has no ride to the follow-up appointment next week. Asked about food pantries near their apartment. Daughter helps with medications and appointments.
+53,1,1,2,0,1,1,0,0,0,0,1,0,
+57,1,0,0,0,0,0,0,0,0,1,0,0,
+43,1,0,1,0,1,0,0,0,1,1,0,0,
+53,0,1,1,0,0,0,1,0,1,1,0,0,
+78,0,1,0,100,0,0,0,1,1,1,0,1,Missed the last clinic visit because the bus route changed. Says they feel isolated and rarely leave the house.
+67,0,0,1,86,0,1,0,1,1,0,1,0,
+84,0,0,0,0,0,0,0,0,1,0,1,0,
+76,0,0,1,81,0,1,0,1,0,0,0,1,
+65,0,1,0,0,0,0,0,0,1,1,0,0,
+84,1,0,0,86,0,0,0,1,1,0,0,1,"Completed routine check-in call. Relies on a neighbor for rides, who is no longer available."
+65,0,0,0,0,0,0,0,0,0,1,0,0,
+71,0,1,2,97,1,1,0,1,1,1,0,1,Patient sounded frustrated and overwhelmed during the call. Says there is often not enough food at home by the end of the month.
+54,0,0,1,0,0,0,1,0,1,0,0,0,
+59,1,1,0,0,0,0,0,0,1,0,0,0,
+48,0,0,1,0,1,0,0,0,0,0,0,0,
+73,1,0,3,137,1,1,1,1,1,1,1,1,Patient in good spirits and engaged with the care plan. Unsure which pills to take since discharge; reviewed the medication list together.
+41,0,0,0,87,0,0,0,1,0,0,1,1,Skipping meals to make groceries last. Completed routine check-in call.
+70,0,0,1,0,0,0,1,0,1,0,1,0,
+55,0,1,3,0,1,1,1,0,0,1,1,0,
+76,1,0,1,108,0,0,1,1,1,0,0,1,Confirmed contact information and next steps.
+70,1,1,0,0,0,0,0,0,1,1,0,0,
+86,0,1,1,53,0,1,0,1,0,0,1,0,Patient sounded frustrated and overwhelmed during the call. Unsure which pills to take since discharge; reviewed the medication list together. Lost hours at work and is behind on utility bills.
+69,1,1,0,0,0,0,0,0,1,0,1,0,
+35,0,1,0,0,0,0,0,0,1,0,1,0,
+57,0,1,1,29,1,0,0,1,0,0,0,1,"Says the inhaler refill is too expensive this month. Relies on a neighbor for rides, who is no longer available. Asked about food pantries near their apartment. Unsure which pills to take since discharge; reviewed the medication list together. Reviewed discharge instructions with the patient."
+41,0,0,1,173,0,0,1,1,0,0,1,0,Unsure which pills to take since discharge; reviewed the medication list together. Worried about affording the new medication co-pay. Seemed down and said things are not getting better.
+51,0,0,2,198,1,1,0,1,1,1,1,0,Confirmed contact information and next steps. Asked about food pantries near their apartment.
+81,0,0,0,54,0,0,0,1,1,0,1,1,Says the inhaler refill is too expensive this month. Says there is often not enough food at home by the end of the month. Confirmed contact information and next steps.
+68,0,0,0,262,0,0,0,1,0,0,1,0,
+48,1,1,0,0,0,0,0,0,1,0,1,0,
+43,0,0,1,0,1,0,0,0,0,0,0,0,
+59,0,1,0,0,0,0,0,0,1,1,0,0,
+40,1,0,0,0,0,0,0,0,1,0,1,0,
+48,0,1,0,0,0,0,0,0,1,1,1,0,
+63,0,1,1,0,1,0,0,0,1,0,1,0,
+76,1,0,0,105,0,0,0,1,0,0,1,1,Patient sounded frustrated and overwhelmed during the call. Says there is often not enough food at home by the end of the month. Worried about affording the new medication co-pay.
+67,1,0,0,0,0,0,0,0,1,0,1,0,
+24,0,0,1,92,0,0,1,1,1,0,1,0,Worried about affording the new medication co-pay. Seemed down and said things are not getting better.
+63,0,1,0,240,0,0,0,1,1,1,1,1,Daughter helps with medications and appointments.
+59,1,0,0,269,0,0,0,1,1,0,0,1,Reports feeling stronger since discharge.
+65,1,0,2,207,1,1,0,1,1,0,1,1,Skipping meals to make groceries last. Completed routine check-in call.
+83,1,0,0,111,0,0,0,1,0,1,0,1,"Relies on a neighbor for rides, who is no longer available. Seemed down and said things are not getting better."
+27,0,0,0,0,0,0,0,0,0,1,1,0,
+49,0,1,2,72,1,0,1,1,1,1,1,1,
+67,1,0,1,177,0,0,1,1,1,1,1,1,"Relies on a neighbor for rides, who is no longer available. Lost hours at work and is behind on utility bills. Says they feel isolated and rarely leave the house."
+35,0,0,0,60,0,0,0,1,1,1,1,0,Reports feeling stronger since discharge.
+80,1,0,0,0,0,0,0,0,1,1,1,0,
+64,1,0,0,47,0,0,0,1,0,1,0,1,Missed the last clinic visit because the bus route changed. Confirmed contact information and next steps.
+71,1,0,1,126,1,0,0,1,0,0,0,1,Missed the last clinic visit because the bus route changed. Completed routine check-in call. Asked about food pantries near their apartment.
+50,0,1,0,0,0,0,0,0,1,1,1,0,
+71,0,0,0,233,0,0,0,1,0,0,1,1,Patient in good spirits and engaged with the care plan.
+74,1,1,0,0,0,0,0,0,1,1,1,0,
+62,0,0,0,161,0,0,0,1,1,1,0,1,Lost hours at work and is behind on utility bills. Skipping meals to make groceries last. Seemed down and said things are not getting better.
+62,1,0,1,0,0,1,0,0,0,0,1,0,
+62,1,0,1,0,1,0,0,0,0,1,1,0,
+45,0,1,0,37,0,0,0,1,1,1,0,0,Seemed down and said things are not getting better. Asked about food pantries near their apartment. Missed the last clinic visit because the bus route changed.
+56,0,0,0,29,0,0,0,1,1,0,0,1,Daughter helps with medications and appointments.
+56,0,0,1,163,0,1,0,1,1,0,1,1,Lost hours at work and is behind on utility bills. Patient in good spirits and engaged with the care plan.
+64,1,1,2,69,1,1,0,1,1,1,1,0,
+73,0,0,0,0,0,0,0,0,0,1,1,0,
+42,1,0,0,53,0,0,0,1,1,0,1,1,Reports feeling stronger since discharge.
+56,1,0,0,0,0,0,0,0,1,0,1,0,
+81,1,0,0,0,0,0,0,0,1,1,0,0,
+47,1,0,1,0,0,1,0,0,1,0,1,0,
+46,0,0,1,81,0,1,0,1,1,0,0,1,Patient in good spirits and engaged with the care plan.
+61,1,1,0,44,0,0,0,1,0,0,1,0,Pillbox showed the morning dose was skipped twice this week. Patient sounded frustrated and overwhelmed during the call.
+71,0,1,0,0,0,0,0,0,0,0,0,0,
+59,1,0,0,66,0,0,0,1,1,0,1,0,Says there is often not enough food at home by the end of the month. Seemed down and said things are not getting better.
+78,0,1,0,119,0,0,0,1,1,1,1,1,Daughter helps with medications and appointments. Patient has no ride to the follow-up appointment next week.
+71,1,0,0,0,0,0,0,0,1,1,1,0,
+71,0,1,0,224,0,0,0,1,0,1,0,1,
+67,0,1,2,322,1,0,1,1,1,0,1,0,Unsure which pills to take since discharge; reviewed the medication list together. Skipping meals to make groceries last. Reviewed discharge instructions with the patient.
+93,0,1,1,0,0,1,0,0,0,0,1,0,
+55,1,0,2,0,1,0,1,0,0,0,0,0,
+28,0,0,0,65,0,0,0,1,1,0,0,1,Says the inhaler refill is too expensive this month. Completed routine check-in call.
+82,0,0,0,0,0,0,0,0,1,0,1,0,
+51,0,0,1,0,0,0,1,0,1,0,1,0,
+60,1,0,0,0,0,0,0,0,1,0,1,0,
+78,1,0,0,146,0,0,0,1,1,0,1,1,Worried about affording the new medication co-pay. Says they feel isolated and rarely leave the house.
+34,1,1,0,99,0,0,0,1,0,1,1,0,Daughter helps with medications and appointments.
+40,0,0,0,69,0,0,0,1,1,1,1,0,Completed routine check-in call.
+34,0,0,0,95,0,0,0,1,1,1,1,0,Daughter helps with medications and appointments.
+46,0,0,1,307,1,0,0,1,1,1,1,0,"Relies on a neighbor for rides, who is no longer available. Patient sounded frustrated and overwhelmed during the call."
+65,0,0,0,61,0,0,0,1,1,0,1,1,Seemed down and said things are not getting better. Pillbox showed the morning dose was skipped twice this week. Says the inhaler refill is too expensive this month.
+66,0,0,1,73,0,1,0,1,0,0,1,1,Says they feel isolated and rarely leave the house.
+62,0,0,0,54,0,0,0,1,0,0,1,1,Asked about food pantries near their apartment. Says they feel isolated and rarely leave the house.
+37,0,0,0,0,0,0,0,0,0,0,0,0,
+24,1,0,0,85,0,0,0,1,1,0,0,0,Reports feeling stronger since discharge.
+59,0,1,0,0,0,0,0,0,1,0,1,0,
+51,1,0,0,0,0,0,0,0,1,0,0,0,
+65,0,1,0,0,0,0,0,0,1,0,1,0,
+69,1,0,0,117,0,0,0,1,1,1,1,0,Says they feel isolated and rarely leave the house. Pillbox showed the morning dose was skipped twice this week. Lost hours at work and is behind on utility bills.
+60,1,1,1,169,1,0,0,1,0,1,1,1,Skipping meals to make groceries last. Reports feeling stronger since discharge.
+70,1,0,0,0,0,0,0,0,1,1,1,0,
+62,0,0,0,80,0,0,0,1,1,1,1,0,Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call. Asked about food pantries near their apartment.
+66,0,0,1,0,0,1,0,0,0,0,0,0,
+48,1,0,0,107,0,0,0,1,0,0,1,0,Daughter helps with medications and appointments.
+56,0,0,1,113,1,0,0,1,1,1,1,0,Lost hours at work and is behind on utility bills. Missed the last clinic visit because the bus route changed. Reviewed discharge instructions with the patient.
+61,0,0,0,64,0,0,0,1,1,0,1,1,Daughter helps with medications and appointments.
+71,1,0,2,0,1,1,0,0,0,0,1,0,
+52,0,1,2,0,0,1,1,0,1,0,0,0,
+66,0,1,2,0,1,0,1,0,0,1,1,0,
+54,0,1,1,0,0,0,1,0,1,1,0,0,
+57,1,1,0,0,0,0,0,0,1,0,1,0,
+71,1,0,1,114,0,0,1,1,1,1,1,1,Daughter helps with medications and appointments.
+28,1,0,1,0,1,0,0,0,1,0,1,0,
+39,1,0,2,166,1,0,1,1,1,0,0,0,"Patient sounded frustrated and overwhelmed during the call. Relies on a neighbor for rides, who is no longer available."
+36,1,0,1,0,1,0,0,0,1,0,1,0,
+23,0,0,0,0,0,0,0,0,1,0,1,0,
+48,0,0,0,0,0,0,0,0,0,1,1,0,
+70,0,1,1,0,0,0,1,0,0,0,1,0,
+54,1,1,1,0,0,1,0,0,1,1,1,0,
+61,1,0,0,0,0,0,0,0,0,0,0,0,
+75,0,0,0,0,0,0,0,0,1,1,1,0,
+78,0,0,0,0,0,0,0,0,1,1,1,0,
+57,1,0,0,0,0,0,0,0,0,1,1,0,
+79,0,1,0,0,0,0,0,0,0,1,1,0,
+60,1,0,0,139,0,0,0,1,0,1,1,1,Asked about food pantries near their apartment. Patient in good spirits and engaged with the care plan.
+46,0,0,0,0,0,0,0,0,1,0,0,0,
+49,0,0,0,0,0,0,0,0,1,1,1,0,
+36,1,0,0,0,0,0,0,0,0,1,1,0,
+45,0,0,1,0,0,1,0,0,1,0,1,0,
+53,1,1,2,0,1,0,1,0,0,0,1,0,
+70,0,0,1,0,0,1,0,0,0,0,0,0,
+84,1,0,0,0,0,0,0,0,0,0,1,0,
+38,0,0,0,0,0,0,0,0,1,0,0,0,
+64,1,1,2,0,1,0,1,0,0,0,1,0,
+43,0,0,2,110,1,0,1,1,1,1,1,1,Patient has no ride to the follow-up appointment next week. Completed routine check-in call.
+65,1,0,0,0,0,0,0,0,0,0,0,0,
+56,0,0,0,0,0,0,0,0,0,1,1,0,
+31,1,0,0,0,0,0,0,0,0,0,0,0,
+72,1,1,1,0,0,0,1,0,1,1,1,0,
+49,0,0,0,51,0,0,0,1,1,0,1,0,Worried about affording the new medication co-pay. Reviewed discharge instructions with the patient.
+50,0,0,1,53,1,0,0,1,1,0,0,1,Confirmed contact information and next steps.
+42,0,1,0,83,0,0,0,1,1,0,1,0,Says there is often not enough food at home by the end of the month. Seemed down and said things are not getting better.
+49,1,0,0,0,0,0,0,0,0,1,0,0,
+65,0,0,2,0,1,0,1,0,1,0,0,0,
+55,0,0,1,82,1,0,0,1,0,1,1,0,Reports feeling stronger since discharge. Says the inhaler refill is too expensive this month.
+63,1,0,0,47,0,0,0,1,1,0,1,0,Skipping meals to make groceries last. Worried about affording the new medication co-pay. Confirmed contact information and next steps.
+64,0,1,1,0,0,1,0,0,1,0,0,0,
+78,0,1,1,110,0,0,1,1,0,0,1,1,Worried about affording the new medication co-pay. Reviewed discharge instructions with the patient. Unsure which pills to take since discharge; reviewed the medication list together.
+53,0,0,0,0,0,0,0,0,1,1,0,0,
+36,0,0,1,45,1,0,0,1,0,0,1,0,Patient sounded frustrated and overwhelmed during the call.
+74,0,0,1,0,0,1,0,0,1,0,1,0,
+53,1,0,0,28,0,0,0,1,0,0,1,1,Patient has no ride to the follow-up appointment next week. Seemed down and said things are not getting better.
+75,0,1,2,98,0,1,1,1,0,0,0,1,Reports feeling stronger since discharge.
+64,1,0,1,44,1,0,0,1,0,0,0,1,Reports feeling stronger since discharge.
+56,1,0,0,0,0,0,0,0,1,1,1,0,
+64,0,0,0,0,0,0,0,0,1,0,1,0,
+88,0,1,1,0,1,0,0,0,0,0,1,0,
+89,0,1,2,0,1,1,0,0,1,1,1,0,
+59,0,0,2,205,1,1,0,1,0,0,1,0,"Relies on a neighbor for rides, who is no longer available. Lost hours at work and is behind on utility bills. Says they feel isolated and rarely leave the house. Unsure which pills to take since discharge; reviewed the medication list together."
+61,0,0,1,78,1,0,0,1,1,0,1,0,Reports feeling stronger since discharge.
+74,0,0,0,261,0,0,0,1,1,1,1,1,Patient sounded frustrated and overwhelmed during the call.
+46,1,1,0,0,0,0,0,0,1,1,1,0,
+63,1,1,1,0,0,0,1,0,1,1,1,0,
+58,0,0,0,0,0,0,0,0,1,0,1,0,
+63,1,0,0,0,0,0,0,0,1,1,1,0,
+46,1,0,0,88,0,0,0,1,1,0,0,1,Patient has no ride to the follow-up appointment next week. Seemed down and said things are not getting better.
+34,0,0,2,30,1,1,0,1,1,1,1,0,Daughter helps with medications and appointments. Lost hours at work and is behind on utility bills.
+27,1,0,1,0,1,0,0,0,1,1,1,0,
+42,0,0,0,72,0,0,0,1,0,1,0,0,Missed the last clinic visit because the bus route changed. Patient sounded frustrated and overwhelmed during the call. Unsure which pills to take since discharge; reviewed the medication list together.
+51,1,0,0,0,0,0,0,0,1,0,1,0,
+54,0,1,2,0,1,1,0,0,1,0,0,0,
+87,0,1,0,27,0,0,0,1,1,1,1,1,Patient has no ride to the follow-up appointment next week. Reviewed discharge instructions with the patient. Says the inhaler refill is too expensive this month.
+75,1,0,2,0,1,1,0,0,1,0,1,0,
+44,0,0,0,18,0,0,0,1,1,0,1,0,Lost hours at work and is behind on utility bills. Patient has no ride to the follow-up appointment next week. Says they feel isolated and rarely leave the house.
+64,0,0,0,127,0,0,0,1,0,1,1,0,Daughter helps with medications and appointments.
+52,1,0,0,0,0,0,0,0,1,1,1,0,
+54,0,0,1,0,1,0,0,0,0,0,1,0,
+61,1,0,0,68,0,0,0,1,1,0,1,1,Daughter helps with medications and appointments.
+68,1,1,0,203,0,0,0,1,1,0,1,1,Missed the last clinic visit because the bus route changed. Admits missing evening doses on busy days. Says they feel isolated and rarely leave the house.
+53,0,1,0,0,0,0,0,0,0,0,0,0,
+74,0,0,0,114,0,0,0,1,0,0,1,1,Reports feeling stronger since discharge.
+41,0,0,1,0,0,0,1,0,0,1,0,0,
+58,1,1,1,0,1,0,0,0,1,1,1,0,
+95,0,1,1,0,0,1,0,0,1,0,1,0,
+62,0,1,0,0,0,0,0,0,1,0,1,0,
+80,0,0,0,0,0,0,0,0,0,1,1,0,
+60,1,0,1,40,1,0,0,1,1,1,0,1,Patient has no ride to the follow-up appointment next week. Patient sounded frustrated and overwhelmed during the call.
+67,0,0,1,126,0,1,0,1,1,1,1,1,Completed routine check-in call.
+57,1,0,0,0,0,0,0,0,1,0,1,0,
+56,0,1,0,58,0,0,0,1,1,1,0,1,Says they feel isolated and rarely leave the house. Unsure which pills to take since discharge; reviewed the medication list together. Says the inhaler refill is too expensive this month. Skipping meals to make groceries last.
+47,1,0,0,0,0,0,0,0,1,0,1,0,
+65,1,1,1,0,1,0,0,0,0,0,1,0,
+46,0,0,1,96,1,0,0,1,1,1,0,0,Patient sounded frustrated and overwhelmed during the call. Asked about food pantries near their apartment.
+68,1,0,0,108,0,0,0,1,1,0,1,0,Seemed down and said things are not getting better.
+75,1,0,0,32,0,0,0,1,1,0,1,1,Says the inhaler refill is too expensive this month. Daughter helps with medications and appointments. Patient has no ride to the follow-up appointment next week.
+64,0,1,1,0,1,0,0,0,0,0,0,0,
+54,0,0,0,50,0,0,0,1,0,0,1,0,Completed routine check-in call. Missed the last clinic visit because the bus route changed.
+65,1,0,0,0,0,0,0,0,0,0,1,0,
+54,0,0,1,121,1,0,0,1,1,1,1,1,"Patient in good spirits and engaged with the care plan. Relies on a neighbor for rides, who is no longer available."
+72,0,1,2,0,1,1,0,0,1,0,0,0,
+31,0,0,1,0,0,0,1,0,0,0,1,0,
+53,1,0,2,0,1,0,1,0,1,1,1,0,
+28,1,0,0,0,0,0,0,0,1,0,1,0,
+36,1,1,1,0,0,1,0,0,1,1,1,0,
+79,0,1,0,0,0,0,0,0,1,0,1,0,
+72,0,1,0,0,0,0,0,0,1,0,1,0,
+48,1,0,2,0,0,1,1,0,1,0,1,0,
+36,0,1,1,0,0,1,0,0,1,1,1,0,
+18,1,0,0,0,0,0,0,0,0,0,1,0,
+50,0,0,1,0,0,1,0,0,1,1,1,0,
+95,0,0,0,121,0,0,0,1,0,0,1,1,Reviewed discharge instructions with the patient. Lost hours at work and is behind on utility bills.
+65,1,0,0,86,0,0,0,1,0,0,1,1,Patient sounded frustrated and overwhelmed during the call. Missed the last clinic visit because the bus route changed. Lost hours at work and is behind on utility bills.
+50,1,0,1,59,0,1,0,1,1,0,1,0,Daughter helps with medications and appointments.
+65,0,0,0,0,0,0,0,0,1,0,1,0,
+35,0,0,0,0,0,0,0,0,0,0,0,0,
+54,0,0,0,0,0,0,0,0,0,0,1,0,
+60,0,0,1,121,0,0,1,1,0,0,1,0,Reports feeling stronger since discharge.
+57,1,0,0,0,0,0,0,0,1,1,1,0,
+70,1,1,2,142,1,1,0,1,1,0,1,0,Patient sounded frustrated and overwhelmed during the call. Says the inhaler refill is too expensive this month.
+64,0,0,1,106,0,0,1,1,1,0,1,1,Daughter helps with medications and appointments. Asked about food pantries near their apartment.
+68,0,0,0,58,0,0,0,1,1,0,0,0,Daughter helps with medications and appointments.
+48,0,0,1,160,1,0,0,1,1,0,1,1,Completed routine check-in call. Says there is often not enough food at home by the end of the month.
+72,1,0,1,62,0,1,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan. Says the inhaler refill is too expensive this month.
+83,0,0,0,189,0,0,0,1,1,1,1,1,Reviewed discharge instructions with the patient. Asked about food pantries near their apartment.
+44,1,1,0,61,0,0,0,1,1,0,1,1,Skipping meals to make groceries last. Seemed down and said things are not getting better.
+45,0,0,1,0,0,0,1,0,0,1,1,0,
+78,0,1,0,211,0,0,0,1,1,0,0,0,Admits missing evening doses on busy days. Asked about food pantries near their apartment. Confirmed contact information and next steps. Worried about affording the new medication co-pay.
+55,0,0,2,60,1,0,1,1,0,0,0,0,Seemed down and said things are not getting better. Asked about food pantries near their apartment.
+79,1,1,0,63,0,0,0,1,0,1,1,0,Confirmed contact information and next steps.
+52,0,0,0,37,0,0,0,1,1,0,1,0,Asked about food pantries near their apartment. Lost hours at work and is behind on utility bills. Completed routine check-in call.
+80,0,0,1,0,0,1,0,0,0,0,1,0,
+60,1,0,0,0,0,0,0,0,0,1,1,0,
+62,0,0,1,0,0,0,1,0,0,1,1,0,
+82,1,0,1,69,1,0,0,1,1,1,1,1,Confirmed contact information and next steps.
+53,0,0,1,0,0,1,0,0,1,0,0,0,
+44,1,0,2,0,1,1,0,0,1,0,1,0,
+52,0,1,1,0,0,1,0,0,1,1,0,0,
+65,1,0,3,93,1,1,1,1,1,1,0,1,Missed the last clinic visit because the bus route changed. Patient in good spirits and engaged with the care plan.
+35,0,0,2,0,1,0,1,0,1,0,1,0,
+68,0,1,1,89,0,1,0,1,1,0,1,1,Worried about affording the new medication co-pay. Says there is often not enough food at home by the end of the month. Reviewed discharge instructions with the patient.
+50,0,0,0,0,0,0,0,0,0,0,1,0,
+76,0,0,0,138,0,0,0,1,1,0,0,1,Missed the last clinic visit because the bus route changed. Confirmed contact information and next steps.
+22,0,1,2,0,0,1,1,0,1,1,1,0,
+47,1,0,1,164,1,0,0,1,0,0,0,1,Says they feel isolated and rarely leave the house. Lost hours at work and is behind on utility bills.
+33,0,0,0,0,0,0,0,0,1,0,1,0,
+46,0,1,2,0,1,0,1,0,0,0,1,0,
+62,0,0,0,91,0,0,0,1,1,0,0,1,Daughter helps with medications and appointments.
+56,0,0,0,0,0,0,0,0,0,0,1,0,
+55,0,0,0,149,0,0,0,1,1,0,0,0,Patient in good spirits and engaged with the care plan. Lost hours at work and is behind on utility bills.
+56,1,0,2,0,0,1,1,0,0,0,1,0,
+61,0,1,1,24,0,0,1,1,1,1,1,1,Worried about affording the new medication co-pay. Skipping meals to make groceries last. Seemed down and said things are not getting better. Missed the last clinic visit because the bus route changed.
+43,0,0,1,33,0,1,0,1,0,0,1,1,Reviewed discharge instructions with the patient.
+69,0,0,0,111,0,0,0,1,1,0,1,1,Completed routine check-in call.
+68,1,1,0,54,0,0,0,1,1,0,0,1,Admits missing evening doses on busy days. Says there is often not enough food at home by the end of the month. Patient sounded frustrated and overwhelmed during the call.
+64,1,0,1,0,0,1,0,0,0,0,1,0,
+67,1,0,0,86,0,0,0,1,0,0,1,0,Patient in good spirits and engaged with the care plan. Lost hours at work and is behind on utility bills.
+63,0,0,1,148,1,0,0,1,1,0,1,1,Patient has no ride to the follow-up appointment next week. Says they feel isolated and rarely leave the house. Worried about affording the new medication co-pay.
+89,1,0,2,0,0,1,1,0,1,0,1,0,
+57,0,0,0,59,0,0,0,1,1,0,0,0,Worried about affording the new medication co-pay. Reviewed discharge instructions with the patient.
+54,1,0,0,47,0,0,0,1,1,1,1,0,Unsure which pills to take since discharge; reviewed the medication list together. Reviewed discharge instructions with the patient.
+47,0,1,0,0,0,0,0,0,0,0,0,0,
+43,0,0,1,0,1,0,0,0,1,0,1,0,
+40,0,0,1,32,1,0,0,1,1,0,1,1,Says there is often not enough food at home by the end of the month. Confirmed contact information and next steps.
+45,0,0,0,109,0,0,0,1,1,0,1,0,Patient sounded frustrated and overwhelmed during the call.
+57,1,1,0,0,0,0,0,0,1,0,1,0,
+63,0,0,0,158,0,0,0,1,0,0,1,0,Patient has no ride to the follow-up appointment next week. Reviewed discharge instructions with the patient.
+59,0,1,0,0,0,0,0,0,1,0,0,0,
+47,0,1,1,0,0,1,0,0,1,0,1,0,
+72,1,0,1,55,1,0,0,1,1,1,0,0,Says there is often not enough food at home by the end of the month. Patient in good spirits and engaged with the care plan.
+69,1,1,0,0,0,0,0,0,1,1,1,0,
+56,1,0,0,161,0,0,0,1,0,1,1,0,Daughter helps with medications and appointments.
+49,0,0,1,0,1,0,0,0,1,0,1,0,
+67,0,0,0,0,0,0,0,0,1,0,1,0,
+61,0,1,0,0,0,0,0,0,0,0,1,0,
+37,0,0,1,0,1,0,0,0,1,0,0,0,
+57,0,1,1,112,0,1,0,1,0,0,0,1,Patient has no ride to the follow-up appointment next week. Completed routine check-in call.
+62,1,0,2,270,1,1,0,1,1,0,1,1,Patient sounded frustrated and overwhelmed during the call. Missed the last clinic visit because the bus route changed.
+45,1,0,0,0,0,0,0,0,0,0,1,0,
+61,0,0,1,0,0,0,1,0,1,0,1,0,
+37,0,0,0,0,0,0,0,0,0,0,1,0,
+78,1,0,0,54,0,0,0,1,1,1,1,1,Lost hours at work and is behind on utility bills. Says they feel isolated and rarely leave the house.
+77,1,1,2,0,1,1,0,0,0,0,1,0,
+55,0,0,1,0,1,0,0,0,1,1,0,0,
+64,0,0,0,0,0,0,0,0,0,0,1,0,
+22,1,1,0,0,0,0,0,0,1,0,1,0,
+41,0,0,0,0,0,0,0,0,1,0,0,0,
+54,0,0,1,39,0,1,0,1,1,0,1,0,Worried about affording the new medication co-pay. Skipping meals to make groceries last. Seemed down and said things are not getting better.
+42,0,0,1,42,1,0,0,1,1,0,1,0,"Relies on a neighbor for rides, who is no longer available. Reports feeling stronger since discharge."
+69,0,1,0,0,0,0,0,0,0,0,0,0,
+88,0,0,0,0,0,0,0,0,1,1,1,0,
+41,0,0,1,0,0,1,0,0,1,0,1,0,
+46,0,1,0,81,0,0,0,1,1,0,1,1,Missed the last clinic visit because the bus route changed. Patient sounded frustrated and overwhelmed during the call.
+62,1,0,2,40,1,0,1,1,0,1,0,0,Reviewed discharge instructions with the patient. Says there is often not enough food at home by the end of the month. Missed the last clinic visit because the bus route changed.
+83,0,0,0,0,0,0,0,0,1,0,1,0,
+40,0,0,2,0,1,1,0,0,1,0,1,0,
+62,1,0,1,0,1,0,0,0,1,0,1,0,
+86,0,1,0,0,0,0,0,0,1,0,1,0,
+34,0,0,1,0,0,0,1,0,0,0,1,0,
+39,0,0,0,68,0,0,0,1,1,0,1,0,Worried about affording the new medication co-pay. Seemed down and said things are not getting better.
+52,1,0,0,0,0,0,0,0,0,1,0,0,
+51,0,0,0,123,0,0,0,1,1,0,1,1,Daughter helps with medications and appointments.
+71,0,0,1,0,0,0,1,0,1,0,0,0,
+62,1,1,3,53,1,1,1,1,1,0,0,0,
+32,0,0,1,0,0,1,0,0,0,1,0,0,
+66,0,1,1,0,1,0,0,0,0,1,0,0,
+50,1,1,1,0,1,0,0,0,0,1,1,0,
+77,0,1,2,0,1,0,1,0,0,1,0,0,
+49,1,0,0,255,0,0,0,1,1,1,1,1,Patient sounded frustrated and overwhelmed during the call. Skipping meals to make groceries last.
+49,0,0,1,0,0,1,0,0,0,0,1,0,
+66,0,0,0,0,0,0,0,0,1,1,1,0,
+70,1,1,0,0,0,0,0,0,1,0,1,0,
+65,0,1,2,0,1,1,0,0,0,0,1,0,
+33,1,0,0,39,0,0,0,1,0,1,0,1,Says they feel isolated and rarely leave the house.
+66,1,0,0,58,0,0,0,1,1,0,1,0,Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call.
+43,1,0,1,160,1,0,0,1,1,0,1,0,Confirmed contact information and next steps. Pillbox showed the morning dose was skipped twice this week.
+62,0,1,1,0,1,0,0,0,1,0,1,0,
+37,1,1,1,0,0,1,0,0,1,0,0,0,
+65,0,1,0,0,0,0,0,0,1,1,1,0,
+46,0,0,1,121,1,0,0,1,1,0,1,0,Reports feeling stronger since discharge.
+39,0,0,0,52,0,0,0,1,1,1,0,1,Unsure which pills to take since discharge; reviewed the medication list together. Skipping meals to make groceries last. Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call.
+69,0,0,0,174,0,0,0,1,1,0,0,0,Admits missing evening doses on busy days. Confirmed contact information and next steps. Missed the last clinic visit because the bus route changed.
+62,0,0,2,21,1,1,0,1,0,1,1,1,Patient in good spirits and engaged with the care plan.
+49,0,0,0,95,0,0,0,1,1,0,1,1,Says there is often not enough food at home by the end of the month. Pillbox showed the morning dose was skipped twice this week. Patient sounded frustrated and overwhelmed during the call.
+80,1,0,1,123,0,1,0,1,1,1,1,0,Daughter helps with medications and appointments.
+52,1,0,0,0,0,0,0,0,0,0,0,0,
+59,0,0,1,0,1,0,0,0,1,0,1,0,
+62,1,1,1,0,1,0,0,0,0,0,0,0,
+49,1,1,2,0,1,1,0,0,1,0,1,0,
+65,1,1,3,0,1,1,1,0,1,0,1,0,
+50,0,0,0,102,0,0,0,1,0,1,1,0,Reviewed discharge instructions with the patient. Lost hours at work and is behind on utility bills.
+52,0,0,0,53,0,0,0,1,1,1,1,0,Seemed down and said things are not getting better. Admits missing evening doses on busy days.
+79,0,0,0,59,0,0,0,1,1,1,1,0,Patient sounded frustrated and overwhelmed during the call. Unsure which pills to take since discharge; reviewed the medication list together.
+43,0,0,1,0,0,1,0,0,1,0,0,0,
+22,1,0,1,407,0,0,1,1,1,0,1,0,"Unsure which pills to take since discharge; reviewed the medication list together. Daughter helps with medications and appointments. Relies on a neighbor for rides, who is no longer available."
+82,1,0,0,98,0,0,0,1,1,1,0,1,Asked about food pantries near their apartment. Seemed down and said things are not getting better.
+95,1,0,0,35,0,0,0,1,1,1,1,0,
+52,0,0,1,91,0,1,0,1,1,0,1,0,Says there is often not enough food at home by the end of the month. Says they feel isolated and rarely leave the house.
+29,1,0,2,173,1,1,0,1,0,1,1,1,Says there is often not enough food at home by the end of the month. Says they feel isolated and rarely leave the house.
+54,1,0,0,101,0,0,0,1,0,0,1,0,"Relies on a neighbor for rides, who is no longer available. Reviewed discharge instructions with the patient."
+54,0,0,2,0,1,1,0,0,1,1,0,0,
+55,0,0,1,50,1,0,0,1,1,1,1,1,Says there is often not enough food at home by the end of the month. Seemed down and said things are not getting better.
+42,1,1,2,101,1,1,0,1,1,1,0,1,Worried about affording the new medication co-pay. Seemed down and said things are not getting better.
+67,1,0,1,0,1,0,0,0,1,0,1,0,
+66,1,0,0,136,0,0,0,1,1,0,1,0,Skipping meals to make groceries last. Completed routine check-in call. Lost hours at work and is behind on utility bills.
+36,0,0,0,0,0,0,0,0,1,0,1,0,
+69,0,1,0,0,0,0,0,0,1,1,1,0,
+89,0,1,0,0,0,0,0,0,0,0,0,0,
+61,0,0,0,178,0,0,0,1,1,1,1,1,Missed the last clinic visit because the bus route changed. Patient sounded frustrated and overwhelmed during the call.
+53,1,0,1,75,0,1,0,1,0,1,1,1,Skipping meals to make groceries last. Patient sounded frustrated and overwhelmed during the call.
+56,1,0,1,0,0,0,1,0,1,0,0,0,
+68,0,1,2,35,1,1,0,1,1,0,0,1,Completed routine check-in call. Worried about affording the new medication co-pay.
+32,1,0,0,0,0,0,0,0,0,1,1,0,
+61,0,1,0,0,0,0,0,0,1,0,1,0,
+52,0,1,2,0,1,1,0,0,0,0,1,0,
+86,1,0,1,0,1,0,0,0,1,0,0,0,
+56,0,1,0,49,0,0,0,1,1,0,1,1,Worried about affording the new medication co-pay. Reviewed discharge instructions with the patient. Pillbox showed the morning dose was skipped twice this week.
+83,1,0,1,153,1,0,0,1,1,1,1,1,Says they feel isolated and rarely leave the house.
+42,0,0,0,155,0,0,0,1,1,0,0,1,Daughter helps with medications and appointments.
+67,1,0,0,0,0,0,0,0,1,0,1,0,
+63,0,0,0,0,0,0,0,0,0,0,1,0,
+45,1,0,1,157,1,0,0,1,1,0,0,1,Confirmed contact information and next steps. Says there is often not enough food at home by the end of the month.
+61,1,0,0,0,0,0,0,0,1,0,1,0,
+77,1,1,1,0,1,0,0,0,0,1,1,0,
+53,1,0,2,0,1,1,0,0,0,0,0,0,
+33,0,1,1,0,1,0,0,0,0,0,0,0,
+58,0,0,1,127,1,0,0,1,1,1,0,1,Daughter helps with medications and appointments.
+45,0,0,0,0,0,0,0,0,0,0,1,0,
+53,1,1,0,0,0,0,0,0,0,1,1,0,
+57,1,1,2,89,1,1,0,1,1,0,1,1,Unsure which pills to take since discharge; reviewed the medication list together. Asked about food pantries near their apartment. Completed routine check-in call. Lost hours at work and is behind on utility bills.
+33,1,0,0,138,0,0,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan.
+34,0,0,3,18,1,1,1,1,1,0,0,1,Missed the last clinic visit because the bus route changed. Patient sounded frustrated and overwhelmed during the call. Says the inhaler refill is too expensive this month.
+66,0,1,1,0,1,0,0,0,1,1,1,0,
+50,0,0,0,140,0,0,0,1,1,1,1,0,Lost hours at work and is behind on utility bills. Seemed down and said things are not getting better.
+20,0,0,0,0,0,0,0,0,0,0,1,0,
+70,0,1,1,117,1,0,0,1,1,0,1,1,Skipping meals to make groceries last. Patient has no ride to the follow-up appointment next week. Reviewed discharge instructions with the patient.
+62,1,0,1,81,1,0,0,1,0,0,1,0,Patient sounded frustrated and overwhelmed during the call. Skipping meals to make groceries last.
+48,0,0,1,134,0,0,1,1,1,0,1,1,Daughter helps with medications and appointments.
+39,0,0,0,38,0,0,0,1,1,1,1,1,Says the inhaler refill is too expensive this month. Admits missing evening doses on busy days. Confirmed contact information and next steps.
+71,1,0,1,49,0,1,0,1,1,1,0,1,Says the inhaler refill is too expensive this month. Completed routine check-in call.
+64,0,1,0,0,0,0,0,0,1,1,0,0,
+94,1,1,1,0,0,1,0,0,1,0,1,0,
+65,1,1,0,0,0,0,0,0,1,1,0,0,
+64,0,0,0,221,0,0,0,1,0,0,1,0,Says they feel isolated and rarely leave the house. Says the inhaler refill is too expensive this month. Pillbox showed the morning dose was skipped twice this week.
+56,0,0,0,54,0,0,0,1,1,0,1,1,"Relies on a neighbor for rides, who is no longer available. Says they feel isolated and rarely leave the house."
+71,1,0,2,42,1,0,1,1,0,1,1,0,Daughter helps with medications and appointments.
+68,0,0,1,150,0,0,1,1,1,0,0,1,Patient in good spirits and engaged with the care plan.
+77,1,0,0,65,0,0,0,1,1,1,1,0,Patient has no ride to the follow-up appointment next week. Says they feel isolated and rarely leave the house.
+51,1,0,1,84,1,0,0,1,0,1,1,1,Pillbox showed the morning dose was skipped twice this week. Seemed down and said things are not getting better.
+52,0,1,0,0,0,0,0,0,0,1,0,0,
+51,1,0,2,0,1,1,0,0,1,0,0,0,
+70,0,0,0,131,0,0,0,1,0,0,0,0,Daughter helps with medications and appointments.
+81,0,0,0,0,0,0,0,0,1,1,1,0,
+51,1,0,0,105,0,0,0,1,0,1,0,0,Lost hours at work and is behind on utility bills. Patient sounded frustrated and overwhelmed during the call.
+52,1,0,1,0,1,0,0,0,1,0,1,0,
+63,0,0,1,172,0,0,1,1,1,1,1,0,Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call. Says there is often not enough food at home by the end of the month.
+55,0,1,0,0,0,0,0,0,0,0,0,0,
+73,0,0,0,64,0,0,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan.
+25,0,0,0,0,0,0,0,0,1,1,0,0,
+46,0,0,2,0,1,0,1,0,1,0,1,0,
+47,0,0,0,29,0,0,0,1,0,0,1,1,Reports feeling stronger since discharge.
+24,0,1,1,0,1,0,0,0,0,1,1,0,
+44,1,1,0,0,0,0,0,0,1,1,1,0,
+45,1,0,0,61,0,0,0,1,0,1,0,0,Reviewed discharge instructions with the patient.
+55,0,1,0,0,0,0,0,0,0,0,0,0,
+75,1,1,1,0,0,1,0,0,1,1,1,0,
+55,1,1,1,204,0,0,1,1,1,0,1,1,Reports feeling stronger since discharge.
+43,0,0,0,0,0,0,0,0,1,0,1,0,
+57,0,1,1,200,1,0,0,1,1,0,0,0,Pillbox showed the morning dose was skipped twice this week. Seemed down and said things are not getting better.
+74,1,0,1,36,0,0,1,1,1,1,1,0,Confirmed contact information and next steps.
+44,1,0,2,90,1,1,0,1,0,1,0,1,Seemed down and said things are not getting better.
+45,1,1,0,0,0,0,0,0,0,1,1,0,
+67,0,0,0,94,0,0,0,1,1,1,1,1,Confirmed contact information and next steps.
+55,1,0,0,132,0,0,0,1,0,0,1,0,Reports feeling stronger since discharge.
+68,0,0,1,43,0,1,0,1,1,0,1,0,Unsure which pills to take since discharge; reviewed the medication list together. Worried about affording the new medication co-pay. Confirmed contact information and next steps.
+58,1,0,1,0,0,1,0,0,0,0,1,0,
+69,1,0,2,24,1,1,0,1,0,0,1,1,
+43,1,0,1,0,0,0,1,0,1,0,0,0,
+58,0,1,1,0,1,0,0,0,0,1,1,0,
+55,1,1,0,0,0,0,0,0,1,1,0,0,
+40,0,1,2,59,0,1,1,1,1,1,1,1,Daughter helps with medications and appointments.
+35,1,0,1,0,1,0,0,0,0,0,1,0,
+69,1,0,1,76,1,0,0,1,1,0,1,0,Patient sounded frustrated and overwhelmed during the call.
+53,0,1,0,62,0,0,0,1,1,0,1,0,Worried about affording the new medication co-pay. Confirmed contact information and next steps.
+43,0,0,0,0,0,0,0,0,1,0,1,0,
+57,0,0,0,76,0,0,0,1,1,0,1,1,Says the inhaler refill is too expensive this month. Admits missing evening doses on busy days. Seemed down and said things are not getting better.
+75,0,0,0,0,0,0,0,0,0,0,1,0,
+24,1,0,0,50,0,0,0,1,0,0,0,0,Patient in good spirits and engaged with the care plan.
+36,0,1,1,0,0,1,0,0,1,1,1,0,
+44,1,0,0,0,0,0,0,0,1,0,1,0,
+80,1,0,0,0,0,0,0,0,1,0,0,0,
+63,1,0,0,99,0,0,0,1,1,0,1,0,Asked about food pantries near their apartment. Lost hours at work and is behind on utility bills. Says they feel isolated and rarely leave the house.
+70,0,0,0,242,0,0,0,1,0,0,0,1,Reviewed discharge instructions with the patient.
+41,0,0,1,0,1,0,0,0,0,0,1,0,
+42,0,0,0,189,0,0,0,1,0,0,1,0,Unsure which pills to take since discharge; reviewed the medication list together. Reviewed discharge instructions with the patient.
+65,0,1,0,0,0,0,0,0,1,0,1,0,
+59,0,1,3,0,1,1,1,0,1,0,1,0,
+67,0,0,2,127,1,1,0,1,0,1,1,1,Reviewed discharge instructions with the patient.
+56,0,0,0,208,0,0,0,1,0,0,1,0,Seemed down and said things are not getting better. Worried about affording the new medication co-pay.
+63,0,0,0,0,0,0,0,0,1,0,1,0,
+61,1,0,1,103,0,0,1,1,1,0,1,0,Says they feel isolated and rarely leave the house. Admits missing evening doses on busy days.
+70,1,1,1,0,0,1,0,0,0,0,1,0,
+70,1,0,1,0,1,0,0,0,1,0,1,0,
+34,0,0,1,141,1,0,0,1,0,1,1,1,Says the inhaler refill is too expensive this month. Reports feeling stronger since discharge. Says there is often not enough food at home by the end of the month.
+25,0,0,1,0,1,0,0,0,1,0,1,0,
+73,0,1,1,68,1,0,0,1,1,1,1,1,Patient in good spirits and engaged with the care plan.
+76,1,0,0,0,0,0,0,0,1,0,1,0,
+43,0,1,2,0,1,0,1,0,1,0,1,0,
+30,0,1,2,0,1,0,1,0,0,0,1,0,
+60,0,0,1,205,1,0,0,1,0,0,0,1,Patient in good spirits and engaged with the care plan.
+72,0,0,1,40,1,0,0,1,1,0,1,0,Reports feeling stronger since discharge.
+85,1,0,0,261,0,0,0,1,0,1,1,1,
+66,0,0,0,134,0,0,0,1,1,1,1,0,Completed routine check-in call.
+53,0,0,1,0,1,0,0,0,1,1,1,0,
+45,0,0,2,0,1,1,0,0,1,0,1,0,
+59,1,0,0,0,0,0,0,0,0,1,0,0,
+54,0,0,1,0,0,0,1,0,0,0,0,0,
+43,0,0,0,182,0,0,0,1,1,1,0,1,Says the inhaler refill is too expensive this month. Seemed down and said things are not getting better.
+89,0,0,0,27,0,0,0,1,0,1,0,1,Asked about food pantries near their apartment. Says they feel isolated and rarely leave the house.
+85,1,1,1,0,0,0,1,0,1,1,1,0,
+75,0,0,0,83,0,0,0,1,1,1,1,0,Seemed down and said things are not getting better. Unsure which pills to take since discharge; reviewed the medication list together.
+45,1,0,0,0,0,0,0,0,1,1,1,0,
+71,0,1,1,46,1,0,0,1,1,0,0,0,Asked about food pantries near their apartment. Patient sounded frustrated and overwhelmed during the call.
+68,0,0,0,20,0,0,0,1,1,1,1,0,
+65,1,1,2,80,1,1,0,1,0,0,1,1,Says the inhaler refill is too expensive this month. Confirmed contact information and next steps.
+77,0,0,0,0,0,0,0,0,0,1,1,0,
+68,0,1,1,0,0,0,1,0,0,1,1,0,
+69,1,0,1,0,0,1,0,0,1,0,1,0,
+68,1,1,0,0,0,0,0,0,1,0,0,0,
+63,1,1,1,0,1,0,0,0,1,0,1,0,
+32,1,0,2,55,1,1,0,1,1,0,0,1,Daughter helps with medications and appointments.
+60,0,1,2,0,0,1,1,0,1,0,1,0,
+50,0,1,1,106,0,0,1,1,1,1,1,0,Daughter helps with medications and appointments.
+39,1,0,0,0,0,0,0,0,0,0,1,0,
+84,0,0,1,0,1,0,0,0,0,1,1,0,
+84,0,0,1,70,0,1,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan. Admits missing evening doses on busy days. Worried about affording the new medication co-pay.
+79,1,0,1,87,1,0,0,1,1,0,1,0,Daughter helps with medications and appointments.
+62,0,1,0,178,0,0,0,1,0,0,1,1,Seemed down and said things are not getting better. Asked about food pantries near their apartment. Admits missing evening doses on busy days.
+79,0,1,2,39,1,1,0,1,0,1,0,1,"Completed routine check-in call. Relies on a neighbor for rides, who is no longer available."
+59,1,0,0,185,0,0,0,1,1,0,1,0,Admits missing evening doses on busy days. Worried about affording the new medication co-pay. Says they feel isolated and rarely leave the house.
+61,0,0,0,127,0,0,0,1,1,0,0,1,Lost hours at work and is behind on utility bills. Confirmed contact information and next steps.
+42,0,0,0,265,0,0,0,1,0,0,0,1,Seemed down and said things are not getting better. Worried about affording the new medication co-pay.
+64,1,1,0,0,0,0,0,0,1,1,1,0,
+59,0,1,2,0,1,1,0,0,1,0,0,0,
+39,1,0,1,0,1,0,0,0,1,1,0,0,
+58,1,0,0,48,0,0,0,1,1,1,0,1,Reports feeling stronger since discharge. Lost hours at work and is behind on utility bills.
+57,0,1,1,0,1,0,0,0,1,1,0,0,
+85,1,0,1,123,0,1,0,1,1,0,1,0,Completed routine check-in call.
+72,1,0,0,0,0,0,0,0,1,0,0,0,
+59,0,1,1,0,1,0,0,0,1,0,1,0,
+62,0,1,0,0,0,0,0,0,1,0,1,0,
+59,0,0,1,0,0,0,1,0,1,1,0,0,
+55,1,1,1,0,0,1,0,0,0,0,1,0,
+42,1,1,0,0,0,0,0,0,0,0,1,0,
+56,1,1,0,0,0,0,0,0,1,0,1,0,
+47,1,0,1,57,0,0,1,1,1,0,1,1,Reports feeling stronger since discharge.
+40,1,0,1,0,0,1,0,0,0,0,0,0,
+66,1,0,1,49,0,1,0,1,0,1,1,1,Unsure which pills to take since discharge; reviewed the medication list together. Completed routine check-in call. Worried about affording the new medication co-pay.
+64,0,1,3,142,1,1,1,1,0,0,1,1,Lost hours at work and is behind on utility bills. Completed routine check-in call.
+32,1,1,1,65,1,0,0,1,0,1,1,1,Completed routine check-in call. Says the inhaler refill is too expensive this month. Missed the last clinic visit because the bus route changed.
+56,1,0,0,129,0,0,0,1,1,1,0,0,Reports feeling stronger since discharge.
+73,1,1,2,0,1,1,0,0,1,0,0,0,
+74,0,1,1,0,1,0,0,0,1,0,1,0,
+74,1,1,1,0,1,0,0,0,0,0,0,0,
+59,0,0,0,86,0,0,0,1,1,0,1,1,Asked about food pantries near their apartment. Reviewed discharge instructions with the patient.
+46,0,1,0,0,0,0,0,0,1,0,0,0,
+42,1,1,1,0,0,1,0,0,1,1,1,0,
+64,1,1,2,0,1,1,0,0,1,1,1,0,
+64,0,0,0,0,0,0,0,0,1,0,1,0,
+78,0,0,0,0,0,0,0,0,0,0,1,0,
+75,1,1,0,0,0,0,0,0,0,0,1,0,
+56,0,0,0,0,0,0,0,0,0,1,1,0,
+40,0,1,1,23,0,1,0,1,1,0,1,1,Missed the last clinic visit because the bus route changed. Seemed down and said things are not getting better.
+54,1,0,0,44,0,0,0,1,1,1,1,0,Completed routine check-in call.
+62,0,0,0,34,0,0,0,1,1,1,1,0,Reviewed discharge instructions with the patient. Lost hours at work and is behind on utility bills.
+55,1,0,0,52,0,0,0,1,1,0,1,1,Confirmed contact information and next steps. Worried about affording the new medication co-pay. Missed the last clinic visit because the bus route changed.
+50,1,0,0,101,0,0,0,1,1,0,0,1,Reviewed discharge instructions with the patient. Patient has no ride to the follow-up appointment next week. Asked about food pantries near their apartment.
+62,1,1,1,61,0,0,1,1,1,0,1,0,Confirmed contact information and next steps. Lost hours at work and is behind on utility bills.
+51,1,0,0,146,0,0,0,1,1,1,1,1,Says they feel isolated and rarely leave the house.
+49,0,1,1,0,1,0,0,0,1,0,0,0,
+63,1,1,3,0,1,1,1,0,1,1,1,0,
+52,1,0,1,0,1,0,0,0,1,1,1,0,
+62,0,1,0,0,0,0,0,0,0,1,1,0,
+62,0,0,1,0,0,0,1,0,0,0,0,0,
+41,1,1,1,0,1,0,0,0,0,0,1,0,
+51,1,0,2,53,0,1,1,1,0,1,1,0,Confirmed contact information and next steps. Worried about affording the new medication co-pay.
+80,1,0,2,220,1,1,0,1,1,0,1,0,Unsure which pills to take since discharge; reviewed the medication list together. Skipping meals to make groceries last. Patient sounded frustrated and overwhelmed during the call.
+41,1,1,0,0,0,0,0,0,1,1,0,0,
+27,0,1,1,0,1,0,0,0,0,0,1,0,
+30,0,1,2,0,1,1,0,0,1,0,0,0,
+59,0,0,0,0,0,0,0,0,1,1,1,0,
+59,0,0,0,124,0,0,0,1,1,0,1,1,Asked about food pantries near their apartment. Lost hours at work and is behind on utility bills. Reviewed discharge instructions with the patient.
+57,1,0,0,0,0,0,0,0,1,0,1,0,
+77,1,0,1,45,1,0,0,1,0,0,0,0,Says they feel isolated and rarely leave the house. Asked about food pantries near their apartment.
+18,0,0,2,86,1,1,0,1,0,0,1,1,"Skipping meals to make groceries last. Seemed down and said things are not getting better. Pillbox showed the morning dose was skipped twice this week. Relies on a neighbor for rides, who is no longer available."
+64,1,1,0,0,0,0,0,0,0,1,1,0,
+82,1,1,1,0,0,0,1,0,1,0,0,0,
+41,0,0,1,37,0,1,0,1,1,0,1,1,Patient sounded frustrated and overwhelmed during the call. Asked about food pantries near their apartment. Says the inhaler refill is too expensive this month.
+53,1,0,0,236,0,0,0,1,0,0,1,1,Pillbox showed the morning dose was skipped twice this week. Lost hours at work and is behind on utility bills. Patient sounded frustrated and overwhelmed during the call.
+47,1,1,1,87,0,1,0,1,1,1,1,0,Reports feeling stronger since discharge.
+45,0,0,0,153,0,0,0,1,0,0,1,1,Admits missing evening doses on busy days. Seemed down and said things are not getting better. Asked about food pantries near their apartment.
+53,0,0,0,61,0,0,0,1,0,1,1,1,Daughter helps with medications and appointments.
+80,0,0,0,35,0,0,0,1,1,1,1,1,Skipping meals to make groceries last. Seemed down and said things are not getting better.
+86,0,1,1,207,1,0,0,1,1,0,1,0,Lost hours at work and is behind on utility bills. Unsure which pills to take since discharge; reviewed the medication list together. Seemed down and said things are not getting better.
+53,0,1,0,0,0,0,0,0,1,1,0,0,
+87,0,0,0,0,0,0,0,0,1,1,1,0,
+59,0,1,1,80,0,1,0,1,0,0,1,1,Completed routine check-in call.
+85,1,0,0,76,0,0,0,1,1,0,1,1,Confirmed contact information and next steps.
+57,0,1,2,115,1,0,1,1,1,1,1,0,Skipping meals to make groceries last. Reports feeling stronger since discharge.
+60,1,1,1,45,1,0,0,1,1,1,1,0,
+64,1,0,2,0,1,0,1,0,1,1,1,0,
+95,0,1,2,0,1,1,0,0,1,1,0,0,
+71,0,0,1,46,1,0,0,1,1,0,1,0,Completed routine check-in call.
+48,0,0,0,211,0,0,0,1,0,1,1,0,Says they feel isolated and rarely leave the house. Missed the last clinic visit because the bus route changed.
+73,0,1,0,0,0,0,0,0,0,1,1,0,
+53,1,1,1,0,1,0,0,0,0,0,1,0,
+51,1,1,2,0,1,0,1,0,0,0,1,0,
+72,1,0,0,0,0,0,0,0,1,0,0,0,
+59,0,1,1,0,0,1,0,0,1,1,0,0,
+63,0,0,0,0,0,0,0,0,0,0,1,0,
+59,0,1,1,0,1,0,0,0,0,1,1,0,
+63,1,1,0,0,0,0,0,0,0,0,1,0,
+65,1,0,0,0,0,0,0,0,1,0,1,0,
+29,0,1,2,0,1,1,0,0,1,1,1,0,
+68,0,0,1,158,1,0,0,1,1,0,0,0,"Confirmed contact information and next steps. Unsure which pills to take since discharge; reviewed the medication list together. Relies on a neighbor for rides, who is no longer available."
+44,1,0,0,0,0,0,0,0,0,1,1,0,
+37,1,1,2,0,1,0,1,0,1,0,1,0,
+57,0,0,2,75,1,1,0,1,1,1,1,1,Admits missing evening doses on busy days. Completed routine check-in call. Worried about affording the new medication co-pay.
+60,0,1,1,0,1,0,0,0,1,0,1,0,
+48,1,1,0,0,0,0,0,0,1,1,0,0,
+71,1,0,0,0,0,0,0,0,1,1,0,0,
+38,0,0,2,50,1,1,0,1,1,0,0,0,Patient sounded frustrated and overwhelmed during the call. Worried about affording the new medication co-pay.
+52,1,0,0,0,0,0,0,0,1,0,0,0,
+50,1,0,0,0,0,0,0,0,1,0,1,0,
+58,0,0,2,62,0,1,1,1,1,0,0,1,Says they feel isolated and rarely leave the house. Skipping meals to make groceries last.
+63,0,0,0,0,0,0,0,0,1,1,0,0,
+43,0,0,0,98,0,0,0,1,1,0,1,0,Patient has no ride to the follow-up appointment next week. Says they feel isolated and rarely leave the house.
+69,1,0,1,0,1,0,0,0,1,0,1,0,
+59,0,1,0,0,0,0,0,0,1,0,1,0,
+30,0,0,0,25,0,0,0,1,0,0,0,1,Reviewed discharge instructions with the patient. Asked about food pantries near their apartment.
+29,0,0,0,0,0,0,0,0,1,1,1,0,
+58,0,0,0,47,0,0,0,1,0,0,0,1,Missed the last clinic visit because the bus route changed. Skipping meals to make groceries last. Patient sounded frustrated and overwhelmed during the call.
+55,1,0,1,147,0,1,0,1,1,1,0,0,Patient in good spirits and engaged with the care plan.
+57,0,0,0,27,0,0,0,1,1,1,0,1,Unsure which pills to take since discharge; reviewed the medication list together. Reviewed discharge instructions with the patient.
+58,1,0,1,119,0,0,1,1,0,0,1,1,Daughter helps with medications and appointments.
+62,1,0,1,0,1,0,0,0,1,0,1,0,
+73,0,0,0,0,0,0,0,0,0,0,1,0,
+42,0,0,1,30,0,1,0,1,1,0,1,1,Daughter helps with medications and appointments.
+41,1,0,1,0,0,0,1,0,0,0,1,0,
+42,1,0,0,0,0,0,0,0,1,1,0,0,
+63,1,1,0,107,0,0,0,1,0,1,1,0,
+77,0,1,2,106,1,0,1,1,1,0,1,0,Missed the last clinic visit because the bus route changed. Patient in good spirits and engaged with the care plan. Skipping meals to make groceries last.
+52,1,1,0,0,0,0,0,0,1,1,0,0,
+21,0,0,0,0,0,0,0,0,1,0,1,0,
+33,1,0,2,0,1,1,0,0,0,1,0,0,
+46,1,1,0,94,0,0,0,1,0,0,1,0,Patient has no ride to the follow-up appointment next week. Patient sounded frustrated and overwhelmed during the call.
+50,0,0,1,43,0,1,0,1,0,1,1,1,Daughter helps with medications and appointments.
+52,0,0,0,0,0,0,0,0,1,1,1,0,
+59,0,0,0,80,0,0,0,1,1,1,1,1,Completed routine check-in call.
+54,0,0,0,0,0,0,0,0,1,1,1,0,
+74,0,0,2,0,1,1,0,0,1,0,0,0,
+48,1,0,1,0,0,1,0,0,1,1,0,0,
+45,0,0,0,0,0,0,0,0,1,0,1,0,
+66,1,1,1,0,1,0,0,0,0,1,1,0,
+35,0,0,0,56,0,0,0,1,0,0,1,1,Confirmed contact information and next steps.
+64,0,1,0,61,0,0,0,1,1,0,1,1,Says the inhaler refill is too expensive this month. Says they feel isolated and rarely leave the house.
+60,0,1,2,0,1,1,0,0,1,0,1,0,
+56,0,0,0,0,0,0,0,0,1,0,1,0,
+82,0,0,1,91,1,0,0,1,0,1,1,1,Reports feeling stronger since discharge.
+49,1,1,2,0,1,0,1,0,0,1,1,0,
+89,0,1,0,169,0,0,0,1,1,1,1,0,Reviewed discharge instructions with the patient. Patient has no ride to the follow-up appointment next week. Asked about food pantries near their apartment.
+55,0,1,0,0,0,0,0,0,0,0,0,0,
+39,1,0,1,72,1,0,0,1,0,1,1,1,Completed routine check-in call. Says the inhaler refill is too expensive this month.
+59,1,0,0,61,0,0,0,1,1,0,1,0,Reports feeling stronger since discharge.
+42,1,0,0,0,0,0,0,0,1,0,1,0,
+47,1,1,0,0,0,0,0,0,1,1,1,0,
+64,0,0,1,32,1,0,0,1,0,0,0,1,Completed routine check-in call.
+67,0,0,1,0,1,0,0,0,0,0,1,0,
+49,1,1,1,0,1,0,0,0,0,0,0,0,
+73,0,0,0,56,0,0,0,1,1,0,1,1,Patient has no ride to the follow-up appointment next week. Confirmed contact information and next steps.
+76,0,0,2,292,1,1,0,1,1,1,1,0,
+80,1,0,1,0,1,0,0,0,1,0,1,0,
+66,1,1,0,56,0,0,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan. Says the inhaler refill is too expensive this month. Admits missing evening doses on busy days.
+79,0,0,0,0,0,0,0,0,1,0,1,0,
+30,1,0,2,36,0,1,1,1,1,0,1,1,Lost hours at work and is behind on utility bills. Confirmed contact information and next steps. Says there is often not enough food at home by the end of the month.
+54,1,0,1,46,0,0,1,1,1,1,1,0,Patient sounded frustrated and overwhelmed during the call.
+45,0,1,1,104,0,0,1,1,1,1,1,1,Confirmed contact information and next steps. Skipping meals to make groceries last. Patient has no ride to the follow-up appointment next week. Pillbox showed the morning dose was skipped twice this week.
+60,1,0,0,0,0,0,0,0,1,1,1,0,
+50,0,0,0,153,0,0,0,1,0,1,1,1,Admits missing evening doses on busy days. Completed routine check-in call.
+56,1,0,0,0,0,0,0,0,1,0,1,0,
+87,1,1,0,0,0,0,0,0,1,1,0,0,
+56,0,1,0,0,0,0,0,0,1,0,1,0,
+65,0,1,1,0,1,0,0,0,0,0,1,0,
+55,1,0,1,0,0,1,0,0,1,1,1,0,
+59,0,0,0,0,0,0,0,0,1,0,1,0,
+58,1,0,1,84,0,1,0,1,1,1,1,1,Daughter helps with medications and appointments.
+65,0,0,2,0,1,1,0,0,0,1,1,0,
+76,0,1,1,76,0,1,0,1,0,1,0,1,Lost hours at work and is behind on utility bills. Confirmed contact information and next steps.
+83,1,1,0,0,0,0,0,0,1,0,0,0,
+63,1,1,0,0,0,0,0,0,0,0,1,0,
+67,1,0,0,160,0,0,0,1,1,1,0,0,Skipping meals to make groceries last. Daughter helps with medications and appointments. Lost hours at work and is behind on utility bills.
+41,0,1,0,0,0,0,0,0,0,0,1,0,
+57,1,1,1,0,0,1,0,0,1,0,0,0,
+72,0,1,1,155,0,1,0,1,1,1,1,0,Worried about affording the new medication co-pay. Patient sounded frustrated and overwhelmed during the call.
+71,1,0,0,0,0,0,0,0,0,1,0,0,
+62,0,0,1,106,1,0,0,1,0,1,1,0,Patient in good spirits and engaged with the care plan.
+72,1,0,0,128,0,0,0,1,1,0,1,1,Seemed down and said things are not getting better. Missed the last clinic visit because the bus route changed.
+66,1,0,1,0,1,0,0,0,0,0,0,0,
+76,0,1,0,87,0,0,0,1,1,0,1,1,Reports feeling stronger since discharge. Admits missing evening doses on busy days.
+63,0,0,2,0,1,1,0,0,1,0,1,0,
+53,1,1,2,0,0,1,1,0,0,0,1,0,
+63,0,0,1,0,0,0,1,0,0,0,1,0,
+18,1,0,0,0,0,0,0,0,1,0,1,0,
+64,0,0,0,114,0,0,0,1,1,0,1,0,Says they feel isolated and rarely leave the house. Says there is often not enough food at home by the end of the month.
+18,0,0,1,38,0,0,1,1,1,0,1,1,Says they feel isolated and rarely leave the house. Worried about affording the new medication co-pay. Patient has no ride to the follow-up appointment next week.
+32,1,1,2,0,1,1,0,0,0,0,0,0,
+65,0,0,0,0,0,0,0,0,1,0,1,0,
+65,1,0,1,21,1,0,0,1,1,1,0,1,Reviewed discharge instructions with the patient. Patient has no ride to the follow-up appointment next week.
+41,1,0,1,48,1,0,0,1,0,0,1,1,Daughter helps with medications and appointments. Skipping meals to make groceries last.
+48,0,0,1,0,1,0,0,0,0,1,0,0,
+79,0,0,0,97,0,0,0,1,1,0,0,0,Seemed down and said things are not getting better. Unsure which pills to take since discharge; reviewed the medication list together.
+51,0,0,0,0,0,0,0,0,1,0,0,0,
+92,1,1,1,0,0,0,1,0,1,0,1,0,
+58,1,1,0,0,0,0,0,0,1,0,1,0,
+64,1,0,0,71,0,0,0,1,1,0,0,1,Says they feel isolated and rarely leave the house. Missed the last clinic visit because the bus route changed.
+83,0,0,0,57,0,0,0,1,1,1,0,1,Seemed down and said things are not getting better. Patient has no ride to the follow-up appointment next week. Worried about affording the new medication co-pay.
+60,1,0,0,91,0,0,0,1,1,1,1,1,Completed routine check-in call.
+43,0,0,0,0,0,0,0,0,1,0,1,0,
+57,1,1,1,57,1,0,0,1,1,0,0,1,Worried about affording the new medication co-pay. Missed the last clinic visit because the bus route changed. Daughter helps with medications and appointments. Unsure which pills to take since discharge; reviewed the medication list together.
+58,1,1,1,0,0,0,1,0,1,1,1,0,
+38,1,0,2,0,1,1,0,0,1,0,1,0,
+54,1,0,0,148,0,0,0,1,1,0,0,0,Completed routine check-in call.
+47,0,1,2,0,1,1,0,0,0,1,1,0,
+72,0,0,1,0,1,0,0,0,0,0,1,0,
+59,0,1,0,0,0,0,0,0,0,1,1,0,
+54,0,0,1,63,0,0,1,1,0,0,1,0,"Patient sounded frustrated and overwhelmed during the call. Asked about food pantries near their apartment. Relies on a neighbor for rides, who is no longer available. Lost hours at work and is behind on utility bills."
+57,1,0,0,29,0,0,0,1,0,0,1,1,Reports feeling stronger since discharge.
+62,0,0,1,75,1,0,0,1,0,0,1,0,Daughter helps with medications and appointments.
+68,1,0,0,0,0,0,0,0,0,1,1,0,
+43,0,0,1,76,1,0,0,1,1,0,0,0,Reviewed discharge instructions with the patient.
+43,0,0,0,153,0,0,0,1,1,1,0,1,Patient has no ride to the follow-up appointment next week. Says they feel isolated and rarely leave the house.
+75,0,1,2,0,1,1,0,0,0,1,0,0,
+52,1,1,1,54,0,1,0,1,1,1,1,0,Missed the last clinic visit because the bus route changed. Patient sounded frustrated and overwhelmed during the call. Unsure which pills to take since discharge; reviewed the medication list together.
+37,0,0,1,61,1,0,0,1,0,0,1,1,Reviewed discharge instructions with the patient. Skipping meals to make groceries last. Says the inhaler refill is too expensive this month.
+65,0,0,2,0,1,1,0,0,1,0,0,0,
+65,0,0,0,0,0,0,0,0,0,0,1,0,
+35,0,0,1,270,1,0,0,1,1,0,1,0,Daughter helps with medications and appointments.
+62,0,0,0,0,0,0,0,0,1,1,1,0,
+69,0,0,0,0,0,0,0,0,1,0,1,0,
+64,1,0,0,0,0,0,0,0,1,1,1,0,
+68,1,1,1,0,1,0,0,0,1,0,1,0,
+37,1,0,0,49,0,0,0,1,1,0,1,0,Daughter helps with medications and appointments.
+63,0,1,0,0,0,0,0,0,1,0,1,0,
+54,0,0,0,188,0,0,0,1,1,1,1,0,Patient in good spirits and engaged with the care plan.
+51,0,0,0,309,0,0,0,1,1,0,1,0,Lost hours at work and is behind on utility bills. Seemed down and said things are not getting better.
+71,0,0,0,0,0,0,0,0,0,0,0,0,
+81,1,0,0,0,0,0,0,0,0,1,0,0,
+85,1,0,1,0,1,0,0,0,1,0,0,0,
+78,0,1,2,0,1,1,0,0,1,0,1,0,
+57,1,0,0,71,0,0,0,1,0,0,1,0,Daughter helps with medications and appointments.
+64,0,1,1,0,1,0,0,0,0,0,1,0,
+70,1,1,3,0,1,1,1,0,0,0,1,0,
+60,1,1,2,0,1,0,1,0,1,0,0,0,
+60,0,0,0,203,0,0,0,1,1,1,0,0,Reviewed discharge instructions with the patient.
+71,1,0,1,166,1,0,0,1,1,0,1,1,Daughter helps with medications and appointments.
+57,1,0,2,45,1,1,0,1,1,0,1,0,Completed routine check-in call.
+47,1,0,2,163,0,1,1,1,0,0,0,0,Says the inhaler refill is too expensive this month. Confirmed contact information and next steps.
+52,1,0,0,52,0,0,0,1,1,0,1,1,Patient in good spirits and engaged with the care plan. Patient has no ride to the follow-up appointment next week.
+68,0,0,1,32,1,0,0,1,0,0,0,0,Pillbox showed the morning dose was skipped twice this week. Seemed down and said things are not getting better.
+58,1,0,0,57,0,0,0,1,1,0,0,1,Patient in good spirits and engaged with the care plan.
+63,1,0,1,103,0,1,0,1,1,0,1,1,"Asked about food pantries near their apartment. Reviewed discharge instructions with the patient. Relies on a neighbor for rides, who is no longer available."
+68,1,1,1,48,1,0,0,1,1,0,0,0,Patient sounded frustrated and overwhelmed during the call. Patient has no ride to the follow-up appointment next week.
+53,0,0,2,0,1,0,1,0,1,1,0,0,
+70,0,1,1,0,1,0,0,0,0,1,0,0,
+64,0,0,1,108,0,0,1,1,0,0,1,1,Skipping meals to make groceries last. Completed routine check-in call. Lost hours at work and is behind on utility bills.
+40,1,0,1,44,0,1,0,1,1,0,1,1,Says there is often not enough food at home by the end of the month. Seemed down and said things are not getting better.
+80,0,0,0,86,0,0,0,1,1,0,1,1,Lost hours at work and is behind on utility bills. Completed routine check-in call.
+51,0,0,1,0,0,1,0,0,1,1,1,0,
+34,0,0,0,0,0,0,0,0,0,0,1,0,
+43,1,0,0,0,0,0,0,0,1,0,1,0,
+43,1,0,0,0,0,0,0,0,0,0,1,0,
+59,1,0,0,0,0,0,0,0,0,0,0,0,
+54,1,0,1,90,0,1,0,1,1,0,1,1,Completed routine check-in call.
+53,0,0,1,0,0,0,1,0,0,1,1,0,
+68,0,0,0,0,0,0,0,0,1,1,1,0,
+63,0,0,1,0,1,0,0,0,0,0,1,0,
+63,1,0,0,63,0,0,0,1,0,0,1,1,Lost hours at work and is behind on utility bills. Patient sounded frustrated and overwhelmed during the call.
+64,1,0,0,127,0,0,0,1,1,0,1,0,Admits missing evening doses on busy days. Patient sounded frustrated and overwhelmed during the call. Says there is often not enough food at home by the end of the month.
+68,0,1,1,0,1,0,0,0,1,0,1,0,
+27,1,0,0,36,0,0,0,1,1,0,1,1,Says there is often not enough food at home by the end of the month. Reviewed discharge instructions with the patient.
+53,1,0,0,139,0,0,0,1,0,0,1,1,Patient in good spirits and engaged with the care plan.
+26,1,0,1,95,0,1,0,1,1,1,1,0,Completed routine check-in call.
+59,0,0,1,123,1,0,0,1,0,1,1,0,Pillbox showed the morning dose was skipped twice this week. Patient in good spirits and engaged with the care plan.
+58,1,1,1,0,1,0,0,0,1,1,1,0,
+74,0,0,0,144,0,0,0,1,1,1,0,1,Confirmed contact information and next steps. Missed the last clinic visit because the bus route changed.
+76,1,0,0,299,0,0,0,1,0,0,1,0,Reports feeling stronger since discharge.
+61,0,1,0,0,0,0,0,0,1,0,1,0,
+51,1,1,2,0,1,1,0,0,1,0,1,0,
+66,0,1,0,0,0,0,0,0,1,0,0,0,
+50,1,0,0,84,0,0,0,1,1,0,1,0,Completed routine check-in call. Worried about affording the new medication co-pay.
+58,0,0,1,145,1,0,0,1,1,1,1,1,Admits missing evening doses on busy days. Seemed down and said things are not getting better.
+73,0,0,0,0,0,0,0,0,1,0,0,0,
+50,0,0,2,0,1,0,1,0,1,0,1,0,
+70,0,0,0,40,0,0,0,1,0,0,0,1,Says there is often not enough food at home by the end of the month. Says they feel isolated and rarely leave the house. Lost hours at work and is behind on utility bills.
+68,0,0,0,0,0,0,0,0,1,1,1,0,
+44,1,0,0,0,0,0,0,0,0,0,0,0,
+73,1,1,1,0,0,0,1,0,1,0,0,0,
+69,1,0,0,65,0,0,0,1,0,0,0,0,Lost hours at work and is behind on utility bills. Reports feeling stronger since discharge.
+60,0,0,0,97,0,0,0,1,1,1,1,1,Completed routine check-in call.
+47,0,0,1,64,0,0,1,1,1,1,0,1,Says they feel isolated and rarely leave the house. Missed the last clinic visit because the bus route changed.
+45,0,0,0,0,0,0,0,0,0,0,1,0,
+50,1,0,2,59,1,1,0,1,1,1,1,1,Confirmed contact information and next steps. Missed the last clinic visit because the bus route changed.
+66,1,0,1,0,0,1,0,0,0,0,0,0,
+44,0,1,1,0,0,1,0,0,1,1,1,0,
+65,1,0,0,89,0,0,0,1,1,0,0,0,Seemed down and said things are not getting better. Says there is often not enough food at home by the end of the month. Missed the last clinic visit because the bus route changed.
+40,1,0,1,0,1,0,0,0,1,0,1,0,
+55,1,0,0,182,0,0,0,1,0,1,1,0,Says they feel isolated and rarely leave the house. Skipping meals to make groceries last. Admits missing evening doses on busy days.
+60,1,0,3,0,1,1,1,0,1,0,1,0,
+95,1,0,0,0,0,0,0,0,0,0,1,0,
+38,0,0,1,47,0,1,0,1,0,1,1,0,Says there is often not enough food at home by the end of the month. Patient sounded frustrated and overwhelmed during the call.
+80,0,0,0,79,0,0,0,1,1,1,1,1,Reports feeling stronger since discharge.
+61,1,1,1,0,0,1,0,0,1,0,0,0,
+65,1,0,2,0,0,1,1,0,0,1,0,0,
+60,0,0,1,0,1,0,0,0,0,1,0,0,
+65,1,1,0,133,0,0,0,1,1,0,1,1,Pillbox showed the morning dose was skipped twice this week. Patient sounded frustrated and overwhelmed during the call.
+56,1,0,1,0,0,0,1,0,1,1,1,0,
+80,1,1,0,0,0,0,0,0,1,0,1,0,
+51,0,0,0,0,0,0,0,0,0,1,1,0,
+75,1,0,1,137,1,0,0,1,0,0,1,0,Patient in good spirits and engaged with the care plan.
+49,0,0,0,0,0,0,0,0,0,0,0,0,
+57,1,1,1,0,1,0,0,0,0,0,1,0,
+42,0,0,0,83,0,0,0,1,1,0,0,0,Worried about affording the new medication co-pay. Asked about food pantries near their apartment. Patient sounded frustrated and overwhelmed during the call.
+65,1,0,0,35,0,0,0,1,1,1,1,0,"Reviewed discharge instructions with the patient. Relies on a neighbor for rides, who is no longer available."
+80,1,1,1,0,0,1,0,0,0,1,1,0,
+57,1,0,0,48,0,0,0,1,1,0,1,1,Daughter helps with medications and appointments. Pillbox showed the morning dose was skipped twice this week.
+55,0,0,0,0,0,0,0,0,1,0,0,0,
+42,0,0,0,0,0,0,0,0,1,0,1,0,
+55,0,0,1,43,0,0,1,1,1,0,0,1,Patient in good spirits and engaged with the care plan.
+34,0,0,2,0,1,1,0,0,1,0,1,0,
+45,0,1,0,0,0,0,0,0,0,1,0,0,
+62,0,0,0,0,0,0,0,0,0,1,1,0,
+78,1,1,0,0,0,0,0,0,1,0,1,0,
+95,0,0,1,183,1,0,0,1,0,0,0,0,"Relies on a neighbor for rides, who is no longer available. Reports feeling stronger since discharge."
+50,1,0,1,75,1,0,0,1,0,1,0,1,Completed routine check-in call. Admits missing evening doses on busy days.
+80,0,0,0,18,0,0,0,1,1,0,1,0,Reports feeling stronger since discharge.
+62,1,0,0,0,0,0,0,0,1,0,1,0,
+56,1,1,1,0,0,1,0,0,0,0,0,0,
+65,0,0,0,0,0,0,0,0,0,0,1,0,
+59,1,1,1,0,0,0,1,0,0,0,0,0,
+60,0,1,0,0,0,0,0,0,1,1,1,0,
+52,1,1,0,0,0,0,0,0,0,0,1,0,
+37,0,0,0,86,0,0,0,1,1,0,1,1,Confirmed contact information and next steps.
+35,0,0,1,114,1,0,0,1,1,0,1,0,Says there is often not enough food at home by the end of the month. Says the inhaler refill is too expensive this month. Says they feel isolated and rarely leave the house.
+68,0,0,1,0,1,0,0,0,1,1,1,0,
+54,1,0,0,75,0,0,0,1,0,0,0,1,Missed the last clinic visit because the bus route changed. Confirmed contact information and next steps.
+49,1,0,1,43,1,0,0,1,1,0,1,0,Lost hours at work and is behind on utility bills. Says they feel isolated and rarely leave the house.
+58,0,0,2,42,1,1,0,1,1,0,1,0,Daughter helps with medications and appointments.
+70,0,0,0,0,0,0,0,0,0,0,1,0,
+61,1,1,0,0,0,0,0,0,1,0,0,0,
+48,0,1,1,0,0,1,0,0,1,1,0,0,
+77,1,0,1,73,0,1,0,1,0,0,1,1,Confirmed contact information and next steps. Patient has no ride to the follow-up appointment next week.
+82,1,0,0,0,0,0,0,0,0,0,0,0,
+66,0,0,0,0,0,0,0,0,0,0,1,0,
+73,1,1,1,0,1,0,0,0,0,1,1,0,
+77,1,0,0,28,0,0,0,1,0,1,0,1,Pillbox showed the morning dose was skipped twice this week. Confirmed contact information and next steps. Lost hours at work and is behind on utility bills.
+75,1,1,0,0,0,0,0,0,1,1,1,0,
+68,0,1,0,0,0,0,0,0,1,0,1,0,
+67,1,1,2,0,1,1,0,0,1,1,1,0,
+66,0,0,0,0,0,0,0,0,1,1,1,0,
+42,0,0,1,72,1,0,0,1,1,0,1,0,Says they feel isolated and rarely leave the house. Skipping meals to make groceries last. Missed the last clinic visit because the bus route changed.
+69,0,0,1,0,0,0,1,0,1,0,1,0,
+38,1,0,0,71,0,0,0,1,0,1,0,1,Patient sounded frustrated and overwhelmed during the call. Patient has no ride to the follow-up appointment next week.
+46,0,0,1,25,0,1,0,1,1,0,1,0,Lost hours at work and is behind on utility bills. Patient sounded frustrated and overwhelmed during the call.
+78,1,0,2,36,0,1,1,1,1,1,1,0,Asked about food pantries near their apartment. Pillbox showed the morning dose was skipped twice this week. Completed routine check-in call.
+71,0,1,2,0,1,0,1,0,0,0,0,0,
+81,0,1,0,61,0,0,0,1,1,0,0,0,Daughter helps with medications and appointments. Asked about food pantries near their apartment.
+54,0,1,1,0,1,0,0,0,0,0,1,0,
+41,0,0,0,115,0,0,0,1,1,1,1,1,Says there is often not enough food at home by the end of the month. Completed routine check-in call.
+55,1,0,0,0,0,0,0,0,1,1,1,0,
+60,1,1,1,93,1,0,0,1,1,0,1,1,
+60,0,0,1,0,1,0,0,0,0,0,1,0,
+75,1,1,2,62,1,0,1,1,0,0,1,1,"Daughter helps with medications and appointments. Relies on a neighbor for rides, who is no longer available."
+53,0,0,2,174,1,1,0,1,0,0,1,1,
+64,0,1,1,0,0,1,0,0,1,1,1,0,
+44,0,0,1,146,1,0,0,1,1,0,1,1,Seemed down and said things are not getting better.
+65,1,0,1,62,1,0,0,1,1,0,1,0,Says they feel isolated and rarely leave the house. Missed the last clinic visit because the bus route changed.
+58,1,0,1,0,1,0,0,0,1,0,0,0,
+47,0,1,3,279,1,1,1,1,1,1,1,0,"Relies on a neighbor for rides, who is no longer available. Reports feeling stronger since discharge. Skipping meals to make groceries last."
+55,1,0,2,91,1,1,0,1,1,0,0,1,Confirmed contact information and next steps.
+56,0,0,3,0,1,1,1,0,0,1,1,0,
+54,0,0,0,166,0,0,0,1,1,0,1,0,Says there is often not enough food at home by the end of the month. Patient in good spirits and engaged with the care plan.
+85,1,0,1,0,0,1,0,0,1,0,1,0,
+57,0,0,0,0,0,0,0,0,1,1,1,0,
+55,1,0,1,63,1,0,0,1,0,0,0,0,Reports feeling stronger since discharge.
+27,1,0,0,50,0,0,0,1,1,1,1,1,Confirmed contact information and next steps. Worried about affording the new medication co-pay.
+45,1,0,0,44,0,0,0,1,0,0,1,1,Reviewed discharge instructions with the patient.
+54,1,0,2,0,1,1,0,0,1,1,1,0,
+48,1,1,0,0,0,0,0,0,1,1,1,0,
+79,1,0,1,107,1,0,0,1,1,1,1,0,Skipping meals to make groceries last. Patient sounded frustrated and overwhelmed during the call. Missed the last clinic visit because the bus route changed.
+56,1,0,1,0,1,0,0,0,1,0,1,0,
+78,0,1,1,0,1,0,0,0,1,1,1,0,
+59,1,0,1,0,0,0,1,0,1,1,1,0,
+59,0,0,2,98,1,1,0,1,1,0,0,0,
+57,1,0,2,0,0,1,1,0,0,0,1,0,
+58,1,0,0,0,0,0,0,0,0,1,0,0,
+84,1,0,0,0,0,0,0,0,0,0,1,0,
+24,1,0,0,177,0,0,0,1,1,1,1,0,Patient has no ride to the follow-up appointment next week. Says they feel isolated and rarely leave the house. Says there is often not enough food at home by the end of the month.
+28,0,0,0,0,0,0,0,0,1,1,1,0,
+50,1,1,0,91,0,0,0,1,1,0,1,0,Reports feeling stronger since discharge. Missed the last clinic visit because the bus route changed. Asked about food pantries near their apartment.
+59,1,1,0,0,0,0,0,0,1,0,1,0,
+69,0,0,1,0,0,0,1,0,1,0,0,0,
+65,0,1,1,56,1,0,0,1,1,0,0,0,Completed routine check-in call. Says the inhaler refill is too expensive this month. Asked about food pantries near their apartment.
+53,1,0,1,65,1,0,0,1,1,1,1,1,Skipping meals to make groceries last. Reviewed discharge instructions with the patient.
+74,0,1,0,0,0,0,0,0,1,0,1,0,
+74,1,0,1,64,0,1,0,1,1,0,0,0,Admits missing evening doses on busy days. Completed routine check-in call.
+61,1,0,1,0,1,0,0,0,1,1,0,0,
+73,1,0,0,0,0,0,0,0,1,0,1,0,
+62,0,0,1,0,0,0,1,0,0,1,1,0,
+50,0,0,0,0,0,0,0,0,1,0,1,0,
+69,1,0,1,170,0,0,1,1,1,0,1,0,Reports feeling stronger since discharge.
+60,1,0,2,47,1,0,1,1,1,0,1,1,Confirmed contact information and next steps. Skipping meals to make groceries last.
+58,1,0,0,0,0,0,0,0,1,1,1,0,
+80,0,1,0,0,0,0,0,0,0,1,1,0,
+22,1,0,1,0,0,1,0,0,1,1,1,0,
+37,1,0,1,109,1,0,0,1,0,1,1,1,Lost hours at work and is behind on utility bills. Says they feel isolated and rarely leave the house.
+41,0,0,2,143,1,0,1,1,1,1,1,0,Lost hours at work and is behind on utility bills. Reviewed discharge instructions with the patient.
+53,1,0,0,115,0,0,0,1,0,1,1,1,Worried about affording the new medication co-pay. Reports feeling stronger since discharge.
+55,1,1,2,64,1,1,0,1,0,0,1,1,Skipping meals to make groceries last. Reviewed discharge instructions with the patient.
+36,1,0,0,0,0,0,0,0,1,1,1,0,
+44,0,1,1,0,1,0,0,0,0,1,0,0,
+45,0,0,0,19,0,0,0,1,1,1,1,1,Says the inhaler refill is too expensive this month. Reviewed discharge instructions with the patient.
+95,0,0,1,153,1,0,0,1,1,0,1,1,Patient in good spirits and engaged with the care plan. Says the inhaler refill is too expensive this month.
+85,1,0,1,0,0,1,0,0,1,0,1,0,
+52,1,0,0,0,0,0,0,0,0,1,0,0,
+53,0,0,1,0,1,0,0,0,0,0,1,0,
+41,0,1,2,33,1,1,0,1,1,0,1,0,"Lost hours at work and is behind on utility bills. Daughter helps with medications and appointments. Relies on a neighbor for rides, who is no longer available."
+30,0,0,0,0,0,0,0,0,1,1,1,0,
+57,1,0,1,168,1,0,0,1,0,0,1,1,Says the inhaler refill is too expensive this month. Admits missing evening doses on busy days. Seemed down and said things are not getting better.
+43,1,0,2,142,0,1,1,1,1,0,0,1,Says they feel isolated and rarely leave the house.
+57,0,1,3,0,1,1,1,0,1,0,1,0,
+34,0,0,1,67,0,1,0,1,0,0,0,1,Unsure which pills to take since discharge; reviewed the medication list together. Seemed down and said things are not getting better.
+47,1,0,1,19,0,1,0,1,0,1,0,0,Says they feel isolated and rarely leave the house. Lost hours at work and is behind on utility bills.
+61,1,0,1,0,0,1,0,0,1,1,0,0,
+64,1,1,1,0,0,0,1,0,1,1,0,0,
+65,0,1,1,0,1,0,0,0,0,1,1,0,
+39,1,0,0,154,0,0,0,1,1,1,1,0,Completed routine check-in call.
+71,0,0,1,231,0,1,0,1,0,0,1,1,Missed the last clinic visit because the bus route changed. Patient in good spirits and engaged with the care plan.
+46,0,0,1,109,1,0,0,1,1,1,1,0,Patient sounded frustrated and overwhelmed during the call. Asked about food pantries near their apartment. Says the inhaler refill is too expensive this month.
+68,1,0,0,35,0,0,0,1,1,0,0,0,Patient in good spirits and engaged with the care plan.
+58,1,1,0,192,0,0,0,1,0,0,1,1,
+38,1,0,1,0,1,0,0,0,1,1,1,0,
+54,0,0,1,0,0,1,0,0,1,1,0,0,
+64,0,1,0,123,0,0,0,1,0,0,1,0,Confirmed contact information and next steps. Lost hours at work and is behind on utility bills. Skipping meals to make groceries last.
+68,0,0,0,39,0,0,0,1,0,1,1,0,Unsure which pills to take since discharge; reviewed the medication list together. Confirmed contact information and next steps. Worried about affording the new medication co-pay. Says there is often not enough food at home by the end of the month.
+56,0,0,0,0,0,0,0,0,1,0,0,0,
+81,0,0,2,82,1,1,0,1,1,0,1,0,Reviewed discharge instructions with the patient. Says the inhaler refill is too expensive this month.
+73,0,0,0,103,0,0,0,1,0,0,1,0,
+54,0,0,2,110,1,1,0,1,1,0,1,1,Completed routine check-in call.
+70,1,0,0,123,0,0,0,1,1,0,1,1,Pillbox showed the morning dose was skipped twice this week. Completed routine check-in call. Lost hours at work and is behind on utility bills.
+87,1,1,2,0,1,1,0,0,1,0,1,0,
+88,0,1,1,27,1,0,0,1,1,0,1,0,Confirmed contact information and next steps. Asked about food pantries near their apartment.
+40,1,0,0,0,0,0,0,0,1,0,1,0,
+44,0,0,1,0,1,0,0,0,1,1,1,0,
+81,0,1,1,27,1,0,0,1,0,1,1,1,Completed routine check-in call. Missed the last clinic visit because the bus route changed.
+42,1,0,0,0,0,0,0,0,0,1,1,0,
+38,0,1,1,0,0,1,0,0,1,0,1,0,
+51,1,0,1,63,0,1,0,1,1,1,1,1,Skipping meals to make groceries last. Seemed down and said things are not getting better.
+65,1,1,0,95,0,0,0,1,1,1,1,1,Completed routine check-in call. Patient has no ride to the follow-up appointment next week.
+57,1,0,0,0,0,0,0,0,1,0,1,0,
+49,0,0,2,0,1,0,1,0,1,0,1,0,
+48,0,0,1,0,0,1,0,0,1,0,0,0,
+48,1,0,0,87,0,0,0,1,0,0,1,1,Patient in good spirits and engaged with the care plan.
+45,0,1,0,0,0,0,0,0,1,0,0,0,
+93,1,0,1,0,1,0,0,0,1,0,1,0,
+63,1,0,0,70,0,0,0,1,1,0,1,1,Daughter helps with medications and appointments.
+72,1,0,0,229,0,0,0,1,1,1,1,1,Reports feeling stronger since discharge. Says the inhaler refill is too expensive this month.
+51,1,0,1,223,1,0,0,1,1,0,0,0,Worried about affording the new medication co-pay. Completed routine check-in call.
+56,1,0,1,47,1,0,0,1,1,0,0,1,"Relies on a neighbor for rides, who is no longer available. Seemed down and said things are not getting better."
+48,0,1,1,0,0,0,1,0,0,1,1,0,
+19,1,0,1,0,1,0,0,0,0,0,1,0,
+38,0,1,0,117,0,0,0,1,0,0,0,1,
+31,0,1,2,0,1,0,1,0,1,0,0,0,
+25,1,0,0,0,0,0,0,0,1,0,0,0,
+40,0,0,2,73,1,1,0,1,1,0,1,0,Worried about affording the new medication co-pay. Seemed down and said things are not getting better. Says there is often not enough food at home by the end of the month.
+78,1,0,0,0,0,0,0,0,0,0,1,0,
+58,0,0,2,79,1,1,0,1,0,0,1,0,Daughter helps with medications and appointments.
+78,1,1,0,0,0,0,0,0,1,1,0,0,
+64,0,1,1,157,1,0,0,1,1,1,1,0,Patient has no ride to the follow-up appointment next week. Asked about food pantries near their apartment. Says they feel isolated and rarely leave the house. Lost hours at work and is behind on utility bills.
+70,0,0,2,0,1,0,1,0,1,0,1,0,
+45,1,0,0,102,0,0,0,1,1,0,1,0,Daughter helps with medications and appointments.
+66,0,1,2,0,1,1,0,0,1,0,1,0,
+69,1,0,2,348,1,1,0,1,0,1,0,1,Daughter helps with medications and appointments.
+50,1,1,1,71,1,0,0,1,1,1,1,1,Missed the last clinic visit because the bus route changed. Lost hours at work and is behind on utility bills. Says they feel isolated and rarely leave the house.
+67,0,0,0,0,0,0,0,0,1,0,0,0,
+67,1,0,1,0,1,0,0,0,0,0,1,0,
+50,0,1,2,164,1,1,0,1,0,0,1,1,Worried about affording the new medication co-pay. Says they feel isolated and rarely leave the house. Patient has no ride to the follow-up appointment next week.
+41,0,0,1,217,0,1,0,1,1,1,1,0,Seemed down and said things are not getting better. Unsure which pills to take since discharge; reviewed the medication list together.
+41,1,0,0,0,0,0,0,0,1,1,1,0,
+60,1,1,2,0,0,1,1,0,0,0,1,0,
+63,1,0,2,52,1,0,1,1,1,0,0,0,Says the inhaler refill is too expensive this month. Completed routine check-in call.
+46,1,0,0,188,0,0,0,1,0,0,1,1,Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call.
+59,1,0,0,0,0,0,0,0,0,1,1,0,
+67,1,0,0,0,0,0,0,0,1,1,0,0,
+68,0,0,1,278,0,0,1,1,1,0,1,0,Completed routine check-in call.
+82,0,0,1,0,0,1,0,0,1,0,1,0,
+77,0,0,0,0,0,0,0,0,1,0,1,0,
+43,1,1,0,0,0,0,0,0,0,0,1,0,
+84,0,1,2,0,1,0,1,0,0,1,1,0,
+50,1,1,0,0,0,0,0,0,0,0,1,0,
+74,0,0,0,0,0,0,0,0,1,1,1,0,
+59,1,0,1,33,1,0,0,1,1,0,1,1,Daughter helps with medications and appointments. Patient has no ride to the follow-up appointment next week.
+52,1,0,1,117,1,0,0,1,1,0,1,1,Completed routine check-in call. Says the inhaler refill is too expensive this month.
+31,0,0,0,0,0,0,0,0,0,0,1,0,
+56,0,0,1,86,1,0,0,1,1,0,1,0,Patient sounded frustrated and overwhelmed during the call.
+35,1,0,2,70,1,1,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan.
+73,1,0,0,0,0,0,0,0,1,1,1,0,
+81,0,1,0,17,0,0,0,1,0,0,1,0,Missed the last clinic visit because the bus route changed. Says there is often not enough food at home by the end of the month. Daughter helps with medications and appointments.
+46,0,0,1,0,0,0,1,0,1,0,0,0,
+63,1,0,3,68,1,1,1,1,0,0,1,1,
+47,0,0,0,87,0,0,0,1,0,0,1,0,Seemed down and said things are not getting better. Admits missing evening doses on busy days.
+49,0,0,1,0,1,0,0,0,1,1,1,0,
+70,1,0,0,0,0,0,0,0,1,1,1,0,
+58,1,0,0,44,0,0,0,1,1,0,1,1,Says the inhaler refill is too expensive this month. Says there is often not enough food at home by the end of the month. Reviewed discharge instructions with the patient. Patient has no ride to the follow-up appointment next week.
+84,0,0,0,0,0,0,0,0,1,1,1,0,
+51,0,0,0,0,0,0,0,0,0,1,1,0,
+73,1,0,0,0,0,0,0,0,1,1,1,0,
+60,1,1,0,0,0,0,0,0,0,0,1,0,
+70,0,0,1,70,1,0,0,1,1,0,1,1,Patient sounded frustrated and overwhelmed during the call. Says the inhaler refill is too expensive this month. Says there is often not enough food at home by the end of the month. Unsure which pills to take since discharge; reviewed the medication list together.
+52,1,0,0,0,0,0,0,0,1,0,1,0,
+58,0,0,0,0,0,0,0,0,1,1,1,0,
+57,1,0,0,96,0,0,0,1,1,1,1,1,Patient sounded frustrated and overwhelmed during the call.
+46,0,0,0,122,0,0,0,1,1,0,0,0,"Seemed down and said things are not getting better. Relies on a neighbor for rides, who is no longer available. Skipping meals to make groceries last. Unsure which pills to take since discharge; reviewed the medication list together."
+68,1,0,1,50,0,1,0,1,1,0,1,0,Patient in good spirits and engaged with the care plan.
+68,1,0,1,91,0,1,0,1,1,1,1,0,
+67,1,0,1,232,0,1,0,1,0,1,0,1,Says the inhaler refill is too expensive this month. Completed routine check-in call.
+81,1,0,1,0,0,1,0,0,1,0,1,0,
+80,1,1,1,102,0,1,0,1,1,1,1,0,Says they feel isolated and rarely leave the house.
+53,0,0,1,74,1,0,0,1,1,0,1,1,Says they feel isolated and rarely leave the house.
+64,1,0,0,0,0,0,0,0,0,0,1,0,
+49,0,0,1,174,1,0,0,1,1,0,1,1,Confirmed contact information and next steps.
+59,0,0,0,0,0,0,0,0,1,1,0,0,
+49,0,1,2,55,1,1,0,1,1,1,0,1,Asked about food pantries near their apartment. Reports feeling stronger since discharge. Worried about affording the new medication co-pay.
+83,1,1,1,0,1,0,0,0,1,0,1,0,
+64,1,0,2,106,1,1,0,1,0,0,1,1,Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call.
+55,0,1,0,40,0,0,0,1,0,0,0,1,"Patient sounded frustrated and overwhelmed during the call. Relies on a neighbor for rides, who is no longer available."
+76,0,1,1,175,1,0,0,1,0,0,0,0,Says they feel isolated and rarely leave the house.
+26,0,0,0,0,0,0,0,0,1,0,0,0,
+28,0,1,2,92,1,1,0,1,0,0,1,0,Reviewed discharge instructions with the patient. Worried about affording the new medication co-pay. Pillbox showed the morning dose was skipped twice this week.
+70,0,0,1,0,1,0,0,0,1,0,1,0,
+59,0,0,0,0,0,0,0,0,0,0,0,0,
+62,1,0,0,0,0,0,0,0,0,0,0,0,
+38,0,1,0,0,0,0,0,0,0,1,1,0,
+58,1,0,0,88,0,0,0,1,1,0,0,1,
+88,1,0,1,0,0,1,0,0,0,1,1,0,
+71,0,0,2,0,1,1,0,0,0,1,0,0,
+61,0,0,1,145,1,0,0,1,1,0,1,1,Asked about food pantries near their apartment. Admits missing evening doses on busy days. Confirmed contact information and next steps. Worried about affording the new medication co-pay.
+52,0,1,0,162,0,0,0,1,1,0,0,1,
+52,1,0,0,0,0,0,0,0,1,0,1,0,
+26,1,0,0,0,0,0,0,0,0,0,1,0,
+62,0,0,0,0,0,0,0,0,0,0,1,0,
+71,1,0,1,0,0,1,0,0,1,0,0,0,
+35,1,0,1,0,0,1,0,0,0,0,1,0,
+48,1,0,1,30,1,0,0,1,1,0,1,1,Reports feeling stronger since discharge. Patient has no ride to the follow-up appointment next week.
+41,0,1,2,134,1,0,1,1,1,0,0,1,Lost hours at work and is behind on utility bills. Patient sounded frustrated and overwhelmed during the call.
+44,0,0,1,101,1,0,0,1,1,1,0,1,"Reports feeling stronger since discharge. Relies on a neighbor for rides, who is no longer available."
+59,0,0,1,0,0,0,1,0,1,0,1,0,
+27,0,0,0,72,0,0,0,1,1,0,0,1,Daughter helps with medications and appointments.
+68,0,0,0,26,0,0,0,1,1,1,1,1,Reviewed discharge instructions with the patient. Lost hours at work and is behind on utility bills. Missed the last clinic visit because the bus route changed.
+70,1,0,0,138,0,0,0,1,1,0,1,1,Reports feeling stronger since discharge.
+55,1,0,1,55,1,0,0,1,1,1,1,1,Patient in good spirits and engaged with the care plan.
+21,0,0,1,32,0,1,0,1,0,0,0,0,Says the inhaler refill is too expensive this month. Completed routine check-in call.
+43,1,0,1,97,1,0,0,1,1,0,1,0,Skipping meals to make groceries last. Patient sounded frustrated and overwhelmed during the call.
+77,0,1,0,0,0,0,0,0,0,1,1,0,
+18,0,0,0,0,0,0,0,0,0,0,1,0,
+53,1,0,0,0,0,0,0,0,1,0,1,0,
+41,0,1,1,0,1,0,0,0,0,1,0,0,
+70,1,0,0,0,0,0,0,0,0,1,1,0,
+48,0,1,1,0,0,0,1,0,1,1,0,0,
+64,0,0,0,74,0,0,0,1,1,0,1,1,Seemed down and said things are not getting better.
+67,0,1,0,0,0,0,0,0,1,0,0,0,
+86,0,0,0,51,0,0,0,1,1,1,0,1,Says the inhaler refill is too expensive this month. Patient sounded frustrated and overwhelmed during the call. Admits missing evening doses on busy days.
+55,0,1,2,107,1,0,1,1,0,0,1,0,Worried about affording the new medication co-pay. Patient in good spirits and engaged with the care plan. Missed the last clinic visit because the bus route changed.
+64,1,1,0,51,0,0,0,1,0,0,1,1,Missed the last clinic visit because the bus route changed. Pillbox showed the morning dose was skipped twice this week. Says they feel isolated and rarely leave the house.
+36,0,0,0,64,0,0,0,1,1,1,0,0,Says they feel isolated and rarely leave the house. Unsure which pills to take since discharge; reviewed the medication list together.
+76,0,0,2,0,1,0,1,0,1,0,1,0,
+47,1,1,0,300,0,0,0,1,1,0,1,0,
+50,1,1,2,116,0,1,1,1,1,0,1,0,"Lost hours at work and is behind on utility bills. Asked about food pantries near their apartment. Reports feeling stronger since discharge. Relies on a neighbor for rides, who is no longer available."
+58,0,0,2,0,1,1,0,0,1,0,0,0,
+35,0,0,2,69,0,1,1,1,1,1,1,0,Completed routine check-in call.
+62,0,1,0,0,0,0,0,0,0,1,1,0,
+73,1,0,0,100,0,0,0,1,0,0,1,1,Daughter helps with medications and appointments.
+63,0,0,0,55,0,0,0,1,1,0,1,0,Patient has no ride to the follow-up appointment next week. Daughter helps with medications and appointments.
+35,0,0,0,66,0,0,0,1,1,0,1,0,Confirmed contact information and next steps. Asked about food pantries near their apartment.
+56,1,0,2,135,1,1,0,1,1,0,0,1,Reviewed discharge instructions with the patient.
+69,0,0,1,0,0,1,0,0,1,0,1,0,
+30,0,0,1,80,0,0,1,1,1,1,0,0,Seemed down and said things are not getting better. Patient has no ride to the follow-up appointment next week. Admits missing evening doses on busy days.
+42,0,0,0,0,0,0,0,0,0,0,0,0,
+71,1,0,2,44,1,1,0,1,1,0,1,0,Completed routine check-in call. Missed the last clinic visit because the bus route changed. Asked about food pantries near their apartment.
+62,0,0,0,98,0,0,0,1,1,1,1,1,Completed routine check-in call. Says there is often not enough food at home by the end of the month.
+65,0,0,0,0,0,0,0,0,1,0,0,0,
+86,0,0,0,0,0,0,0,0,0,1,1,0,
+65,1,0,0,40,0,0,0,1,1,0,1,0,Reviewed discharge instructions with the patient. Worried about affording the new medication co-pay. Admits missing evening doses on busy days.
+68,0,1,0,0,0,0,0,0,1,0,0,0,
+95,0,1,1,0,0,0,1,0,0,1,0,0,
+55,0,1,1,150,1,0,0,1,1,0,1,1,Worried about affording the new medication co-pay. Patient sounded frustrated and overwhelmed during the call.
+46,0,1,2,0,1,1,0,0,1,0,1,0,
+65,0,0,0,120,0,0,0,1,0,0,1,1,Asked about food pantries near their apartment. Confirmed contact information and next steps.
+65,1,1,0,244,0,0,0,1,1,1,0,1,Confirmed contact information and next steps. Admits missing evening doses on busy days.
+50,0,0,1,155,0,1,0,1,1,0,1,1,Asked about food pantries near their apartment. Says they feel isolated and rarely leave the house. Admits missing evening doses on busy days.
+43,1,0,0,0,0,0,0,0,1,0,0,0,
+93,1,0,0,100,0,0,0,1,1,1,1,1,Patient in good spirits and engaged with the care plan.
+63,0,0,0,0,0,0,0,0,0,1,1,0,
+47,0,0,0,0,0,0,0,0,1,0,1,0,
+72,0,1,0,0,0,0,0,0,0,0,1,0,
+57,0,1,1,46,1,0,0,1,1,0,0,1,Skipping meals to make groceries last. Confirmed contact information and next steps.
+55,1,0,1,98,0,0,1,1,1,0,1,0,Confirmed contact information and next steps. Lost hours at work and is behind on utility bills.
+67,0,0,3,29,1,1,1,1,0,0,0,1,Reports feeling stronger since discharge.
+39,1,1,0,0,0,0,0,0,1,0,1,0,
+64,0,1,0,0,0,0,0,0,0,0,0,0,
+87,0,0,0,33,0,0,0,1,1,0,0,1,Patient in good spirits and engaged with the care plan.
+65,1,0,1,205,0,1,0,1,1,1,1,1,Completed routine check-in call.
+53,0,0,0,0,0,0,0,0,1,0,0,0,
+51,0,0,0,0,0,0,0,0,0,1,1,0,
+52,1,0,0,258,0,0,0,1,1,1,1,0,Says the inhaler refill is too expensive this month. Completed routine check-in call. Says there is often not enough food at home by the end of the month.
+55,1,0,0,0,0,0,0,0,0,0,0,0,
+53,1,1,0,0,0,0,0,0,1,1,0,0,
+72,1,0,1,102,1,0,0,1,0,1,1,0,Says there is often not enough food at home by the end of the month. Patient in good spirits and engaged with the care plan.
+32,1,0,3,40,1,1,1,1,1,0,0,1,Skipping meals to make groceries last. Reviewed discharge instructions with the patient.
+71,0,0,0,0,0,0,0,0,1,1,1,0,
+53,0,0,1,0,0,1,0,0,1,0,1,0,
+64,0,0,0,0,0,0,0,0,0,1,1,0,
+41,1,0,1,0,1,0,0,0,1,0,1,0,
+78,1,0,0,0,0,0,0,0,1,0,1,0,
+77,0,0,1,0,1,0,0,0,1,0,1,0,
+73,0,0,0,0,0,0,0,0,1,1,1,0,
+36,1,0,2,130,1,1,0,1,1,0,1,1,Daughter helps with medications and appointments.
+71,0,0,2,0,1,1,0,0,0,0,1,0,
+64,0,0,1,47,0,0,1,1,0,0,0,0,Patient in good spirits and engaged with the care plan. Asked about food pantries near their apartment. Says the inhaler refill is too expensive this month.
+34,1,0,0,32,0,0,0,1,1,0,1,0,Reviewed discharge instructions with the patient. Skipping meals to make groceries last. Missed the last clinic visit because the bus route changed.
+58,0,0,0,186,0,0,0,1,1,1,0,0,Says there is often not enough food at home by the end of the month. Reports feeling stronger since discharge. Worried about affording the new medication co-pay.
+64,1,0,1,91,0,0,1,1,1,1,0,1,Completed routine check-in call.
+67,1,0,0,0,0,0,0,0,1,0,1,0,
+61,1,0,1,0,1,0,0,0,1,0,0,0,
+63,0,0,0,113,0,0,0,1,1,0,0,1,Reports feeling stronger since discharge.
+80,0,1,2,0,1,1,0,0,0,0,1,0,
+77,0,1,0,257,0,0,0,1,0,1,1,0,Completed routine check-in call.
