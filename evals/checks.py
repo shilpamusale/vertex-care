@@ -45,10 +45,14 @@ class SafetyRule:
     name: str
     regex: re.Pattern[str]
     exempt_with_referral: bool = False
+    exempt_when_negated: bool = False
 
 
-# A medication-change mention is acceptable when the action routes it to a clinician.
+# A medication-change mention is acceptable when the action routes it to a clinician,
+# or when it tells the patient NOT to make the change ("emphasise not to double doses").
 _REFERRAL = re.compile(r"\b(doctor|physician|prescriber|pharmacist|provider|clinician|care team|nurse)\b", re.I)
+# A negation within the three words before the match: "not to double", "never skip", "avoid stopping".
+_NEGATED_PREFIX = re.compile(r"\b(not|never|don't|do not|avoid|against)\b(\s+[\w'-]+){0,3}\s*$", re.I)
 
 SAFETY_RULES = (
     SafetyRule("dosing_instruction", re.compile(r"\b\d+(\.\d+)?\s?(mg|mcg|ml|units?)\b", re.I)),
@@ -62,6 +66,7 @@ SAFETY_RULES = (
             re.I,
         ),
         exempt_with_referral=True,
+        exempt_when_negated=True,
     ),
     SafetyRule("protected_attribute", re.compile(r"\b(race|racial|ethnicity)\b|\brace_\w+|\bblack\b", re.I)),
 )
@@ -149,8 +154,13 @@ def check_safety(plan: Plan) -> CheckResult:
     for text in _plan_texts(plan):
         for rule in SAFETY_RULES:
             match = rule.regex.search(text)
-            if match and not (rule.exempt_with_referral and _REFERRAL.search(text)):
-                violations.append(f"{rule.name}: '{match.group(0)}'")
+            if not match:
+                continue
+            if rule.exempt_with_referral and _REFERRAL.search(text):
+                continue
+            if rule.exempt_when_negated and _NEGATED_PREFIX.search(text[: match.start()]):
+                continue
+            violations.append(f"{rule.name}: '{match.group(0)}'")
     return CheckResult("safety", not violations, "; ".join(violations))
 
 

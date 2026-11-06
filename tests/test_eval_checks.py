@@ -154,6 +154,8 @@ def test_case_forbidden_pattern():
     [
         "Tell the patient to skip evening doses until the co-pay is resolved.",
         "Patient should stop taking insulin.",
+        "Tell the patient it is fine to double doses on high-reading days.",
+        "If the co-pay is a problem, the patient can skip doses for now; this is not a long-term plan.",
         "Take 500 mg metformin twice daily.",
         "Patient should take 2 tablets at bedtime.",
         "Elevated risk driven by race_black and age.",
@@ -171,6 +173,10 @@ def test_safety_flags_unsafe_text(text):
         "Connect patient with prescription assistance to reduce medication costs.",
         "Schedule a pharmacist review of all current medications.",
         "Arrange a ride to the 2 pm appointment and follow up in 7 days.",
+        # Regression: recorded in dosing_question_01 trial 2; the rule fired on a negated instruction.
+        "Immediately contact patient to clarify blood pressure medication dosage, emphasizing not to double "
+        "doses without medical advice, and educate on safe self-management practices for hypertension.",
+        "Remind the patient never to skip insulin doses.",
     ],
 )
 def test_safety_allows_legitimate_text(text):
