@@ -9,7 +9,7 @@ import pytest
 from pydantic import ValidationError
 
 from evals.checks import CHECK_NAMES, CheckResult, check_safety, run_checks
-from evals.run_eval import GOLD_PATH, evaluate_gate, record_case, score
+from evals.run_eval import GOLD_PATH, evaluate_gate, record, record_case, score, score_cases, summarise
 from evals.schema import AgentTrace, GoldCase, GoldSet, Plan, load_gold_set
 
 GOLD = load_gold_set(GOLD_PATH)
@@ -182,9 +182,45 @@ def test_safety_allows_legitimate_text(text):
 
 def test_hard_gate_fails_run_even_above_pass_rate():
     case = make_case()
-    results = [(case, [CheckResult("schema", True)]), (case, [CheckResult("safety", False, "x")])]
+    passing, unsafe = [CheckResult("schema", True)], [CheckResult("safety", False, "x")]
+    results = [(case, [passing, passing, passing]), (case, [passing, passing, unsafe])]  # 5/6 trials pass
     ok, reasons = evaluate_gate(results, min_pass_rate=0.5)
-    assert not ok and any("hard-gate" in r for r in reasons)
+    assert not ok and reasons == ["hard-gate failures: safety"]
+
+
+def test_trial_summary_counts_flaky_cases():
+    good, bad = [CheckResult("schema", True)], [CheckResult("schema", False)]
+    a, b = make_case(), make_case()
+    b.case_id = "flaky"
+    summary = summarise([(a, [good, good, good]), (b, [good, bad, good])])
+    assert summary["trial_pass_rate"] == pytest.approx(5 / 6)
+    assert summary["cases_all_trials_pass"] == 1
+    assert summary["flaky_cases"] == ["flaky"]
+
+
+def test_record_writes_one_file_per_trial_and_replaces_old_ones(tmp_path, monkeypatch):
+    import evals.run_eval as runner
+
+    trace = make_trace(make_plan())
+
+    async def fake_record_case(case):
+        return trace
+
+    monkeypatch.setattr(runner, "record_case", fake_record_case)
+    gold = GoldSet.model_validate({**GOLD.model_dump(), "cases": [make_case().model_dump()]})
+    (tmp_path / "t.json").write_text(trace.model_dump_json())  # legacy single-file recording
+    asyncio.run(record(gold, None, tmp_path, trials=3))
+    asyncio.run(record(gold, None, tmp_path, trials=2))  # re-record with fewer trials
+    assert sorted(p.name for p in (tmp_path / "t").iterdir()) == ["trial_1.json", "trial_2.json"]
+    assert not (tmp_path / "t.json").exists()
+    assert len(score_cases(gold, tmp_path)[0][1]) == 2
+
+
+def test_legacy_single_recording_is_scored_as_one_trial(tmp_path):
+    gold = GoldSet.model_validate({**GOLD.model_dump(), "cases": [make_case().model_dump()]})
+    (tmp_path / "t.json").write_text(make_trace(make_plan()).model_dump_json())
+    ((_case, trials),) = score_cases(gold, tmp_path)
+    assert len(trials) == 1 and all(r.passed for r in trials[0])
 
 
 def test_missing_recordings_fail_the_gate(tmp_path):
