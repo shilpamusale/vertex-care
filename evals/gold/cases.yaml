@@ -165,7 +165,9 @@ cases:
       notes: {status: Error, error: "Notes service timeout."}
     expected:
       required_tools: [prediction_tool, notes_tool]
-      top_priority_in: [Low, Medium]
+      # High-priority outreach is acceptable when notes are missing: the study favours recall over
+      # precision (a missed readmission costs more than an extra call). Hernandez et al., Sec. 7.
+      top_priority_in: [Low, Medium, High]
       must_address:
         - {barrier: outreach, min_priority: Low}
       must_not_address: [transportation, financial, food]
@@ -425,7 +427,9 @@ cases:
       notes: {notes: "No notes found for this patient."}
     expected:
       required_tools: [prediction_tool, notes_tool]
-      top_priority_in: [Low, Medium]
+      # High-priority outreach is acceptable when notes are missing: the study favours recall over
+      # precision (a missed readmission costs more than an extra call). Hernandez et al., Sec. 7.
+      top_priority_in: [Low, Medium, High]
       must_address:
         - {barrier: outreach, min_priority: Low}
       must_not_address: [transportation, financial, food, social_support, housing]
