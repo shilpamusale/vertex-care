@@ -6,6 +6,8 @@ from typing import Dict, Any
 import pandas as pd
 import shap
 
+from vertexcare.agents.feature_glossary import FACTOR_CAVEAT, describe_factor
+
 
 def get_patient_data(patient_id: int, patient_data_df: pd.DataFrame) -> pd.DataFrame:
     """A helper function to retrieve a single patient's data."""
@@ -88,11 +90,13 @@ def explanation_tool(patient_id: int, model: Any, imputer: Any, patient_data_df:
     logging.info(f"EXPLANATION TOOL: Getting risk factors for patient {patient_id}.")
     try:
         contributions = shap_contributions(patient_id, model, imputer, patient_data_df)
-        top_risk_factors = contributions.head(3).index.tolist()
+        patient_row = get_patient_data(patient_id, patient_data_df).iloc[0]
+        top_risk_factors = [describe_factor(f, patient_row[f], c) for f, c in contributions.head(3).items()]
 
         return {
             "patient_id": patient_id,
             "top_risk_factors": top_risk_factors,
+            "caveat": FACTOR_CAVEAT,
             "status": "Success",
         }
     except Exception as e:

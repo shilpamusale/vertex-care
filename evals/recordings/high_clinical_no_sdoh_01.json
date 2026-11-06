@@ -17,10 +17,30 @@
       "output": {
         "patient_id": 1,
         "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
         "top_risk_factors": [
-          "age",
-          "sumcomorbidities",
-          "diabetes"
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 78,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 5,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "diabetes",
+            "description": "Has diabetes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
         ]
       }
     },
@@ -37,27 +57,27 @@
   "final_output": {
     "patient_id": 1,
     "readmission_risk_score": 0.75,
-    "risk_summary": "Patient has a high risk of readmission primarily due to a history of medication non-adherence, lack of social support, and multiple chronic conditions, despite a general impression of managing well at home.",
+    "risk_summary": "Patient 1 faces a high readmission risk primarily due to advanced age (78), multiple chronic conditions (5), and diabetes, despite current CHW notes suggesting good home management.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Conduct a medication reconciliation and provide education on adherence, including strategies for remembering doses and managing side effects."
+        "action": "Conduct a detailed follow-up assessment with Patient 1 to verify the 'managing well' note against their clinical risk factors (age, comorbidities, diabetes management) and identify specific challenges or needs."
       },
       {
         "priority": "High",
-        "action": "Assess current social support network and connect the patient with relevant community resources or support groups to address isolation."
+        "action": "Develop a personalized education plan focusing on diabetes self-management, medication adherence for multiple chronic conditions, and recognition of worsening symptoms."
       },
       {
         "priority": "Medium",
-        "action": "Coordinate with the primary care provider to review and optimize the management plan for multiple chronic conditions, especially diabetes."
+        "action": "Facilitate a review of Patient 1's care plan and medication list with their primary care physician to optimize management of chronic conditions and prevent complications."
       },
       {
         "priority": "Low",
-        "action": "Follow up with the patient within 72 hours to assess medication adherence and social well-being, verifying the 'managing well' note against identified risks."
+        "action": "Explore local community resources that can provide ongoing support for an elderly patient with multiple chronic conditions, such as meal delivery or home health services, based on the follow-up assessment."
       }
     ]
   },
-  "latency_s": 9.16,
-  "recorded_at": "2026-11-05T22:52:46+00:00",
-  "git_sha": "2407b1c"
+  "latency_s": 10.41,
+  "recorded_at": "2026-11-06T00:07:06+00:00",
+  "git_sha": "61d167c"
 }

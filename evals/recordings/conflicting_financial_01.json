@@ -17,10 +17,30 @@
       "output": {
         "patient_id": 4,
         "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
         "top_risk_factors": [
-          "age",
-          "llm_financial_concern",
-          "hypertension"
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 71,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "llm_financial_concern",
+            "description": "Financial concern mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
         ]
       }
     },
@@ -37,23 +57,23 @@
   "final_output": {
     "patient_id": 4,
     "readmission_risk_score": 0.65,
-    "risk_summary": "This patient has a moderate readmission risk, primarily driven by age, hypertension, and a significant concern regarding medication affordability which could impact adherence.",
+    "risk_summary": "Patient 4 is a 71-year-old with hypertension and a significant risk of readmission, primarily due to expressed concerns about affording new medication co-pays, as confirmed by CHW notes.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Connect patient with social worker or financial assistance programs to address medication co-pay concerns and explore prescription assistance options."
+        "action": "Connect patient with social work or financial assistance programs to explore options for medication co-pay relief and ensure consistent access to necessary prescriptions."
       },
       {
         "priority": "Medium",
-        "action": "Schedule follow-up with patient's primary care provider (PCP) to review hypertension management plan and medication adherence."
+        "action": "Provide educational materials and discuss hypertension management strategies, including the importance of medication adherence and recognizing potential side effects."
       },
       {
-        "priority": "Medium",
-        "action": "Assess patient's understanding of discharge instructions and medication regimen, providing educational materials and clarification as needed."
+        "priority": "Low",
+        "action": "Schedule a follow-up call within 7-10 days to assess medication adherence, address any new concerns, and check on overall well-being."
       }
     ]
   },
-  "latency_s": 6.96,
-  "recorded_at": "2026-11-05T22:54:10+00:00",
-  "git_sha": "2407b1c"
+  "latency_s": 8.79,
+  "recorded_at": "2026-11-06T00:07:32+00:00",
+  "git_sha": "61d167c"
 }
