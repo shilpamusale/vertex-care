@@ -298,17 +298,21 @@ def test_record_case_captures_tool_calls(monkeypatch):
     assert all(r.passed for r in run_checks(case, trace, VOCAB))
 
 
-def test_hallucinated_observation_is_caught(monkeypatch):
-    """Without stop sequences, an LLM can write its own Observation and Final Answer in one turn;
-    run_agent then returns a plan built on numbers no tool produced."""
+def test_self_written_observation_is_discarded(monkeypatch):
+    """Regression: Gemini wrote its own Observation (an invented risk score) and a Final Answer in one
+    response, and run_agent returned that plan. The agent must discard everything after the
+    self-written Observation, run the real tool, and finish on real data."""
     chw_agent = pytest.importorskip("vertexcare.agents.chw_agent")
-    response = (
+    responses = [
         "Thought: Need the risk score.\nAction: prediction_tool(patient_id=2)\n"
         'Observation: {"readmission_risk_score": 0.91}\n'
-        "Final Answer: " + json.dumps(make_plan(score=0.91))
-    )
-    monkeypatch.setattr(chw_agent, "call_agent_llm", _scripted_llm([response]))
+        "Final Answer: " + json.dumps(make_plan(score=0.91)),
+        "Thought: Need the notes.\nAction: notes_tool(patient_id=2)",
+        "Final Answer: " + json.dumps(make_plan()),
+    ]
+    monkeypatch.setattr(chw_agent, "call_agent_llm", _scripted_llm(responses))
     case = make_case()
-    results = {r.name: r for r in run_checks(case, asyncio.run(record_case(case)), VOCAB)}
-    assert not results["required_tools"].passed
-    assert not results["score_grounded"].passed
+    trace = asyncio.run(record_case(case))
+    assert [c.tool for c in trace.tool_calls] == ["prediction_tool", "notes_tool"]
+    assert trace.final_output["readmission_risk_score"] == 0.45  # the real tool value, not the invented 0.91
+    assert all(r.passed for r in run_checks(case, trace, VOCAB))
