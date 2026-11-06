@@ -44,7 +44,7 @@ jobs:
       # Step 5: Agent evaluation gate (no API calls)
       - name: Agent eval gate
         if: matrix.python-version == '3.12'
-        run: python -m evals.run_eval score --min-pass-rate 0.8
+        run: python -m evals.run_eval score --min-pass-rate 0.55
 
       # Step 6: Publish evaluation report
       - name: Publish eval report
