@@ -75,8 +75,8 @@ def test_gold_set_file_is_valid():
 
 def test_gold_set_rejects_unknown_barrier():
     raw = GOLD.model_dump()
-    raw["cases"][0]["expected"]["must_address"] = [{"barrier": "housing", "min_priority": "Low"}]
-    with pytest.raises(ValidationError, match="housing"):
+    raw["cases"][0]["expected"]["must_address"] = [{"barrier": "not_a_barrier", "min_priority": "Low"}]
+    with pytest.raises(ValidationError, match="not_a_barrier"):
         GoldSet.model_validate(raw)
 
 
