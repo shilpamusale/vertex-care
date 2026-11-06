@@ -66,23 +66,27 @@
   "final_output": {
     "patient_id": 6,
     "readmission_risk_score": 0.2,
-    "risk_summary": "Patient is 74 years old with 3 chronic conditions including hypertension, contributing to a low but present risk of readmission.",
+    "risk_summary": "Patient 6 has a low readmission risk of 0.2, with primary contributing factors being advanced age (74 years), multiple comorbidities (3), and a diagnosis of hypertension.",
     "recommended_actions": [
       {
-        "priority": "Medium",
-        "action": "Connect patient with resources for chronic disease self-management education, focusing on hypertension and overall comorbidity management."
+        "priority": "High",
+        "action": "Conduct a medication reconciliation and education session to ensure understanding and adherence for hypertension and other comorbidities."
       },
       {
         "priority": "Medium",
-        "action": "Assess patient's understanding of their medication regimen for hypertension and other chronic conditions, providing education or reminders as needed."
+        "action": "Facilitate scheduling of follow-up appointments with primary care and relevant specialists for chronic disease management, especially hypertension."
+      },
+      {
+        "priority": "Medium",
+        "action": "Assess patient's understanding of their chronic conditions and self-management strategies, providing educational resources as needed."
       },
       {
         "priority": "Low",
-        "action": "Ensure patient has follow-up appointments scheduled with their primary care provider for ongoing management of chronic conditions."
+        "action": "Evaluate for potential social determinants of health needs, such as access to healthy food, transportation, or social support, and connect to appropriate community resources."
       }
     ]
   },
-  "latency_s": 8.78,
-  "recorded_at": "2026-11-06T00:07:49+00:00",
-  "git_sha": "61d167c"
+  "latency_s": 12.58,
+  "recorded_at": "2026-11-06T00:44:44+00:00",
+  "git_sha": "d814a89"
 }

@@ -1,0 +1,83 @@
+{
+  "case_id": "transport_rural_01",
+  "patient_id": 8,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 8,
+      "output": {
+        "patient_id": 8,
+        "status": "Success",
+        "readmission_risk_score": 0.55
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 8,
+      "output": {
+        "patient_id": 8,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "llm_transportation_issue",
+            "description": "Transportation issue mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 80,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 8,
+      "output": {
+        "patient_id": 8,
+        "status": "Success",
+        "notes": "Lives 40 miles from the clinic, no longer drives, and missed the last two follow-up appointments."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 8,
+    "readmission_risk_score": 0.55,
+    "risk_summary": "This patient is at moderate risk for readmission primarily due to significant transportation barriers hindering access to follow-up care, compounded by advanced age and hypertension.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Contact patient to assess current transportation needs and coordinate accessible transportation (e.g., medical transport, rideshare vouchers, community services) for upcoming appointments."
+      },
+      {
+        "priority": "High",
+        "action": "Reschedule missed follow-up appointments and ensure patient has confirmed transportation for these visits."
+      },
+      {
+        "priority": "Medium",
+        "action": "During follow-up contact, assess patient's understanding and adherence to hypertension management, and identify any medication access issues related to transportation."
+      },
+      {
+        "priority": "Low",
+        "action": "Explore options for telehealth visits or home health services if in-person clinic visits remain a significant challenge due to distance and transportation."
+      }
+    ]
+  },
+  "latency_s": 18.43,
+  "recorded_at": "2026-11-06T00:46:12+00:00",
+  "git_sha": "d814a89"
+}
