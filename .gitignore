@@ -34,3 +34,4 @@ docker-key.json
 *.egg-info/
 key.json
 key.json
+.venv/
