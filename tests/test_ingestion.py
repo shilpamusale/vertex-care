@@ -9,8 +9,13 @@ from vertexcare.data_processing.ingestion import run_ingestion
 
 
 @pytest.fixture
-def mock_project_dirs(tmp_path: Path) -> Path:
-    """Creates a temporary directory structure mimicking our project."""
+def mock_project_dirs(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    """Creates a temporary directory structure mimicking our project.
+
+    Runs the test inside tmp_path: the paths below are relative, so without this the test
+    overwrote the real data/01_raw/mock_data_with_notes.csv on every pytest run.
+    """
+    monkeypatch.chdir(tmp_path)
     (Path("data") / "01_raw").mkdir(parents=True, exist_ok=True)
     (Path("data") / "02_intermediate").mkdir(parents=True, exist_ok=True)
     Path("configs").mkdir(parents=True, exist_ok=True)
