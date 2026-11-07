@@ -57,15 +57,19 @@
   "final_output": {
     "patient_id": 9,
     "readmission_risk_score": 0.08,
-    "risk_summary": "The patient has a very low readmission risk score of 0.08; although asthma is a listed risk factor, it is well controlled, and the patient has good social support and healthcare access.",
+    "risk_summary": "The patient has a very low risk of readmission, with well-controlled asthma, stable employment, reliable transportation, and a regular primary care provider.",
     "recommended_actions": [
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a follow-up appointment scheduled with their primary care provider or care team."
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+      },
+      {
+        "priority": "Medium",
+        "action": "Check in with the patient regarding their asthma management plan to ensure continued control and address any potential questions or needs."
       }
     ]
   },
-  "latency_s": 12.05,
-  "recorded_at": "2026-11-06T22:22:10+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 8.56,
+  "recorded_at": "2026-11-06T23:00:11+00:00",
+  "git_sha": "32d5198"
 }

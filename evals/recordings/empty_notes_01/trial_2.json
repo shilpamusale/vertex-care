@@ -57,23 +57,23 @@
   "final_output": {
     "patient_id": 19,
     "readmission_risk_score": 0.3,
-    "risk_summary": "Patient has a low readmission risk score of 0.3, with risk factors including age (70), hypertension, and two comorbidities, but there are no CHW notes available to identify specific patient needs or current barriers.",
+    "risk_summary": "Patient 19 has a low readmission risk of 0.3, with age, hypertension, and multiple comorbidities identified as contributing risk factors by the model; however, there are no CHW notes to provide specific patient needs or context for these factors.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Outreach to patient/family/assigned CHW to conduct a comprehensive needs assessment and document current patient status, social determinants of health, and potential barriers to care, as current CHW notes are unavailable."
+        "action": "Outreach to patient 19 to conduct an initial CHW assessment and gather comprehensive social, environmental, and health-related notes to identify specific needs and potential barriers to care."
       },
       {
         "priority": "Medium",
-        "action": "Confirm patient has a scheduled follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
+        "action": "Confirm patient 19 has a follow-up appointment scheduled with their primary care provider or care team."
       },
       {
-        "priority": "Medium",
-        "action": "Discuss general health management for hypertension and other chronic conditions, offering resources for education and support programs."
+        "priority": "Low",
+        "action": "Provide educational materials on managing hypertension and chronic conditions, tailored to their age, once more information is available from the initial assessment."
       }
     ]
   },
-  "latency_s": 7.68,
-  "recorded_at": "2026-11-06T22:35:31+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 5.81,
+  "recorded_at": "2026-11-06T23:12:08+00:00",
+  "git_sha": "32d5198"
 }

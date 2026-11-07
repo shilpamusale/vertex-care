@@ -57,27 +57,31 @@
   "final_output": {
     "patient_id": 14,
     "readmission_risk_score": 0.78,
-    "risk_summary": "Patient has a high risk of readmission due to severe financial concerns, including eviction and rationing food to afford medication, compounded by multiple chronic conditions.",
+    "risk_summary": "The patient faces a high risk of readmission due to severe financial distress causing medication rationing and food insecurity, coupled with recent eviction and multiple chronic conditions.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Connect patient with a social worker or financial counselor to explore medication assistance programs and address medication cost barriers. Immediately notify the prescribing provider and pharmacy about medication rationing due to cost."
+        "action": "Refer patient to social services and pharmacy assistance programs, and notify the prescriber about medication cost issues impacting adherence and food security."
       },
       {
         "priority": "High",
-        "action": "Connect patient with local food assistance programs (e.g., food banks, SNAP application support) to address food insecurity."
+        "action": "Connect patient with local housing assistance programs to secure stable housing and provide resources for immediate shelter needs."
       },
       {
         "priority": "High",
-        "action": "Connect patient with housing support services and resources for shelter residents to explore stable housing options."
+        "action": "Connect patient with local food banks, SNAP benefits, and other food assistance programs to ensure adequate nutrition."
       },
       {
         "priority": "High",
-        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed, given the high readmission risk and complex needs."
+        "action": "Facilitate an urgent clinical follow-up appointment with the patient's primary care provider or care team to reassess health status and medication management."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
       }
     ]
   },
-  "latency_s": 10.13,
-  "recorded_at": "2026-11-06T22:27:14+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 12.87,
+  "recorded_at": "2026-11-06T23:07:50+00:00",
+  "git_sha": "32d5198"
 }

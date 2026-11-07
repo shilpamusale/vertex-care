@@ -58,19 +58,19 @@
   "final_output": {
     "patient_id": 13,
     "readmission_risk_score": 0.5,
-    "risk_summary": "Patient 13 has a readmission risk score of 0.5, primarily due to not having a regular primary care physician, their age (52), and a diagnosis of hypertension, exacerbated by not having seen a doctor in over two years.",
+    "risk_summary": "This patient has a moderate risk of readmission due to lacking a primary care physician, having hypertension, and not having sought routine medical care in over two years.",
     "recommended_actions": [
       {
-        "priority": "High",
-        "action": "Assist patient in identifying and scheduling an initial appointment with a primary care provider (PCP) to establish routine medical care and manage their hypertension, addressing the stated difficulty in finding care."
+        "priority": "Medium",
+        "action": "Assist the patient in identifying and establishing care with a primary care provider (PCP) to address their lack of routine care and hypertension management."
       },
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team and address any logistical barriers to attendance."
+        "action": "Confirm the patient has a follow-up appointment scheduled with their newly established primary care provider or care team."
       }
     ]
   },
-  "latency_s": 9.2,
-  "recorded_at": "2026-11-06T22:26:01+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 18.6,
+  "recorded_at": "2026-11-06T23:07:37+00:00",
+  "git_sha": "32d5198"
 }

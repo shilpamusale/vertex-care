@@ -57,19 +57,19 @@
   "final_output": {
     "patient_id": 1,
     "readmission_risk_score": 0.75,
-    "risk_summary": "The patient has a high risk of readmission, driven by advanced age, multiple comorbidities, and diabetes, despite currently feeling well at home.",
+    "risk_summary": "Patient has a high risk of readmission (0.75) due to advanced age (78), multiple chronic conditions (5), and diabetes, despite reporting to be managing well at home.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Conduct a comprehensive home visit and assessment to identify specific challenges, medication adherence, and social determinants of health not captured in current notes, especially given the high readmission risk."
+        "action": "Conduct a comprehensive telephonic check-in with the patient to assess current health status, medication adherence, symptoms related to diabetes and other chronic conditions, and identify any unmet needs."
       },
       {
-        "priority": "Medium",
-        "action": "Ensure the patient has a confirmed follow-up appointment with their primary care provider or care team to review their chronic conditions and medication management."
+        "priority": "High",
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team to ensure ongoing management of their chronic conditions and diabetes."
       }
     ]
   },
-  "latency_s": 5.73,
-  "recorded_at": "2026-11-06T22:13:49+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 14.96,
+  "recorded_at": "2026-11-06T22:53:06+00:00",
+  "git_sha": "32d5198"
 }

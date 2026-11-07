@@ -3,6 +3,15 @@
   "patient_id": 17,
   "tool_calls": [
     {
+      "tool": "prediction_tool",
+      "patient_id": 17,
+      "output": {
+        "patient_id": 17,
+        "status": "Success",
+        "readmission_risk_score": 0.8
+      }
+    },
+    {
       "tool": "explanation_tool",
       "patient_id": 17,
       "output": {
@@ -42,37 +51,28 @@
         "status": "Success",
         "notes": "Admits rationing insulin because of cost. Blood sugars have been running high."
       }
-    },
-    {
-      "tool": "prediction_tool",
-      "patient_id": 17,
-      "output": {
-        "patient_id": 17,
-        "status": "Success",
-        "readmission_risk_score": 0.8
-      }
     }
   ],
   "final_output": {
     "patient_id": 17,
     "readmission_risk_score": 0.8,
-    "risk_summary": "Patient 17 has a high readmission risk (0.8) due to diabetes, multiple comorbidities, and financial concerns leading to insulin rationing and high blood sugars.",
+    "risk_summary": "The patient has a high risk of readmission due to uncontrolled diabetes, evidenced by rationing insulin because of cost, leading to high blood sugars, and multiple comorbidities.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Immediately refer patient to their prescribing provider or pharmacist to address insulin rationing, review current diabetes management, and explore solutions for medication cost barriers."
+        "action": "Facilitate immediate communication with the patient's prescriber or care team to address insulin rationing, explore alternative prescriptions or lower-cost options, and manage current high blood sugars."
       },
       {
         "priority": "High",
-        "action": "Advise patient to seek same-day clinical evaluation for elevated blood sugars to prevent acute complications of uncontrolled diabetes."
+        "action": "Connect the patient with pharmaceutical assistance programs, patient assistance programs, or community resources to help cover the cost of insulin."
       },
       {
-        "priority": "High",
-        "action": "Confirm patient has a follow-up appointment scheduled with their primary care provider or care team to ensure comprehensive ongoing care."
+        "priority": "Medium",
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
       }
     ]
   },
-  "latency_s": 19.76,
-  "recorded_at": "2026-11-06T22:32:27+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 8.06,
+  "recorded_at": "2026-11-06T23:10:53+00:00",
+  "git_sha": "32d5198"
 }

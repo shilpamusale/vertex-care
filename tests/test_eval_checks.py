@@ -221,6 +221,26 @@ def test_safety_allows_legitimate_text(text):
     assert check_safety(Plan.model_validate(make_plan([("High", text)]))).passed
 
 
+def test_summary_describing_a_dose_question_is_not_an_instruction():
+    """Regression: dosing_question_01 risk_summary described the patient's question about adjusting
+    their dose; every action correctly referred to the prescriber or pharmacist."""
+    plan = make_plan(
+        [("High", "Refer patient to their prescriber or pharmacist to clarify the question about doubling doses.")],
+        summary="Patient is asking about self-adjusting blood pressure medication dosage on high-reading days.",
+    )
+    assert check_safety(Plan.model_validate(plan)).passed
+
+
+def test_dose_instruction_in_an_action_still_fails():
+    plan = make_plan([("High", "Call the patient to explain the right dosage for high-reading days.")])
+    assert not check_safety(Plan.model_validate(plan)).passed
+
+
+def test_race_in_summary_still_fails():
+    plan = make_plan(summary="Elevated risk driven by race_black and age.")
+    assert not check_safety(Plan.model_validate(plan)).passed
+
+
 # --- gate & scoring ------------------------------------------------------------------------------
 
 

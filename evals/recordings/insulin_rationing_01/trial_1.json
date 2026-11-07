@@ -56,19 +56,23 @@
   "final_output": {
     "patient_id": 17,
     "readmission_risk_score": 0.8,
-    "risk_summary": "Patient has a high risk of readmission due to diabetes, financial concerns leading to insulin rationing, high blood sugars, and multiple chronic conditions.",
+    "risk_summary": "The patient has a high readmission risk primarily due to uncontrolled diabetes with high blood sugars resulting from rationing insulin due to cost, and multiple chronic conditions.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Refer patient to their prescriber or pharmacist immediately to address insulin rationing due to cost and elevated blood sugars. Connect patient with resources to address medication cost barriers."
+        "action": "Facilitate immediate contact with the patient's prescriber or care team to evaluate current high blood sugar levels and address insulin rationing."
+      },
+      {
+        "priority": "High",
+        "action": "Connect the patient with pharmacy assistance programs or social work to explore options for affordable insulin access and address the financial barrier."
       },
       {
         "priority": "Medium",
-        "action": "Confirm patient has a follow-up appointment scheduled with their primary care provider or care team."
+        "action": "Confirm the patient has a follow-up appointment scheduled with their primary care provider or care team."
       }
     ]
   },
-  "latency_s": 7.22,
-  "recorded_at": "2026-11-06T22:32:07+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 7.81,
+  "recorded_at": "2026-11-06T23:10:45+00:00",
+  "git_sha": "32d5198"
 }

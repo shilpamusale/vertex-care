@@ -57,23 +57,23 @@
   "final_output": {
     "patient_id": 1,
     "readmission_risk_score": 0.75,
-    "risk_summary": "Patient 1 has a high readmission risk of 0.75, primarily due to advanced age (78), multiple comorbidities (5), and diabetes, despite self-reporting effective home management.",
+    "risk_summary": "Patient has a high readmission risk of 0.75, primarily driven by advanced age (78), multiple comorbidities (5), and diabetes, despite brief notes indicating they are currently managing well at home.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Arrange a prompt clinical re-evaluation by their primary care provider or specialist to proactively manage comorbidities and diabetes, given the high readmission risk."
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team, and offer assistance with scheduling or transportation if needed."
+      },
+      {
+        "priority": "High",
+        "action": "Conduct a comprehensive CHW assessment (in-person or telehealth) to thoroughly evaluate the patient's current health status, adherence to care plans for their comorbidities and diabetes, and validate self-management capabilities, given the high readmission risk."
       },
       {
         "priority": "Medium",
-        "action": "Conduct a comprehensive CHW assessment of the patient's understanding of their chronic conditions and treatment plan adherence, especially for diabetes, to identify any unaddressed needs or support required at home."
-      },
-      {
-        "priority": "Medium",
-        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team and offer assistance with scheduling if required."
+        "action": "Based on the CHW assessment, identify and address any potential barriers to optimal chronic disease and diabetes management, and connect the patient with relevant community resources or education as appropriate."
       }
     ]
   },
-  "latency_s": 10.96,
-  "recorded_at": "2026-11-06T22:14:00+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 18.4,
+  "recorded_at": "2026-11-06T22:53:25+00:00",
+  "git_sha": "32d5198"
 }

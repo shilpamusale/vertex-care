@@ -59,15 +59,19 @@
   "final_output": {
     "patient_id": 3,
     "readmission_risk_score": 0.15,
-    "risk_summary": "The patient has a low readmission risk (0.15) and reports being in good spirits and taking all medications as prescribed.",
+    "risk_summary": "The patient has a low readmission risk score of 0.15, is in good spirits, and reports medication adherence, with age and having a regular PCP identified as statistical factors raising predicted risk by the model.",
     "recommended_actions": [
       {
+        "priority": "Medium",
+        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team."
+      },
+      {
         "priority": "Low",
-        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+        "action": "Check in with the patient within 7-10 days to ensure continued well-being and medication adherence."
       }
     ]
   },
-  "latency_s": 14.57,
-  "recorded_at": "2026-11-06T22:16:00+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 11.56,
+  "recorded_at": "2026-11-06T22:55:53+00:00",
+  "git_sha": "32d5198"
 }

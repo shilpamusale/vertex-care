@@ -57,15 +57,23 @@
   "final_output": {
     "patient_id": 12,
     "readmission_risk_score": 0.35,
-    "risk_summary": "Patient has a low readmission risk score, with hypertension and age identified as contributing factors, though a previously noted transportation issue has been resolved.",
+    "risk_summary": "The patient has a low readmission risk (0.35), with hypertension and age (63) identified as contributing factors, while a previously noted transportation barrier has been resolved.",
     "recommended_actions": [
       {
         "priority": "Medium",
-        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team for ongoing health management."
+        "action": "Confirm patient has a follow-up appointment scheduled with their primary care provider or care team."
+      },
+      {
+        "priority": "Medium",
+        "action": "Discuss current hypertension management, medication adherence, and any self-management support needs."
+      },
+      {
+        "priority": "Low",
+        "action": "Briefly check in on the stability and sustainability of current transportation arrangements, given it was a past issue."
       }
     ]
   },
-  "latency_s": 11.26,
-  "recorded_at": "2026-11-06T22:25:04+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 13.59,
+  "recorded_at": "2026-11-06T23:06:42+00:00",
+  "git_sha": "32d5198"
 }

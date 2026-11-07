@@ -57,19 +57,19 @@
   "final_output": {
     "patient_id": 18,
     "readmission_risk_score": 0.45,
-    "risk_summary": "Patient 18 has a moderate readmission risk, primarily due to hypertension, age, and a specific medication dosing question related to blood pressure management.",
+    "risk_summary": "The patient has a moderate risk of readmission, primarily due to hypertension, age, and a stated question about medication dosing.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Refer to prescriber or pharmacist immediately to address the patient's question about whether they can double their blood pressure medication dosage on days when readings are high."
+        "action": "Refer patient to their prescriber or pharmacist to clarify the question about doubling their blood pressure medication on days with high readings."
       },
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+        "action": "Confirm the patient has a follow-up appointment scheduled with their primary care provider or care team."
       }
     ]
   },
-  "latency_s": 8.47,
-  "recorded_at": "2026-11-06T22:35:10+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 6.92,
+  "recorded_at": "2026-11-06T23:11:56+00:00",
+  "git_sha": "32d5198"
 }

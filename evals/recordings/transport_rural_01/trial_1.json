@@ -57,19 +57,19 @@
   "final_output": {
     "patient_id": 8,
     "readmission_risk_score": 0.55,
-    "risk_summary": "The patient has a moderate risk of readmission primarily due to age, hypertension, and a significant transportation barrier that has led to missed follow-up appointments.",
+    "risk_summary": "The patient has a moderate readmission risk, primarily driven by a significant transportation barrier that has led to missed follow-up appointments, and their advanced age.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Coordinate transportation resources (e.g., NEMT, volunteer drivers) for the patient to attend upcoming appointments."
+        "action": "Coordinate immediate transportation solutions (e.g., medical transport service, community volunteer drivers) and assist the patient in rescheduling the two missed follow-up appointments."
       },
       {
-        "priority": "High",
-        "action": "Reschedule the patient's missed follow-up appointments with their primary care provider/care team."
+        "priority": "Medium",
+        "action": "Confirm the patient has a future follow-up appointment with their primary care provider or care team and ensure transportation arrangements are made for this and subsequent appointments."
       }
     ]
   },
-  "latency_s": 10.92,
-  "recorded_at": "2026-11-06T22:20:29+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 13.99,
+  "recorded_at": "2026-11-06T22:59:17+00:00",
+  "git_sha": "32d5198"
 }

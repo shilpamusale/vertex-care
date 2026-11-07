@@ -56,23 +56,27 @@
   "final_output": {
     "patient_id": 5,
     "readmission_risk_score": 0.85,
-    "risk_summary": "Patient has a high risk of readmission due to multiple chronic conditions, mentioned transportation issues, and financial concerns related to food insecurity.",
+    "risk_summary": "Patient has a high risk of readmission (0.85) due to multiple chronic conditions, confirmed transportation barriers for appointments, and financial concerns impacting food security.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Coordinate transportation for the patient to ensure they can attend their upcoming appointment."
+        "action": "Coordinate transportation for the patient's upcoming appointment to ensure attendance."
       },
       {
         "priority": "High",
-        "action": "Assist the patient with enrollment in a food assistance program to address their food insecurity."
+        "action": "Assist patient with enrollment in the food assistance program to address food insecurity."
       },
       {
-        "priority": "Medium",
-        "action": "Confirm the patient has a follow-up appointment scheduled with their primary care provider or care team."
+        "priority": "High",
+        "action": "Confirm patient has a scheduled follow-up appointment with their primary care provider or care team, and assist with scheduling if not."
+      },
+      {
+        "priority": "High",
+        "action": "Initiate comprehensive care coordination to manage multiple chronic conditions and proactively address readmission risks."
       }
     ]
   },
-  "latency_s": 7.48,
-  "recorded_at": "2026-11-06T22:16:52+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 8.35,
+  "recorded_at": "2026-11-06T22:57:44+00:00",
+  "git_sha": "32d5198"
 }

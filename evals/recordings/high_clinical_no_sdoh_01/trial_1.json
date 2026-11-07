@@ -57,23 +57,19 @@
   "final_output": {
     "patient_id": 1,
     "readmission_risk_score": 0.75,
-    "risk_summary": "The patient has a high readmission risk (0.75) driven by advanced age, multiple chronic conditions, and diabetes, though current notes indicate they are managing well at home.",
+    "risk_summary": "Patient 1 has a high readmission risk (0.75) due to advanced age, multiple chronic conditions, and diabetes, although current notes indicate they are managing well at home.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Initiate a comprehensive CHW check-in to further assess current management strategies, potential unstated needs, and confirm patient well-being, given the high readmission risk."
-      },
-      {
-        "priority": "High",
-        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team."
+        "action": "Conduct a comprehensive well-being check-in call with the patient to assess current health status, medication adherence, and any new or emerging concerns related to their multiple chronic conditions and diabetes."
       },
       {
         "priority": "Medium",
-        "action": "Offer resources and education related to managing multiple chronic conditions, especially diabetes, to ensure optimal self-management and prevent complications."
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team and offer assistance with scheduling if needed."
       }
     ]
   },
-  "latency_s": 11.72,
-  "recorded_at": "2026-11-06T22:13:43+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 14.01,
+  "recorded_at": "2026-11-06T22:52:51+00:00",
+  "git_sha": "32d5198"
 }

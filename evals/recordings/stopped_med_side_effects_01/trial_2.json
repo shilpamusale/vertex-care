@@ -1,0 +1,75 @@
+{
+  "case_id": "stopped_med_side_effects_01",
+  "patient_id": 24,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 24,
+      "output": {
+        "patient_id": 24,
+        "status": "Success",
+        "readmission_risk_score": 0.52
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 24,
+      "output": {
+        "patient_id": 24,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 64,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 2,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 24,
+      "output": {
+        "patient_id": 24,
+        "status": "Success",
+        "notes": "Stopped taking the new cholesterol pill last week because of muscle pain. Has not told the doctor."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 24,
+    "readmission_risk_score": 0.52,
+    "risk_summary": "Patient 24 has a moderate risk of readmission, influenced by hypertension, age (64), two chronic conditions, and has stopped a new cholesterol medication due to muscle pain without notifying their doctor.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Refer patient to their prescriber or pharmacist to discuss the stopped cholesterol medication due to muscle pain and explore alternative treatment options."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team."
+      }
+    ]
+  },
+  "latency_s": 16.39,
+  "recorded_at": "2026-11-06T23:17:03+00:00",
+  "git_sha": "32d5198"
+}

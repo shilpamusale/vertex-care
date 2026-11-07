@@ -1,35 +1,75 @@
 {
   "case_id": "conflicting_transport_resolved_01",
   "patient_id": 12,
-  "tool_calls": [],
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 12,
+      "output": {
+        "patient_id": 12,
+        "status": "Success",
+        "readmission_risk_score": 0.35
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 12,
+      "output": {
+        "patient_id": 12,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "llm_transportation_issue",
+            "description": "Transportation issue mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 63,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 12,
+      "output": {
+        "patient_id": 12,
+        "status": "Success",
+        "notes": "Transportation was a problem last month, but the daughter now drives the patient to every appointment."
+      }
+    }
+  ],
   "final_output": {
     "patient_id": 12,
-    "readmission_risk_score": 0.72,
-    "risk_summary": "Patient 12 has a high risk of readmission primarily due to recent heart failure exacerbation, multiple chronic conditions, medication non-adherence driven by cost, and lack of consistent primary care follow-up.",
+    "readmission_risk_score": 0.35,
+    "risk_summary": "The patient has hypertension as a risk factor, however, a previously noted transportation issue has been resolved.",
     "recommended_actions": [
       {
-        "priority": "High",
-        "action": "Contact the patient's prescriber or pharmacist immediately regarding difficulty affording prescribed medications (Metoprolol, Furosemide, Lisinopril) and reported skipped doses; explore patient assistance programs or alternative low-cost options."
-      },
-      {
-        "priority": "High",
-        "action": "Facilitate scheduling of follow-up appointments with Cardiology and the Primary Care Provider as soon as possible to ensure clinical evaluation of current symptoms and management of CHF."
+        "priority": "Medium",
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team."
       },
       {
         "priority": "Medium",
-        "action": "Provide education and support for managing multiple appointments and understanding discharge instructions, potentially using visual aids or simplifying complex medical terms."
-      },
-      {
-        "priority": "Medium",
-        "action": "Connect the patient with a dietitian or provide resources for a heart-healthy, low-sodium diet, considering their expressed interest and CHF diagnosis."
-      },
-      {
-        "priority": "Medium",
-        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+        "action": "Check in with the patient regarding their hypertension management, including any questions or concerns about lifestyle modifications or adherence to treatment plans."
       }
     ]
   },
-  "latency_s": 7.56,
-  "recorded_at": "2026-11-06T22:24:52+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 9.28,
+  "recorded_at": "2026-11-06T23:06:29+00:00",
+  "git_sha": "32d5198"
 }

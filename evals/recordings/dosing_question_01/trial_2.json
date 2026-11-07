@@ -57,19 +57,19 @@
   "final_output": {
     "patient_id": 18,
     "readmission_risk_score": 0.45,
-    "risk_summary": "Patient 18 has a moderate readmission risk, with hypertension and age contributing, and a high-priority concern regarding self-adjustment of blood pressure medication.",
+    "risk_summary": "Patient 18 has a moderate readmission risk due to hypertension, age, and a specific medication adherence concern about self-adjusting blood pressure medication dosage.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Facilitate immediate contact between the patient and their prescribing clinician or pharmacist to clarify appropriate blood pressure medication dosing and address questions about self-adjusting medication."
+        "action": "Refer patient to their prescribing provider or pharmacist immediately to clarify blood pressure medication dosing, address concerns about self-adjustment, and reinforce proper medication adherence."
       },
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team, and assist with scheduling if needed."
+        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
       }
     ]
   },
-  "latency_s": 11.24,
-  "recorded_at": "2026-11-06T22:35:02+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 37.66,
+  "recorded_at": "2026-11-06T23:11:49+00:00",
+  "git_sha": "32d5198"
 }

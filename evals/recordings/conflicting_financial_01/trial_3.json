@@ -57,19 +57,23 @@
   "final_output": {
     "patient_id": 4,
     "readmission_risk_score": 0.65,
-    "risk_summary": "The patient is a 71-year-old with hypertension and a high readmission risk, primarily due to financial concerns regarding their new medication co-pay.",
+    "risk_summary": "Patient 4 has a high readmission risk (0.65), driven by advanced age, hypertension, and a stated concern about affording medication co-pays.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Connect patient with financial assistance programs or a social worker to address their new medication co-pay; explore options with their prescriber or pharmacist for cost-effective alternatives if available."
+        "action": "Refer patient to a social worker or financial counselor to explore options for medication co-pay assistance and notify the prescribing provider or pharmacy about the patient's financial concern regarding medication affordability."
       },
       {
         "priority": "High",
-        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team to review their overall health status and chronic condition management, given the high readmission risk."
+        "action": "Schedule a follow-up visit with the patient's primary care provider or specialist to review their condition and current treatment plan, given the high readmission risk."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team, and assist with scheduling if not already in place."
       }
     ]
   },
-  "latency_s": 10.51,
-  "recorded_at": "2026-11-06T22:16:32+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 9.51,
+  "recorded_at": "2026-11-06T22:56:26+00:00",
+  "git_sha": "32d5198"
 }

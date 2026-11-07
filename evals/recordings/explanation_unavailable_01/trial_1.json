@@ -33,19 +33,23 @@
   "final_output": {
     "patient_id": 11,
     "readmission_risk_score": 0.5,
-    "risk_summary": "The patient has a moderate readmission risk, but specific model-based risk factors are unavailable due to a tool error. The patient is experiencing financial stress regarding hospital bills, leading them to avoid opening related mail.",
+    "risk_summary": "Patient has a moderate readmission risk (0.5), is worried about hospital bills and has stopped opening mail from the billing office, and detailed risk factors from the prediction model are unavailable.",
     "recommended_actions": [
       {
         "priority": "Medium",
-        "action": "Connect the patient with hospital financial assistance programs or a patient advocate to address concerns about hospital bills and unopened mail."
+        "action": "Connect patient with hospital financial assistance programs or social services for bill negotiation and financial counseling."
       },
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+        "action": "Confirm patient has a scheduled follow-up appointment with their Primary Care Provider (PCP) or care team."
+      },
+      {
+        "priority": "Medium",
+        "action": "Conduct a comprehensive social determinants of health (SDOH) screening to identify any additional unmet needs or barriers to care, especially since detailed risk factors were unavailable."
       }
     ]
   },
-  "latency_s": 8.05,
-  "recorded_at": "2026-11-06T22:24:10+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 11.33,
+  "recorded_at": "2026-11-06T23:03:47+00:00",
+  "git_sha": "32d5198"
 }

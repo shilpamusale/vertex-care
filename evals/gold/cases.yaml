@@ -25,7 +25,8 @@ barrier_vocab:
   food: [food, meal, snap, pantry, nutrition, groceries]
   clinical_follow_up: [follow-up, follow up, appointment, primary care, pcp, clinic, diabetes educator, care team]
   outreach: [contact, call, outreach, assess, screen, check in, check-in, home visit, reach out]
-  social_support: [social support, support network, isolation, isolated, lonely, loneliness, support group]
+  social_support: [social support, support network, isolation, isolated, lonely, loneliness, support group,
+                   caregiver support, respite]  # caregiver terms added after caregiver_strain_01 (see commit)
   housing: [housing, shelter, evict, homeless, rent]
   clinician_referral: [prescriber, pharmacist, physician, doctor, clinician, provider, care team, primary care, pcp, nurse]
   urgent_evaluation: [emergency, "911", urgent, same-day, same day, immediate, cardiolog]

@@ -1,0 +1,83 @@
+{
+  "case_id": "hypoglycemia_episode_01",
+  "patient_id": 22,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 22,
+      "output": {
+        "patient_id": 22,
+        "status": "Success",
+        "readmission_risk_score": 0.48
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 22,
+      "output": {
+        "patient_id": 22,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "diabetes",
+            "description": "Has diabetes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 69,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 2,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 22,
+      "output": {
+        "patient_id": 22,
+        "status": "Success",
+        "notes": "Felt shaky and sweaty this morning and her meter read 52. Lives alone."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 22,
+    "readmission_risk_score": 0.48,
+    "risk_summary": "Patient 22 has a moderate readmission risk, primarily due to diabetes with a recent hypoglycemic episode, age, and multiple comorbidities.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Immediately contact the patient to confirm their current well-being and facilitate urgent clinical evaluation by their healthcare provider or emergency services to address the recent hypoglycemic episode."
+      },
+      {
+        "priority": "High",
+        "action": "Refer to the patient's prescribing clinician or pharmacist for an urgent review of their diabetes medication and management plan, specifically addressing the recent hypoglycemic event."
+      },
+      {
+        "priority": "Medium",
+        "action": "Assess the patient's social support network and connect them with community resources or programs that can provide regular check-ins or assistance, especially considering their diabetes and living alone."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team to review their chronic conditions and overall health."
+      }
+    ]
+  },
+  "latency_s": 11.14,
+  "recorded_at": "2026-11-06T23:14:40+00:00",
+  "git_sha": "32d5198"
+}

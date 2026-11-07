@@ -57,23 +57,19 @@
   "final_output": {
     "patient_id": 20,
     "readmission_risk_score": 0.74,
-    "risk_summary": "The patient has a high risk of readmission (0.74) due to multiple chronic conditions, hypertension, and age, and reports new chest pain with exertion since discharge.",
+    "risk_summary": "Patient 20 has a high readmission risk (0.74) due to multiple chronic conditions and age, and is experiencing new onset chest pain.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Facilitate immediate clinical evaluation for reported chest pain when climbing stairs since discharge."
+        "action": "Immediately arrange for same-day clinical evaluation for new onset chest pain reported by the patient."
       },
       {
         "priority": "High",
-        "action": "Coordinate with the patient's care team to review and optimize management of their chronic conditions, including hypertension, given the high readmission risk."
-      },
-      {
-        "priority": "Medium",
-        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team, and assist with scheduling if needed, to manage high readmission risk and chronic conditions."
       }
     ]
   },
-  "latency_s": 17.89,
-  "recorded_at": "2026-11-06T22:35:58+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 9.7,
+  "recorded_at": "2026-11-06T23:12:30+00:00",
+  "git_sha": "32d5198"
 }

@@ -57,11 +57,11 @@
   "final_output": {
     "patient_id": 6,
     "readmission_risk_score": 0.2,
-    "risk_summary": "Patient has a low risk of readmission, with contributing factors including age (74), three comorbidities, and hypertension. However, specific patient context and needs are unknown as the patient notes could not be retrieved.",
+    "risk_summary": "The patient has a low predicted readmission risk (0.2), but comprehensive patient notes are unavailable due to a service timeout, making it difficult to fully assess individual needs beyond the identified statistical risk factors of age (74), 3 comorbidities, and hypertension.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Obtain detailed patient notes from the medical record system or relevant care team to understand specific needs, current challenges, and social determinants of health."
+        "action": "Outreach to obtain comprehensive patient notes and assess individual needs."
       },
       {
         "priority": "Medium",
@@ -69,7 +69,7 @@
       }
     ]
   },
-  "latency_s": 7.14,
-  "recorded_at": "2026-11-06T22:18:34+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 9.82,
+  "recorded_at": "2026-11-06T22:58:16+00:00",
+  "git_sha": "32d5198"
 }

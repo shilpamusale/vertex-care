@@ -33,23 +33,19 @@
   "final_output": {
     "patient_id": 11,
     "readmission_risk_score": 0.5,
-    "risk_summary": "Patient has a moderate readmission risk score of 0.5; model explanation factors are unavailable, but notes indicate significant financial worry regarding hospital bills leading to avoidance of communication.",
+    "risk_summary": "The patient has a moderate risk of readmission; specific contributing factors from the model are unknown due to a tool error, but notes indicate significant financial worry regarding medical bills.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Contact patient's primary care team to discuss potential clinical risk factors for readmission, as the model explanation was unavailable."
+        "action": "Assist patient in connecting with hospital financial counseling services or other financial assistance programs to address concerns about medical bills and unread mail."
       },
       {
         "priority": "Medium",
-        "action": "Connect patient with hospital financial counseling services or relevant community resources to address concerns about hospital bills and payment options and encourage opening important mail."
-      },
-      {
-        "priority": "Low",
-        "action": "Confirm the patient has a follow-up appointment scheduled with their primary care provider or care team."
+        "action": "Confirm patient has a scheduled follow-up appointment with their primary care provider or care team and offer assistance with scheduling if needed."
       }
     ]
   },
-  "latency_s": 18.47,
-  "recorded_at": "2026-11-06T22:24:45+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 12.19,
+  "recorded_at": "2026-11-06T23:05:17+00:00",
+  "git_sha": "32d5198"
 }

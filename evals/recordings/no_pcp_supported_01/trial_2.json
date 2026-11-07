@@ -58,19 +58,19 @@
   "final_output": {
     "patient_id": 13,
     "readmission_risk_score": 0.5,
-    "risk_summary": "The patient has a moderate risk of readmission, primarily due to not having a regular primary care physician and not having seen a doctor in over two years, which prevents routine management of conditions such as hypertension.",
+    "risk_summary": "This patient is at moderate risk for readmission, primarily due to not having a regular primary care physician, their age of 52, and a history of hypertension.",
     "recommended_actions": [
       {
-        "priority": "High",
-        "action": "Assist the patient in identifying and establishing care with a primary care provider (PCP) to address routine health needs and manage chronic conditions like hypertension."
+        "priority": "Medium",
+        "action": "Assist the patient in identifying and establishing care with a primary care provider, given they have not seen a doctor in over two years and do not know where to go for routine care. Confirm scheduling of their initial appointment."
       },
       {
-        "priority": "High",
+        "priority": "Medium",
         "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team once one is established."
       }
     ]
   },
-  "latency_s": 13.23,
-  "recorded_at": "2026-11-06T22:25:52+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 8.37,
+  "recorded_at": "2026-11-06T23:07:19+00:00",
+  "git_sha": "32d5198"
 }

@@ -57,31 +57,27 @@
   "final_output": {
     "patient_id": 14,
     "readmission_risk_score": 0.78,
-    "risk_summary": "The patient faces a high readmission risk primarily due to severe financial insecurity leading to medication rationing and food insecurity, compounded by recent eviction and homelessness, alongside multiple chronic conditions.",
+    "risk_summary": "Patient has a high readmission risk due to severe financial concerns, housing instability, food insecurity, and challenges affording necessary medications.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Connect patient with food assistance programs (e.g., local food banks, SNAP benefits) to address food insecurity."
+        "action": "Connect patient with a social worker or case manager for immediate housing support and resources to address housing instability."
       },
       {
         "priority": "High",
-        "action": "Refer patient to their prescriber or a pharmacist to discuss medication cost-saving options (e.g., generics, patient assistance programs) and ensure medication adherence."
+        "action": "Refer patient to their prescriber or pharmacist to review current medications, discuss cost-saving options, and explore medication assistance programs."
       },
       {
         "priority": "High",
-        "action": "Connect patient with local housing assistance programs and social services to address homelessness and explore stable housing solutions."
+        "action": "Connect patient with local food assistance programs (e.g., food banks, SNAP benefits) to address food insecurity."
       },
       {
-        "priority": "High",
-        "action": "Schedule a follow-up call with the patient within 24-48 hours to assess current well-being, symptoms, and medication adherence."
-      },
-      {
-        "priority": "High",
-        "action": "Confirm patient has a scheduled follow-up appointment with their primary care provider or care team and assist with scheduling if necessary."
+        "priority": "Medium",
+        "action": "Confirm patient has a follow-up appointment scheduled with their primary care provider or care team."
       }
     ]
   },
-  "latency_s": 10.41,
-  "recorded_at": "2026-11-06T22:27:39+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 13.24,
+  "recorded_at": "2026-11-06T23:09:18+00:00",
+  "git_sha": "32d5198"
 }

@@ -57,19 +57,23 @@
   "final_output": {
     "patient_id": 16,
     "readmission_risk_score": 0.12,
-    "risk_summary": "The patient has a low readmission risk, but factors include transportation issues for dental visits and asthma. There are currently no upcoming medical appointments.",
+    "risk_summary": "Despite a low readmission risk score, the patient has asthma and a confirmed transportation barrier for routine dental visits, with no upcoming medical appointments scheduled.",
     "recommended_actions": [
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team, and assist with scheduling if one is not in place."
       },
       {
         "priority": "Medium",
-        "action": "Discuss transportation needs for healthcare appointments with the patient and provide resources for assistance, especially for dental visits as noted."
+        "action": "Offer resources or assistance to address the patient's transportation needs for routine appointments, including dental visits."
+      },
+      {
+        "priority": "Low",
+        "action": "Provide educational resources on asthma self-management and connect the patient with relevant support programs if interested."
       }
     ]
   },
-  "latency_s": 16.47,
-  "recorded_at": "2026-11-06T22:29:32+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 10.2,
+  "recorded_at": "2026-11-06T23:10:15+00:00",
+  "git_sha": "32d5198"
 }

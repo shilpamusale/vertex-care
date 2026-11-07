@@ -57,23 +57,23 @@
   "final_output": {
     "patient_id": 7,
     "readmission_risk_score": 0.82,
-    "risk_summary": "The patient has a high risk of readmission (0.82) following a recent ED visit for heart failure, compounded by multiple chronic conditions and age, though they receive support from their daughter for medications and appointments.",
+    "risk_summary": "Patient 7 has a high readmission risk (0.82) due to a recent emergency department visit for heart failure, advanced age, and multiple chronic conditions.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Conduct a post-discharge check-in within 24-48 hours to assess current heart failure symptoms, review discharge instructions, and reinforce self-management techniques (e.g., diet, fluid intake, daily weights)."
+        "action": "Conduct a post-discharge check-in with Patient 7 within 24-48 hours to assess understanding of discharge instructions, current symptoms, and medication adherence, especially regarding heart failure management."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm Patient 7 has a scheduled follow-up appointment with their primary care provider or cardiology team, and assist with scheduling or transportation if needed."
       },
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a scheduled follow-up appointment with their cardiologist or primary care provider and offer assistance with scheduling if an appointment is not yet secured."
-      },
-      {
-        "priority": "Medium",
-        "action": "Review all current medications with the patient and daughter to ensure full understanding of purpose, dosage, schedule, and potential side effects, particularly for any new or adjusted medications related to the heart failure exacerbation."
+        "action": "Assess the daughter's understanding and capacity to support Patient 7's medication management and symptom monitoring. Provide educational resources or connect her with support services if beneficial."
       }
     ]
   },
-  "latency_s": 14.5,
-  "recorded_at": "2026-11-06T22:18:58+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 14.68,
+  "recorded_at": "2026-11-06T22:58:44+00:00",
+  "git_sha": "32d5198"
 }

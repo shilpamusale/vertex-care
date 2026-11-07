@@ -57,23 +57,19 @@
   "final_output": {
     "patient_id": 8,
     "readmission_risk_score": 0.55,
-    "risk_summary": "The patient, aged 80, has a moderate readmission risk (0.55), primarily driven by significant transportation barriers that have led to two missed follow-up appointments.",
+    "risk_summary": "The patient has a readmission risk score of 0.55, primarily driven by significant transportation barriers preventing attendance at follow-up appointments, advanced age (80), and hypertension.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Contact patient 8 to address transportation barriers and arrange assistance for attending clinic appointments."
-      },
-      {
-        "priority": "High",
-        "action": "Assist patient 8 in rescheduling the two missed follow-up appointments."
+        "action": "Coordinate transportation solutions (e.g., medical transport services, ride-share programs, volunteer drivers) to ensure the patient can attend upcoming clinic appointments, given they live 40 miles away, no longer drive, and have missed previous appointments."
       },
       {
         "priority": "Medium",
-        "action": "Confirm patient 8 has a follow-up appointment scheduled with their primary care provider or care team."
+        "action": "Contact the patient to confirm they have a follow-up appointment scheduled with their primary care provider or care team, and assist in rescheduling if needed once transportation is secured."
       }
     ]
   },
-  "latency_s": 13.81,
-  "recorded_at": "2026-11-06T22:21:58+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 13.7,
+  "recorded_at": "2026-11-06T23:00:03+00:00",
+  "git_sha": "32d5198"
 }

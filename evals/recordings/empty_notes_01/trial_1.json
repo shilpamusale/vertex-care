@@ -57,19 +57,19 @@
   "final_output": {
     "patient_id": 19,
     "readmission_risk_score": 0.3,
-    "risk_summary": "Patient has a low readmission risk score of 0.3, with age, hypertension, and multiple comorbidities identified as risk factors, but no specific patient needs or barriers could be identified due to missing CHW notes.",
+    "risk_summary": "The patient has a low predicted risk of readmission, with age, hypertension, and multiple chronic conditions identified as contributing factors by the prediction model. However, no detailed patient notes are available to confirm specific needs or barriers.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Conduct an initial outreach to patient 19 to assess current health status, identify any immediate needs or concerns, and gather comprehensive social and health determinants of health information, as no CHW notes are currently available."
+        "action": "Conduct a comprehensive patient assessment and outreach to gather detailed social, economic, and clinical information, as no patient-specific notes are currently available."
       },
       {
         "priority": "Medium",
-        "action": "Confirm patient 19 has a scheduled follow-up appointment with their Primary Care Provider (PCP) or care team and assist with scheduling if needed."
+        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team."
       }
     ]
   },
-  "latency_s": 12.97,
-  "recorded_at": "2026-11-06T22:35:23+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 6.74,
+  "recorded_at": "2026-11-06T23:12:02+00:00",
+  "git_sha": "32d5198"
 }

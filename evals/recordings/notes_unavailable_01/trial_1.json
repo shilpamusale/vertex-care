@@ -57,19 +57,19 @@
   "final_output": {
     "patient_id": 6,
     "readmission_risk_score": 0.2,
-    "risk_summary": "The patient has a low readmission risk, with age, number of comorbidities, and hypertension as contributing factors, but detailed patient notes are unavailable due to a service timeout.",
+    "risk_summary": "The patient has a low readmission risk score of 0.2, with risk factors including advanced age (74), 3 comorbidities, and hypertension; however, detailed patient notes are currently unavailable due to a service timeout.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Attempt to retrieve patient notes to assess current needs and barriers, as notes service timed out."
+        "action": "Attempt to retrieve patient notes to understand current needs, social determinants of health, and specific challenges related to their comorbidities and hypertension."
       },
       {
         "priority": "Medium",
-        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team."
+        "action": "Confirm patient has a follow-up appointment scheduled with their primary care provider or care team and assist with scheduling if needed."
       }
     ]
   },
-  "latency_s": 8.78,
-  "recorded_at": "2026-11-06T22:17:12+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 8.66,
+  "recorded_at": "2026-11-06T22:58:00+00:00",
+  "git_sha": "32d5198"
 }

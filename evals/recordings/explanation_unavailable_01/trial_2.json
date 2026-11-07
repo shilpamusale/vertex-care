@@ -33,23 +33,23 @@
   "final_output": {
     "patient_id": 11,
     "readmission_risk_score": 0.5,
-    "risk_summary": "The patient has a moderate readmission risk (0.5) and is experiencing significant financial worry about hospital bills, leading to avoidance of billing correspondence; additional risk factors could not be determined due to a tool error.",
+    "risk_summary": "Patient 11 has a moderate readmission risk score of 0.5 and is currently disengaged from important communications due to significant financial concerns regarding hospital bills, with specific model-derived risk factors unavailable.",
     "recommended_actions": [
       {
-        "priority": "Medium",
-        "action": "Connect patient with hospital financial aid or patient advocacy services to discuss billing concerns and potential payment assistance programs."
+        "priority": "High",
+        "action": "Connect patient with hospital financial counseling or a patient advocate to address concerns about hospital bills and assist in reviewing unopened mail for critical health-related information or appointment details."
       },
       {
         "priority": "Medium",
-        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
+        "action": "Confirm patient has a scheduled follow-up appointment with their primary care provider or care team and offer assistance with scheduling if needed."
       },
       {
         "priority": "Low",
-        "action": "Follow up with the care team to understand potential clinical risk factors, as the explanation tool was unavailable."
+        "action": "Follow up to re-run the explanation_tool for patient 11 to obtain specific risk factors and inform future interventions."
       }
     ]
   },
-  "latency_s": 15.95,
-  "recorded_at": "2026-11-06T22:24:26+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 15.34,
+  "recorded_at": "2026-11-06T23:05:05+00:00",
+  "git_sha": "32d5198"
 }

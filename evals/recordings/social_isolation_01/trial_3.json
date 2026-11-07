@@ -57,23 +57,19 @@
   "final_output": {
     "patient_id": 15,
     "readmission_risk_score": 0.6,
-    "risk_summary": "Patient 15, an 84-year-old with multiple chronic conditions including hypertension, faces a high readmission risk due to complex health needs and significant social isolation and loneliness.",
+    "risk_summary": "The patient has a high risk of readmission (0.6) due to advanced age (84), multiple chronic conditions (3 comorbidities including hypertension), and recent social isolation and loneliness after spousal loss.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team to ensure continuity of clinical care and management of chronic conditions."
-      },
-      {
-        "priority": "High",
-        "action": "Assess patient's interest and connect them with local social support programs (e.g., senior companionship, social clubs) to address reported loneliness and lack of regular check-ins."
+        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
       },
       {
         "priority": "Medium",
-        "action": "Collaborate with the primary care team to communicate findings on social isolation and ensure comprehensive management of chronic conditions like hypertension."
+        "action": "Connect patient with local senior social programs, grief support groups, or volunteer visitor services to address reported loneliness and social isolation."
       }
     ]
   },
-  "latency_s": 18.6,
-  "recorded_at": "2026-11-06T22:29:16+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 13.07,
+  "recorded_at": "2026-11-06T23:10:05+00:00",
+  "git_sha": "32d5198"
 }

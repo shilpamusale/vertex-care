@@ -57,19 +57,23 @@
   "final_output": {
     "patient_id": 10,
     "readmission_risk_score": 0.7,
-    "risk_summary": "Patient 10 has a high readmission risk (0.7), primarily due to asthma and public insurance, with an immediate concern of medication rationing for their inhaler due to cost.",
+    "risk_summary": "The patient has a high readmission risk associated with public insurance and asthma, and is currently rationing their inhaler due to cost concerns.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Connect patient with their prescribing provider or pharmacist to address the high cost of their inhaler and explore alternative medications or patient assistance programs to ensure consistent access and adherence."
+        "action": "Refer patient to their prescriber or pharmacist to review asthma medication regimen, address concerns about inhaler cost, and explore alternative affordable options."
       },
       {
         "priority": "High",
-        "action": "Confirm the patient has a scheduled follow-up appointment with their primary care provider or care team to review their asthma management and overall health plan."
+        "action": "Connect patient with resources for medication financial assistance programs to help cover the cost of their inhaler."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
       }
     ]
   },
-  "latency_s": 10.31,
-  "recorded_at": "2026-11-06T22:24:02+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 10.55,
+  "recorded_at": "2026-11-06T23:03:35+00:00",
+  "git_sha": "32d5198"
 }

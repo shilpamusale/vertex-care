@@ -57,19 +57,23 @@
   "final_output": {
     "patient_id": 2,
     "readmission_risk_score": 0.45,
-    "risk_summary": "Patient has an elevated readmission risk due to hypertension, age, and a specific concern about transportation to an upcoming cardiology appointment.",
+    "risk_summary": "The patient has a moderate readmission risk, primarily influenced by hypertension, age, and a current transportation barrier to a scheduled cardiology appointment.",
     "recommended_actions": [
       {
         "priority": "High",
-        "action": "Coordinate transportation for the patient to attend their cardiology appointment next week."
+        "action": "Coordinate transportation for the patient's cardiology appointment next week."
       },
       {
         "priority": "Medium",
-        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
+        "action": "Provide education on hypertension management and connect patient with resources for blood pressure monitoring."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team."
       }
     ]
   },
-  "latency_s": 7.52,
-  "recorded_at": "2026-11-06T22:15:12+00:00",
-  "git_sha": "1b121f2"
+  "latency_s": 11.23,
+  "recorded_at": "2026-11-06T22:53:36+00:00",
+  "git_sha": "32d5198"
 }
