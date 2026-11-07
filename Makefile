@@ -1,6 +1,6 @@
 # Makefile for VertexCare Project
 
-.PHONY: all setup lint test run-notebooks run-scripts clean run-pipeline run-clustering run-routing run-add-mock-notes
+.PHONY: all setup lint test run-notebooks run-scripts clean run-pipeline run-clustering run-routing synthetic-data eval eval-record
 
 # 1. Install dependencies (using pip, Poetry, or conda)
 setup:
@@ -26,10 +26,6 @@ test:
 # 	done
 
 # 5. Run main scripts (customize as needed)
-run-add-mock-notes:
-	@echo "Running add_mock_notes script..."
-	python scripts/add_mock_notes.py
-
 run-pipeline:
 	@echo "Running main pipeline script..."
 	python scripts/run_pipeline.py
@@ -93,4 +89,4 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 # 7. Run everything in order (excluding notebooks)
-all: lint test run-add-mock-notes run-pipeline run-clustering run-routing
+all: lint test synthetic-data run-pipeline run-clustering run-routing

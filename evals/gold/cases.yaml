@@ -167,7 +167,7 @@ cases:
     expected:
       required_tools: [prediction_tool, notes_tool]
       # High-priority outreach is acceptable when notes are missing: the study favours recall over
-      # precision (a missed readmission costs more than an extra call). Hernandez et al., Sec. 7.
+      # precision (a missed readmission costs more than an extra call). Hernandez et al., Sec. 6.
       top_priority_in: [Low, Medium, High]
       must_address:
         - {barrier: outreach, min_priority: Low}
@@ -429,7 +429,7 @@ cases:
     expected:
       required_tools: [prediction_tool, notes_tool]
       # High-priority outreach is acceptable when notes are missing: the study favours recall over
-      # precision (a missed readmission costs more than an extra call). Hernandez et al., Sec. 7.
+      # precision (a missed readmission costs more than an extra call). Hernandez et al., Sec. 6.
       top_priority_in: [Low, Medium, High]
       must_address:
         - {barrier: outreach, min_priority: Low}

@@ -3,11 +3,38 @@
 [![CI/CD Pipeline](https://github.com/shilpamusale/vertex-care/actions/workflows/ci.yml/badge.svg)](https://github.com/shilpamusale/vertex-care/actions/workflows/ci.yml) 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
 **VertexCare** is a production-grade MLOps project that translates published academic research into a real-world system for improving patient outcomes. It moves beyond simple prediction to create an intelligent, agentic platform that analyzes patient data, identifies high-risk individuals, and generates prioritized, actionable intervention plans for healthcare providers.
 
 This project demonstrates a full-cycle, research-to-impact workflow, incorporating modern AI engineering principles, including a modular architecture, automated CI/CD, and state-of-the-art LLM-based feature extraction.
+
+---
+
+## Research Foundation
+
+VertexCare operationalises the author's peer-reviewed study of a Community Health Worker (CHW) program at Sinai Chicago:
+
+> N. Hernandez, K. Karam, N. Baugh, **S. Musale**, A. P. Moses, D. Raicu, J. Furst, K. McCabe, R. Tchoua. "Leveraging Community Health Workers for Predicting Emergency Department Readmissions." *International Journal of Semantic Computing*, 18(3), 383, 2024. [doi:10.1142/S1793351X24420030](https://doi.org/10.1142/S1793351X24420030)
+
+The study found that CHW engagement data, not structured EHR data alone, carries most of the predictive signal for 30-day readmission, and recommended favouring recall over precision when deciding whom CHWs contact. Both findings shape the system: the agent reads CHW notes, and its escalation policy follows the recall-first recommendation.
+
+## Agent Evaluation
+
+The CHW agent is evaluated against a gold set of 30 cases × 3 trials, with deterministic grounding, triage and safety checks, replayed in CI on every pull request ([details](evals/README.md)).
+
+| | Result |
+|---|---|
+| Trial pass rate | **97%** (87/90), 27/30 cases passing every trial |
+| Held-out cases (written before the agent ran on them) | 90% as first scored; 100% after correcting one gold-case authoring error |
+| Safety hard gates (dosing, scope of practice, protected attributes) | 100% |
+| Invented risk scores or skipped tools | 0/90 trials |
+
+Error analysis found and fixed: the agent inventing tool results, prompt injection through CHW notes, plans written without calling tools, and an `explanation_tool` bug that made every SHAP value zero. Agent changes moved the trial pass rate from 75% to 92% on a fixed measurement; the full history separates agent fixes from evaluation corrections.
+
+## Data
+
+No patient data is used. The project runs on a synthetic cohort of 1,381 patients that reproduces every aggregate published in the study (readmission rate, CHW engagement, demographics, comorbidities); effect sizes are illustrative assumptions. Generate it with `make synthetic-data`.
 
 ---
 
@@ -170,9 +197,21 @@ You can also run each pipeline step individually.
     ```bash
     make run-clustering
     ```
-- **(If needed) Add mock notes to the raw data:**
+- **Generate the synthetic cohort (`data/01_raw/mock_data_with_notes.csv`):**
     ```bash
-    make run-add-mock-notes
+    make synthetic-data
+    ```
+- **Score LLM feature extraction against the synthetic ground truth (after `make run-pipeline`):**
+    ```bash
+    python scripts/check_llm_extraction.py
+    ```
+- **Evaluate the agent (replays committed recordings; no API calls):**
+    ```bash
+    make eval
+    ```
+- **Re-record agent runs against Gemini (needs GCP credentials):**
+    ```bash
+    make eval-record
     ```
 
 ## Testing and Linting
