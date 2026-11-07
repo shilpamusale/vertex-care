@@ -1,0 +1,55 @@
+{
+  "case_id": "explanation_unavailable_01",
+  "patient_id": 11,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 11,
+      "output": {
+        "patient_id": 11,
+        "status": "Success",
+        "readmission_risk_score": 0.5
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 11,
+      "output": {
+        "patient_id": 11,
+        "status": "Error",
+        "error": "SHAP service timeout."
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 11,
+      "output": {
+        "patient_id": 11,
+        "status": "Success",
+        "notes": "Worried about paying the hospital bill and has stopped opening mail from the billing office."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 11,
+    "readmission_risk_score": 0.5,
+    "risk_summary": "Patient 11 has a moderate readmission risk score of 0.5 and is currently disengaged from important communications due to significant financial concerns regarding hospital bills, with specific model-derived risk factors unavailable.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Connect patient with hospital financial counseling or a patient advocate to address concerns about hospital bills and assist in reviewing unopened mail for critical health-related information or appointment details."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm patient has a scheduled follow-up appointment with their primary care provider or care team and offer assistance with scheduling if needed."
+      },
+      {
+        "priority": "Low",
+        "action": "Follow up to re-run the explanation_tool for patient 11 to obtain specific risk factors and inform future interventions."
+      }
+    ]
+  },
+  "latency_s": 15.34,
+  "recorded_at": "2026-11-06T23:05:05+00:00",
+  "git_sha": "32d5198"
+}

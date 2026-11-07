@@ -1,0 +1,79 @@
+{
+  "case_id": "hypoglycemia_episode_01",
+  "patient_id": 22,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 22,
+      "output": {
+        "patient_id": 22,
+        "status": "Success",
+        "readmission_risk_score": 0.48
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 22,
+      "output": {
+        "patient_id": 22,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "diabetes",
+            "description": "Has diabetes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 69,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 2,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 22,
+      "output": {
+        "patient_id": 22,
+        "status": "Success",
+        "notes": "Felt shaky and sweaty this morning and her meter read 52. Lives alone."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 22,
+    "readmission_risk_score": 0.48,
+    "risk_summary": "The patient is at moderate risk for readmission due to diabetes, age, multiple chronic conditions, and recently experienced a hypoglycemic episode while living alone.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Facilitate same-day clinical evaluation for the patient's hypoglycemic episode (blood sugar 52, shakiness, sweating)."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+      },
+      {
+        "priority": "Medium",
+        "action": "Discuss living situation and explore available support systems given the patient lives alone with diabetes."
+      }
+    ]
+  },
+  "latency_s": 9.24,
+  "recorded_at": "2026-11-06T23:14:49+00:00",
+  "git_sha": "32d5198"
+}

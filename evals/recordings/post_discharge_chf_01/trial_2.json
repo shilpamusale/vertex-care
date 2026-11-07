@@ -1,0 +1,79 @@
+{
+  "case_id": "post_discharge_chf_01",
+  "patient_id": 7,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "readmission_risk_score": 0.82
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "referral_type_ed",
+            "description": "Referred from the emergency department",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 4,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 69,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 7,
+      "output": {
+        "patient_id": 7,
+        "status": "Success",
+        "notes": "Discharged yesterday after an ED visit for heart failure. Lives with daughter, who helps with medications and drives to appointments."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 7,
+    "readmission_risk_score": 0.82,
+    "risk_summary": "Patient 7 has a high readmission risk (0.82) due to a recent emergency department visit for heart failure, advanced age, and multiple chronic conditions.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Conduct a post-discharge check-in with Patient 7 within 24-48 hours to assess understanding of discharge instructions, current symptoms, and medication adherence, especially regarding heart failure management."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm Patient 7 has a scheduled follow-up appointment with their primary care provider or cardiology team, and assist with scheduling or transportation if needed."
+      },
+      {
+        "priority": "Medium",
+        "action": "Assess the daughter's understanding and capacity to support Patient 7's medication management and symptom monitoring. Provide educational resources or connect her with support services if beneficial."
+      }
+    ]
+  },
+  "latency_s": 14.68,
+  "recorded_at": "2026-11-06T22:58:44+00:00",
+  "git_sha": "32d5198"
+}

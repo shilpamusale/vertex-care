@@ -1,0 +1,75 @@
+{
+  "case_id": "notes_unavailable_01",
+  "patient_id": 6,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 6,
+      "output": {
+        "patient_id": 6,
+        "status": "Success",
+        "readmission_risk_score": 0.2
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 6,
+      "output": {
+        "patient_id": 6,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 74,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 3,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 6,
+      "output": {
+        "patient_id": 6,
+        "status": "Error",
+        "error": "Notes service timeout."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 6,
+    "readmission_risk_score": 0.2,
+    "risk_summary": "The patient has a low predicted readmission risk (0.2), but comprehensive patient notes are unavailable due to a service timeout, making it difficult to fully assess individual needs beyond the identified statistical risk factors of age (74), 3 comorbidities, and hypertension.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Outreach to obtain comprehensive patient notes and assess individual needs."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team."
+      }
+    ]
+  },
+  "latency_s": 9.82,
+  "recorded_at": "2026-11-06T22:58:16+00:00",
+  "git_sha": "32d5198"
+}

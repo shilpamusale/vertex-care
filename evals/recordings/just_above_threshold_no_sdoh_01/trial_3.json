@@ -1,0 +1,79 @@
+{
+  "case_id": "just_above_threshold_no_sdoh_01",
+  "patient_id": 27,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 27,
+      "output": {
+        "patient_id": 27,
+        "status": "Success",
+        "readmission_risk_score": 0.63
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 27,
+      "output": {
+        "patient_id": 27,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "sumcomorbidities",
+            "description": "Number of chronic conditions",
+            "patient_value": 3,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 71,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 27,
+      "output": {
+        "patient_id": 27,
+        "status": "Success",
+        "notes": "Doing well at home. Son helps with groceries and drives to appointments."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 27,
+    "readmission_risk_score": 0.63,
+    "risk_summary": "Patient 27 has a high readmission risk score of 0.63, influenced by multiple chronic conditions, age, and hypertension, though they are reportedly doing well at home with family support.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Coordinate a clinical follow-up with the patient's care team to review current health status and management of chronic conditions given the high readmission risk."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a follow-up appointment scheduled with their primary care provider or care team."
+      },
+      {
+        "priority": "Medium",
+        "action": "Check in with the patient to ensure continued well-being at home and assess if any new needs have arisen regarding their chronic conditions or support system."
+      }
+    ]
+  },
+  "latency_s": 8.29,
+  "recorded_at": "2026-11-06T23:21:04+00:00",
+  "git_sha": "32d5198"
+}

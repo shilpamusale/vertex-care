@@ -1,0 +1,79 @@
+{
+  "case_id": "conflicting_financial_01",
+  "patient_id": 4,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 4,
+      "output": {
+        "patient_id": 4,
+        "status": "Success",
+        "readmission_risk_score": 0.65
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 4,
+      "output": {
+        "patient_id": 4,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 71,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "llm_financial_concern",
+            "description": "Financial concern mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 4,
+      "output": {
+        "patient_id": 4,
+        "status": "Success",
+        "notes": "Patient initially denied any financial issues, but later mentioned they may have trouble affording their new medication co-pay."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 4,
+    "readmission_risk_score": 0.65,
+    "risk_summary": "Patient 4 has a high risk of readmission (0.65), largely influenced by their age of 71, hypertension, and a confirmed financial concern regarding a new medication's co-pay.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Address the patient's concern about medication co-pay by contacting them to understand specific medication details and connecting them with the prescribing provider or pharmacist to explore assistance programs or alternative prescriptions."
+      },
+      {
+        "priority": "High",
+        "action": "Conduct a comprehensive follow-up call with the patient to assess their overall health status, medication adherence, and address any other emerging concerns due to their high readmission risk."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm that the patient has a scheduled follow-up appointment with their primary care provider or care team."
+      }
+    ]
+  },
+  "latency_s": 11.34,
+  "recorded_at": "2026-11-06T22:56:17+00:00",
+  "git_sha": "32d5198"
+}

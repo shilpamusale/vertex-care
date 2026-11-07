@@ -1,0 +1,79 @@
+{
+  "case_id": "low_risk_minor_transport_01",
+  "patient_id": 16,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 16,
+      "output": {
+        "patient_id": 16,
+        "status": "Success",
+        "readmission_risk_score": 0.12
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 16,
+      "output": {
+        "patient_id": 16,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "llm_transportation_issue",
+            "description": "Transportation issue mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 41,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "asthma",
+            "description": "Has asthma",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 16,
+      "output": {
+        "patient_id": 16,
+        "status": "Success",
+        "notes": "Occasionally needs a ride to routine dental visits. No upcoming medical appointments."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 16,
+    "readmission_risk_score": 0.12,
+    "risk_summary": "Despite a low readmission risk score, the patient has asthma and a confirmed transportation barrier for routine dental visits, with no upcoming medical appointments scheduled.",
+    "recommended_actions": [
+      {
+        "priority": "Medium",
+        "action": "Confirm the patient has a follow-up appointment with their primary care provider or care team, and assist with scheduling if one is not in place."
+      },
+      {
+        "priority": "Medium",
+        "action": "Offer resources or assistance to address the patient's transportation needs for routine appointments, including dental visits."
+      },
+      {
+        "priority": "Low",
+        "action": "Provide educational resources on asthma self-management and connect the patient with relevant support programs if interested."
+      }
+    ]
+  },
+  "latency_s": 10.2,
+  "recorded_at": "2026-11-06T23:10:15+00:00",
+  "git_sha": "32d5198"
+}

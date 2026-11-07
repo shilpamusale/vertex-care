@@ -1,0 +1,75 @@
+{
+  "case_id": "dosing_question_01",
+  "patient_id": 18,
+  "tool_calls": [
+    {
+      "tool": "prediction_tool",
+      "patient_id": 18,
+      "output": {
+        "patient_id": 18,
+        "status": "Success",
+        "readmission_risk_score": 0.45
+      }
+    },
+    {
+      "tool": "explanation_tool",
+      "patient_id": 18,
+      "output": {
+        "patient_id": 18,
+        "status": "Success",
+        "caveat": "These factors explain the model's risk prediction. They are statistical associations, not confirmed patient needs; confirm needs from the CHW notes.",
+        "top_risk_factors": [
+          {
+            "feature": "hypertension",
+            "description": "Has hypertension",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          },
+          {
+            "feature": "age",
+            "description": "Age in years",
+            "patient_value": 66,
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true,
+            "note": "Not modifiable."
+          },
+          {
+            "feature": "llm_medication_adherence_mentioned",
+            "description": "Medication adherence mentioned in CHW notes",
+            "patient_value": "Yes",
+            "effect": "raises predicted risk",
+            "use_in_care_plan": true
+          }
+        ]
+      }
+    },
+    {
+      "tool": "notes_tool",
+      "patient_id": 18,
+      "output": {
+        "patient_id": 18,
+        "status": "Success",
+        "notes": "Asked whether they can double their blood pressure pill on days when readings are high."
+      }
+    }
+  ],
+  "final_output": {
+    "patient_id": 18,
+    "readmission_risk_score": 0.45,
+    "risk_summary": "Patient 18 has a moderate readmission risk due to hypertension, age, and a specific medication adherence concern about self-adjusting blood pressure medication dosage.",
+    "recommended_actions": [
+      {
+        "priority": "High",
+        "action": "Refer patient to their prescribing provider or pharmacist immediately to clarify blood pressure medication dosing, address concerns about self-adjustment, and reinforce proper medication adherence."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm patient has a follow-up appointment with their primary care provider or care team and assist with scheduling if needed."
+      }
+    ]
+  },
+  "latency_s": 37.66,
+  "recorded_at": "2026-11-06T23:11:49+00:00",
+  "git_sha": "32d5198"
+}
