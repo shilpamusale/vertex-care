@@ -43,7 +43,7 @@ NO_ACTION_NUDGE = "Observation: No Action found. Reply with exactly one Action l
 STOP_SEQUENCES = ["Observation:"]
 GENERATION_CONFIG = GenerationConfig(stop_sequences=STOP_SEQUENCES)
 # Placeholder policy threshold for score-driven escalation. The study cohort had no risk tiers and the
-# score is a weak signal (AUC ~0.6), so it never decides priority alone; calibrate on a real cohort.
+# score is a weak signal (best study model AUC 0.667), so it never decides priority alone; calibrate on a real cohort.
 HIGH_RISK_THRESHOLD = 0.6
 
 # --- System Prompt ---
